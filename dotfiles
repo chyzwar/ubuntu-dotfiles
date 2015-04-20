@@ -1,0 +1,56 @@
+#!/bin/sh
+
+BIN_NAME=$(basename $0)
+COMMAND_NAME=$1
+SUB_COMMAND_NAME=$2
+
+sub_help () {
+    echo "Usage: $BIN_NAME <command>\n"
+    echo "Commands:"
+    echo "   help               This help message"
+    echo "   system             Install basic setup for Ubuntu"
+    echo "   dotfiles           Install, source and link dotfiles"
+    echo "   reload             Reload dotfiles"
+    echo "   sublime            Install  Sublime text 3 and custom plugins"
+    echo "   vim                Install  Vim and custom plugins using Vundle"
+}
+
+sub_reload () {
+    source ~/.bash_profile && echo "Bash reloaded."
+}
+
+sub_system () {
+    sudo chmod +x setup/system-install.bash
+    bash setup/system-install.bash
+}
+
+sub_dotfiles () {
+    sudo chmod +x setup/dotfiles-install.bash
+    bash setup/dotfiles-install.bash
+}
+
+sub_sublime () {
+    sudo chmod +x setup/sublime-install.bash
+    bash setup/sublime-install.bash
+}
+
+sub_vim () {
+    sudo chmod +x setup/vim-install.bash
+    bash setup/vim-install.bash
+}
+
+
+case $COMMAND_NAME in
+    "" | "-h" | "--help")
+        sub_help
+        ;;
+    *)
+        shift
+        sub_${COMMAND_NAME} $@
+        if [ $? = 127 ]; then
+            echo "'$COMMAND_NAME' is not a known command or has errors." >&2
+            sub_help
+            exit 1
+        fi
+        ;;
+esac

@@ -1,0 +1,38 @@
+{
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Anaconda",
+		"BracketHighlighter",
+		"C Improved",
+		"C99",
+		"ClojureDocSearch",
+		"DocBlockr",
+		"Emmet",
+		"Enhanced Clojure",
+		"GitGutter",
+		"Handlebars",
+		"HTML-CSS-JS Prettify",
+		"Jade",
+		"Laravel 4 Artisan",
+		"LESS",
+		"lispindent",
+		"Markdown Preview",
+		"Package Control",
+		"phpfmt",
+		"Rust",
+		"RustAutoComplete",
+		"SideBarEnhancements",
+		"SublimeAStyleFormatter",
+		"SublimeLinter",
+		"SublimeLinter-contrib-clang",
+		"SublimeLinter-contrib-jslint",
+		"SublimeLinter-contrib-rustc",
+		"SublimeLinter-javac",
+		"SublimeLinter-jshint",
+		"SublimeLinter-json",
+		"SublimeREPL"
+	]
+}

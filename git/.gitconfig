@@ -1,0 +1,91 @@
+[user]
+    name = Chyzwar
+    email = schizek.marcin@gmail.com
+
+[github]
+    user = Chyzwar
+
+[core]
+    excludesfile = ~/.gitignore_global
+    editor = vim
+    filemode = false
+    trustctime = false
+
+[alias]
+    st = status
+    sts = status -sb
+    stl = ls-files -m -o --exclude-standard
+    ci = commit
+    br = branch
+    co = checkout
+    cr = clone --recursive
+    df = diff --word-diff
+    unstage = reset --hard HEAD
+    ag = !sh -c 'git ls-files -m -o --exclude-standard | grep $1 | xargs git add --verbose' -
+    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    ll = log --pretty=oneline --graph --abbrev-commit
+    lm = log --pretty=format:'* %s (%h)'
+    lg = log -p
+    g = grep --break --heading --line-number
+    amend = commit --amend --reuse-message=HEAD
+    contrib = shortlog --summary --numbered
+	# List files ignored by .gitignore and friends
+	show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
+
+[color]
+    ui = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[credential]
+    helper = osxkeychain
+
+[grep]
+    lineNumber = true
+
+[help]
+    autocorrect = 1
+
+[difftool]
+    prompt = false
+
+[mergetool]
+    prompt = false
+
+[push]
+    default = simple
+
+[fetch]
+  prune = true
+
+[diff]
+    renames = copies
+    tool = Kaleidoscope
+[difftool "Kaleidoscope"]
+    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool "sourcetree"]
+	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+	path = 
+
+[merge]
+    tool = Kaleidoscope
+    conflictstyle = diff3
+    defaultToUpstream = true
+[mergetool "Kaleidoscope"]
+    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+    trustExitCode = true
+[mergetool "sourcetree"]
+	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+
