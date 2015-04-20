@@ -6,7 +6,7 @@ sudo apt-get update
 sudo apt-get upgrade dist
 
 #install basic utilities
-echo "Install git, curl, guake"
+echo "Install git, curl"
 sudo apt-get install git
 sudo apt-get install curl
 sudo apt-get build-dep guake
