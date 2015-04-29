@@ -33,6 +33,7 @@
 		"SublimeLinter-javac",
 		"SublimeLinter-jshint",
 		"SublimeLinter-json",
+		"SublimeLinter-shellcheck",
 		"SublimeREPL"
 	]
 }

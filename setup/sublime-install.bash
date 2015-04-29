@@ -7,6 +7,10 @@ sudo apt-get update
 sudo apt-get install sublime-text-installer
 sudo apt-get install wget
 
+#Install Plugins dependancies
+echo "Install shellcheck"
+sudo apt-get install shellcheck
+
 echo "Links List of Plugins and Settings"
 DIR="$( cd "$( dirname "$0" )" && pwd )"
 ln -sfv $DIR/../sublime/Default.sublime-theme /home/$USER/.config/sublime-text-3/Packages/User/Default.sublime-theme

@@ -17,7 +17,7 @@ On fresh Ubuntu instalation:
  ./dotfiles
 ```
 
-### Vim and plugins
+### Vim and plugins (done)
 ```sh
 ./dotfiles vim
 ```
@@ -28,14 +28,19 @@ vim/vimrc include config for vim, there are two themes possible to choose
 
 Add/Remove plugins in vim/vundle.vim
 
-### Sublime Text 3
+### Sublime Text 3 (done)
 ```sh
 ./dotfiles sublime
 ```
 This will add ppa for Sublime Text 3, it will also install Package Manager and plugins listed in sublime/Package\ Control.sublime-settings. Again configuration files will be symlinked to your home directory. This will conviente place to sync installed plugins on diffrent machines. 
 
-### Programming Tools
+### Programming Tools(done)
 ```sh
 ./dotfiles system
 ```
-It not only intall tools but also some programming leanguges not native to ubuntu. 
+Its not only intall tools but also some programming leanguges not native to ubuntu. 
+
+### Bash and Zhs config (in-progress)
+```sh
+./dotfiles shell
+```

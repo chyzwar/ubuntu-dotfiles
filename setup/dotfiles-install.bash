@@ -4,6 +4,10 @@
 echo "Install guake, ultimate terminal"
 sudo apt-get build-dep guake
 
+echo "Install zhs shell"
+sudo apt-get update
+sudo apt-get install zsh
+
 #Install liquid promt
 echo "Install liquidprompt"
 sudo git clone https://github.com/nojhan/liquidprompt.git /opt/liquidprompt
@@ -28,13 +32,9 @@ export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 [ -d "$DOTFILES_DIR/.git" ] && git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master
 
 
-# Bunch of symlinks
-ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~
-ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
-ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
-ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
-ln -sfv "$DOTFILES_DIR/etc/mackup/.mackup.cfg" ~
-
-if [ "$(uname)" == "Darwin" -a -f "$DOTFILES_DIR/install/osx.sh" ]; then
-    source "$DOTFILES_DIR/install/osx.sh"
-fi
+# # Bunch of symlinks
+echo "Symlinks for git/bashrc"
+# ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~
+# ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
+# ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
+# ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~

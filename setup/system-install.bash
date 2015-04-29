@@ -6,10 +6,11 @@ sudo apt-get update
 sudo apt-get upgrade dist
 
 #install basic utilities
-echo "Install git, curl"
+echo "Install git, curl, shutter"
 sudo apt-get install git
 sudo apt-get install curl
-sudo apt-get build-dep guake
+sudo apt-get install shutter
+sudo apt-get install mysql-workbench
 
 #Python tools
 echo "Install Python tooling"
