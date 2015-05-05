@@ -25,8 +25,8 @@ sub_system () {
 }
 
 sub_shell () {
-    sudo chmod +x setup/dotfiles-install.bash
-    bash setup/dotfiles-install.bash
+    sudo chmod +x setup/shell-install.bash
+    bash setup/shell-install.bash
 }
 
 sub_sublime () {

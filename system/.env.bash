@@ -1,28 +1,31 @@
-# Case-insensitive globbing (used in pathname expansion)
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
 
-shopt -s nocaseglob
-
-# Recursive globbing with "**"
-
-if [ ${BASH_VERSINFO[0]} -ge 4 ]; then
-    shopt -s globstar
-fi
-
-# Append to the Bash history file, rather than overwriting it
-
+# append to the history file, don't overwrite it
 shopt -s histappend
 
-# Autocorrect typos in path names when using `cd`
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
 
-shopt -s cdspell
-
-# Do not autocomplete when accidentally pressing Tab on an empty line.
-
-shopt -s no_empty_cmd_completion
-
-# Check the window size after each command and, if necessary,
+# check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
-
 shopt -s checkwinsize
 
-export HISTCONTROL=ignoredups:erasedups
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color) color_prompt=yes;;
+esac

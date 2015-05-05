@@ -11,7 +11,6 @@ sudo apt-get install zsh
 #Install liquid promt
 echo "Install liquidprompt"
 sudo git clone https://github.com/nojhan/liquidprompt.git /opt/liquidprompt
-source /opt/liquidprompt/liquidprompt
 
 #Set Monokai Pallete for Guake Terminal
 echo "Set Monokai Pallete"
@@ -34,7 +33,7 @@ export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # # Bunch of symlinks
 echo "Symlinks for git/bashrc"
-# ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~
-# ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
+ln -sfv "$DOTFILES_DIR/../runcom/.bashrc" ~
+ln -sfv "$DOTFILES_DIR/../runcom/.inputrc" ~
 # ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
 # ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~

@@ -40,7 +40,7 @@ This will add ppa for Sublime Text 3, it will also install Package Manager and p
 ```
 Its not only intall tools but also some programming leanguges not native to ubuntu. 
 
-### Bash and Zhs config (in-progress)
+### bash and zhs config (in-progress)
 ```sh
 ./dotfiles shell
 ```

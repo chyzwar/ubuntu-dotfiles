@@ -51,40 +51,19 @@ alias treed="tree -d"
 alias tree1="tree -d -L 1"
 alias tree2="tree -d -L 2"
 
-# rsync
-
-alias rsync="rsync -vh"
-
-# npm
-
-alias ni="npm install"
-alias nu="npm uninstall"
-alias npme="npm --registry http://registry.npmjs.eu"
-
-# Webserver
-
-alias srv="sudo http-server $HOME/Projects/ -p 80 -c-1"
 
 # Network
-
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 
 # Request using GET, POST, etc. method
-
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
     alias "$method"="lwp-request -m '$method'"
 done
 
 # Speed Test
-
 alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
 
-# Recursively remove Apple meta files
-
-alias cleanupds="find . -type f -name '*.DS_Store' -ls -exec /bin/rm {} \;"
-alias cleanupad="find . -type d -name .AppleDouble -ls -exec /bin/rm -r {} \;"
 
 # It's probably me
-
 alias quit="exit"
