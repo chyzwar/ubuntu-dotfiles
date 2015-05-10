@@ -28,7 +28,7 @@ else
 fi
 
 # Finally we can source the dotfiles (order matters)
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,completion,grep,prompt,custom}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{env,prompt,function,path,alias,completion,grep,custom}; do
     [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 
@@ -56,3 +56,5 @@ unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
 
 # Export
 export SHELL_BASH SHELL_ZSH OS DOTFILES_DIR
+
+ulimit -n 10000

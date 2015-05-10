@@ -14,8 +14,8 @@
 		"Enhanced Clojure",
 		"GitGutter",
 		"Handlebars",
-		"HTML-CSS-JS Prettify",
 		"Jade",
+		"JsFormat",
 		"Laravel 4 Artisan",
 		"LESS",
 		"lispindent",
@@ -26,6 +26,7 @@
 		"RustAutoComplete",
 		"SideBarEnhancements",
 		"SublimeAStyleFormatter",
+		"SublimeGit",
 		"SublimeLinter",
 		"SublimeLinter-contrib-clang",
 		"SublimeLinter-contrib-jslint",
@@ -33,6 +34,7 @@
 		"SublimeLinter-javac",
 		"SublimeLinter-jshint",
 		"SublimeLinter-json",
+		"SublimeLinter-jsxhint",
 		"SublimeLinter-shellcheck",
 		"SublimeREPL"
 	]

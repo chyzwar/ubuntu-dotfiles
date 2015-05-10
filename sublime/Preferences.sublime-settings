@@ -1,8 +1,9 @@
 {
 	"bold_folder_labels": true,
 	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
-	"font_size": 13,
+	"font_size": 14,
 	"highlight_modified_tabs": true,
+	"tab_size": 4,
 	"ignored_packages":
 	[
 		"Vintage"

@@ -17,6 +17,10 @@ ln -sfv $DIR/../sublime/Default.sublime-theme /home/$USER/.config/sublime-text-3
 ln -sfv $DIR/../sublime/Package\ Control.sublime-settings /home/$USER/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings
 ln -sfv $DIR/../sublime/Preferences.sublime-settings /home/$USER/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 ln -sfv $DIR/../sublime/Python.sublime-settings /home/$USER/.config/sublime-text-3/Packages/User/Python.sublime-settings
+ln -sfv $DIR/../sublime/SublimeLinter.sublime-settings /home/$USER/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings
+ln -sfv $DIR/../sublime/JsFormat.sublime-settings /home/$USER/.config/sublime-text-3/Packages/User/JsFormat.sublime-settings
+ln -sfv $DIR/../sublime/phpfmt.sublime-settings /home/$USER/.config/sublime-text-3/Packages/User/phpfmt.sublime-settings
+
 
 #Install Package Manager for sublime
 wget https://packagecontrol.io/Package%20Control.sublime-package
