@@ -26,7 +26,7 @@
                 "excludes": []
             },
             "jslint": {
-                "@disable": false,
+                "@disable": true,
                 "args": [],
                 "excludes": []
             },

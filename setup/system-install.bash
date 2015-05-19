@@ -42,8 +42,9 @@ do
  	npm install bower -g
  	npm install karma -g
  	npm install browserify -g
- 	npm install -g jshint
- 	npm install -g jsxhint
+ 	npm install jshint -g
+ 	npm install jsxhint -g
+ 	npm install jslint -g
 done 
 nvm alias default stable #select def version of node to stable release
 
@@ -54,11 +55,11 @@ sudo apt-get install apache2
 sudo apt-get install mysql-server
 sudo apt-get install php5 libapache2-mod-php5
 sudo apt-get install php5-cli
-
+sudo apt-get install php5-sqlite
 # Install and enable mcrypt
 sudo apt-get install mcrypt php5-mcrypt
 sudo php5enmod mcrypt
-
+#Install Composer
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 
@@ -99,3 +100,13 @@ sudo apt-get install haskell-platform-prof
 echo "Go lang install"
 sudo apt-get install golang
 
+#Ruby Stuff
+echo "Ruby and rvm"
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+sudo curl -sSL https://get.rvm.io | bash -s stable --with-default-gems="rails haml"
+rmv install 2.2
+rvm use 2.2 --default
+
+echo "Install MongoDB"
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
