@@ -2,7 +2,9 @@
 
 #Install quake
 echo "Install guake, ultimate terminal"
-sudo apt-get build-dep guake
+sudo add-apt-repository ppa:webupd8team/unstable
+sudo apt-get update
+sudo apt-get install guake
 
 echo "Install zhs shell"
 sudo apt-get update

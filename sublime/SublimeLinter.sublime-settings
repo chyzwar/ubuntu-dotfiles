@@ -20,13 +20,18 @@
                 "excludes": [],
                 "lint": ""
             },
+            "jscs": {
+                "@disable": false,
+                "args": [],
+                "excludes": []
+            },
             "jshint": {
                 "@disable": false,
                 "args": [],
                 "excludes": []
             },
             "jslint": {
-                "@disable": true,
+                "@disable": false,
                 "args": [],
                 "excludes": []
             },
@@ -37,6 +42,11 @@
                 "strict": true
             },
             "jsxhint": {
+                "@disable": false,
+                "args": [],
+                "excludes": []
+            },
+            "php": {
                 "@disable": false,
                 "args": [],
                 "excludes": []

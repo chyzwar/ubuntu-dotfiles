@@ -130,4 +130,5 @@ wifi(){
     sudo iwconfig wlan0 txpower off
     sleep 7
     sudo iwconfig wlan0 txpower on
+    sudo service network-manager restart
 }

@@ -26,6 +26,7 @@ pip install "ipython[notebook]"
 echo "Install node version manager"
 curl https://raw.githubusercontent.com/creationix/nvm/v0.24.1/install.sh | bash
 source ~/.nvm/nvm.sh
+
 node_versions=(stable unstable iojs) 
 for version in "${node_versions[@]}"
 do
@@ -44,7 +45,7 @@ do
  	npm install browserify -g
  	npm install jshint -g
  	npm install jsxhint -g
- 	npm install jslint -g
+    npm install -g jscs
 done 
 nvm alias default stable #select def version of node to stable release
 

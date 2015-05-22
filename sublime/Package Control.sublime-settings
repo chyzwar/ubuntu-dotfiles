@@ -5,10 +5,12 @@
 	"installed_packages":
 	[
 		"Anaconda",
+		"AutoFileName",
 		"BracketHighlighter",
 		"C Improved",
 		"C99",
 		"ClojureDocSearch",
+		"Color Highlighter",
 		"DocBlockr",
 		"Emmet",
 		"Enhanced Clojure",
@@ -22,6 +24,7 @@
 		"lispindent",
 		"Markdown Preview",
 		"Package Control",
+		"paredit",
 		"phpfmt",
 		"Rust",
 		"RustAutoComplete",
@@ -30,12 +33,13 @@
 		"SublimeGit",
 		"SublimeLinter",
 		"SublimeLinter-contrib-clang",
-		"SublimeLinter-contrib-jslint",
 		"SublimeLinter-contrib-rustc",
 		"SublimeLinter-javac",
+		"SublimeLinter-jscs",
 		"SublimeLinter-jshint",
 		"SublimeLinter-json",
 		"SublimeLinter-jsxhint",
+		"SublimeLinter-php",
 		"SublimeLinter-shellcheck",
 		"SublimeREPL"
 	]
