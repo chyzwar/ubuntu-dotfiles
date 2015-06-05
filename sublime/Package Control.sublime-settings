@@ -33,6 +33,7 @@
 		"SublimeGit",
 		"SublimeLinter",
 		"SublimeLinter-contrib-clang",
+		"SublimeLinter-contrib-htmlhint",
 		"SublimeLinter-contrib-rustc",
 		"SublimeLinter-javac",
 		"SublimeLinter-jscs",

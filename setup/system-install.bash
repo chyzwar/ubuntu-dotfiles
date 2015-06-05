@@ -7,13 +7,15 @@ sudo apt-get upgrade dist
 
 
 #install basic utilities
-echo "Install git, curl, shutter"
+echo "Install git, curl, shutter, workbench and zips"
 sudo apt-get install git
 sudo apt-get install curl
 sudo apt-get install shutter
 sudo apt-get install mysql-workbench
-
-
+sudo apt-get install p7zip{,-full}
+sudo apt-get install alien libaio1 unixodbc
+sudo apt-get install ppa-purge
+	
 #Python tools
 echo "Install Python tooling"
 sudo apt-get install pip
@@ -21,6 +23,20 @@ pip install --upgrade pip
 pip install virtualenvwrapper
 pip install "ipython[notebook]"
 
+
+#Install Gnome Shell
+echo "Install Gnome Shell"
+sudo add-apt-repository ppa:gnome3-team/gnome3-staging
+sudo add-apt-repository ppa:gnome3-team/gnome3
+sudo apt-get update
+sudo apt-get install gdm
+sudo apt-get install gnome-shell
+sudo apt-get install gnome-session
+sudo apt-get install ubuntu-gnome-desktop
+sudo apt-get dist-upgrade
+sudo apt-get install gnome-tweak-tool
+#sudo ppa-purge ppa:gnome3-team/gnome3
+#sudo ppa-purge ppa:gnome3-team/gnome3-staging
 
 #Node JS install
 echo "Install node version manager"
@@ -46,6 +62,7 @@ do
  	npm install jshint -g
  	npm install jsxhint -g
     npm install -g jscs
+    npm install -g htmlhint
 done 
 nvm alias default stable #select def version of node to stable release
 

@@ -1,5 +1,8 @@
-# Shortcuts
+alias gnome="gnome-shell --replace"
+alias unity="unity --replace"
 
+# Shortcuts
+alias sql="sudo /opt/sqldeveloper/sqldeveloper.sh"
 alias _="sudo"
 alias g="git"
 alias v="vim"
@@ -8,7 +11,6 @@ alias rr="rm -rf"
 is-executable hub && eval "$(hub alias -s)" # alias git=hub
 
 # Global aliases
-
 if $(is-supported "alias -g"); then
     alias -g G="| grep -i"
     alias -g H="| head"
@@ -17,12 +19,10 @@ if $(is-supported "alias -g"); then
 fi
 
 # List declared aliases, functions
-
 alias listaliases="alias | sed 's/=.*//'"
 alias listfunctions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'" # show non _prefixed functions
 
 # ls
-
 LS_COLORS=`is-supported "ls --color" --color -G`
 LS_TIMESTYLEISO=`is-supported "ls --time-style=long-iso" --time-style=long-iso`
 LS_GROUPDIRSFIRST=`is-supported "ls --group-directories-first" --group-directories-first`
@@ -35,7 +35,6 @@ alias ld="ls -ld ${LS_COLORS} */"
 unset LS_COLORS LS_TIMESTYLEISO LS_GROUPDIRSFIRST
 
 # cd
-
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
