@@ -35,6 +35,7 @@
 		"SublimeLinter-contrib-clang",
 		"SublimeLinter-contrib-htmlhint",
 		"SublimeLinter-contrib-rustc",
+		"SublimeLinter-csslint",
 		"SublimeLinter-javac",
 		"SublimeLinter-jscs",
 		"SublimeLinter-jshint",

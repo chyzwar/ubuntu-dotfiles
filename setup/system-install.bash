@@ -63,6 +63,7 @@ do
  	npm install jsxhint -g
     npm install -g jscs
     npm install -g htmlhint
+    npm install -g csslint
 done 
 nvm alias default stable #select def version of node to stable release
 
