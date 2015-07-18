@@ -15,7 +15,25 @@ sudo apt-get install mysql-workbench
 sudo apt-get install p7zip{,-full}
 sudo apt-get install alien libaio1 unixodbc
 sudo apt-get install ppa-purge
-	
+
+
+echo "Install Docker"
+wget -qO- https://get.docker.com/ | sh
+# Add the docker group if it doesn't already exist.
+$ sudo groupadd docker
+
+# Add the connected user "${USER}" to the docker group.
+# Change the user name to match your preferred user.
+# You may have to logout and log back in again for
+# this to take effect.
+$ sudo gpasswd -a ${USER} docker
+
+# Restart the Docker daemon.
+# If you are in Ubuntu 14.04, use docker.io instead of docker
+$ sudo service docker restart
+
+
+
 #Python tools
 echo "Install Python tooling"
 sudo apt-get install pip

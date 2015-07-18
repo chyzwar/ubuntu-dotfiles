@@ -5,12 +5,14 @@
 	"installed_packages":
 	[
 		"Anaconda",
+		"AngularJS",
 		"AutoFileName",
 		"BracketHighlighter",
 		"C Improved",
 		"C99",
 		"ClojureDocSearch",
 		"Color Highlighter",
+		"Console Wrap for js",
 		"DocBlockr",
 		"Emmet",
 		"Enhanced Clojure",
@@ -18,10 +20,12 @@
 		"GitGutter",
 		"Handlebars",
 		"Jade",
+		"JavaScript Console",
 		"JsFormat",
 		"Laravel 4 Artisan",
 		"LESS",
 		"lispindent",
+		"Markdown Extended",
 		"Markdown Preview",
 		"Package Control",
 		"paredit",
@@ -43,6 +47,7 @@
 		"SublimeLinter-jsxhint",
 		"SublimeLinter-php",
 		"SublimeLinter-shellcheck",
-		"SublimeREPL"
+		"SublimeREPL",
+		"Web Inspector"
 	]
 }
