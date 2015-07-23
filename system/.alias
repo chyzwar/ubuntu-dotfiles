@@ -1,8 +1,10 @@
-alias gnome="gnome-shell --replace"
-alias unity="unity --replace"
+alias gnomer="gnome-shell --replace"
+alias uniter="unity --replace"
 
 # Shortcuts
 alias sql="sudo /opt/sqldeveloper/sqldeveloper.sh"
+
+
 alias _="sudo"
 alias g="git"
 alias v="vim"

@@ -7,7 +7,7 @@
 
 [core]
     excludesfile = ~/.gitignore_global
-    editor = vim
+    editor = sublime
     filemode = false
     trustctime = false
 
@@ -32,25 +32,6 @@
 	# List files ignored by .gitignore and friends
 	show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
 
-[color]
-    ui = auto
-[color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
-[color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
-[color "status"]
-    added = yellow
-    changed = green
-    untracked = cyan
-
-[credential]
-    helper = osxkeychain
-
 [grep]
     lineNumber = true
 
@@ -58,10 +39,10 @@
     autocorrect = 1
 
 [difftool]
-    prompt = false
+    prompt = true
 
 [mergetool]
-    prompt = false
+    prompt = true
 
 [push]
     default = simple
@@ -69,23 +50,18 @@
 [fetch]
   prune = true
 
-[diff]
-    renames = copies
-    tool = Kaleidoscope
-[difftool "Kaleidoscope"]
-    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[difftool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
-	path = 
 
 [merge]
-    tool = Kaleidoscope
-    conflictstyle = diff3
-    defaultToUpstream = true
-[mergetool "Kaleidoscope"]
-    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-    trustExitCode = true
-[mergetool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
+tool = sublimerge
 
+[mergetool "sublimerge"]
+cmd = sublim -n --wait \"$REMOTE\" \"$BASE\" \"$LOCAL\" \"$MERGED\" --command \"sublimerge_diff_views\"
+trustExitCode = false
+
+
+
+[diff]
+tool = sublimerge
+
+[difftool "sublimerge"]
+cmd = subl -n --wait \"$REMOTE\" \"$LOCAL\" --command \"sublimerge_diff_views {\\\"left_read_only\\\": true, \\\"right_read_only\\\": true}\"

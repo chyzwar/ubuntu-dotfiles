@@ -51,6 +51,11 @@ for DOTFILE in "$DOTFILES_DIR"/dev/.*; do
     [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 
+# Source autocomplete dotfiles
+for DOTFILE in "$DOTFILES_DIR"/autocomplete/.*; do
+    [ -f "$DOTFILE" ] && source "$DOTFILE"
+done
+
 # Clean up
 unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
 

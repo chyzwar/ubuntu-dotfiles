@@ -13,16 +13,7 @@ is-supported() {
     fi
 }
 
-# Clean caches
-
-cleanup() {
-    is-executable npm && npm cache clean
-    is-executable brew && brew cleanup
-    is-executable brew && brew cask cleanup
-}
-
 # Create a new directory and enter it
-
 mk() {
     mkdir -p "$@" && cd "$@"
 }
@@ -72,7 +63,6 @@ json() {
 
 # Extract many types of compress files
 # Source: http://nparikh.org/notes/zshrc.txt
-
 extract() {
     if [ -f "$1" ]; then
         case "$1" in

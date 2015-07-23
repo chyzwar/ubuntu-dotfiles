@@ -5,9 +5,10 @@
 	"indent_with_space": 2,
 	"passes":
 	[
-		"AlignPHPCode"
+		"AlignPHPCode",
+		"ReindentSwitchBlocks"
 	],
 	"psr1": true,
 	"psr2": true,
-	"version": 3
+	"version": 4
 }
