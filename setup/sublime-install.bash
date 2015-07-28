@@ -7,6 +7,10 @@ sudo apt-get update
 sudo apt-get install sublime-text-installer
 sudo apt-get install wget
 
+#Echo Intsall XMl linter
+echo "Install XML Linter"
+sudo apt-get install libxml2-utils
+
 #Install Plugins dependancies
 echo "Install shellcheck"
 sudo apt-get install shellcheck
