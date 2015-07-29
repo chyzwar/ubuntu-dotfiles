@@ -26,8 +26,10 @@ ln -sfv $DIR/../sublime/JsFormat.sublime-settings /home/$USER/.config/sublime-te
 ln -sfv $DIR/../sublime/phpfmt.sublime-settings /home/$USER/.config/sublime-text-3/Packages/User/phpfmt.sublime-settings
 
 
+
 #Install Package Manager for sublime
+cd setup	
 wget https://packagecontrol.io/Package%20Control.sublime-package
 mv Package\ Control.sublime-package  /home/$USER/.config/sublime-text-3/Installed\ Packages/Package\ Control.sublime-package
-
+cd ..
 
