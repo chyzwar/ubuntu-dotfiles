@@ -10,6 +10,8 @@ alias g="git"
 alias v="vim"
 alias rr="rm -rf"
 
+alias perms="stat -c '%A %a %n' *"
+
 is-executable hub && eval "$(hub alias -s)" # alias git=hub
 
 # Global aliases
