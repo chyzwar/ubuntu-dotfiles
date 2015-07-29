@@ -36,7 +36,7 @@ $ sudo service docker restart
 
 #Python tools
 echo "Install Python tooling"
-sudo apt-get install pip
+sudo apt-get install python-pip
 pip install --upgrade pip
 pip install virtualenvwrapper
 pip install "ipython[notebook]"
@@ -53,8 +53,10 @@ sudo apt-get install gnome-session
 sudo apt-get install ubuntu-gnome-desktop
 sudo apt-get dist-upgrade
 sudo apt-get install gnome-tweak-tool
-#sudo ppa-purge ppa:gnome3-team/gnome3
-#sudo ppa-purge ppa:gnome3-team/gnome3-staging
+
+#Removal
+# sudo ppa-purge ppa:gnome3-team/gnome3
+# sudo ppa-purge ppa:gnome3-team/gnome3-staging
 
 #Node JS install
 echo "Install node version manager"
@@ -147,5 +149,16 @@ rvm use 2.2 --default
 echo "Install MongoDB"
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
 echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+sudo apt-get update
 sudo apt-get install -y mongodb-org=3.0.3 mongodb-org-server=3.0.3 mongodb-org-shell=3.0.3 mongodb-org-mongos=3.0.3 mongodb-org-tools=3.0.3
 sudo apt-get install -y mongodb-org
+
+echo "Install btsync"
+apt-get -y install python-software-properties
+add-apt-repository ppa:tuxpoldo/btsync
+apt-get update
+apt-get -y install btsync
+
+echo "Install DropBox"
+cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+~/.dropbox-dist/dropboxd
