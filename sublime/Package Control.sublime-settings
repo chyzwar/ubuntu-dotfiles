@@ -22,6 +22,7 @@
 		"Handlebars",
 		"Indent XML",
 		"Jade",
+		"Jedi - Python autocompletion",
 		"JsFormat",
 		"Laravel 4 Artisan",
 		"LESS",
@@ -36,6 +37,7 @@
 		"SideBarEnhancements",
 		"SublimeAStyleFormatter",
 		"SublimeGit",
+		"SublimeHaskell",
 		"SublimeLinter",
 		"SublimeLinter-contrib-clang",
 		"SublimeLinter-contrib-htmlhint",
@@ -50,7 +52,6 @@
 		"SublimeLinter-shellcheck",
 		"SublimeLinter-xmllint",
 		"SublimeREPL",
-		"Sublimerge Pro",
-		"Web Inspector"
+		"Sublimerge Pro"
 	]
 }
