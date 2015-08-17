@@ -40,6 +40,7 @@ sudo apt-get install python-pip
 pip install --upgrade pip
 pip install virtualenvwrapper
 pip install "ipython[notebook]"
+pip install jedi
 
 
 #Install Gnome Shell

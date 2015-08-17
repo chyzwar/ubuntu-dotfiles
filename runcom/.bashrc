@@ -64,4 +64,3 @@ export SHELL_BASH SHELL_ZSH OS DOTFILES_DIR
 
 ulimit -n 10000
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

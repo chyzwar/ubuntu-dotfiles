@@ -24,6 +24,7 @@
 		"HTTP Spec Syntax",
 		"Indent XML",
 		"Jade",
+		"Jedi - Python autocompletion",
 		"JsFormat",
 		"Laravel 4 Artisan",
 		"LESS",
@@ -57,7 +58,6 @@
 		"SublimeLinter-shellcheck",
 		"SublimeLinter-xmllint",
 		"SublimeREPL",
-		"Sublimerge Pro",
-		"Web Inspector"
+		"Sublimerge Pro"
 	]
 }
