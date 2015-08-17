@@ -3,7 +3,7 @@ alias uniter="unity --replace"
 
 # Shortcuts
 alias sql="sudo /opt/sqldeveloper/sqldeveloper.sh"
-
+alias soulseek="./opt/soulseek/SoulseekQt-2014-11-30-64bit"
 
 alias _="sudo"
 alias g="git"
