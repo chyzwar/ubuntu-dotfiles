@@ -14,6 +14,7 @@
 		"Color Highlighter",
 		"Console Wrap for js",
 		"DocBlockr",
+		"Dockerfile Syntax Highlighting",
 		"EDN",
 		"Emmet",
 		"Enhanced Clojure",
@@ -52,6 +53,7 @@
 		"SublimeLinter-shellcheck",
 		"SublimeLinter-xmllint",
 		"SublimeREPL",
-		"Sublimerge Pro"
+		"Sublimerge Pro",
+		"TabsExtra"
 	]
 }
