@@ -11,6 +11,7 @@ echo "Install git, curl, shutter, workbench and zips"
 sudo apt-get install git
 sudo apt-get install curl
 sudo apt-get install shutter
+sudo apt-get install tree
 sudo apt-get install mysql-workbench
 sudo apt-get install p7zip{,-full}
 sudo apt-get install alien libaio1 unixodbc
