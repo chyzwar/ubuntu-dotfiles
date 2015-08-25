@@ -9,6 +9,9 @@ sudo apt-get upgrade dist
 #install basic utilities
 echo "Install git, curl, shutter, workbench and zips"
 sudo apt-get install git
+git config --global credential.helper cache
+git config --global credential.helper 'cache --timeout=36000'
+
 sudo apt-get install curl
 sudo apt-get install shutter
 sudo apt-get install tree
