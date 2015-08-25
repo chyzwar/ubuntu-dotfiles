@@ -5,9 +5,13 @@
 [github]
     user = Chyzwar
 
+[credential]
+    helper = store --file ~/.git-credentials
+    helper = cache --timeout 300000
+
 [core]
     excludesfile = ~/.gitignore_global
-    editor = sublime
+    editor = subl
     filemode = false
     trustctime = false
 
