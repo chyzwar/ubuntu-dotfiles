@@ -5,36 +5,113 @@
 [github]
     user = Chyzwar
 
-[credential]
-    helper = store --file ~/.git-credentials
-    helper = cache --timeout 300000
-
 [core]
+
+    # Use custom `.gitignore` and `.gitattributes`
     excludesfile = ~/.gitignore_global
+    attributesfile = ~/.gitattributes
+
     editor = subl
     filemode = false
     trustctime = false
 
 [alias]
-    st = status
-    sts = status -sb
-    stl = ls-files -m -o --exclude-standard
-    ci = commit
-    br = branch
-    co = checkout
-    cr = clone --recursive
-    df = diff --word-diff
-    unstage = reset --hard HEAD
-    ag = !sh -c 'git ls-files -m -o --exclude-standard | grep $1 | xargs git add --verbose' -
-    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-    ll = log --pretty=oneline --graph --abbrev-commit
+    # View abbreviated SHA, description, and history graph of the latest 20 commits
+    ll = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+    #View commits history
     lm = log --pretty=format:'* %s (%h)'
+
+    #View commits hitory with changes
     lg = log -p
-    g = grep --break --heading --line-number
+
+    # View the current working tree status using the short format
+    s = status -s
+
+    # Show the diff between the latest commit and the current state
+    d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+
+    # `git di $number` shows the diff between the state `$number` revisions ago and the current state
+    di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+
+    # Pull in remote changes for the current repository and all its submodules
+    p = !"git pull; git submodule foreach git pull origin master"
+
+    # Clone a repository including all submodules
+    cr = clone --recursive
+
+    # Commit all changes
+    ca = !git add -A && git commit -av
+
+    # Switch to a branch, creating it if necessary
+    go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+    # Show verbose output about tags, branches or remotes
+    tags = tag -l
+    branches = branch -a
+    remotes = remote -v
+
+    # Amend the currently staged files to the latest commit
     amend = commit --amend --reuse-message=HEAD
-    contrib = shortlog --summary --numbered
+
+    # Credit an author on the latest commit
+    credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+
+    # Interactive rebase with the given number of latest commits
+    reb = "!r() { git rebase -i HEAD~$1; }; r"
+
+    # Remove the old tag with this name and tag the latest commit with it.
+    retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
+
+    # Find branches containing commit
+    fb = "!f() { git branch -a --contains $1; }; f"
+
+    # Find tags containing commit
+    ft = "!f() { git describe --always --contains $1; }; f"
+
+    # Find commits by source code
+    fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+
+    # Find commits by commit message
+    fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+
+    # Remove branches that have already been merged with master
+    # a.k.a. ‘delete merged’
+    dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
+    # List contributors with number of commits
+    contributors = shortlog --summary --numbered
+
+    #unstage
+    unstage = reset --hard HEAD
+ 
 	# List files ignored by .gitignore and friends
 	show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
+
+[color]
+
+    # Use colors in Git commands that are capable of colored output when
+    # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
+    ui = auto
+
+[color "branch"]
+
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+
+    meta = yellow bold
+    frag = magenta bold # line info
+    old = red # deletions
+    new = green # additions
+
+[color "status"]
+
+    added = yellow
+    changed = green
+    untracked = cyan
 
 [grep]
     lineNumber = true
@@ -56,16 +133,18 @@
 
 
 [merge]
-tool = sublimerge
+  #use sublime merge as merge tool
+  tool = sublimerge
+
+  # Include summaries of merged commits in newly created merge commit messages
+  log = true
 
 [mergetool "sublimerge"]
-cmd = sublim -n --wait \"$REMOTE\" \"$BASE\" \"$LOCAL\" \"$MERGED\" --command \"sublimerge_diff_views\"
-trustExitCode = false
-
+  cmd = sublim -n --wait \"$REMOTE\" \"$BASE\" \"$LOCAL\" \"$MERGED\" --command \"sublimerge_diff_views\"trustExitCode = false
 
 
 [diff]
-tool = sublimerge
+  tool = sublimerge
 
 [difftool "sublimerge"]
-cmd = subl -n --wait \"$REMOTE\" \"$LOCAL\" --command \"sublimerge_diff_views {\\\"left_read_only\\\": true, \\\"right_read_only\\\": true}\"
+  cmd = subl -n --wait \"$REMOTE\" \"$LOCAL\" --command \"sublimerge_diff_views {\\\"left_read_only\\\": true, \\\"right_read_only\\\": true}\"
