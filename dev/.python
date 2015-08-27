@@ -1,3 +1,6 @@
+#alias to swith for python 3
+alias python=python3
+
 
 #Virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
