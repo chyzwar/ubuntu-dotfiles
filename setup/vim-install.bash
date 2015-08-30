@@ -25,7 +25,7 @@ TERM=screen-256color
 cd $BUNDLE_DIR/YouCompleteMe 
 ./install.sh --clang-completer
 
-#Intall vimpager
+#Intall vimpager (TODO test)
 sudo git clone git://github.com/rkitover/vimpager /opt/vimpager
 cd /opt/vimpager
 sudo make install
