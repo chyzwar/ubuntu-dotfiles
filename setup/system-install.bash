@@ -12,6 +12,7 @@ sudo apt-get install git
 git config --global credential.helper cache
 git config --global credential.helper 'cache --timeout=36000'
 
+
 sudo apt-get install curl
 sudo apt-get install shutter
 sudo apt-get install tree
@@ -128,7 +129,7 @@ lein
 
 #Julia
 echo "Install Julia"
-sudo apt-add-repository ppa:staticfloat/julianightlies
+sudo apt-add-repository ppa:staticfloat/juliareleases
 sudo apt-add-repository ppa:staticfloat/julia-deps
 sudo apt-get update
 sudo apt-get install julia
@@ -151,19 +152,11 @@ sudo curl -sSL https://get.rvm.io | bash -s stable --with-default-gems="rails ha
 rmv install 2.2
 rvm use 2.2 --default
 
-echo "Install MongoDB"
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
-echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
-sudo apt-get update
-sudo apt-get install -y mongodb-org=3.0.3 mongodb-org-server=3.0.3 mongodb-org-shell=3.0.3 mongodb-org-mongos=3.0.3 mongodb-org-tools=3.0.3
-sudo apt-get install -y mongodb-org
-
 echo "Install btsync"
 apt-get -y install python-software-properties
 add-apt-repository ppa:tuxpoldo/btsync
 apt-get update
 apt-get -y install btsync
 
-echo "Install DropBox"
-cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-~/.dropbox-dist/dropboxd
+#Install awscli
+pip install awscli
