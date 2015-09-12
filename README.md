@@ -23,30 +23,30 @@ This will show list of options.
 This option will install system related software. It will also install multiple programming envirotments 
 
 1. utility software
-..* curl
-..* shutter
-..* p7zip
-..* alien libaio1 unixodbc
-..* ppa-purge
-..* btsync
-..* dropbox
-..* LibreOffice prerelase (optional)
-..* Gnome Shell Stagging (optional)
+	* curl
+	* shutter
+	* p7zip
+	* alien libaio1 unixodbc
+	* ppa-purge
+	* btsync
+	* dropbox
+	* LibreOffice prerelase (optional)
+	* Gnome Shell Stagging (optional)
 
 2. programming utilities
-..* git and git-flow
-..* docker
+	* git and git-flow
+	* docker
 
 3. programming envirotments
-..* Python and tools: virtualenvwrapper, pip,jedi, ipython
-..* node and tools: nvm, gulp, grunt, yo, karma, bower, etc
-..* PHP, mysql, composer,mcrypt, mods, mysql
-..* Oracle Java: 7, 8, 8, ant, maven (default 8)
-..* Julia lang
-..* Clojure and Lein
-..* Haskell platform (optional)
-..* Ruby and rvm
-..* Go Lang
+	* Python and tools: virtualenvwrapper, pip,jedi, ipython
+	* node and tools: nvm, gulp, grunt, yo, karma, bower, etc
+	* PHP, mysql, composer,mcrypt, mods, mysql
+	* Oracle Java: 7, 8, 8, ant, maven (default 8)
+	* Julia lang
+	* Clojure and Lein
+	* Haskell platform (optional)
+	* Ruby and rvm
+	* Go Lang
 
 
 
