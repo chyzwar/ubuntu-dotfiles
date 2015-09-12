@@ -25,3 +25,9 @@ TERM=screen-256color
 cd $BUNDLE_DIR/YouCompleteMe 
 ./install.sh --clang-completer
 
+#Intall vimpager (TODO test)
+#https://github.com/rkitover/vimpager
+sudo git clone git://github.com/rkitover/vimpager /opt/vimpager
+sudo apt-get install pandoc
+cd /opt/vimpager
+sudo make install

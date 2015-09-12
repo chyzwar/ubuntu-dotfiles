@@ -56,6 +56,11 @@ for DOTFILE in "$DOTFILES_DIR"/autocomplete/.*; do
     [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 
+# Source vim dotfiles
+for DOTFILE in "$DOTFILES_DIR"/vim/.*; do
+    [ -f "$DOTFILE" ] && source "$DOTFILE"
+done
+
 # Clean up
 unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
 
