@@ -16,6 +16,7 @@ git config --global credential.helper 'cache --timeout=36000'
 
 
 sudo apt-get install curl
+sudo apt-get install wget
 sudo apt-get install shutter
 sudo apt-get install tree
 sudo apt-get install p7zip{,-full}
@@ -60,6 +61,12 @@ select yn in "Yes" "No"; do
         No ) break;;
     esac
 done
+
+#Install Gimp Edge
+tput setaf 2; echo "Install Gimp edge"; tput sgr0
+sudo add-apt-repository ppa:otto-kesselgulasch/gimp-edge
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install gimp
 
 #Install Gnome Shell
 tput setaf 1; echo "Do you want to install Gnome Shell"; tput sgr0

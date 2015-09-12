@@ -23,13 +23,14 @@ This will show list of options.
 This option will install system related software. It will also install multiple programming envirotments 
 
 1. utility software
-	* curl
+	* curl and wget
 	* shutter
 	* p7zip
 	* alien libaio1 unixodbc
 	* ppa-purge
 	* btsync
 	* dropbox
+	* gimp
 	* LibreOffice prerelase (optional)
 	* Gnome Shell Stagging (optional)
 
