@@ -1,27 +1,28 @@
 #!/bin/bash
 
+
 #Update Ubuntu to newest version
-echo "Upgrade Ubuntu"
+tput setaf 2; echo "Upgrade Ubuntu"; tput sgr0
 sudo apt-get update
 sudo apt-get upgrade dist
 
 
 #install basic utilities
-echo "Install git, curl, shutter, workbench and zips"
+tput setaf 2; echo "Install git, curl, shutter, zips" tput sgr0
 sudo apt-get install git
+sudo apt-get install git-flow
 git config --global credential.helper cache
 git config --global credential.helper 'cache --timeout=36000'
 
 sudo apt-get install curl
 sudo apt-get install shutter
 sudo apt-get install tree
-sudo apt-get install mysql-workbench
 sudo apt-get install p7zip{,-full}
 sudo apt-get install alien libaio1 unixodbc
 sudo apt-get install ppa-purge
 
 
-echo "Install Docker"
+tput setaf 2; echo "Install Docker"; tput sgr0
 wget -qO- https://get.docker.com/ | sh
 # Add the docker group if it doesn't already exist.
 $ sudo groupadd docker
@@ -36,10 +37,8 @@ $ sudo gpasswd -a ${USER} docker
 # If you are in Ubuntu 14.04, use docker.io instead of docker
 $ sudo service docker restart
 
-
-
 #Python tools
-echo "Install Python tooling"
+tput setaf 2; echo "Install Python tooling"; tput sgr0
 sudo apt-get install python-pip
 pip install --upgrade pip
 pip install virtualenvwrapper
@@ -47,28 +46,49 @@ pip install "ipython[notebook]"
 pip install jedi
 
 
-#Install Gnome Shell
-echo "Install Gnome Shell"
-sudo add-apt-repository ppa:gnome3-team/gnome3-staging
-sudo add-apt-repository ppa:gnome3-team/gnome3
-sudo apt-get update
-sudo apt-get install gdm
-sudo apt-get install gnome-shell
-sudo apt-get install gnome-session
-sudo apt-get install ubuntu-gnome-desktop
-sudo apt-get dist-upgrade
-sudo apt-get install gnome-tweak-tool
+#Optional Installation of LibreOffice prerelase
+tput setaf 1; echo "Do you want to install LibreOffice prerealse"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) 
+			sudo apt-get purge libreoffice-core
+			sudo add-apt-repository ppa:libreoffice/libreoffice-prereleases
+			sudo apt-get update
+			sudo apt-get install libreoffice
+			break;;
+        No ) break;;
+    esac
+done
 
-#Removal
+#Install Gnome Shell
+tput setaf 1; echo "Do you want to install Gnome Shell"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) 
+			sudo add-apt-repository ppa:gnome3-team/gnome3-staging
+			sudo add-apt-repository ppa:gnome3-team/gnome3
+			sudo apt-get update
+			sudo apt-get install gdm
+			sudo apt-get install gnome-shell
+			sudo apt-get install gnome-session
+			sudo apt-get install ubuntu-gnome-desktop
+			sudo apt-get dist-upgrade
+			sudo apt-get install gnome-tweak-tool
+			break;;
+        No ) break;;
+    esac
+done
+
+#Removal of gnome
 # sudo ppa-purge ppa:gnome3-team/gnome3
 # sudo ppa-purge ppa:gnome3-team/gnome3-staging
 
 #Node JS install
-echo "Install node version manager"
+tput setaf 2; echo "Install node and nvm"; tput sgr0
 curl https://raw.githubusercontent.com/creationix/nvm/v0.24.1/install.sh | bash
 source ~/.nvm/nvm.sh
 
-node_versions=(stable unstable iojs) 
+node_versions=(v0.12.7 v4.0.0) 
 for version in "${node_versions[@]}"
 do
 	echo "Intsalling node version" $version
@@ -90,11 +110,11 @@ do
     npm install -g htmlhint
     npm install -g csslint
 done 
-nvm alias default stable #select def version of node to stable release
+nvm alias default v4.0.0 #select def version of node to stable release
 
 
 #PHP
-echo "Install LAMP and Composer, HHVM"
+tput setaf 2; echo "Install LAMP and Composer"; tput sgr0
 sudo apt-get install apache2
 sudo apt-get install mysql-server
 sudo apt-get install php5 libapache2-mod-php5
@@ -109,17 +129,19 @@ sudo mv composer.phar /usr/local/bin/composer
 
 
 #Java
-echo "Install Java 7 and 8, 9 set def to 8"
+tput setaf 2; echo "Install Java 7 and 8, 9 set def to 8"; tput sgr0
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
 sudo apt-get install oracle-java7-installer
 sudo apt-get install oracle-java8-installer
 sudo apt-get install oracle-java9-installer
 sudo update-java-alternatives -s java-8-oracle
+sudo apt-get install maven
+sudo apt-get install ant
 
 
 #Clojure
-echo "Install lein"
+tput setaf 2; echo "Install lein and clojure"; tput sgr0
 wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
 sudo mv lein /usr/local/bin
 chmod a+x /usr/local/bin/lein
@@ -127,7 +149,7 @@ lein
 
 
 #Julia
-echo "Install Julia"
+tput setaf 2; echo "Install Julia"; tput sgr0
 sudo apt-add-repository ppa:staticfloat/julianightlies
 sudo apt-add-repository ppa:staticfloat/julia-deps
 sudo apt-get update
@@ -135,35 +157,38 @@ sudo apt-get install julia
 
 
 #Haskell
-echo "Install Haskell "
-sudo apt-get install haskell-platform
-sudo apt-get install haskell-platform-doc
-sudo apt-get install haskell-platform-prof
+tput setaf 1; echo "Do you want to install Haskell Platform"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) 
+			sudo apt-get install haskell-platform
+			sudo apt-get install haskell-platform-doc
+			sudo apt-get install haskell-platform-prof
+			break;;
+        No ) break;;
+    esac
+done
+
 
 #Go Lang
-echo "Go lang install"
+tput setaf 2; echo "Go lang install"; tput sgr0
 sudo apt-get install golang
 
 #Ruby Stuff
-echo "Ruby and rvm"
+tput setaf 2; echo "Ruby and rvm"; tput sgr0
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 sudo curl -sSL https://get.rvm.io | bash -s stable --with-default-gems="rails haml"
 rmv install 2.2
 rvm use 2.2 --default
 
-echo "Install MongoDB"
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
-echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
-sudo apt-get update
-sudo apt-get install -y mongodb-org=3.0.3 mongodb-org-server=3.0.3 mongodb-org-shell=3.0.3 mongodb-org-mongos=3.0.3 mongodb-org-tools=3.0.3
-sudo apt-get install -y mongodb-org
-
-echo "Install btsync"
+tput setaf 2; echo "Install btsync"; tput sgr0
 apt-get -y install python-software-properties
 add-apt-repository ppa:tuxpoldo/btsync
 apt-get update
 apt-get -y install btsync
 
-echo "Install DropBox"
-cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-~/.dropbox-dist/dropboxd
+tput setaf 2; echo "Install DropBox"; tput sgr0
+sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
+sudo sh -c 'echo "deb http://linux.dropbox.com/ubuntu/ vivid main" >> /etc/apt/sources.list.d/dropbox.list' 
+sudo apt-get update 
+sudo apt-get install dropbox 
