@@ -4,6 +4,7 @@
 	],
 	"installed_packages":
 	[
+		"All Autocomplete",
 		"Anaconda",
 		"AngularJS",
 		"API Blueprint",
@@ -25,7 +26,6 @@
 		"HTTP Spec Syntax",
 		"Indent XML",
 		"Jade",
-		"Jedi - Python autocompletion",
 		"JsFormat",
 		"Laravel 4 Artisan",
 		"LESS",
