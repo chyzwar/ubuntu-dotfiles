@@ -16,7 +16,7 @@ On fresh Ubuntu instalation:
  sudo chmod +x dotfiles 
  ./dotfiles
 ```
-This will show list of options.
+This will show list of options. Use branch coresponding to Ubuntu version. 
 
 
 ### ./dotfiles system  
