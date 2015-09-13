@@ -52,7 +52,7 @@ pip install jedi
 tput setaf 1; echo "Do you want to install LibreOffice prerealse"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
-        Yes ) 
+        Yes )
 			sudo apt-get purge libreoffice-core
 			sudo add-apt-repository ppa:libreoffice/libreoffice-prereleases
 			sudo apt-get update
@@ -63,8 +63,8 @@ select yn in "Yes" "No"; do
 done
 
 #Install Gimp Edge
-tput setaf 2; echo "Install Gimp edge"; tput sgr0
-sudo add-apt-repository ppa:otto-kesselgulasch/gimp-edge
+tput setaf 2; echo "Install Gimp"; tput sgr0
+sudo add-apt-repository ppa:otto-kesselgulasch/gimp
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install gimp
 
@@ -72,7 +72,7 @@ sudo apt-get install gimp
 tput setaf 1; echo "Do you want to install Gnome Shell"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
-        Yes ) 
+        Yes )
 			sudo add-apt-repository ppa:gnome3-team/gnome3-staging
 			sudo add-apt-repository ppa:gnome3-team/gnome3
 			sudo apt-get update
@@ -96,7 +96,7 @@ tput setaf 2; echo "Install node and nvm"; tput sgr0
 curl https://raw.githubusercontent.com/creationix/nvm/v0.24.1/install.sh | bash
 source ~/.nvm/nvm.sh
 
-node_versions=(v0.12.7 v4.0.0) 
+node_versions=(v0.12.7 v4.0.0)
 for version in "${node_versions[@]}"
 do
 	echo "Intsalling node version" $version
@@ -117,7 +117,7 @@ do
     npm install -g jscs
     npm install -g htmlhint
     npm install -g csslint
-done 
+done
 nvm alias default v4.0.0 #select def version of node to stable release
 
 
@@ -168,10 +168,26 @@ sudo apt-get install julia
 tput setaf 1; echo "Do you want to install Haskell Platform"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
-        Yes ) 
+        Yes )
 			sudo apt-get install haskell-platform
 			sudo apt-get install haskell-platform-doc
 			sudo apt-get install haskell-platform-prof
+
+			#Stackage Install
+			#https://github.com/commercialhaskell/stack/wiki/Downloads
+			wget -q -O- https://s3.amazonaws.com/download.fpcomplete.com/ubuntu/fpco.key | sudo apt-key add -
+			echo 'deb http://download.fpcomplete.com/ubuntu/vivid stable main'|sudo tee /etc/apt/sources.list.d/fpco.list
+			sudo apt-get update && sudo apt-get install stack -y
+
+			#Needed for SublimeHaskell, these might change
+			cabal update
+			cabal install ghc-mod
+			cabal install aeson 
+			cabal install haskell-src-exts --constraint=haddock==1.15.0.1
+			cabal install haddock --constraint=haddock==2.13.2.1
+			cabal install stylish-haskell
+			cabal install haskell-docs
+			cabal install hdevtools
 			break;;
         No ) break;;
     esac
@@ -197,6 +213,6 @@ apt-get -y install btsync
 
 tput setaf 2; echo "Install DropBox"; tput sgr0
 sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
-sudo sh -c 'echo "deb http://linux.dropbox.com/ubuntu/ vivid main" >> /etc/apt/sources.list.d/dropbox.list' 
-sudo apt-get update 
-sudo apt-get install dropbox 
+sudo sh -c 'echo "deb http://linux.dropbox.com/ubuntu/ vivid main" >> /etc/apt/sources.list.d/dropbox.list'
+sudo apt-get update
+sudo apt-get install dropbox
