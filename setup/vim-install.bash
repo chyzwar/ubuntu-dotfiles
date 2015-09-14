@@ -28,6 +28,7 @@ cd $BUNDLE_DIR/YouCompleteMe
 #Intall vimpager (TODO test)
 #https://github.com/rkitover/vimpager
 sudo git clone git://github.com/rkitover/vimpager /opt/vimpager
-sudo apt-get install pandoc
+sudo apt-get install pandoc	
+sudo apt-get install sharutils
 cd /opt/vimpager
-sudo make install
+sudo make install-deb
