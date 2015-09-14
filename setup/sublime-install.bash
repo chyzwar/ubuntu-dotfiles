@@ -24,7 +24,7 @@ ln -sfv $DIR/../sublime/Python.sublime-settings /home/$USER/.config/sublime-text
 ln -sfv $DIR/../sublime/SublimeLinter.sublime-settings /home/$USER/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings
 ln -sfv $DIR/../sublime/JsFormat.sublime-settings /home/$USER/.config/sublime-text-3/Packages/User/JsFormat.sublime-settings
 ln -sfv $DIR/../sublime/phpfmt.sublime-settings /home/$USER/.config/sublime-text-3/Packages/User/phpfmt.sublime-settings
-
+ln -sfv $DIR/../sublime/SublimeHaskell.sublime-settings /home/$USER/.config/sublime-text-3/Packages/User/SublimeHaskell.sublime-settings
 
 
 #Install Package Manager for sublime

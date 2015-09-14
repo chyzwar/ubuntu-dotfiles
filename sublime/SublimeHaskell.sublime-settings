@@ -1,0 +1,103 @@
+{
+	// Enables ghc-mod (you should have it installed,
+	// e.g. via cabal install ghc-mod).
+	// See the add_to_PATH settings to specify a custom location.
+	"enable_ghc_mod": true,
+
+	// Enable auto completion of module imports
+	"auto_complete_imports": true,
+
+	// Enable auto completion of LANGUAGE pragmas
+	"auto_complete_language_pragmas": true,
+
+	// Enable auto build on save
+	"enable_auto_build": true,
+
+	// Enable auto run tests on save, has effect only if auto build enabled (enable_auto_build)
+	"auto_run_tests": true,
+
+	// Enable auto check on save
+	"enable_auto_check": true,
+
+	// Enable auto lint on save (as hints when building)
+	"enable_auto_lint": true,
+
+	// How to build the cabal project in order to obtain error messages.
+	// This option exists because `cabal build` is slow and cannot re-print
+	// warnings of already compiled modules.
+	// (Also see https://github.com/haskell/cabal/issues/1179, cabal 1.16).
+	//
+	// Possible values:
+	// - "normal"
+	//   Uses a full `cabal build`, generating object files and binaries.
+	//   If this takes too long for you, look at the other options.
+	// - "normal-then-warnings"
+	//   Like "normal", but afterwards also collects project-wide warnings with
+	//   `cabal build --ghc-options="-fforce-recomp -Wall -fno-code"`
+	//   (this recompiles everything, but skips code generation for speed).
+	// - "typecheck"
+	//   Performs a type check of the whole project, trying to not do any more
+	//   than that in order to give faster feedback (that "normal").
+	//   Currently uses `cabal build --ghc-options="-c"` to skip linking.
+	// - "typecheck-then-warnings"
+	//   Like "typecheck", but afterwards collects warnings like
+	//   "normal-then-warnings".
+	//
+	// Please note that it is currently impossible to properly use a `-fno-code`
+	// build on a cabal project that links a shared library; it errors too early.
+	// (https://github.com/haskell/cabal/issues/1176, cabal 1.16).
+	"auto_build_mode": "normal-then-warnings",
+
+	// Show output window on build/check/lint:
+	"show_output_window": true,
+
+	// Extra directories to be added to the front of the PATH environment variable.
+	// Specify this for using custom ghc, cabal, and ghc-mod
+	// Example: /home/user/.cabal/bin
+	"add_to_PATH": ["/home/raziel/.cabal/bin"],
+
+	// Use cabal-dev
+	"use_cabal_dev": false,
+
+	// Sandbox for cabal-dev
+	"cabal_dev_sandbox": "",
+
+	// Cabal-dev sandboxes
+	"cabal_dev_sandbox_list": [],
+
+	// Inhibit default Sublime word completions
+	"inhibit_completions": false,
+
+	// Auto autocompletion popup on '.' in import list
+	"auto_completion_popup": true,
+
+	// Additional ghc options for use in ghc-mod and ModuleInspector, for example "-package ghc"
+	"ghc_opts": [],
+
+	// Enables hdevtools (it must be installed, cabal install hdevtools)
+	// See the add_to_PATH settings to specify a custom location.
+	"enable_hdevtools": true,
+
+	// hdevtools socket name or default
+	"hdevtools_socket": "",
+
+	// Enable hdocs, disabled by default since 'hdocs' is not on hackage yet
+	// It can be manually installed from http://github.com/mvoidex/hdocs
+	"enable_hdocs": true,
+
+	// Enable inpecting modules with SublimeHaskell's ModuleInspector.
+	// Needed for autocompletion.
+	// This can take a lot of time in really big Haskell projects.
+	// Changing this requires a Sublime restart.
+	"inspect_modules": true,
+
+	// Relative or absolute path to a folder where local caches are stored.
+	// The same folder is used to store the CabalInspector/ModuleInspector tools.
+	// This setting is useful for preventing auto-generated or inherently local
+	// files from being synchronized by Dropbox and the like.
+	// Changing this requires a Sublime restart.
+	// Examples:
+	// 		"cache_path": "../../Local/SublimeHaskell"
+	// 		"cache_path": "%TEMP%\\SublimeHaskell"
+	"cache_path": "."
+}

@@ -69,3 +69,6 @@ export SHELL_BASH SHELL_ZSH OS DOTFILES_DIR
 
 ulimit -n 10000
 
+
+export NVM_DIR="/home/raziel/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
