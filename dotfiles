@@ -11,7 +11,8 @@ sub_help () {
     echo "   system             Install basic setup for Ubuntu"
     echo "   shell              Install, source and link dotfiles to bash and zhs"
     echo "   reload             Reload dotfiles"
-    echo "   sublime            Install  Sublime text 3 and custom plugins"
+    echo "   sublime            Install  Sublime Text 3 and custom plugins"
+    echo "   emacs              Install  emacs and spacemac "
     echo "   vim                Install  Vim and custom plugins using Vundle"
 }
 
@@ -37,6 +38,10 @@ sub_sublime () {
 sub_vim () {
     sudo chmod +x setup/vim-install.bash
     bash setup/vim-install.bash
+}
+sub_emacs () {
+    sudo chmod +x setup/emacs-install.bash
+    bash setup/emacs-install.bash
 }
 
 
