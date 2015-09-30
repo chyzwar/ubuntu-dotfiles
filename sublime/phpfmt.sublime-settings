@@ -10,6 +10,7 @@
 		"ReindentSwitchBlocks"
 	],
 	"psr1": true,
+	"psr1_naming": false,
 	"psr2": true,
 	"version": 4
 }

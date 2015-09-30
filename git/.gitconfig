@@ -150,3 +150,5 @@
   cmd = subl -n --wait \"$REMOTE\" \"$LOCAL\" --command \"sublimerge_diff_views {\\\"left_read_only\\\": true, \\\"right_read_only\\\": true}\"
 [credential]
 	helper = cache --timeout=36000
+[url "https://"]
+	insteadOf = git://
