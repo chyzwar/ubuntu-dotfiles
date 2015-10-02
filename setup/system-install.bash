@@ -112,8 +112,7 @@ do
  	npm install bower -g
  	npm install karma -g
  	npm install browserify -g
- 	npm install jshint -g
- 	npm install jsxhint -g
+ 	npm install eslint -g
     npm install -g jscs
     npm install -g htmlhint
     npm install -g csslint

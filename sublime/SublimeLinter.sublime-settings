@@ -7,12 +7,30 @@
         "gutter_theme_excludes": [],
         "lint_mode": "load/save",
         "linters": {
+            "apiblueprint": {
+                "@disable": false,
+                "args": [],
+                "excludes": []
+            },
             "clang": {
                 "@disable": false,
                 "args": [],
                 "excludes": [],
                 "extra_flags": "",
                 "include_dirs": []
+            },
+            "csslint": {
+                "@disable": false,
+                "args": [],
+                "errors": "",
+                "excludes": [],
+                "ignore": "",
+                "warnings": ""
+            },
+            "htmlhint": {
+                "@disable": false,
+                "args": [],
+                "excludes": []
             },
             "javac": {
                 "@disable": false,
@@ -63,6 +81,16 @@
                 "@disable": false,
                 "args": [],
                 "exclude": "",
+                "excludes": []
+            },
+            "sqlint": {
+                "@disable": false,
+                "args": [],
+                "excludes": []
+            },
+            "xmllint": {
+                "@disable": false,
+                "args": [],
                 "excludes": []
             }
         },

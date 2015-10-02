@@ -5,8 +5,8 @@
 	],
 	"installed_packages":
 	[
-		"All Autocomplete",
-		"Anaconda",
+		"All Autocomplete", //Autocomplete on All Tabs
+		"Anaconda", // Python IDE
 		"AngularJS",
 		"API Blueprint",
 		"AutoFileName",
@@ -27,6 +27,7 @@
 		"HTTP Spec Syntax",
 		"Indent XML",
 		"Jade",
+		"JSCS-Formatter",
 		"JsFormat",
 		"Laravel 4 Artisan",
 		"LESS",
@@ -47,15 +48,13 @@
 		"SublimeHaskell",
 		"SublimeLinter",
 		"SublimeLinter-contrib-clang",
+		"SublimeLinter-contrib-eslint",
 		"SublimeLinter-contrib-htmlhint",
 		"SublimeLinter-contrib-rustc",
 		"SublimeLinter-contrib-sqlint",
 		"SublimeLinter-csslint",
 		"SublimeLinter-javac",
 		"SublimeLinter-jscs",
-		"SublimeLinter-jshint",
-		"SublimeLinter-json",
-		"SublimeLinter-jsxhint",
 		"SublimeLinter-php",
 		"SublimeLinter-shellcheck",
 		"SublimeLinter-xmllint",
