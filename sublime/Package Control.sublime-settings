@@ -5,7 +5,6 @@
 	],
 	"installed_packages":
 	[
-		"All Autocomplete",
 		"Anaconda",
 		"AngularJS",
 		"API Blueprint",
@@ -36,6 +35,8 @@
 		"Markdown Extended",
 		"Markdown Preview",
 		"Monokai Extended",
+		"OCaml",
+		"OCaml Autocompletion",
 		"Origami",
 		"Package Control",
 		"paredit",
