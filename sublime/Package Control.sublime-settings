@@ -5,8 +5,8 @@
 	],
 	"installed_packages":
 	[
-		"All Autocomplete", //Autocomplete on All Tabs
-		"Anaconda", // Python IDE
+		"All Autocomplete",
+		"Anaconda",
 		"AngularJS",
 		"API Blueprint",
 		"AutoFileName",
@@ -29,6 +29,7 @@
 		"Jade",
 		"JSCS-Formatter",
 		"JsFormat",
+		"JSX",
 		"Laravel 4 Artisan",
 		"LESS",
 		"lispindent",
@@ -41,6 +42,7 @@
 		"phpfmt",
 		"Rust",
 		"RustAutoComplete",
+		"Sass",
 		"Search Stack Overflow",
 		"SideBarEnhancements",
 		"SublimeAStyleFormatter",

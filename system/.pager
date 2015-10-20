@@ -1,5 +1,5 @@
-#Add vimpager to path
-https://github.com/rkitover/vimpager
+# Add vimpager to path
+# https://github.com/rkitover/vimpager
 export PAGER=/usr/local/bin/vimpager
 
 
