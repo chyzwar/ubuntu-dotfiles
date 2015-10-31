@@ -12,5 +12,6 @@
 	[
 		"*.log"
 	],
-	"tab_size": 4
+	"tab_size": 4,
+	"typescript_plugin_tsc_version": "1.7.2"
 }

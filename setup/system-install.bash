@@ -8,7 +8,7 @@ sudo apt-get upgrade dist
 
 
 #install basic utilities
-tput setaf 2; echo "Install git, curl, shutter, zips" tput sgr0
+tput setaf 2; echo "Install git, curl, shutter, zips"; tput sgr0
 sudo apt-get install git
 sudo apt-get install git-flow
 git config --global credential.helper cache
@@ -33,7 +33,7 @@ $ sudo groupadd docker
 # Change the user name to match your preferred user.
 # You may have to logout and log back in again for
 # this to take effect.
-$ sudo gpasswd -a ${USER} docker
+$ sudo gpasswd -a "${USER}" docker
 
 # Restart the Docker daemon.
 # If you are in Ubuntu 14.04, use docker.io instead of docker
@@ -51,15 +51,15 @@ pip install jedi
 #Optional Installation of LibreOffice prerelase
 tput setaf 1; echo "Do you want to install LibreOffice prerealse"; tput sgr0
 select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
+	case $yn in
+		Yes )
 			sudo apt-get purge libreoffice-core
 			sudo add-apt-repository ppa:libreoffice/libreoffice-prereleases
 			sudo apt-get update
 			sudo apt-get install libreoffice
 			break;;
-        No ) break;;
-    esac
+		No ) break;;
+	esac
 done
 
 #Install Gimp Edge
@@ -71,8 +71,8 @@ sudo apt-get install gimp
 #Install Gnome Shell
 tput setaf 1; echo "Do you want to install Gnome Shell"; tput sgr0
 select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
+	case $yn in
+		Yes )
 			sudo add-apt-repository ppa:gnome3-team/gnome3-staging
 			sudo add-apt-repository ppa:gnome3-team/gnome3
 			sudo apt-get update
@@ -83,8 +83,8 @@ select yn in "Yes" "No"; do
 			sudo apt-get dist-upgrade
 			sudo apt-get install gnome-tweak-tool
 			break;;
-        No ) break;;
-    esac
+		No ) break;;
+	esac
 done
 
 #Removal of gnome
@@ -96,28 +96,33 @@ tput setaf 2; echo "Install node and nvm"; tput sgr0
 curl https://raw.githubusercontent.com/creationix/nvm/v0.24.1/install.sh | bash
 source ~/.nvm/nvm.sh
 
-node_versions=(v0.12.7 v4.0.0)
+node_versions=(v4.2.1 v5.0.0)
 for version in "${node_versions[@]}"
 do
-	echo "Intsalling node version" $version
-	nvm install $version
-	nvm use $version
+	echo "Installing node version" "$version"
+	nvm install "$version"
+	nvm use "$version"
 
- 	npm install grunt -g
- 	npm install gulp  -g
- 	npm install yo -g
- 	npm install karma -g
- 	npm install nodemon -g
- 	npm install http-server -g
- 	npm install bower -g
- 	npm install karma -g
- 	npm install browserify -g
- 	npm install eslint -g
-    npm install -g jscs
-    npm install -g htmlhint
-    npm install -g csslint
+	npm install -g npm
+	npm install -g grunt
+	npm install -g grunt-cli
+	npm install -g gulp
+	npm install -g yo
+	npm install -g karma
+	npm install -g nodemon
+	npm install -g http-server
+	npm install -g bower
+	npm install -g karma
+	npm install -g browserify
+	npm install -g eslint
+	npm install -g jshint
+	npm install -g jscs
+	npm install -g htmlhint
+	npm install -g csslint
 done
-nvm alias default v4.0.0 #select def version of node to stable release
+
+#select def version of node to stable lts release
+nvm alias default v4.2.1
 
 
 #PHP
@@ -166,30 +171,21 @@ sudo apt-get install julia
 #Haskell
 tput setaf 1; echo "Do you want to install Haskell Platform"; tput sgr0
 select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
+	case $yn in
+		Yes )
 			sudo apt-get install haskell-platform
 			sudo apt-get install haskell-platform-doc
 			sudo apt-get install haskell-platform-prof
 
-			#Stackage Install
-			#https://github.com/commercialhaskell/stack/wiki/Downloads
-			wget -q -O- https://s3.amazonaws.com/download.fpcomplete.com/ubuntu/fpco.key | sudo apt-key add -
-			echo 'deb http://download.fpcomplete.com/ubuntu/vivid stable main'|sudo tee /etc/apt/sources.list.d/fpco.list
-			sudo apt-get update && sudo apt-get install stack -y
-
-			#Needed for SublimeHaskell, these might change
-			cabal update
-			cabal install ghc-mod
-			cabal install aeson
-			cabal install haskell-src-exts --constraint=haddock==1.15.0.1
-			cabal install haddock --constraint=haddock==2.13.2.1
-			cabal install stylish-haskell
-			cabal install haskell-docs
-			cabal install hdevtools
+			#Needed for SublimeHaskell
+			cabal install ghc-mod \
+				--constraint="ghc-mod==4.*" \
+				--constraint="haskell-src-exts==1.14.*" \
+				--constraint="hlint==1.9.*" \
+				--constraint="hscolour<1.21"
 			break;;
-        No ) break;;
-    esac
+		No ) break;;
+	esac
 done
 
 
@@ -209,10 +205,7 @@ tput setaf 2; echo "Install btsync"; tput sgr0
 apt-get -y install python-software-properties
 add-apt-repository ppa:tuxpoldo/btsync
 apt-get update
-apt-get -y install btsync
+apt-get -y install btsynqc
 
-tput setaf 2; echo "Install DropBox"; tput sgr0
-sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
-sudo sh -c 'echo "deb http://linux.dropbox.com/ubuntu/ vivid main" >> /etc/apt/sources.list.d/dropbox.list'
-sudo apt-get update
-sudo apt-get install dropbox
+tput setaf 2; echo "Install Dropbox"; tput sgr0
+sudo apt-get -y install nautilus-dropbox
