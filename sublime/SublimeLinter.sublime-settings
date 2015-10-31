@@ -27,6 +27,11 @@
                 "ignore": "",
                 "warnings": ""
             },
+            "eslint": {
+                "@disable": false,
+                "args": [],
+                "excludes": []
+            },
             "htmlhint": {
                 "@disable": false,
                 "args": [],
@@ -76,6 +81,11 @@
                 "excludes": [],
                 "use-cargo": false,
                 "use-crate-root": false
+            },
+            "sass": {
+                "@disable": false,
+                "args": [],
+                "excludes": []
             },
             "shellcheck": {
                 "@disable": false,

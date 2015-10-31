@@ -5,6 +5,7 @@
 	],
 	"installed_packages":
 	[
+		"All Autocomplete",
 		"Anaconda",
 		"AngularJS",
 		"API Blueprint",
@@ -35,8 +36,6 @@
 		"Markdown Extended",
 		"Markdown Preview",
 		"Monokai Extended",
-		"OCaml",
-		"OCaml Autocompletion",
 		"Origami",
 		"Package Control",
 		"paredit",
@@ -44,6 +43,9 @@
 		"Rust",
 		"RustAutoComplete",
 		"Sass",
+		"SASS Snippets",
+		"SassBeautify",
+		"SCSS Expander",
 		"Search Stack Overflow",
 		"SideBarEnhancements",
 		"SublimeAStyleFormatter",
@@ -54,16 +56,19 @@
 		"SublimeLinter-contrib-eslint",
 		"SublimeLinter-contrib-htmlhint",
 		"SublimeLinter-contrib-rustc",
+		"SublimeLinter-contrib-scss-lint",
 		"SublimeLinter-contrib-sqlint",
 		"SublimeLinter-csslint",
 		"SublimeLinter-javac",
 		"SublimeLinter-jscs",
+		"SublimeLinter-jshint",
 		"SublimeLinter-php",
 		"SublimeLinter-shellcheck",
 		"SublimeLinter-xmllint",
 		"SublimeREPL",
 		"Sublimerge Pro",
 		"TabsExtra",
-		"TypeScript"
+		"TypeScript",
+		"Unicode Character Highlighter"
 	]
 }

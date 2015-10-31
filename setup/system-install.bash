@@ -181,7 +181,7 @@ select yn in "Yes" "No"; do
 			#Needed for SublimeHaskell, these might change
 			cabal update
 			cabal install ghc-mod
-			cabal install aeson 
+			cabal install aeson
 			cabal install haskell-src-exts --constraint=haddock==1.15.0.1
 			cabal install haddock --constraint=haddock==2.13.2.1
 			cabal install stylish-haskell
@@ -201,8 +201,9 @@ sudo apt-get install golang
 tput setaf 2; echo "Ruby and rvm"; tput sgr0
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 sudo curl -sSL https://get.rvm.io | bash -s stable --with-default-gems="rails haml"
-rmv install 2.2
+rvm install 2.2
 rvm use 2.2 --default
+gem install scss_lint
 
 tput setaf 2; echo "Install btsync"; tput sgr0
 apt-get -y install python-software-properties
