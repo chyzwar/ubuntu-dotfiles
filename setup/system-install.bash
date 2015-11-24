@@ -178,11 +178,14 @@ select yn in "Yes" "No"; do
 			sudo apt-get install haskell-platform-prof
 
 			#Needed for SublimeHaskell
-			cabal install ghc-mod \
-				--constraint="ghc-mod==4.*" \
-				--constraint="haskell-src-exts==1.14.*" \
-				--constraint="hlint==1.9.*" \
-				--constraint="hscolour<1.21"
+			cabal install cabal-install-1.20.0.6
+			cabal install ghc-mod-4.1.6 --constraint=haskell-src-exts==1.15.0.1
+			cabal install haddock-2.14.3 --constraint=haskell-src-exts==1.15.0.1
+			cabal install aeson
+			cabal install stylish-haskell --constraint=haskell-src-exts==1.15.0.1
+			cabal install haskell-docs-4.2.2
+			cabal install hdevtools
+			sudo cabal install happy --global
 			break;;
 		No ) break;;
 	esac

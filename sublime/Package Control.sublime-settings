@@ -10,6 +10,7 @@
 		"AngularJS",
 		"API Blueprint",
 		"AutoFileName",
+		"Babel",
 		"BracketHighlighter",
 		"C Improved",
 		"C99",
@@ -17,6 +18,7 @@
 		"Color Highlighter",
 		"Console Wrap for js",
 		"DocBlockr",
+		"Docker Based Build Systems",
 		"Dockerfile Syntax Highlighting",
 		"EDN",
 		"Emmet",
@@ -68,6 +70,7 @@
 		"SublimeREPL",
 		"Sublimerge Pro",
 		"TabsExtra",
+		"TOML",
 		"TypeScript",
 		"Unicode Character Highlighter"
 	]
