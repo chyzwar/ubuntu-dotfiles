@@ -9,19 +9,19 @@ sudo apt-get upgrade dist
 
 #install basic utilities
 tput setaf 2; echo "Install git, curl, shutter, zips"; tput sgr0
-sudo apt-get install git
-sudo apt-get install git-flow
+sudo apt-get install -y git
+sudo apt-get install -y git-flow
 git config --global credential.helper cache
 git config --global credential.helper 'cache --timeout=36000'
 
 
-sudo apt-get install curl
-sudo apt-get install wget
-sudo apt-get install shutter
-sudo apt-get install tree
-sudo apt-get install p7zip{,-full}
-sudo apt-get install alien libaio1 unixodbc
-sudo apt-get install ppa-purge
+sudo apt-get install -y curl
+sudo apt-get install -y wget
+sudo apt-get install -y shutter
+sudo apt-get install -y tree
+sudo apt-get install -y p7zip{,-full}
+sudo apt-get install -y alien libaio1 unixodbc
+sudo apt-get install -y ppa-purge
 
 
 tput setaf 2; echo "Install Docker"; tput sgr0
@@ -56,7 +56,7 @@ select yn in "Yes" "No"; do
 			sudo apt-get purge libreoffice-core
 			sudo add-apt-repository ppa:libreoffice/libreoffice-prereleases
 			sudo apt-get update
-			sudo apt-get install libreoffice
+			sudo apt-get install -y libreoffice
 			break;;
 		No ) break;;
 	esac
@@ -66,7 +66,7 @@ done
 tput setaf 2; echo "Install Gimp"; tput sgr0
 sudo add-apt-repository ppa:otto-kesselgulasch/gimp
 sudo apt-get update && sudo apt-get upgrade
-sudo apt-get install gimp
+sudo apt-get install -y gimp
 
 #Install Gnome Shell
 tput setaf 1; echo "Do you want to install Gnome Shell"; tput sgr0
@@ -96,7 +96,7 @@ tput setaf 2; echo "Install node and nvm"; tput sgr0
 curl https://raw.githubusercontent.com/creationix/nvm/v0.24.1/install.sh | bash
 source ~/.nvm/nvm.sh
 
-node_versions=(v4.2.1 v5.0.0)
+node_versions=(v4.2.3 v5.3.0)
 for version in "${node_versions[@]}"
 do
 	echo "Installing node version" "$version"
@@ -119,21 +119,28 @@ do
 	npm install -g jscs
 	npm install -g htmlhint
 	npm install -g csslint
+	npm install -g elm
+	npm install -g purescript
 done
 
 #select def version of node to stable lts release
-nvm alias default v4.2.1
+nvm alias default v4.2.3
+
+#Rust
+wget -qO- https://raw.github.com/sdepold/rsvm/master/install.sh | sh
+source ~/.rsvm/rsvm.sh
+rsvm install 1.5.0
 
 
 #PHP
 tput setaf 2; echo "Install LAMP and Composer"; tput sgr0
-sudo apt-get install apache2
-sudo apt-get install mysql-server
-sudo apt-get install php5 libapache2-mod-php5
-sudo apt-get install php5-cli
-sudo apt-get install php5-sqlite
+sudo apt-get install -y apache2
+sudo apt-get install -y mysql-server
+sudo apt-get install -y php5 libapache2-mod-php5
+sudo apt-get install -y php5-cli
+sudo apt-get install -y php5-sqlite
 # Install and enable mcrypt
-sudo apt-get install mcrypt php5-mcrypt
+sudo apt-get install -y mcrypt php5-mcrypt
 sudo php5enmod mcrypt
 #Install Composer
 curl -sS https://getcomposer.org/installer | php
@@ -144,13 +151,13 @@ sudo mv composer.phar /usr/local/bin/composer
 tput setaf 2; echo "Install Java 7 and 8, 9 set def to 8"; tput sgr0
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
-sudo apt-get install oracle-java7-installer
-sudo apt-get install oracle-java8-installer
-sudo apt-get install oracle-java9-installer
+sudo apt-get install -y oracle-java7-installer
+sudo apt-get install -y oracle-java8-installer
+sudo apt-get install -y oracle-java9-installer
+sudo apt-get install -y maven
+sudo apt-get install -y ant
+#Set default to Java8
 sudo update-java-alternatives -s java-8-oracle
-sudo apt-get install maven
-sudo apt-get install ant
-
 
 #Clojure
 tput setaf 2; echo "Install lein and clojure"; tput sgr0
@@ -165,7 +172,7 @@ tput setaf 2; echo "Install Julia"; tput sgr0
 sudo apt-add-repository ppa:staticfloat/julianightlies
 sudo apt-add-repository ppa:staticfloat/julia-deps
 sudo apt-get update
-sudo apt-get install julia
+sudo apt-get install -y julia
 
 
 #Haskell
@@ -177,15 +184,10 @@ select yn in "Yes" "No"; do
 			sudo apt-get install haskell-platform-doc
 			sudo apt-get install haskell-platform-prof
 
-			#Needed for SublimeHaskell
-			cabal install cabal-install-1.20.0.6
-			cabal install ghc-mod-4.1.6 --constraint=haskell-src-exts==1.15.0.1
-			cabal install haddock-2.14.3 --constraint=haskell-src-exts==1.15.0.1
-			cabal install aeson
-			cabal install stylish-haskell --constraint=haskell-src-exts==1.15.0.1
-			cabal install haskell-docs-4.2.2
-			cabal install hdevtools
-			sudo cabal install happy --global
+			# Install Stack
+			echo 'deb http://download.fpcomplete.com/ubuntu wily main'|sudo tee /etc/apt/sources.list.d/fpco.list
+			sudo apt-get update
+			sudo apt-get install stack -y
 			break;;
 		No ) break;;
 	esac

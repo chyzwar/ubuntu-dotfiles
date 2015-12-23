@@ -1,0 +1,3 @@
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+[[ -s /home/raziel/.rsvm/rsvm.sh ]] && . /home/raziel/.rsvm/rsvm.sh # This loads RSVM
