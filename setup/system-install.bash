@@ -159,6 +159,13 @@ sudo apt-get install -y ant
 #Set default to Java8
 sudo update-java-alternatives -s java-8-oracle
 
+#install Scala
+sudo apt-get update
+sudo apt-get -y install scala
+
+sudo apt-get update
+sudo apt-get -y install sbt
+
 #Clojure
 tput setaf 2; echo "Install lein and clojure"; tput sgr0
 wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
