@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # echo "Installing Vim"
-sudo apt-get install vim
-sudo apt-get install cmake
-sudo apt-get install python-dev
-sudo apt-get install build-essential
+sudo apt-get install -y vim
+sudo apt-get install -y cmake
+sudo apt-get install -y python-dev
+sudo apt-get install -y build-essential
 
 #  Install/update Vundle
 echo "Installaling Vundle"

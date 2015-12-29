@@ -187,14 +187,14 @@ tput setaf 1; echo "Do you want to install Haskell Platform"; tput sgr0
 select yn in "Yes" "No"; do
 	case $yn in
 		Yes )
-			sudo apt-get install haskell-platform
-			sudo apt-get install haskell-platform-doc
-			sudo apt-get install haskell-platform-prof
+			sudo apt-get install -y haskell-platform
+			sudo apt-get install -y haskell-platform-doc
+			sudo apt-get install -y haskell-platform-prof
 
 			# Install Stack
 			echo 'deb http://download.fpcomplete.com/ubuntu wily main'|sudo tee /etc/apt/sources.list.d/fpco.list
 			sudo apt-get update
-			sudo apt-get install stack -y
+			sudo apt-get install -y stack
 			break;;
 		No ) break;;
 	esac
@@ -203,14 +203,14 @@ done
 
 #Go Lang
 tput setaf 2; echo "Go lang install"; tput sgr0
-sudo apt-get install golang
+sudo apt-get install -y golang
 
 #Ruby Stuff
 tput setaf 2; echo "Ruby and rvm"; tput sgr0
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 sudo curl -sSL https://get.rvm.io | bash -s stable --with-default-gems="rails haml"
-rvm install 2.2
-rvm use 2.2 --default
+rvm install 2.3
+rvm use 2.3 --default
 gem install scss_lint
 
 tput setaf 2; echo "Install btsync"; tput sgr0

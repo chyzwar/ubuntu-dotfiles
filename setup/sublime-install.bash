@@ -4,16 +4,16 @@
 echo "Install Sublime Text"
 sudo add-apt-repository ppa:webupd8team/sublime-text-3
 sudo apt-get update
-sudo apt-get install sublime-text-installer
-sudo apt-get install wget
+sudo apt-get install -y sublime-text-installer
+sudo apt-get install -y wget
 
 #Echo Intsall XMl linter
 echo "Install XML Linter"
-sudo apt-get install libxml2-utils
+sudo apt-get install -y libxml2-utils
 
 #Install Plugins dependancies
 echo "Install shellcheck"
-sudo apt-get install shellcheck
+sudo apt-get install -y shellcheck
 
 echo "Links List of Plugins and Settings"
 DIR="$( cd "$( dirname "$0" )" && pwd )"
