@@ -76,12 +76,11 @@ select yn in "Yes" "No"; do
 			sudo add-apt-repository ppa:gnome3-team/gnome3-staging
 			sudo add-apt-repository ppa:gnome3-team/gnome3
 			sudo apt-get update
-			sudo apt-get install gdm
-			sudo apt-get install gnome-shell
-			sudo apt-get install gnome-session
-			sudo apt-get install ubuntu-gnome-desktop
 			sudo apt-get dist-upgrade
-			sudo apt-get install gnome-tweak-tool
+			sudo apt-get install -y gnome-shell
+			sudo apt-get install -y gnome-session
+			sudo apt-get install -y gnome-session-fallback
+			sudo apt-get install -y gnome-tweak-tool
 			break;;
 		No ) break;;
 	esac
