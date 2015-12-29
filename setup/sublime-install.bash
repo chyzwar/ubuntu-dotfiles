@@ -30,6 +30,6 @@ ln -sfv $DIR/../sublime/SublimeHaskell.sublime-settings /home/$USER/.config/subl
 #Install Package Manager for sublime
 cd setup
 wget https://packagecontrol.io/Package%20Control.sublime-package
-mv Package\ Control.sublime-package  /home/$USER/.config/sublime-text-3/Installed\ Packages/Package\ Control.sublime-package
+mv Package\ Control.sublime-package  /home/$USER/.config/sublime-text-3/Installed\ Packages/
 cd ..
 
