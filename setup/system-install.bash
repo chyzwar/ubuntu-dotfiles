@@ -132,19 +132,28 @@ rsvm install 1.5.0
 
 
 #PHP
-tput setaf 2; echo "Install LAMP and Composer"; tput sgr0
-sudo apt-get install -y apache2
-sudo apt-get install -y mysql-server
-sudo apt-get install -y php5 libapache2-mod-php5
-sudo apt-get install -y php5-cli
-sudo apt-get install -y php5-sqlite
-# Install and enable mcrypt
+tput setaf 2; echo "Install PHP"; tput sgr0
+sudo add-apt-repository ppa:ondrej/php5
+sudo apt-get update
+sudo apt-get install -y php5 php5-mcrypt php5-gd
+
+#Install Apache
+tput setaf 2; echo "Install Apache"; tput sgr0
+sudo apt-get install -y apache2 libapache2-mod-php5
 sudo apt-get install -y mcrypt php5-mcrypt
 sudo php5enmod mcrypt
+
 #Install Composer
+tput setaf 2; echo "Install Composer"; tput sgr0
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
+sudo chmod +x /usr/local/bin/composer
 
+#Install Maria DB
+tput setaf 2; echo "Install MariaDB (better mysql)"; tput sgr0
+sudo add-apt-repository ppa:ondrej/mariadb-10.0
+sudo apt-get update
+sudo apt-get install mariadb-server
 
 #Java
 tput setaf 2; echo "Install Java 7 and 8, 9 set def to 8"; tput sgr0
