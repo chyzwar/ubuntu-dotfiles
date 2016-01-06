@@ -76,10 +76,9 @@ select yn in "Yes" "No"; do
 			sudo add-apt-repository ppa:gnome3-team/gnome3-staging
 			sudo add-apt-repository ppa:gnome3-team/gnome3
 			sudo apt-get update
+			sudo apt-get upgrade
 			sudo apt-get dist-upgrade
-			sudo apt-get install -y gnome-shell
-			sudo apt-get install -y gnome-session
-			sudo apt-get install -y gnome-session-fallback
+			sudo apt-get install -y ubuntu-gnome-desktop^
 			sudo apt-get install -y gnome-tweak-tool
 			break;;
 		No ) break;;
