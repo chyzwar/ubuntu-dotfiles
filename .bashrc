@@ -51,11 +51,6 @@ for DOTFILE in "$DOTFILES_DIR"/dev/.*; do
     [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 
-# Source autocomplete dotfiles
-for DOTFILE in "$DOTFILES_DIR"/autocomplete/.*; do
-    [ -f "$DOTFILE" ] && source "$DOTFILE"
-done
-
 # Source vim dotfiles
 for DOTFILE in "$DOTFILES_DIR"/vim/.*; do
     [ -f "$DOTFILE" ] && source "$DOTFILE"

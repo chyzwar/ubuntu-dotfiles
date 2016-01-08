@@ -1,3 +1,4 @@
+
 # Remove all stopped containers.
 alias docker-clear="docker rm $(docker ps -a -q)"
 

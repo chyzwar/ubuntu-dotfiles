@@ -1,11 +1,13 @@
 #!/bin/bash
 
-#Install quake
+
 echo "Install guake, ultimate terminal"
 sudo add-apt-repository ppa:webupd8team/unstable
 sudo apt-get update
 sudo apt-get install guake
-	
+
+
+
 echo "Install zhs shell"
 sudo apt-get update
 sudo apt-get install zsh
@@ -26,7 +28,7 @@ export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # # Bunch of symlinks
 echo "Symlinks for git/bashrc"
-ln -sfv "$DOTFILES_DIR/../runcom/.bashrc" ~
-ln -sfv "$DOTFILES_DIR/../runcom/.inputrc" ~
+ln -sfv "$DOTFILES_DIR/../.bashrc" ~
+ln -sfv "$DOTFILES_DIR/../.inputrc" ~
 ln -sfv "$DOTFILES_DIR/../git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/../git/.gitignore_global" ~

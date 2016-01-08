@@ -9,11 +9,13 @@ sub_help () {
     echo "Commands:"
     echo "   help               This help message"
     echo "   system             Install basic setup for Ubuntu"
+    echo "   pro                Install diffrent programmuing env"
     echo "   shell              Install, source and link dotfiles to bash and zhs"
     echo "   reload             Reload dotfiles"
     echo "   sublime            Install  Sublime Text 3 and custom plugins"
     echo "   emacs              Install  emacs and spacemac "
     echo "   vim                Install  Vim and custom plugins using Vundle"
+    echo "   all                Install  using all options"
 }
 
 sub_reload () {
@@ -23,6 +25,11 @@ sub_reload () {
 sub_system () {
     sudo chmod +x setup/system-install.bash
     bash setup/system-install.bash
+}
+
+sub_pro () {
+    sudo chmod +x setup/pro-install.bash
+    bash setup/pro-install.bash
 }
 
 sub_shell () {
@@ -42,6 +49,15 @@ sub_vim () {
 sub_emacs () {
     sudo chmod +x setup/emacs-install.bash
     bash setup/emacs-install.bash
+}
+
+sub_all () {
+    sub_shell
+    sub_system
+    sub_pro
+    sub_sublime
+    sub_vim
+    sub_emacs
 }
 
 
