@@ -2,9 +2,9 @@
 
 
 echo "Install guake, ultimate terminal"
-sudo add-apt-repository ppa:webupd8team/unstable
-sudo apt-get update
-sudo apt-get install guake
+sudo add-apt-repository -y ppa:webupd8team/unstable
+sudo apt-get update -qq
+sudo apt-get install y guake
 
 
 
@@ -16,8 +16,6 @@ sudo apt-get install zsh
 echo "Install liquidprompt"
 sudo git clone https://github.com/nojhan/liquidprompt.git /opt/liquidprompt
 
-#Install qfc, config in autocomplete folder
-git clone https://github.com/pindexis/qfc "$HOME/.qfc"
 
 # Get current dir (so run this script from anywhere)
 export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"

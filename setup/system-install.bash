@@ -20,7 +20,6 @@ sudo apt-get install -y git-flow
 
 
 
-
 tput setaf 1; echo "Do you want to install LibreOffice prerealse"; tput sgr0
 select yn in "Yes" "No"; do
 	case $yn in

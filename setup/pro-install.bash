@@ -20,15 +20,18 @@ tput setaf 1; echo "Do you want to install node.js annd tools"; tput sgr0
 select yn in "Yes" "No"; do
 	case $yn in
 		Yes )
-			curl https://raw.githubusercontent.com/creationix/nvm/v0.24.1/install.sh | bash
-			source ~/.nvm/nvm.sh
+			#install nodevm
+			git clone https://github.com/OiNutter/nodenv.git ~/.nodenv
+			cd ~/.nodenv && src/configure && make -C src
+			git clone https://github.com/OiNutter/node-build.git ~/.nodenv/plugins/node-build
+			source ~/.bashrc && source ~/.zhsrc
 
-			node_versions=(v4.2.3 stable)
+			node_versions=(4.2.4 5.4.0)
 			for version in "${node_versions[@]}"
 			do
 				echo "Installing node version" "$version"
-				nvm install "$version"
-				nvm use "$version"
+				nodenv install "$version"
+				nodenv global "$version"
 
 				npm install -g --depth 0 npm
 				npm install -g --depth 0 grunt
@@ -49,7 +52,6 @@ select yn in "Yes" "No"; do
 				npm install -g --depth 0 elm
 				npm install -g --depth 0 purescript
 			done
-			nvm alias default stable
 
 			break;;
 		No ) break;;
@@ -245,15 +247,17 @@ done
 
 
 
-tput setaf 1; echo "Do you want install Ruby and rvm"; tput sgr0
+tput setaf 1; echo "Do you want install Ruby and rbenv"; tput sgr0
 select yn in "Yes" "No"; do
 	case $yn in
 		Yes )
-			tput setaf 2; echo "Ruby and rvm"; tput sgr0
-			gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-			sudo curl -sSL https://get.rvm.io | bash -s stable --with-default-gems="rails haml"
-			rvm install 2.3
-			rvm use 2.3 --default
+			git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+			cd ~/.rbenv && src/configure && make -C src
+			git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+			source ~/.bashrc && source ~/.zhsrc
+
+			rbenv install 2.3.0
+			rbenv global 2.3.0
 			break;;
 		No ) break;;
 	esac

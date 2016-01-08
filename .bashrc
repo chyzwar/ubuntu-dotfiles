@@ -21,12 +21,13 @@ fi
 
 if [[ -n $CURRENT_SCRIPT && -x "$READLINK" ]]; then
     SCRIPT_PATH=$($READLINK -f "$CURRENT_SCRIPT")
-    DOTFILES_DIR=$(dirname $(dirname ${SCRIPT_PATH}))
+    DOTFILES_DIR=$(dirname ${SCRIPT_PATH})
 else
     echo "Unable to find dotfiles, exiting."
     return # `exit 1` would quit the shell itself
 fi
 
+echo $DOTFILES_DIR
 # Finally we can source the dotfiles (order matters)
 for DOTFILE in "$DOTFILES_DIR"/system/.{env,prompt,function,path,alias,completion,grep,custom}; do
     [ -f "$DOTFILE" ] && source "$DOTFILE"
@@ -63,3 +64,5 @@ unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
 export SHELL_BASH SHELL_ZSH OS DOTFILES_DIR
 
 ulimit -n 10000
+
+
