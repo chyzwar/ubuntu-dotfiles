@@ -25,10 +25,10 @@ TERM=screen-256color
 cd $BUNDLE_DIR/YouCompleteMe 
 ./install.sh --clang-completer
 
-#Intall vimpager (TODO test)
+#Intall vimpager
 #https://github.com/rkitover/vimpager
 sudo git clone https://github.com/rkitover/vimpager.git /opt/vimpager
-sudo apt-get install pandoc
-sudo apt-get install sharutils
+sudo apt-get install -y pandoc
+sudo apt-get install -y sharutils
 cd /opt/vimpager
 sudo make install-deb

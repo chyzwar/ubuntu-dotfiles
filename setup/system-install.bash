@@ -92,6 +92,7 @@ done
 
 
 
+
 tput setaf 1; echo "Do you want to install Plank"; tput sgr0
 select yn in "Yes" "No"; do
 	case $yn in
@@ -138,6 +139,7 @@ select yn in "Yes" "No"; do
 done
 
 
+
 tput setaf 1; echo "Do you want to install Steam"; tput sgr0
 select yn in "Yes" "No"; do
 	case $yn in
@@ -147,3 +149,4 @@ select yn in "Yes" "No"; do
 		No ) break;;
 	esac
 done
+

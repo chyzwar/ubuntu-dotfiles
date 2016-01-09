@@ -29,7 +29,7 @@ fi
 
 
 # Finally we can source the dotfiles (order matters)
-for DOTFILE in "$DOTFILES_DIR"/system/.{env,prompt,function,path,alias,completion,grep,custom}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{env,prompt,function,path,alias,pager,completion,grep,custom}; do
     [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 
@@ -52,10 +52,6 @@ for DOTFILE in "$DOTFILES_DIR"/dev/.*; do
     [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 
-# Source vim dotfiles
-for DOTFILE in "$DOTFILES_DIR"/vim/.*; do
-    [ -f "$DOTFILE" ] && source "$DOTFILE"
-done
 
 # Clean up
 unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
