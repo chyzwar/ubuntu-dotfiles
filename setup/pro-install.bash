@@ -5,6 +5,17 @@ tput setaf 1; echo "Do you want to install Python Tooluing"; tput sgr0
 select yn in "Yes" "No"; do
 	case $yn in
 		Yes )
+			sudo apt-get install -y make build-essential
+			sudo apt-get install -y libssl-dev zlib1g-dev libbz2-dev
+			sudo apt-get install -y	libreadline-dev libsqlite3-dev  llvm libncurses5-dev
+
+			git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+			git clone https://github.com/yyuu/pyenv-pip-rehash.git ~/.pyenv/plugins/pyenv-pip-rehash
+			source ~/.bashrc && source ~/.zshrc
+
+			pyenv install 2.7.8
+			pyenv install 3.4.2
+			pyenv global 2.7.8
 			sudo apt-get install -y python-pip
 			sudo pip install virtualenvwrapper jedi
 			break;;
@@ -20,11 +31,10 @@ tput setaf 1; echo "Do you want to install node.js annd tools"; tput sgr0
 select yn in "Yes" "No"; do
 	case $yn in
 		Yes )
-			#install nodevm
 			git clone https://github.com/OiNutter/nodenv.git ~/.nodenv
 			cd ~/.nodenv && src/configure && make -C src
 			git clone https://github.com/OiNutter/node-build.git ~/.nodenv/plugins/node-build
-			source ~/.bashrc && source ~/.zhsrc
+			source ~/.bashrc && source ~/.zshrc
 
 			node_versions=(4.2.4 5.4.0)
 			for version in "${node_versions[@]}"
@@ -231,7 +241,6 @@ done
 
 
 
-
 tput setaf 1; echo "Do you want install go-lang??"; tput sgr0
 select yn in "Yes" "No"; do
 	case $yn in
@@ -254,7 +263,7 @@ select yn in "Yes" "No"; do
 			git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 			cd ~/.rbenv && src/configure && make -C src
 			git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-			source ~/.bashrc && source ~/.zhsrc
+			source ~/.bashrc && source ~/.zshrc
 
 			rbenv install 2.3.0
 			rbenv global 2.3.0

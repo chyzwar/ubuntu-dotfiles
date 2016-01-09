@@ -1,9 +1,4 @@
-#alias to swith for python 3
-alias python=python3
 
-
-#Virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-source /home/$USER/.local/bin/virtualenvwrapper.sh
-
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"

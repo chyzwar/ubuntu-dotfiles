@@ -12,6 +12,7 @@ tput setaf 2; echo "Install git, curl, shutter, zips"; tput sgr0
 sudo apt-get install -y curl
 sudo apt-get install -y wget
 sudo apt-get install -y shutter
+sudo apt-get install -y bzip2 libbz2-dev
 sudo apt-get install -y tree
 sudo apt-get install -y ppa-purge
 sudo apt-get install -y git

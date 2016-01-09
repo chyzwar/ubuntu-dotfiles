@@ -27,7 +27,7 @@ else
     return # `exit 1` would quit the shell itself
 fi
 
-echo $DOTFILES_DIR
+
 # Finally we can source the dotfiles (order matters)
 for DOTFILE in "$DOTFILES_DIR"/system/.{env,prompt,function,path,alias,completion,grep,custom}; do
     [ -f "$DOTFILE" ] && source "$DOTFILE"
