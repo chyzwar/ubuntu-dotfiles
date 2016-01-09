@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-tput setaf 1; echo "Do you want to install Python Tooluing"; tput sgr0
+tput setaf 1; echo "Do you want to install Python Tools"; tput sgr0
 select yn in "Yes" "No"; do
 	case $yn in
 		Yes )
