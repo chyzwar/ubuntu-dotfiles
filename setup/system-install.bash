@@ -150,3 +150,17 @@ select yn in "Yes" "No"; do
 	esac
 done
 
+
+tput setaf 1; echo "Do you want to install Spotify"; tput sgr0
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes )
+			sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
+			echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+			sudo apt-get update -qq
+			sudo apt-get install -y spotify-client
+			break;;
+		No ) break;;
+	esac
+done
+
