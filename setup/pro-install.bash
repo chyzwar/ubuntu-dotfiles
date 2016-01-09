@@ -130,9 +130,8 @@ tput setaf 1; echo "Do you want install MariaDB"; tput sgr0
 select yn in "Yes" "No"; do
 	case $yn in
 		Yes )
-			sudo add-apt-repository -y ppa:ondrej/mariadb-10.0
-			sudo apt-get update -qq
 			sudo apt-get install -y mariadb-server
+			sudo apt-get install -y mariadb-client
 			break;;
 		No ) break;;
 	esac
