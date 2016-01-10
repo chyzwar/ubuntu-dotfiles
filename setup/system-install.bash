@@ -17,6 +17,7 @@ sudo apt-get install -y tree
 sudo apt-get install -y ppa-purge
 sudo apt-get install -y git
 sudo apt-get install -y git-flow
+sydo apt-get install -y unity-tweak-tool
 
 
 
@@ -149,6 +150,26 @@ select yn in "Yes" "No"; do
 		No ) break;;
 	esac
 done
+
+
+
+
+
+tput setaf 1; echo "Do you want to install Chrome Beta"; tput sgr0
+select yn in "Yes" "No"; do
+	case $yn in
+		Yes )
+			wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+			sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+			sudo apt-get update -qq
+			sudo apt-get install google-chrome-beta
+			break;;
+		No ) break;;
+	esac
+done
+
+
+
 
 
 tput setaf 1; echo "Do you want to install Spotify"; tput sgr0
