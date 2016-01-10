@@ -1,7 +1,7 @@
 #!/bin/bash
 
 tput setaf 1; echo "Install emacs 24"; tput sgr0
-sudo apt-get install emacs24
+sudo apt-get install -y emacs24
 
 tput setaf 1; echo "Install spacemac"; tput sgr0
 git clone --recursive https://github.com/syl20bnr/spacemacs ~/.emacs.d

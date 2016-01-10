@@ -34,7 +34,10 @@ select yn in "Yes" "No"; do
 			git clone https://github.com/OiNutter/nodenv.git ~/.nodenv
 			cd ~/.nodenv && src/configure && make -C src
 			git clone https://github.com/OiNutter/node-build.git ~/.nodenv/plugins/node-build
-			source ~/.bashrc && source ~/.zshrc
+
+			export PATH="$HOME/.nodenv/bin:$PATH"
+			eval "$(nodenv init -)"
+
 
 			node_versions=(4.2.4 5.4.0)
 			for version in "${node_versions[@]}"
@@ -227,6 +230,7 @@ select yn in "Yes" "No"; do
 			sudo apt-get install -y haskell-platform-prof
 
 			# Install Stack
+			sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 575159689BEFB442
 			echo 'deb http://download.fpcomplete.com/ubuntu wily main'| sudo tee /etc/apt/sources.list.d/fpco.list
 			sudo apt-get update
 			sudo apt-get install -y stack
@@ -262,7 +266,9 @@ select yn in "Yes" "No"; do
 			git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 			cd ~/.rbenv && src/configure && make -C src
 			git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-			source ~/.bashrc && source ~/.zshrc
+
+			export PATH="$HOME/.rbenv/bin:$PATH"
+			eval "$(rbenv init -)"
 
 			rbenv install 2.3.0
 			rbenv global 2.3.0
