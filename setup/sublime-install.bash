@@ -2,15 +2,14 @@
 
 DIR="$(dirname "$(readlink -f "$0")")"
 
-
-echo "Install Sublime Text"
+# echo "Install Sublime Text"
 sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 sudo apt-get update -qq
 sudo apt-get install -y sublime-text-installer
 sudo apt-get install -y wget
 
 
-echo "Install Missing Linters"
+# echo "Install Missing Linters"
 sudo apt-get install -y libxml2-utils
 sudo apt-get install -y shellcheck
 
@@ -22,7 +21,7 @@ ln -sfv $DIR/../sublime/Python.sublime-settings ~/.config/sublime-text-3/Package
 ln -sfv $DIR/../sublime/SublimeLinter.sublime-settings ~/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings
 ln -sfv $DIR/../sublime/JsFormat.sublime-settings ~/.config/sublime-text-3/Packages/User/JsFormat.sublime-settings
 ln -sfv $DIR/../sublime/phpfmt.sublime-settings ~/.config/sublime-text-3/Packages/User/phpfmt.sublime-settings
-
+ln -sfv $DIR/../sublime/JSCS-Formatter.sublime-settings ~/.config/sublime-text-3/Packages/User/JSCS-Formatter.sublime-settings
 
 
 echo "Install Package Manager"

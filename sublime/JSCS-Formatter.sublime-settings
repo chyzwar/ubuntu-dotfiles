@@ -1,0 +1,15 @@
+{
+
+  "node_path": {
+    "linux": "/home/raziel/.nodenv/shims/node",
+  },
+
+  "jscs_path": {
+    "linux": "/home/raziel/.nodenv/shims/jscs",
+  },
+
+
+  "config_path": "",
+
+  "format_on_save": false
+}

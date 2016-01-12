@@ -17,7 +17,7 @@ sudo apt-get install -y tree
 sudo apt-get install -y ppa-purge
 sudo apt-get install -y git
 sudo apt-get install -y git-flow
-sydo apt-get install -y unity-tweak-tool
+sudo apt-get install -y unity-tweak-tool
 
 
 

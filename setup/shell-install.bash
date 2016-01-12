@@ -7,6 +7,7 @@ echo "Install guake, ultimate terminal"
 sudo add-apt-repository -y ppa:webupd8team/unstable
 sudo apt-get update -qq
 sudo apt-get -y build-dep guake
+sudo apt-get install -y guake
 
 
 echo "Install zhs shell"
