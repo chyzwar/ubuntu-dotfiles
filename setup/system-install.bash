@@ -18,7 +18,7 @@ sudo apt-get install -y ppa-purge
 sudo apt-get install -y git
 sudo apt-get install -y git-flow
 sudo apt-get install -y unity-tweak-tool
-
+sudo apt-get install -y alacarte
 
 
 
