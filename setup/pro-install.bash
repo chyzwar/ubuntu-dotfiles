@@ -75,6 +75,29 @@ done
 
 
 
+
+tput setaf 1; echo "Do you want to install docker"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            sudo apt-get -y install docker.io
+            sudo service docker start
+
+            sudo groupadd docker
+            sudo gpasswd -a ${USER} docker
+            sudo service docker restart
+
+            sudo docker run hello-world
+            break;;
+        No ) break;;
+    esac
+done
+
+
+
+
+
+
 tput setaf 1; echo "Do you want to install rust and rsvm"; tput sgr0
 select yn in "Yes" "No"; do
 	case $yn in
