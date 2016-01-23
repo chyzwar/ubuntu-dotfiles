@@ -5,11 +5,10 @@
   },
 
   "jscs_path": {
-    "linux": "/home/raziel/.nodenv/shims/jscs",
+    "linux": "/home/raziel/.nodenv/versions/5.4.0/bin/jscs",
   },
-
 
   "config_path": "",
 
-  "format_on_save": false
+  "format_on_save": true
 }
