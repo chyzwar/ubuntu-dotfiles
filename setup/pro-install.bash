@@ -80,7 +80,8 @@ tput setaf 1; echo "Do you want to install docker"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo apt-get -y install docker.io
+			sudo apt-get update -qq
+            sudo apt-get install -y docker.io
             sudo service docker start
 
             sudo groupadd docker
