@@ -28,7 +28,7 @@
                 "warnings": ""
             },
             "eslint": {
-                "@disable": false,
+                "@disable": true,
                 "args": [],
                 "excludes": []
             },
@@ -127,9 +127,9 @@
         "passive_warnings": false,
         "paths": {
             "linux": [
-            	"~/.rbenv/shims",
-            	"~/.nodenv/shims",
-            	"~/.pyenv/shims"
+                "~/.rbenv/shims",
+                "~/.nodenv/shims",
+                "~/.pyenv/shims"
             ],
             "osx": [],
             "windows": []
