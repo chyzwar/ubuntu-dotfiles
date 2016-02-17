@@ -53,7 +53,7 @@
 		"SublimeGit",
 		"SublimeLinter",
 		"SublimeLinter-contrib-clang",
-		"SublimeLinter-contrib-eslint_d",
+		"SublimeLinter-contrib-eslint",
 		"SublimeLinter-contrib-htmlhint",
 		"SublimeLinter-contrib-rustc",
 		"SublimeLinter-contrib-scss-lint",

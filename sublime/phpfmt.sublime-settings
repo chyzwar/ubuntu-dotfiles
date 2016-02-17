@@ -1,16 +1,4 @@
 {
-	"autoimport": false,
-	"disable_auto_align": true,
-	"enable_auto_align": true,
-	"format_on_save": true,
-	"indent_with_space": 2,
-	"passes":
-	[
-		"AlignPHPCode",
-		"ReindentSwitchBlocks"
-	],
-	"psr1": true,
-	"psr1_naming": false,
-	"psr2": true,
+	"option": "value",
 	"version": 4
 }

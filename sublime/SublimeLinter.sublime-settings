@@ -32,11 +32,6 @@
                 "args": [],
                 "excludes": []
             },
-            "eslint_d": {
-                "@disable": false,
-                "args": [],
-                "excludes": []
-            },
             "htmlhint": {
                 "@disable": false,
                 "args": [],
@@ -47,21 +42,6 @@
                 "args": [],
                 "excludes": [],
                 "lint": ""
-            },
-            "jscs": {
-                "@disable": false,
-                "args": [],
-                "excludes": []
-            },
-            "jshint": {
-                "@disable": true,
-                "args": [],
-                "excludes": []
-            },
-            "jslint": {
-                "@disable": false,
-                "args": [],
-                "excludes": []
             },
             "json": {
                 "@disable": false,
@@ -127,9 +107,9 @@
         "passive_warnings": false,
         "paths": {
             "linux": [
-            	"~/.rbenv/shims",
-            	"~/.nodenv/shims",
-            	"~/.pyenv/shims"
+                "~/.rbenv/shims",
+                "~/.nodenv/shims",
+                "~/.pyenv/shims"
             ],
             "osx": [],
             "windows": []

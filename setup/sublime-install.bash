@@ -19,10 +19,6 @@ ln -sfv $DIR/../sublime/Package\ Control.sublime-settings ~/.config/sublime-text
 ln -sfv $DIR/../sublime/Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 ln -sfv $DIR/../sublime/Python.sublime-settings ~/.config/sublime-text-3/Packages/User/Python.sublime-settings
 ln -sfv $DIR/../sublime/SublimeLinter.sublime-settings ~/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings
-ln -sfv $DIR/../sublime/JsFormat.sublime-settings ~/.config/sublime-text-3/Packages/User/JsFormat.sublime-settings
-ln -sfv $DIR/../sublime/phpfmt.sublime-settings ~/.config/sublime-text-3/Packages/User/phpfmt.sublime-settings
-ln -sfv $DIR/../sublime/JSCS-Formatter.sublime-settings ~/.config/sublime-text-3/Packages/User/JSCS-Formatter.sublime-settings
-
 
 echo "Install Package Manager"
 wget https://packagecontrol.io/Package%20Control.sublime-package
