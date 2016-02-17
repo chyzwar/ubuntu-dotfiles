@@ -67,5 +67,9 @@ done
 alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
 
 
+alias wifi="nmcli c"
+alias connect="nmcli d wifi connect $1"
+
+
 # It's probably me
 alias quit="exit"
