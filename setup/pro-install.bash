@@ -58,9 +58,7 @@ select yn in "Yes" "No"; do
 				npm install -g --depth 0 karma
 				npm install -g --depth 0 browserify
                 npm install -g --depth 0 eslint
-				npm install -g --depth 0 eslint_d
-				npm install -g --depth 0 jshint
-				npm install -g --depth 0 jscs
+                npm install -g --depth 0 eslint-plugin-react
 				npm install -g --depth 0 htmlhint
 				npm install -g --depth 0 csslint
 				npm install -g --depth 0 elm
