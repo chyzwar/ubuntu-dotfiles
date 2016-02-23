@@ -65,8 +65,10 @@ select yn in "Yes" "No"; do
 			sudo apt-get update -qq
 			sudo apt-get upgrade -q
 			sudo apt-get dist-upgrade
-			sudo apt-get install -y ubuntu-gnome-desktop^
+            sudo apt-get install -y ubuntu-gnome-desktop
 			sudo apt-get install -y gnome-tweak-tool
+            sudo apt-get install -y gdm
+            sudo dpkg-reconfigure gdm
 			break;;
 		No ) break;;
 	esac
