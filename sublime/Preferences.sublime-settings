@@ -1,12 +1,14 @@
 {
 	"bold_folder_labels": true,
 	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
-	"font_size": 19,
+	"font_size": 16,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
 		"Jade",
 		"Markdown",
+		"SublimeLinter-ghc",
+		"SublimeLinter-jscs",
 		"Vintage"
 	],
 	"index_exclude_patterns":
