@@ -29,7 +29,7 @@ fi
 
 
 # Finally we can source the dotfiles (order matters)
-for DOTFILE in "$DOTFILES_DIR"/system/.{env,prompt,function,path,alias,pager,completion,grep,custom}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{env,function,alias,pager}; do
     [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 

@@ -110,27 +110,6 @@ done
 
 
 
-
-
-
-tput setaf 1; echo "Do you want to install btsync"; tput sgr0
-select yn in "Yes" "No"; do
-	case $yn in
-		Yes )
-			sudo apt-get -y install python-software-properties
-			sudo add-apt-repository ppa:tuxpoldo/btsync
-			sudo apt-get update -qq
-			sudo apt-get -y install btsynqc
-			break;;
-		No ) break;;
-	esac
-done
-
-
-
-
-
-
 tput setaf 1; echo "Do you want to install Dropbox"; tput sgr0
 select yn in "Yes" "No"; do
 	case $yn in

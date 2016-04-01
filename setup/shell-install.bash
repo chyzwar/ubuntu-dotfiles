@@ -15,9 +15,11 @@ sudo apt-get update --qq
 sudo apt-get install -y zsh
 
 
-echo "Install liquidprompt"
-sudo git clone https://github.com/nojhan/liquidprompt.git /opt/liquidprompt
+echo "Install bash.it"
+git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
 
+echo "Install oh-my-zhs"
+git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh
 
 echo "Symlinks for git/bashrc"
 ln -sfv "$DIR/../.bashrc" ~

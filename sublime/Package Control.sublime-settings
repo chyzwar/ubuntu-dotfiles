@@ -29,6 +29,7 @@
 		"HTTP Spec Syntax",
 		"Indent XML",
 		"Jade",
+		"Javascript Beautify",
 		"JSX",
 		"Laravel 4 Artisan",
 		"LESS",
@@ -69,7 +70,6 @@
 		"Terminal",
 		"Terminality",
 		"TOML",
-		"TypeScript",
 		"Unicode Character Highlighter"
 	]
 }
