@@ -3,7 +3,7 @@ alias gnomer="gnome-shell --replace"
 alias uniter="unity --replace"
 
 # switch between zhs and bash
-alias zhser="chsh -s $(which zsh) && source ~/.bashrc"
+alias zsher="chsh -s $(which zsh) && source ~/.bashrc"
 alias basher="chsh -s $(which bash) && source ~/.bashrc"
 
 #basics aliases

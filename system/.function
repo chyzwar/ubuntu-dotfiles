@@ -1,0 +1,72 @@
+
+# Executable
+is-executable() {
+    local BIN=`command -v "$1" 2>/dev/null`
+    [[ ! $BIN == "" && -x $BIN ]] && true || false
+}
+
+# Supported
+is-supported() {
+    if [ $# -eq 1 ]; then
+        eval $1 > /dev/null 2>&1 && true || false
+    else
+        eval $1 > /dev/null 2>&1 && echo -n "$2" || echo -n "$3"
+    fi
+}
+
+# Extract many types of compress files
+extract() {
+    if [ -f "$1" ]; then
+        case "$1" in
+            *.tar.bz2)  tar -jxvf "$1"                        ;;
+            *.tar.gz)   tar -zxvf "$1"                        ;;
+            *.bz2)      bunzip2 "$1"                          ;;
+            *.dmg)      hdiutil mount "$1"                    ;;
+            *.gz)       gunzip "$1"                           ;;
+            *.tar)      tar -xvf "$1"                         ;;
+            *.tbz2)     tar -jxvf "$1"                        ;;
+            *.tgz)      tar -zxvf "$1"                        ;;
+            *.zip)      unzip "$1"                            ;;
+            *.ZIP)      unzip "$1"                            ;;
+            *.pax)      cat "$1" | pax -r                     ;;
+            *.pax.Z)    uncompress "$1" --stdout | pax -r     ;;
+            *.Z)        uncompress "$1"                       ;;
+            *)          echo "'$1' cannot be extracted/mounted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file to extract"
+    fi
+}
+
+# Show dupplicates
+duplines() {
+    sort $1 | uniq -d
+}
+
+# Show unique lines
+uniqlines() {
+    sort $1 | uniq -u
+}
+
+# Pretty print JSON
+json() {
+    local url=$1
+    if [[ "http" == $url[0,4] ]] ; then
+        curl --silent $url | python -mjson.tool | pygmentize -O style=monokai -f console256 -g
+    else
+        cat $url | python -mjson.tool | pygmentize -O style=monokai -f console256 -g
+    fi
+}
+
+
+# Fuzzy find file/dir
+ff() {  find . -type f -name "${1}";}
+fff() { find . -type f -name "*${1}*";}
+fd() {  find . -type d -name "${1}";}
+fdf() { find . -type d -name "*${1}*";}
+
+
+# Create a new directory and enter it
+mk() {
+    mkdir -p "$@" && cd "$@"
+}

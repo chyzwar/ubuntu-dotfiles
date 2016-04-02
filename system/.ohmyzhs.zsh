@@ -1,4 +1,7 @@
 
+#All options and settings available on:
+#
+
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 

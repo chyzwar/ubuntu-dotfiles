@@ -2,18 +2,20 @@
 [ -z "$PS1" ] && return
 
 # Get path for current path
-SCRIPT_PATH=$(readlink -f "${BASH_SOURCE}")
+SCRIPT_PATH=$(readlink -f "${(%):-%x}")
 
 #Get dotfiles directory
 DOTFILES_DIR=$(dirname ${SCRIPT_PATH})
+
 
 # Finally we can source the dotfiles (order matters)
 for DOTFILE in "$DOTFILES_DIR"/system/.{env,function,alias,pager}; do
     [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 
-# Source bash dotfiles
-for DOTFILE in "$DOTFILES_DIR"/system/.*.bash; do
+
+# Source zhs dotfiles
+for DOTFILE in "$DOTFILES_DIR"/system/.*.zsh; do
     [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 
