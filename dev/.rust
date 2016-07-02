@@ -1,3 +1,2 @@
 
-
-[[ -s /home/raziel/.rsvm/rsvm.sh ]] && . /home/raziel/.rsvm/rsvm.sh # This loads RSVM
+export PATH="$HOME/.cargo/bin:$PATH"

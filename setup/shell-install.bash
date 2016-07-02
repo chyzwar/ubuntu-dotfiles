@@ -15,8 +15,8 @@ sudo apt-get update --qq
 sudo apt-get install -y zsh
 
 
-echo "Install bash.it"
-git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
+echo "Install liquidprompt"
+git clone https://github.com/nojhan/liquidprompt.git ~/.liquidprompt
 
 echo "Install oh-my-zhs"
 git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh

@@ -34,12 +34,13 @@ select yn in "Yes" "No"; do
             git clone https://github.com/OiNutter/nodenv.git ~/.nodenv
             cd ~/.nodenv && src/configure && make -C src
             git clone https://github.com/OiNutter/node-build.git ~/.nodenv/plugins/node-build
+            git clone https://github.com/nodenv/node-build-update-defs.git ~/.nodenv/plugins/node-build-update-defs
 
             export PATH="$HOME/.nodenv/bin:$PATH"
             eval "$(nodenv init -)"
 
 
-            node_versions=(4.2.4 5.4.0)
+            node_versions=(4.2.4 5.4.0 6.0.0)
             for version in "${node_versions[@]}"
             do
                 echo "Installing node version" "$version"
@@ -110,13 +111,11 @@ done
 
 
 
-tput setaf 1; echo "Do you want to install rust and rsvm"; tput sgr0
+tput setaf 1; echo "Do you want to install rust and rustup.rs"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            wget -qO- https://raw.github.com/sdepold/rsvm/master/install.sh | sh
-            source ~/.rsvm/rsvm.sh
-            rsvm install 1.7.0
+            curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path
             break;;
         No ) break;;
     esac
@@ -313,6 +312,15 @@ select yn in "Yes" "No"; do
 done
 
 
+tput setaf 1; echo "Do you want to install nix"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            curl https://nixos.org/nix/install | sh
+            break;;
+        No ) break;;
+    esac
+done
 
 
 

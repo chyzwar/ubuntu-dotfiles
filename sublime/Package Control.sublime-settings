@@ -11,6 +11,7 @@
 		"AutoFileName",
 		"Babel",
 		"Babel Snippets",
+		"BeautifyRust",
 		"BracketHighlighter",
 		"C Improved",
 		"ClojureDocSearch",
@@ -25,6 +26,7 @@
 		"EsFormatter",
 		"Git Conflict Resolver",
 		"GitGutter",
+		"Gradle_Language",
 		"Handlebars",
 		"HTTP Spec Syntax",
 		"Indent XML",
@@ -55,6 +57,7 @@
 		"SublimeLinter-contrib-clang",
 		"SublimeLinter-contrib-eslint",
 		"SublimeLinter-contrib-htmlhint",
+		"SublimeLinter-contrib-pug-lint",
 		"SublimeLinter-contrib-rustc",
 		"SublimeLinter-contrib-scss-lint",
 		"SublimeLinter-contrib-sqlint",
@@ -70,6 +73,7 @@
 		"Terminal",
 		"Terminality",
 		"TOML",
+		"TypeScript",
 		"Unicode Character Highlighter"
 	]
 }

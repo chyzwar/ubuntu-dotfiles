@@ -1,19 +1,33 @@
 {
+	"binary_file_patterns":
+	[
+		"*.dds",
+		"*.eot",
+		"*.gif",
+		"*.ico",
+		"*.jar",
+		"*.jpeg",
+		"*.jpg",
+		"*.pdf",
+		"*.png",
+		"*.swf",
+		"*.tga",
+		"*.ttf",
+		"*.zip",
+		"node_modules/**"
+	],
 	"bold_folder_labels": true,
 	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
-	"font_size": 16,
+	"font_size": 17,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Jade",
-		"Markdown",
-		"SublimeLinter-ghc",
-		"SublimeLinter-jscs",
-		"Vintage"
 	],
 	"index_exclude_patterns":
 	[
-		"*.log"
+		"*.log",
+		"build/*",
+		"node_modules/*"
 	],
 	"tab_size": 4,
 	"typescript_plugin_tsc_version": "1.7.2"

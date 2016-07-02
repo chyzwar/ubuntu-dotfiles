@@ -3,55 +3,66 @@
 These dotfiles inspired by https://dotfiles.github.io/ initialy forked from [webpro/dotfiles](https://github.com/webpro/dotfiles) and customised for Ubuntu.
 
 These dotfiles project aim to provide a way to make instant setup for Ubuntu system. This project include:
+Use branch for corresponding Ubuntu version.
 
 - Vim and plugins
 - Sublime Text 3 and plugins
-- Programming tools and system utilities
-- Shell configuration and git configs
+- Programming languages and tools
+- Shell configuration and plugins
+- Git configuration
 
 ## Instalation
 On fresh Ubuntu instalation:
 ```sh
  git clone https://github.com/Chyzwar/dotfiles-ubuntu.git
- sudo chmod +x dotfiles 
+ sudo chmod +x dotfiles
  ./dotfiles
 ```
-This will show list of options. Use branch coresponding to Ubuntu version. 
+This will show list of options. Use branch coresponding to Ubuntu version.
 
 
-### ./dotfiles system  
-This option will install system related software. It will also install multiple programming envirotments 
+### ./dotfiles system
+This option will install system tools and related software.
 
-1. utility software
-	* curl and wget
-	* shutter
-	* p7zip
-	* alien libaio1 unixodbc
-	* ppa-purge
-	* btsync
-	* dropbox
-	* gimp
-	* LibreOffice prerelase (optional)
-	* Gnome Shell Stagging (optional)
+* curl and wget
+* shutter
+* unity tweak tool
+* ppa-purge
+* mercurial
+* alacarte
+* dropbox
+* gimp
+* libreoffice
+* gnome shell
+* openssh-client & openssh-server
+* docky & plank
+* dropbox
+* chrome
+* spotify
+* picard
 
-2. programming utilities
-	* git and git-flow
-	* docker
+### ./dotfiles pro
+This options will install programming languages and tooling
 
-3. programming envirotments
-	* Python and virtualenvwrapper, pip,jedi, ipython
-	* node and tools: nvm, gulp, grunt, yo, karma, bower, etc
-	* PHP, mysql, composer,mcrypt, mods, mysql
-	* Oracle Java: 7, 8, 8, ant, maven (default 8)
-	* Julia lang
-	* Clojure and Lein
-	* Haskell platform (optional)
-	* Ruby and rvm
-	* Go Lang
-	* Scala and sbt
-	* Rust and rsvm
+* python and pyenv
+* node and nodenv
+* docker & virtualbox
+* rust & rustup.rs
+* php and composer
+* apache
+* mariadb
+* oracle java 7, 8, 9, ant, maven
+* scala and sbt
+* julia lang
+* clojure and lein
+* haskell platform
+* ruby and rvm
+* go Lang
+* scala and sbt
+* nix
 
-
+### ./dotfiles shell
+Install zhs and ohmyzhs, for bash it will install liquidpromt. It also create symbolic links from this repo to you home.
 
 ### ./dotfiles vim
 This command will install Vim and Vunndle package manager. Vimrc nad vundle.vim files will be symlinked to you home directory and overwrite existing one.
@@ -64,10 +75,9 @@ Add/Remove plugins in vim/vundle.vim
 
 
 ### ./dotfiles sublime
-This will add ppa for Sublime Text 3, it will also install Package Manager and plugins listed in sublime/Package\ Control.sublime-settings. 
-Again configuration files will be symlinked to Sublime packages folder. 
+This will add ppa for Sublime Text 3, it will also install Package Manager and plugins listed in sublime/Package\ Control.sublime-settings.
+Again configuration files will be symlinked to Sublime packages folder.
 
-### bash and zhs config (in-progress)
-```sh
-./dotfiles shell
-```
+
+### ./dotfile atom
+Install Atom editor
