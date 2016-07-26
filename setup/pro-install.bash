@@ -210,7 +210,10 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             sudo apt-get -y install scala
-            sudo apt-get -y install sbt
+            echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
+            sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
+            sudo apt-get update -qq
+            sudo apt-get install -y sbt
             break;;
         No ) break;;
     esac
