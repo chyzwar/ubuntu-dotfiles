@@ -14,8 +14,8 @@ select yn in "Yes" "No"; do
             source ~/.bashrc && source ~/.zshrc
 
             pyenv install 2.7.8
-            pyenv install 3.4.2
-            pyenv global 2.7.8
+            pyenv install 3.5.2
+            pyenv global 3.5.2
             sudo apt-get install -y python-pip
             sudo pip install virtualenvwrapper jedi
             break;;
@@ -40,7 +40,7 @@ select yn in "Yes" "No"; do
             eval "$(nodenv init -)"
 
 
-            node_versions=(4.2.4 5.4.0 6.0.0)
+            node_versions=(4.5.0 5.4.0 6.5.0)
             for version in "${node_versions[@]}"
             do
                 echo "Installing node version" "$version"
