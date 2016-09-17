@@ -17,11 +17,17 @@
 		"node_modules/**"
 	],
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
-	"font_size": 17,
+	"color_scheme": "Packages/User/SublimeLinter/Monokai Extended (SL).tmTheme",
+	"font_size": 19,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
+	],
+	"ignored_words":
+	[
+		"http",
+		"https",
+		"param"
 	],
 	"index_exclude_patterns":
 	[
