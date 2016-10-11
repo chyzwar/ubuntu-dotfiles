@@ -128,7 +128,7 @@ tput setaf 1; echo "Do you want to install Steam"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo apt-get install steam
+            sudo apt-get -y install steam
             break;;
         No ) break;;
     esac
