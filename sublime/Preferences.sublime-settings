@@ -17,17 +17,21 @@
 		"node_modules/**"
 	],
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/User/SublimeLinter/Monokai Extended (SL).tmTheme",
+	"close_windows_when_empty": false,
+	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
 	"font_size": 19,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
+		"Vintage"
 	],
 	"ignored_words":
 	[
 		"http",
 		"https",
-		"param"
+		"middleware",
+		"param",
+		"utils"
 	],
 	"index_exclude_patterns":
 	[
@@ -35,6 +39,5 @@
 		"build/*",
 		"node_modules/*"
 	],
-	"tab_size": 4,
-	"typescript_plugin_tsc_version": "1.7.2"
+	"tab_size": 4
 }

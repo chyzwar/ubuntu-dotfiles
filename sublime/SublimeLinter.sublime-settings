@@ -43,6 +43,11 @@
                 "excludes": [],
                 "lint": ""
             },
+            "jshint": {
+                "@disable": false,
+                "args": [],
+                "excludes": []
+            },
             "json": {
                 "@disable": false,
                 "args": [],
@@ -63,6 +68,12 @@
                 "@disable": false,
                 "args": [],
                 "excludes": []
+            },
+            "puglint": {
+                "@disable": false,
+                "args": [],
+                "excludes": [],
+                "reporter": "inline"
             },
             "rust": {
                 "@disable": false,

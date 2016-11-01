@@ -39,6 +39,18 @@ select yn in "Yes" "No"; do
 done
 
 
+tput setaf 1; echo "Do you want to install Zeal - Documentation"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            sudo add-apt-repository -y ppa:zeal-developers/ppa
+            sudo apt-get update -qq
+            sudo apt-get install -y zeal
+            break;;
+        No ) break;;
+    esac
+done
+
 
 
 

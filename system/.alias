@@ -42,4 +42,5 @@ done
 # Speed Test
 alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
 
-
+#Misc
+alias rd="rustup doc --book"

@@ -116,6 +116,13 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path
+            rustup completions bash > /etc/bash_completion.d/rustup
+
+            rustup install nightly
+            rustup default nightly
+
+            cargo install clippy
+            cargo install racer
             break;;
         No ) break;;
     esac
