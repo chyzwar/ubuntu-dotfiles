@@ -106,6 +106,18 @@ select yn in "Yes" "No"; do
 done
 
 
+tput setaf 1; echo "Do you want to install PPA Manager"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            sudo add-apt-repository ppa:webupd8team/y-ppa-manager
+            sudo apt-get update -qq
+            sudo apt-get install -y  y-ppa-manager
+            break;;
+        No ) break;;
+    esac
+done
+
 
 
 
