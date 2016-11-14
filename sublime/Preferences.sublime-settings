@@ -32,7 +32,11 @@
 		"https",
 		"middleware",
 		"param",
-		"utils"
+		"utils",
+		"middlewares",
+		"nexting",
+		"param",
+		"req"
 	],
 	"index_exclude_patterns":
 	[

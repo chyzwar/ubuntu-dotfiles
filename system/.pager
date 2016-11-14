@@ -2,6 +2,7 @@
 # https://github.com/rkitover/vimpager
 
 export PAGER=/opt/vimpager/vimpager
+export PATH=$PAGER:$PATH
 
 alias less=$PAGER/vimpager
 alias zless=$PAGER/vimpager
