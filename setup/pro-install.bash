@@ -323,7 +323,9 @@ tput setaf 1; echo "Do you want install Crystal and crenv"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            curl -L https://raw.github.com/pine/crenv/master/install.sh | bash
+            git clone https://github.com/pine/crenv.git ~/.crenv
+            git clone https://github.com/pine/crystal-build.git ~/.crenv/plugins/crystal-build
+            git clone https://github.com/pine/crenv-update.git ~/.crenv/plugins/crenv-update
 
             export PATH="$HOME/.crenv/bin:$PATH"
             eval "$(crenv init -)"
