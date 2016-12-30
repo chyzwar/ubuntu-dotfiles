@@ -57,14 +57,12 @@ select yn in "Yes" "No"; do
                 npm install -g --depth 0 http-server
                 npm install -g --depth 0 bower
                 npm install -g --depth 0 karma
-                npm install -g --depth 0 browserify
                 npm install -g --depth 0 eslint
                 npm install -g --depth 0 eslint-plugin-react
                 npm install -g --depth 0 npm-check-updates
                 npm install -g --depth 0 htmlhint
                 npm install -g --depth 0 csslint
                 npm install -g --depth 0 elm
-                npm install -g --depth 0 purescript
             done
 
             break;;
@@ -320,6 +318,26 @@ select yn in "Yes" "No"; do
         No ) break;;
     esac
 done
+
+tput setaf 1; echo "Do you want install Crystal and crenv"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            curl -L https://raw.github.com/pine/crenv/master/install.sh | bash
+
+            export PATH="$HOME/.crenv/bin:$PATH"
+            eval "$(crenv init -)"
+
+            crenv install 0.20.3
+            crenv global 0.20.3
+            crenv rehash
+            break;;
+        No ) break;;
+    esac
+done
+
+
+curl -L https://raw.github.com/pine/crenv/master/install.sh | bash
 
 
 tput setaf 1; echo "Do you want to install nix"; tput sgr0
