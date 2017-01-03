@@ -83,9 +83,12 @@
     # List contributors with number of commits
     contributors = shortlog --summary --numbered
 
+    #in parralle execute git in dirs
+    all = "!f() { ls | xargs -I{} git -C {} $1; };f"
+
     #unstage
     unstage = reset --hard HEAD
- 
+
 	# List files ignored by .gitignore and friends
 	show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
 
