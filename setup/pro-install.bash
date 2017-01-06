@@ -48,7 +48,6 @@ select yn in "Yes" "No"; do
                 nodenv global "$version"
 
                 npm install -g --depth 0 npm
-                npm install -g --depth 0 grunt
                 npm install -g --depth 0 grunt-cli
                 npm install -g --depth 0 gulp
                 npm install -g --depth 0 yo
