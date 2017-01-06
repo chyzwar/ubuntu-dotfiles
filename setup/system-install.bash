@@ -22,6 +22,8 @@ sudo apt-get install -y alacarte
 sudo apt-get install -y mercurial
 sudo apt-get install -y openssh-client
 sudo apt-get install -y openssh-server
+sudo apt-get install -y dirnenv
+
 
 
 
