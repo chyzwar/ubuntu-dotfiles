@@ -184,16 +184,13 @@ done
 
 
 
-tput setaf 1; echo "Do you want install Java 7,8,9 and tools"; tput sgr0
+tput setaf 1; echo "Do you want install Java 8,9 and tools"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo add-apt-repository -y ppa:webupd8team/java
-            sudo apt-get update -qq
-            sudo apt-get install -y oracle-java7-installer
-            sudo apt-get install -y oracle-java8-installer
-            sudo apt-get install -y oracle-java9-installer
-            sudo update-java-alternatives -s java-8-oracle
+            sudo apt-get install openjdk-8-jdk
+            sudo apt-get install openjdk-9-jdk
+            sudo update-java-alternatives -s java-1.8.0-openjdk-amd64
 
             sudo apt-get install -y maven
             sudo apt-get install -y gradle

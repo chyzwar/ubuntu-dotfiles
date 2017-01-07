@@ -34,7 +34,8 @@ This option will install system tools and related software.
 * gimp
 * libreoffice
 * gnome shell
-* openssh-client & openssh-server
+* openssh-client
+* openssh-server
 * docky & plank
 * dropbox
 * chrome
@@ -51,12 +52,13 @@ This options will install programming languages and tooling
 * php and composer
 * apache
 * mariadb
-* oracle java 7, 8, 9, ant, maven
+* open java 8, 9, ant, maven
 * scala and sbt
 * julia lang
 * clojure and lein
 * haskell platform
 * ruby and rvm
+* crystal and crenv
 * go Lang
 * scala and sbt
 * nix
