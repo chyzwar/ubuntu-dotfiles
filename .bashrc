@@ -29,13 +29,13 @@ fi
 
 
 # Finally we can source the dotfiles (order matters)
-for DOTFILE in "$DOTFILES_DIR"/system/.{env,prompt,function,path,alias,pager,completion,grep,custom}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{env,completion,function,path,alias,pager,completion,grep,liquid}; do
     [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 
 # Source bash dotfiles
 if $SHELL_BASH; then
-    for DOTFILE in "$DOTFILES_DIR"/system/.*.bash; do
+    for DOTFILE in "$DOTFILES_DIR"/bash/.*; do
         [ -f "$DOTFILE" ] && source "$DOTFILE"
     done
 fi

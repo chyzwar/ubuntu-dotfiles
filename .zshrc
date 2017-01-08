@@ -1,6 +1,6 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
-
+echo "zhs doing"
 # Get path for current path
 SCRIPT_PATH=$(readlink -f "${(%):-%x}")
 
@@ -15,7 +15,7 @@ done
 
 
 # Source zhs dotfiles
-for DOTFILE in "$DOTFILES_DIR"/system/.*.zsh; do
+for DOTFILE in "$DOTFILES_DIR"/zhs/.*; do
     [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 
@@ -31,5 +31,4 @@ unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
 
 # Export
 export OS DOTFILES_DIR
-
 
