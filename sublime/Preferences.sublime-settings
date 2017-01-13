@@ -19,11 +19,10 @@
 	"bold_folder_labels": true,
 	"close_windows_when_empty": false,
 	"color_scheme": "Packages/User/SublimeLinter/Monokai Extended (SL).tmTheme",
-	"font_size": 26,
+	"font_size": 24,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Makefile",
 		"Vintage"
 	],
 	"ignored_words":
