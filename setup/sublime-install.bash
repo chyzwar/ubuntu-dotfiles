@@ -19,7 +19,7 @@ ln -sfv $DIR/../sublime/Package\ Control.sublime-settings ~/.config/sublime-text
 ln -sfv $DIR/../sublime/Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 ln -sfv $DIR/../sublime/Python.sublime-settings ~/.config/sublime-text-3/Packages/User/Python.sublime-settings
 ln -sfv $DIR/../sublime/SublimeLinter.sublime-settings ~/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings
-ln -sfv $DIR/../sublime/pathway.py ~/.config/sublime-text-3/Packages/User/pathway.py
+ln -sfv $DIR/../sublime/SublimePathway.py ~/.config/sublime-text-3/Packages/User/SublimePathway.py
 
 echo "Install Package Manager"
 wget https://packagecontrol.io/Package%20Control.sublime-package
