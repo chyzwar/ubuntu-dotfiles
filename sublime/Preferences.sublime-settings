@@ -14,12 +14,13 @@
 		"*.tga",
 		"*.ttf",
 		"*.zip",
+		".shards/**",
 		"node_modules/**"
 	],
 	"bold_folder_labels": true,
 	"close_windows_when_empty": false,
 	"color_scheme": "Packages/User/SublimeLinter/Monokai Extended (SL).tmTheme",
-	"font_size": 24,
+	"font_size": 21,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
