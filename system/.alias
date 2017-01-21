@@ -11,6 +11,10 @@ alias _="sudo"
 alias g="git"
 alias v="vim"
 
+#Enable colors
+alias ls='ls --color'
+alias grep='grep --color'
+
 #show permisions
 alias perms="stat -c '%A %a %n' *"
 
