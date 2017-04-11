@@ -1,4 +1,15 @@
 {
+	"auto_complete_triggers":
+	[
+		{
+			"characters": "<",
+			"selector": "text.html"
+		},
+		{
+			"characters": ".",
+			"selector": "source.js"
+		}
+	],
 	"binary_file_patterns":
 	[
 		"*.dds",
@@ -29,14 +40,11 @@
 	],
 	"ignored_words":
 	[
-		"Regexp",
 		"http",
 		"https",
 		"middleware",
 		"param",
 		"utils",
-		"middlewares",
-		"nexting",
 		"param",
 		"req"
 	],
