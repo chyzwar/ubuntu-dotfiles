@@ -54,5 +54,6 @@
 		"build/*",
 		"node_modules/*"
 	],
-	"tab_size": 4
+	"tab_size": 4,
+	"theme": "Default.sublime-theme"
 }
