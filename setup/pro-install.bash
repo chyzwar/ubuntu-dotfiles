@@ -11,7 +11,9 @@ select yn in "Yes" "No"; do
 
             git clone https://github.com/yyuu/pyenv.git ~/.pyenv
             git clone https://github.com/yyuu/pyenv-pip-rehash.git ~/.pyenv/plugins/pyenv-pip-rehash
-            source ~/.bashrc && source ~/.zshrc
+            
+            export PATH="$HOME/.pyenv/bin:$PATH"
+            eval "$(pyenv init -)"
 
             pyenv install 2.7.8
             pyenv install 3.5.2
