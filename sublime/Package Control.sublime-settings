@@ -73,6 +73,7 @@
 		"SublimeLinter-csslint",
 		"SublimeLinter-javac",
 		"SublimeLinter-jshint",
+		"SublimeLinter-json",
 		"SublimeLinter-php",
 		"SublimeLinter-phplint",
 		"SublimeLinter-shellcheck",

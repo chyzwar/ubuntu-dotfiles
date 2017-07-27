@@ -22,13 +22,15 @@ vim +PluginInstall +qall
 TERM=screen-256color
 
 #  Compile YouCompleteMe
-cd $BUNDLE_DIR/YouCompleteMe 
+cd $BUNDLE_DIR/YouCompleteMe
 ./install.sh --clang-completer
+cd -
 
 #Intall vimpager
 #https://github.com/rkitover/vimpager
-sudo git clone https://github.com/rkitover/vimpager.git /opt/vimpager
+git clone git://github.com/rkitover/vimpager ~/.vimpager
+cd ~/.vimpager
 sudo apt-get install -y pandoc
 sudo apt-get install -y sharutils
-cd /opt/vimpager
 sudo make install-deb
+cd -
