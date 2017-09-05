@@ -70,6 +70,7 @@
 		"SublimeLinter-contrib-scss-lint",
 		"SublimeLinter-contrib-sqlint",
 		"SublimeLinter-contrib-sublime-syntax",
+		"SublimeLinter-contrib-tslint",
 		"SublimeLinter-csslint",
 		"SublimeLinter-javac",
 		"SublimeLinter-jshint",
@@ -84,6 +85,7 @@
 		"tern_for_sublime",
 		"TOML",
 		"TypeScript",
-		"Unicode Character Highlighter"
+		"Unicode Character Highlighter",
+		"VimL"
 	]
 }

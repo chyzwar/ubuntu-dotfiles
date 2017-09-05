@@ -53,6 +53,9 @@ Plugin 'marijnh/tern_for_vim'
 Plugin 'tpope/vim-markdown'
 Plugin 'mattn/emmet-vim'
 
+" Rust
+Plugin 'rust-lang/rust.vim'
+
 call vundle#end()
 
 "Filetype plugin indent on is required by vundle
