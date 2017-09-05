@@ -22,7 +22,7 @@ vim +PluginInstall +qall
 TERM=screen-256color
 
 #  Compile YouCompleteMe
-cd $BUNDLE_DIR/YouCompleteMe 
+cd $BUNDLE_DIR/YouCompleteMe
 ./install.sh --clang-completer
 
 #Intall vimpager

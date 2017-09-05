@@ -14,8 +14,9 @@ sub_help () {
     echo "   reload             Reload dotfiles"
     echo "   sublime            Install  Sublime Text 3 and custom plugins"
     echo "   atom               Install  Atom text editor"
-    echo "   emacs              Install  emacs and spacemac "
+    echo "   emacs              Install  Emacs and spacemac "
     echo "   vim                Install  Vim and custom plugins using Vundle"
+    echo "   vscode             Install  VSCode"
     echo "   all                Install  using all options"
 }
 
@@ -57,6 +58,11 @@ sub_emacs () {
     bash setup/emacs-install.bash
 }
 
+sub_vscode () {
+    sudo chmod +x setup/vscode-install.bash
+    bash setup/vscode-install.bash
+}
+
 sub_all () {
     sub_shell
     sub_system
@@ -65,6 +71,7 @@ sub_all () {
     sub_atom
     sub_vim
     sub_emacs
+    sub_vscode
 }
 
 
