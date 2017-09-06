@@ -1,7 +1,3 @@
-# change graphic envs
-alias gnomer="gnome-shell --replace"
-alias uniter="unity --replace"
-
 # switch between zhs and bash
 alias zsher="chsh -s $(which zsh) && source ~/.bashrc && reset"
 alias basher="chsh -s $(which bash) && source ~/.zhsrc && reset"
@@ -11,7 +7,7 @@ alias _="sudo"
 alias g="git"
 alias v="vim"
 
-#Enable colors
+#enable colors
 alias ls='ls --color'
 alias grep='grep --color'
 
@@ -27,7 +23,7 @@ if $(is-supported "alias -g"); then
 fi
 
 # List declared aliases
-alias listaliases="alias | sed 's/=.*//'"
+alias aliases="alias | sed 's/=.*//'"
 
 # show non _prefixed functions
 alias listfunctions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
@@ -45,6 +41,3 @@ done
 
 # Speed Test
 alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
-
-#Misc
-alias rd="rustup doc --book"
