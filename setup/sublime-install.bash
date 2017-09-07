@@ -8,11 +8,6 @@ echo "deb https://download.sublimetext.com/ apt/dev/" | sudo tee /etc/apt/source
 sudo apt-get update -qq
 sudo apt-get install sublime-text -y
 
-
-# echo "Install Missing Linters"
-sudo apt-get install -y libxml2-utils
-sudo apt-get install -y shellcheck
-
 echo "Links List of Plugins and Settings"
 ln -sfv $DIR/../sublime/Default.sublime-theme ~/.config/sublime-text-3/Packages/User/Default.sublime-theme
 ln -sfv $DIR/../sublime/Package\ Control.sublime-settings ~/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings
