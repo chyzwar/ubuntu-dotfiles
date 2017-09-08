@@ -8,16 +8,13 @@ sudo apt-get upgrade dist
 
 
 #install basic utilities
-tput setaf 2; echo "Install git, curl, shutter, zips"; tput sgr0
+tput setaf 2; echo "Install git, curl, zips"; tput sgr0
 sudo apt-get install -y curl
 sudo apt-get install -y wget
-sudo apt-get install -y shutter
-sudo apt-get install -y bzip2 libbz2-dev
 sudo apt-get install -y tree
 sudo apt-get install -y ppa-purge
 sudo apt-get install -y git
 sudo apt-get install -y git-flow
-sudo apt-get install -y unity-tweak-tool
 sudo apt-get install -y alacarte
 sudo apt-get install -y mercurial
 sudo apt-get install -y openssh-client
@@ -25,21 +22,11 @@ sudo apt-get install -y openssh-server
 sudo apt-get install -y dirnenv
 sudo apt-get install -y shellcheck
 
+tput setaf 2; echo "Install chrome, vlc, libreoffice"; tput sgr0
+sudo snap install chromium
+sudo snap install vlc
+sudo snap install libreoffice
 
-
-
-tput setaf 1; echo "Do you want to install LibreOffice prerealse"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo apt-get purge -y libreoffice-core
-            sudo add-apt-repository -y ppa:libreoffice/libreoffice-prereleases
-            sudo apt-get update -qq
-            sudo apt-get install -y libreoffice
-            break;;
-        No ) break;;
-    esac
-done
 
 
 tput setaf 1; echo "Do you want to install Zeal - Documentation"; tput sgr0
