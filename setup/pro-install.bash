@@ -42,7 +42,7 @@ select yn in "Yes" "No"; do
             eval "$(nodenv init -)"
 
 
-            node_versions=(4.5.0 5.4.0 6.5.0)
+            node_versions=(6.9.0 8.4.0)
             for version in "${node_versions[@]}"
             do
                 echo "Installing node version" "$version"
@@ -269,7 +269,6 @@ select yn in "Yes" "No"; do
             sudo apt-get install -y haskell-platform-doc
             sudo apt-get install -y haskell-platform-prof
 
-            # Install Stack
             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 575159689BEFB442
             echo 'deb http://download.fpcomplete.com/ubuntu wily main'| sudo tee /etc/apt/sources.list.d/fpco.list
             sudo apt-get update -qq
