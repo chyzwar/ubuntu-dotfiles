@@ -33,16 +33,17 @@ tput setaf 1; echo "Do you want to install node.js annd tools"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            git clone https://github.com/OiNutter/nodenv.git ~/.nodenv
+            git clone https://github.com/nodenv/nodenv.git ~/.nodenv
             cd ~/.nodenv && src/configure && make -C src
-            git clone https://github.com/OiNutter/node-build.git ~/.nodenv/plugins/node-build
+            git clone https://github.com/nodenv/node-build.git ~/.nodenv/plugins/node-build
             git clone https://github.com/nodenv/node-build-update-defs.git ~/.nodenv/plugins/node-build-update-defs
+            git clone https://github.com/nodenv/nodenv-default-packages.git ~/.nodenv/plugins/nodenv-default-packages
 
             export PATH="$HOME/.nodenv/bin:$PATH"
             eval "$(nodenv init -)"
 
 
-            node_versions=(6.9.0 8.4.0)
+            node_versions=(8.5.0)
             for version in "${node_versions[@]}"
             do
                 echo "Installing node version" "$version"
@@ -51,12 +52,7 @@ select yn in "Yes" "No"; do
 
                 npm install -g --depth 0 npm
                 npm install -g --depth 0 grunt-cli
-                npm install -g --depth 0 gulp
-                npm install -g --depth 0 yo
                 npm install -g --depth 0 karma
-                npm install -g --depth 0 nodemon
-                npm install -g --depth 0 http-server
-                npm install -g --depth 0 bower
                 npm install -g --depth 0 karma
                 npm install -g --depth 0 eslint
                 npm install -g --depth 0 eslint-plugin-react
@@ -65,7 +61,6 @@ select yn in "Yes" "No"; do
                 npm install -g --depth 0 csslint
                 npm install -g --depth 0 elm
             done
-
             break;;
         No ) break;;
     esac
@@ -242,7 +237,7 @@ done
 
 
 
-tput setaf 1; echo "Do you want install Julia??"; tput sgr0
+tput setaf 1; echo "Do you want install Julia?"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -334,9 +329,6 @@ select yn in "Yes" "No"; do
         No ) break;;
     esac
 done
-
-
-curl -L https://raw.github.com/pine/crenv/master/install.sh | bash
 
 
 tput setaf 1; echo "Do you want to install nix"; tput sgr0

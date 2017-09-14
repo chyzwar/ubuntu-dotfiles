@@ -24,21 +24,19 @@ This will show list of options. Use branch coresponding to Ubuntu version.
 ### ./dotfiles system
 This option will install system tools and related software.
 
-* curl and wget
-* shutter
-* unity tweak tool
+* curl
+* wget
 * ppa-purge
 * mercurial
 * alacarte
 * dropbox
 * gimp
 * libreoffice
-* gnome shell
 * openssh-client
 * openssh-server
-* docky & plank
 * dropbox
 * chrome
+* chromium
 * spotify
 * picard
 
