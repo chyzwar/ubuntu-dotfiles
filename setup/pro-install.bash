@@ -5,21 +5,21 @@ tput setaf 1; echo "Do you want to install Python Tools"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo apt-get install -y make build-essential
-            sudo apt-get install -y libssl-dev zlib1g-dev libbz2-dev
-            sudo apt-get install -y libreadline-dev libsqlite3-dev  llvm libncurses5-dev
-
-            git clone https://github.com/yyuu/pyenv.git ~/.pyenv
-            git clone https://github.com/yyuu/pyenv-pip-rehash.git ~/.pyenv/plugins/pyenv-pip-rehash
+            git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+            git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+            git clone https://github.com/pyenv/pyenv-update.git ~/.pyenv/plugins/pyenv-update
+            git clone https://github.com/pyenv/pyenv-pip-rehash.git ~/.pyenv/plugins/pyenv-pip-rehash
 
             export PATH="$HOME/.pyenv/bin:$PATH"
             eval "$(pyenv init -)"
 
-            pyenv install 2.7.8
-            pyenv install 3.5.2
-            pyenv global 3.5.2
+            pyenv install 2.7.13
+            pyenv install 3.6.2
+            pyenv global 3.6.2
+
             sudo apt-get install -y python-pip
-            sudo pip install virtualenvwrapper jedi
+            sudo pip install virtualenvwrapper
+            sudo pip install jedi
             break;;
         No ) break;;
     esac
@@ -53,7 +53,6 @@ select yn in "Yes" "No"; do
                 npm install -g --depth 0 npm
                 npm install -g --depth 0 grunt-cli
                 npm install -g --depth 0 karma
-                npm install -g --depth 0 karma
                 npm install -g --depth 0 eslint
                 npm install -g --depth 0 eslint-plugin-react
                 npm install -g --depth 0 npm-check-updates
@@ -75,14 +74,10 @@ tput setaf 1; echo "Do you want to install docker"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo apt-get update -qq
-            sudo apt-get install -y docker.io
-            sudo service docker start
-
             sudo groupadd docker
             sudo gpasswd -a "${USER} docker"
-            sudo service docker restart
 
+            sudo snap install docker
             sudo docker run hello-world
             break;;
         No ) break;;
