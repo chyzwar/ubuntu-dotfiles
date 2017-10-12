@@ -39,6 +39,18 @@ select yn in "Yes" "No"; do
             break;;
         No ) break;;
     esac
+
+
+tput setaf 1; echo "Do you want to install Firefox Nightly"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            sudo add-apt-repository -y ppa:ubuntu-mozilla-daily/ppa
+            sudo apt-get update -qq
+            sudo apt-get install -y firefox-trunk
+            break;;
+        No ) break;;
+    esac
 done
 
 
