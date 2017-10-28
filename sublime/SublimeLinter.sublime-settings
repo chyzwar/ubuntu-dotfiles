@@ -1,7 +1,7 @@
 {
     "user": {
         "debug": true,
-        "delay": 0.25,
+        "delay": 0.1,
         "error_color": "D02000",
         "gutter_theme": "Packages/SublimeLinter/gutter-themes/Default/Default.gutter-theme",
         "gutter_theme_excludes": [],
@@ -31,6 +31,13 @@
                 "@disable": false,
                 "args": [],
                 "excludes": []
+            },
+            "flow": {
+                "@disable": false,
+                "args": [],
+                "excludes": [],
+                "flow-bin": null,
+                "show-all-errors": true
             },
             "htmlhint": {
                 "@disable": false,
@@ -112,6 +119,11 @@
                 "args": [],
                 "excludes": []
             },
+            "tslint": {
+                "@disable": false,
+                "args": [],
+                "excludes": []
+            },
             "xmllint": {
                 "@disable": false,
                 "args": [],
@@ -172,6 +184,10 @@
             "yaml (stylelint)": "yaml",
             "yaml (yarn)": "yaml"
         },
+        "tooltip_fontsize": "1rem",
+        "tooltip_theme": "Packages/SublimeLinter/tooltip-themes/Default/Default.tooltip-theme",
+        "tooltip_theme_excludes": [],
+        "tooltips": false,
         "warning_color": "DDB700",
         "wrap_find": true
     }
