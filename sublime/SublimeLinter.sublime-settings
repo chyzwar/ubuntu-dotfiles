@@ -19,6 +19,20 @@
                 "extra_flags": "",
                 "include_dirs": []
             },
+            "cppcheck": {
+                "@disable": false,
+                "args": [],
+                "enable": "style",
+                "excludes": [],
+                "std": []
+            },
+            "cpplint": {
+                "@disable": false,
+                "args": [],
+                "excludes": [],
+                "filter": "",
+                "linelength": ""
+            },
             "csslint": {
                 "@disable": false,
                 "args": [],
