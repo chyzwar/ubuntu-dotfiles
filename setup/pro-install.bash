@@ -13,9 +13,8 @@ select yn in "Yes" "No"; do
             export PATH="$HOME/.pyenv/bin:$PATH"
             eval "$(pyenv init -)"
 
-            pyenv install 2.7.13
-            pyenv install 3.6.2
-            pyenv global 3.6.2
+            pyenv install 3.6.3
+            pyenv global 3.6.3
 
             sudo apt-get install -y python-pip
             sudo pip install virtualenvwrapper
@@ -43,7 +42,7 @@ select yn in "Yes" "No"; do
             eval "$(nodenv init -)"
 
 
-            node_versions=(8.5.0)
+            node_versions=(8.6.0)
             for version in "${node_versions[@]}"
             do
                 echo "Installing node version" "$version"
@@ -64,9 +63,6 @@ select yn in "Yes" "No"; do
         No ) break;;
     esac
 done
-
-
-
 
 
 

@@ -18,7 +18,7 @@ ln -sfv $DIR/../sublime/SublimePathway.py ~/.config/sublime-text-3/Packages/User
 
 echo "Install Package Manager"
 PACKAGE_MANAGER_URL="https://packagecontrol.io/Package%20Control.sublime-package"
-PACKAGE_MANAGER_DIR="/home/$USER/.config/sublime-text-3/Installed Packages/"
+PACKAGE_MANAGER_DIR="/home/$USER/.config/sublime-text-3/Installed\ Packages/"
 
 wget "${PACKAGE_MANAGER_URL}" -P "${PACKAGE_MANAGER_DIR}"
 

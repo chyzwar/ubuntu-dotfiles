@@ -21,12 +21,12 @@ sudo apt-get install -y openssh-client
 sudo apt-get install -y openssh-server
 sudo apt-get install -y dirnenv
 sudo apt-get install -y shellcheck
+sudo apt-get install -y gnome-tweak-tool
+sudo apt-get install -y gnome-shell-extensions
 
-tput setaf 2; echo "Install chrome, vlc, libreoffice"; tput sgr0
+tput setaf 2; echo "Install chrome, vlc"; tput sgr0
 sudo snap install chromium
 sudo snap install vlc
-sudo snap install libreoffice
-
 
 
 tput setaf 1; echo "Do you want to install Zeal - Documentation"; tput sgr0
@@ -39,6 +39,7 @@ select yn in "Yes" "No"; do
             break;;
         No ) break;;
     esac
+done
 
 
 tput setaf 1; echo "Do you want to install Firefox Nightly"; tput sgr0
@@ -53,6 +54,15 @@ select yn in "Yes" "No"; do
     esac
 done
 
+tput setaf 1; echo "Do you want to install Arc theme"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            sudo apt-get install -y arc-theme
+            break;;
+        No ) break;;
+    esac
+done
 
 
 
@@ -68,30 +78,6 @@ select yn in "Yes" "No"; do
         No ) break;;
     esac
 done
-
-
-
-
-
-tput setaf 1; echo "Do you want to install Gnome Shell"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo add-apt-repository -y ppa:gnome3-team/gnome3-staging
-            sudo add-apt-repository -y ppa:gnome3-team/gnome3
-            sudo apt-get update -qq
-            sudo apt-get dist-upgrade
-            sudo apt-get install -y gnome gnome-shell
-            sudo apt-get install -y gnome-tweak-tool
-            sudo apt-get install -y gdm
-            sudo dpkg-reconfigure gdm
-            break;;
-        No ) break;;
-    esac
-done
-
-
-
 
 
 
