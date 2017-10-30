@@ -23,6 +23,8 @@ sudo apt-get install -y dirnenv
 sudo apt-get install -y shellcheck
 sudo apt-get install -y gnome-tweak-tool
 sudo apt-get install -y gnome-shell-extensions
+sudo apt-get install -y snapd
+sudo apt-get install -y snapcraft
 
 tput setaf 2; echo "Install chrome, vlc"; tput sgr0
 sudo snap install chromium

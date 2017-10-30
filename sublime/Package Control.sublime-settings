@@ -2,18 +2,6 @@
 	"bootstrapped": true,
 	"in_process_packages":
 	[
-		"AngularJS",
-		"Ansible",
-		"Color Highlighter",
-		"Emmet",
-		"ESLint-Formatter",
-		"Flow",
-		"Handlebars",
-		"Markdown Extended",
-		"SublimeLinter-contrib-clang",
-		"SublimeLinter-contrib-eslint",
-		"SublimeLinter-contrib-pug-lint",
-		"Unicode Character Highlighter"
 	],
 	"installed_packages":
 	[
@@ -32,6 +20,7 @@
 		"ClojureDocSearch",
 		"Color Highlighter",
 		"Crystal",
+		"CustomPATH",
 		"DocBlockr",
 		"Dockerfile Syntax Highlighting",
 		"EditorConfig",

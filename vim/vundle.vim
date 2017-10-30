@@ -39,7 +39,6 @@ Plugin 'altercation/vim-colors-solarized'
 
 " Completion & snippets
 
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 

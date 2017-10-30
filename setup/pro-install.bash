@@ -70,8 +70,9 @@ tput setaf 1; echo "Do you want to install docker"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo groupadd docker
-            sudo gpasswd -a "${USER} docker"
+            sudo addgroup --system docker
+            sudo adduser "$USER" docker
+            newgrp docker
 
             sudo snap install docker
             sudo docker run hello-world

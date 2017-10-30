@@ -17,6 +17,7 @@ sub_help () {
     echo "   emacs              Install  Emacs and spacemac "
     echo "   vim                Install  Vim and custom plugins using Vundle"
     echo "   vscode             Install  VSCode"
+    echo "   vimpager           Install  Vimpager"
     echo "   all                Install  using all options"
 }
 
@@ -40,8 +41,8 @@ sub_shell () {
 }
 
 sub_sublime () {
-    sudo chmod +x setup/sublime-install.bash
-    bash setup/sublime-install.bash
+    sudo chmod +x sublime/sublime-install.bash
+    bash sublime/sublime-install.bash
 }
 
 sub_atom () {
@@ -50,8 +51,8 @@ sub_atom () {
 }
 
 sub_vim () {
-    sudo chmod +x setup/vim-install.bash
-    bash setup/vim-install.bash
+    sudo chmod +x vim/vim-install.bash
+    bash vim/vim-install.bash
 }
 sub_emacs () {
     sudo chmod +x setup/emacs-install.bash
@@ -63,6 +64,11 @@ sub_vscode () {
     bash setup/vscode-install.bash
 }
 
+sub_vimpager () {
+    sudo chmod +x vim/vimpager-install.bash
+    bash vim/vimpager-install.bash
+}
+
 sub_all () {
     sub_shell
     sub_system
@@ -72,6 +78,7 @@ sub_all () {
     sub_vim
     sub_emacs
     sub_vscode
+    sub_vimpager
 }
 
 

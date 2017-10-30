@@ -31,23 +31,11 @@
 	"bold_folder_labels": true,
 	"close_windows_when_empty": false,
 	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
-	"font_size": 15,
+	"font_size": 14,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"AngularJS",
-		"Ansible",
-		"Color Highlighter",
-		"Emmet",
-		"ESLint-Formatter",
-		"Flow",
-		"Handlebars",
 		"Makefile",
-		"Markdown Extended",
-		"SublimeLinter-contrib-clang",
-		"SublimeLinter-contrib-eslint",
-		"SublimeLinter-contrib-pug-lint",
-		"Unicode Character Highlighter",
 		"Vintage"
 	],
 	"ignored_words":
