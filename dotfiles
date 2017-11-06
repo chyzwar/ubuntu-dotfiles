@@ -70,7 +70,6 @@ sub_vimpager () {
 }
 
 sub_all () {
-    sub_shell
     sub_system
     sub_pro
     sub_sublime
@@ -79,6 +78,7 @@ sub_all () {
     sub_emacs
     sub_vscode
     sub_vimpager
+    sub_shell
 }
 
 

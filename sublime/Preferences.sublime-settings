@@ -30,7 +30,7 @@
 	],
 	"bold_folder_labels": true,
 	"close_windows_when_empty": false,
-	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
 	"font_size": 14,
 	"highlight_modified_tabs": true,
 	"ignored_packages":

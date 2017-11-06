@@ -1,14 +1,75 @@
 {
+	"auto_upgrade": true,
+	"auto_upgrade_frequency": 1,
+	"auto_upgrade_ignore":
+	[
+	],
 	"bootstrapped": true,
+	"cache_length": 300,
+	"channels":
+	[
+		"https://packagecontrol.io/channel_v3.json"
+	],
+	"debug": false,
+	"dirs_to_ignore":
+	[
+		".hg",
+		".git",
+		".svn"
+	],
+	"downloader_precedence":
+	{
+		"linux":
+		[
+			"urllib",
+			"curl",
+			"wget"
+		]
+	},
+	"enable_tests": false,
+	"files_to_ignore":
+	[
+	],
+	"files_to_include":
+	[
+	],
+	"git_binary":
+	[
+	],
+	"git_update_command":
+	[
+		"pull",
+		"--ff",
+		"--commit"
+	],
+	"hg_binary":
+	[
+	],
+	"hg_update_command":
+	[
+		"pull",
+		"--update"
+	],
+	"http_cache": true,
+	"http_cache_length": 604800,
+	"http_proxy": "",
+	"https_proxy": "",
+	"ignore_vcs_packages":
+	[
+	],
 	"in_process_packages":
+	[
+	],
+	"install_missing": true,
+	"install_prereleases":
 	[
 	],
 	"installed_packages":
 	[
+		"Package Control",
 		"A File Icon",
 		"All Autocomplete",
 		"Anaconda",
-		"AngularJS",
 		"Ansible",
 		"Auto Refresh",
 		"AutoFileName",
@@ -42,7 +103,6 @@
 		"Indent XML",
 		"Jade",
 		"Jasmine JS",
-		"Javascript Beautify",
 		"JSX",
 		"LESS",
 		"lispindent",
@@ -50,9 +110,7 @@
 		"Markdown Preview",
 		"Monokai Extended",
 		"Origami",
-		"Package Control",
 		"paredit",
-		"phpfmt",
 		"PostgreSQL Syntax Highlighting",
 		"ProjectManager",
 		"Pug",
@@ -96,5 +154,39 @@
 		"TypeScript",
 		"Unicode Character Highlighter",
 		"VimL"
-	]
+	],
+	"package_destination": "",
+	"package_name_map":
+	{
+	},
+	"package_profiles":
+	{
+		"Binaries Only":
+		{
+			"files_to_ignore":
+			[
+				"*.py",
+				".hgignore",
+				".gitignore",
+				".bzrignore"
+			],
+			"files_to_include":
+			[
+				"__init__.py"
+			]
+		}
+	},
+	"proxy_password": "",
+	"proxy_username": "",
+	"remove_orphaned": true,
+	"repositories":
+	[
+	],
+	"submit_url": "https://packagecontrol.io/submit",
+	"submit_usage": true,
+	"timeout": 30,
+	"unmanaged_packages_ignore":
+	[
+	],
+	"user_agent": "Package Control v%s"
 }

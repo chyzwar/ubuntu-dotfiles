@@ -1,1 +1,5 @@
-/home/raziel/.config/sublime-text-3/Packages/User/CustomPATH.sublime-settings
+{
+    "override": false,
+    "append_front": false,
+    "PATH":"/home/raziel/.cargo/bin:/home/raziel/.rbenv/shims:/home/raziel/.nodenv/shims:/home/raziel/.crenv/shims:"
+}

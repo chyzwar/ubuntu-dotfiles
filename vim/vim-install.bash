@@ -11,7 +11,7 @@ sudo apt-get install -y build-essential
 echo "Install Vundle"
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle
 
-echo "Install configuration"
+echo "Install Vim configuration"
 ln -sfv "$DIR/.vimrc" "/home/$USER/.vimrc"
 ln -sfv "$DIR/vundle.vim" "/home/$USER/.vim/vundle.vim"
 
