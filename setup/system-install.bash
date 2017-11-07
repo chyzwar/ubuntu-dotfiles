@@ -8,7 +8,7 @@ sudo apt-get upgrade dist
 
 
 #install basic utilities
-tput setaf 2; echo "Install git, curl, zips"; tput sgr0
+tput setaf 2; echo "Install git, curl, zips ..."; tput sgr0
 sudo apt-get install -y curl
 sudo apt-get install -y wget
 sudo apt-get install -y tree
@@ -25,6 +25,7 @@ sudo apt-get install -y gnome-tweak-tool
 sudo apt-get install -y gnome-shell-extensions
 sudo apt-get install -y snapd
 sudo apt-get install -y snapcraft
+sudo apt-get install -y adwaita-icon-theme
 
 tput setaf 2; echo "Install chrome, vlc"; tput sgr0
 sudo snap install chromium
