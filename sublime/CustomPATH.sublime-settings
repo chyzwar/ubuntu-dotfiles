@@ -1,5 +1,5 @@
 {
     "override": false,
     "append_front": false,
-    "PATH":"/home/raziel/.cargo/bin:/home/raziel/.rbenv/shims:/home/raziel/.nodenv/shims:/home/raziel/.crenv/shims:"
+    "PATH":"/home/raziel/.cargo/bin:/home/raziel/.rbenv/shims:/home/raziel/.nodenv/shims:/home/raziel/.crenv/shims"
 }

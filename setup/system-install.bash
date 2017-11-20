@@ -32,6 +32,19 @@ sudo snap install chromium
 sudo snap install vlc
 
 
+tput setaf 1; echo "Do you want to install vanilla Gnome"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            sudo apt install -y gnome-session
+            sudo apt install -y ubuntu-gnome-default-settings
+            sudo apt install -y vanilla-gnome-default-settings
+            sudo apt install -y vanilla-gnome-desktop
+            break;;
+        No ) break;;
+    esac
+done
+
 tput setaf 1; echo "Do you want to install Zeal - Documentation"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in

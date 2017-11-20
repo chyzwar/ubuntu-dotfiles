@@ -42,7 +42,7 @@ select yn in "Yes" "No"; do
             eval "$(nodenv init -)"
 
 
-            node_versions=(8.6.0)
+            node_versions=(8.9.1 9.2.0)
             for version in "${node_versions[@]}"
             do
                 echo "Installing node version" "$version"
@@ -50,11 +50,9 @@ select yn in "Yes" "No"; do
                 nodenv global "$version"
 
                 npm install -g --depth 0 npm
-                npm install -g --depth 0 grunt-cli
-                npm install -g --depth 0 karma
                 npm install -g --depth 0 eslint
                 npm install -g --depth 0 eslint-plugin-react
-                npm install -g --depth 0 npm-check-updates
+                npm install -g --depth 0 npm-check
                 npm install -g --depth 0 htmlhint
                 npm install -g --depth 0 csslint
                 npm install -g --depth 0 elm
@@ -65,21 +63,6 @@ select yn in "Yes" "No"; do
 done
 
 
-
-tput setaf 1; echo "Do you want to install docker"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo addgroup --system docker
-            sudo adduser "$USER" docker
-            newgrp docker
-
-            sudo snap install docker
-            sudo docker run hello-world
-            break;;
-        No ) break;;
-    esac
-done
 
 tput setaf 1; echo "Do you want to install VirtualBox"; tput sgr0
 select yn in "Yes" "No"; do
@@ -334,5 +317,18 @@ select yn in "Yes" "No"; do
 done
 
 
+tput setaf 1; echo "Do you want to install docker"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            sudo addgroup --system docker
+            sudo adduser "$USER" docker
+            newgrp docker
 
+            sudo snap install docker
+            sudo docker run hello-world
+            break;;
+        No ) break;;
+    esac
+done
 
