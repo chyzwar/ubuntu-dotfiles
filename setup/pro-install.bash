@@ -70,9 +70,30 @@ select yn in "Yes" "No"; do
             git clone https://github.com/kerl/kerl ~/.kerl
             export PATH="$HOME/.kerl:$PATH"
 
+            # For Erlang
             sudo apt-get install -y xsltproc
             sudo apt-get install -y libssl-dev
             sudo apt-get install -y fop
+            sudo apt-get install -y unixodbc-dev
+
+            # For Wx
+            sudo apt-get install -y libwxbase3.0-dev
+            sudo apt-get install -y libwxgtk3.0-dev
+            sudo apt-get install -y libgtk3.0
+            sudo apt-get install -y libqt4-opengl-dev
+
+            export KERL_CONFIGURE_OPTIONS="\
+                --disable-native-libs \
+                --enable-vm-probes \
+                --with-dynamic-trace=dtrace \
+                --with-ssl=/usr/local \
+                --with-javac \
+                --enable-hipe \
+                --enable-kernel-poll \
+                --without-odbc \
+                --enable-threads \
+                --enable-sctp \
+                --enable-smp-support"
 
             erlang_versions=(19.3 20.2)
             for version in "${erlang_versions[@]}"
