@@ -25,7 +25,7 @@ sudo apt-get install -y gnome-tweak-tool
 sudo apt-get install -y gnome-shell-extensions
 sudo apt-get install -y snapd
 sudo apt-get install -y snapcraft
-sudo apt-get install -y adwaita-icon-theme
+sudo apt-get install -y libssl-dev
 
 tput setaf 2; echo "Install chrome, vlc"; tput sgr0
 sudo snap install chromium
