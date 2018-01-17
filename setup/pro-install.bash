@@ -114,6 +114,9 @@ select yn in "Yes" "No"; do
                 echo "Installing Erlang version" "$version"
                 kerl install "$version" ~/.kerl/versions/"$version"
             done
+
+            echo "Set 20.2 as default version"
+            . ~/.kerl/versions/20.2/activate
             break;;
         No ) break;;
     esac
@@ -124,17 +127,19 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             git clone https://github.com/taylor/kiex ~/.kiex
-            export PATH="$HOME/.kiex:$PATH"
 
-            elixir_versions=(19.3 20.2)
+            echo "Installing kiex"
+            ~/.kiex/kiex install_kiex
+
+            elixir_versions=(1.5 1.6)
             for version in "${elixir_versions[@]}"
             do
-                echo "Installing Erlang version" "$version"
+                echo "Installing Elixir version" "$version"
                 kiex install "$version"
-
-
-                kiex default "$version"
             done
+
+            echo "Set 1.6 as default version"
+
             break;;
         No ) break;;
     esac
@@ -146,8 +151,10 @@ tput setaf 1; echo "Do you want to install VirtualBox"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            wget -q -O - http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc | sudo apt-key add -
-            sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian wily non-free contrib" >> /etc/apt/sources.list.d/virtualbox.org.list'
+            wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+            wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+
+            sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian artful contrib" >> /etc/apt/sources.list.d/virtualbox.org.list'
             sudo apt-get update -qq
             sudo apt-get install -y virtualbox
             break;;

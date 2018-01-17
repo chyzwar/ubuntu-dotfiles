@@ -18,3 +18,6 @@ export KERL_CONFIGURE_OPTIONS="\
     --enable-threads \
     --enable-sctp \
     --enable-smp-support"
+
+
+. ~/.kerl/versions/20.2/activate
