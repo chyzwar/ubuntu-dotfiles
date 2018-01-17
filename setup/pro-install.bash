@@ -67,30 +67,40 @@ tput setaf 1; echo "Do you want to kerl and erlang"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
+            # Install version manager
             git clone https://github.com/kerl/kerl ~/.kerl
             export PATH="$HOME/.kerl:$PATH"
 
-            # For Erlang
+            # For erlang deps
+            sudo apt-get install -y autoconf
+            sudo apt-get install -y automake
+            sudo apt-get install -y libncurses5-dev
             sudo apt-get install -y xsltproc
             sudo apt-get install -y libssl-dev
             sudo apt-get install -y fop
+            sudo apt-get install -y libxml2-utils
             sudo apt-get install -y unixodbc-dev
+            sudo apt-get install -y systemtap
+            sudo apt-get install -y systemtap-sdt-dev
 
-            # For Wx
+            # For wx deps
             sudo apt-get install -y libwxbase3.0-dev
             sudo apt-get install -y libwxgtk3.0-dev
             sudo apt-get install -y libgtk3.0
             sudo apt-get install -y libqt4-opengl-dev
 
+            # Kerl options (.kerl)
+            export KERL_BUILD_DOCS=yes
+            export KERL_USE_AUTOCONF=yes
             export KERL_CONFIGURE_OPTIONS="\
                 --disable-native-libs \
-                --enable-vm-probes \
-                --with-dynamic-trace=dtrace \
+                --with-dynamic-trace=systemtap \
+                --with-wx-config=/usr/bin/wx-config  \
                 --with-ssl=/usr/local \
                 --with-javac \
+                --enable-vm-probes \
                 --enable-hipe \
                 --enable-kernel-poll \
-                --without-odbc \
                 --enable-threads \
                 --enable-sctp \
                 --enable-smp-support"
@@ -103,8 +113,27 @@ select yn in "Yes" "No"; do
 
                 echo "Installing Erlang version" "$version"
                 kerl install "$version" ~/.kerl/versions/"$version"
+            done
+            break;;
+        No ) break;;
+    esac
+done
 
-                echo "Activate version" "$version"
+tput setaf 1; echo "Do you want to install Elixir"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            git clone https://github.com/taylor/kiex ~/.kiex
+            export PATH="$HOME/.kiex:$PATH"
+
+            elixir_versions=(19.3 20.2)
+            for version in "${elixir_versions[@]}"
+            do
+                echo "Installing Erlang version" "$version"
+                kiex install "$version"
+
+
+                kiex default "$version"
             done
             break;;
         No ) break;;
