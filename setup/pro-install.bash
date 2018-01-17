@@ -42,7 +42,7 @@ select yn in "Yes" "No"; do
             eval "$(nodenv init -)"
 
 
-            node_versions=(8.9.1 9.2.0)
+            node_versions=(8.9.3 9.2.1)
             for version in "${node_versions[@]}"
             do
                 echo "Installing node version" "$version"
@@ -56,6 +56,55 @@ select yn in "Yes" "No"; do
                 npm install -g --depth 0 htmlhint
                 npm install -g --depth 0 csslint
                 npm install -g --depth 0 elm
+                npm install -g --depth 0 verdaccio
+            done
+            break;;
+        No ) break;;
+    esac
+done
+
+tput setaf 1; echo "Do you want to kerl and erlang"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            git clone https://github.com/kerl/kerl ~/.kerl
+            export PATH="$HOME/.kerl:$PATH"
+
+            # For Erlang
+            sudo apt-get install -y xsltproc
+            sudo apt-get install -y libssl-dev
+            sudo apt-get install -y fop
+            sudo apt-get install -y unixodbc-dev
+
+            # For Wx
+            sudo apt-get install -y libwxbase3.0-dev
+            sudo apt-get install -y libwxgtk3.0-dev
+            sudo apt-get install -y libgtk3.0
+            sudo apt-get install -y libqt4-opengl-dev
+
+            export KERL_CONFIGURE_OPTIONS="\
+                --disable-native-libs \
+                --enable-vm-probes \
+                --with-dynamic-trace=dtrace \
+                --with-ssl=/usr/local \
+                --with-javac \
+                --enable-hipe \
+                --enable-kernel-poll \
+                --without-odbc \
+                --enable-threads \
+                --enable-sctp \
+                --enable-smp-support"
+
+            erlang_versions=(19.3 20.2)
+            for version in "${erlang_versions[@]}"
+            do
+                echo "Building Erlang version" "$version"
+                kerl build "$version" "$version"
+
+                echo "Installing Erlang version" "$version"
+                kerl install "$version" ~/.kerl/versions/"$version"
+
+                echo "Activate version" "$version"
             done
             break;;
         No ) break;;
