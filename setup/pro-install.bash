@@ -115,7 +115,7 @@ select yn in "Yes" "No"; do
                 kerl install "$version" ~/.kerl/versions/"$version"
             done
 
-            echo "Set 20.2 as default version"
+            echo "Activate 20.2"
             . ~/.kerl/versions/20.2/activate
             break;;
         No ) break;;
@@ -126,10 +126,7 @@ tput setaf 1; echo "Do you want to install Elixir"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            git clone https://github.com/taylor/kiex ~/.kiex
-
-            echo "Installing kiex"
-            ~/.kiex/kiex install_kiex
+            curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
 
             elixir_versions=(1.5 1.6)
             for version in "${elixir_versions[@]}"
@@ -139,7 +136,7 @@ select yn in "Yes" "No"; do
             done
 
             echo "Set 1.6 as default version"
-
+            kiex default 1.6
             break;;
         No ) break;;
     esac

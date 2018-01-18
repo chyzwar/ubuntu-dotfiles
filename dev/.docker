@@ -1,6 +1,6 @@
 
 # Remove all stopped containers.
-alias docker-clear="docker rm $(docker ps -a -q)"
+# alias docker-clear="docker rm $(docker ps -a -q)"
 
 # Remove all untagged images
-alias docker-clean="docker rmi $(docker images | grep "^<none>" | awk "{print $3}")"
+# alias docker-clean="docker rmi $(docker images | grep "^<none>" | awk "{print $3}")"
