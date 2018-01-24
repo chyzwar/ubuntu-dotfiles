@@ -19,6 +19,7 @@ ln -sfv $DIR/Package\ Control.sublime-settings ~/.config/sublime-text-3/Packages
 ln -sfv $DIR/Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 ln -sfv $DIR/Python.sublime-settings ~/.config/sublime-text-3/Packages/User/Python.sublime-settings
 ln -sfv $DIR/SublimeLinter.sublime-settings ~/.config/sublime-text-3/Packages/User/SublimeLinter.sublime-settings
+
 ln -sfv $DIR/CustomPATH.sublime-settings ~/.config/sublime-text-3/Packages/User/CustomPATH.sublime-settings
 
 
