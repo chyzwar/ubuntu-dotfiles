@@ -45,8 +45,10 @@ This options will install programming languages and tooling
 
 * python and pyenv
 * node and nodenv
-* docker & virtualbox
-* rust & rustup.rs
+* erlang and kerl
+* elixir and kiex
+* docker and virtualbox
+* rust and rustup
 * php and composer
 * apache
 * mariadb

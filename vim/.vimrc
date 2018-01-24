@@ -6,27 +6,70 @@ set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
-set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set laststatus=2                "Always display the status line
 set hidden                      "Hide buffer instead of closing it
 set pastetoggle=<F2>            "Paste without being smart
+set mouse=a
 
-" Key mappings
+" Wrapping
 
-let mapleader=","
-nnoremap ; :                        " Use ; over : for commands
-nnoremap <leader><space> :noh<cr>   " Clear search highlighting with ,<space>
-nnoremap <tab> :bnext<cr>           " Tab to next buffer
-nnoremap <s-tab> :bprevious<cr>     " Shift-tab to previous buffer
-nnoremap <leader><leader> <C-^>     " Switch between last two buffers
+set nowrap       "Don't wrap lines
+set linebreak    "Wrap lines at convenient points
 
-" Load plugins
+" Folding
 
-if filereadable(expand("~/.vim/vundle.vim"))
-  source ~/.vim/vundle.vim
-endif
+set foldmethod=indent   "fold based on indent
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
+
+
+" Plugins neovim
+
+call plug#begin('~/.nvim/plugged')
+
+" Generic
+
+Plug 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'rking/ag.vim'
+
+" Git
+
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" Syntax hightlighting & colors
+
+Plug 'scrooloose/syntastic'
+Plug 'sickill/vim-monokai'
+
+" Completion & snippets
+
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" JavaScript
+
+Plug 'pangloss/vim-javascript'
+Plug 'marijnh/tern_for_vim'
+
+" Other
+
+Plug 'tpope/vim-markdown'
+Plug 'mattn/emmet-vim'
+
+"  Rust, Elixit, Erlang
+
+Plug 'rust-lang/rust.vim'
+Plug 'elixir-editors/vim-elixir'
+Plug 'vim-erlang/vim-erlang-runtime'
+
+call plug#end()
+
 
 " Swap file and backups
 
@@ -34,14 +77,6 @@ set noswapfile
 set nobackup
 set nowb
 au FocusLost * :wa
-
-" Persistent undo
-
-if has('persistent_undo')
-  silent !mkdir ~/.vim/backups > /dev/null 2>&1
-  set undodir=~/.vim/backups
-  set undofile
-endif
 
 " Indentation
 
@@ -57,16 +92,20 @@ set expandtab
 
 filetype plugin indent on
 
-" Wrapping
+" Mapping
 
-set nowrap       "Don't wrap lines
-set linebreak    "Wrap lines at convenient points
-
-" Folding
-
-set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
+map <C-a> GVgg
+map <C-n> :enew
+map <C-o> :e . <Enter>
+map <C-s> :w <Enter>
+map <C-c> y
+map <C-v> p
+map <C-x> d
+map <C-z> u
+map <C-t> :tabnew <Enter>
+map <C-i> >>
+map <C-w> :close <Enter>
+map <C-W> :q! <Enter>
 
 " Search
 
@@ -76,18 +115,12 @@ set ignorecase
 set showmatch
 set smartcase
 
-" Colors
 
-" Solarized Theme (uncomment and comment monokai to use)
-" syntax enable
-" set background=dark
-" colorscheme solarized
-" let g:solarized_termcolors=256
+" Monokai Theme
 
-" Monokai Theme 
 syntax on
 set cursorline
-set background=dark 
+set background=dark
 colorscheme monokai
 
 highlight clear SignColumn
@@ -102,15 +135,6 @@ set sidescroll=1
 
 set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
 set wildmode=list:longest
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
-set wildignore+=*vim/backups*
-set wildignore+=*sass-cache*
-set wildignore+=*DS_Store*
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
-set wildignore+=*.gem
-set wildignore+=log/**
-set wildignore+=tmp/**
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg,*.svg
 set wildignore+=*.swp,*.pyc,*.bak,*.class,*.orig
 set wildignore+=.git,.hg,.bzr,.svn
@@ -121,34 +145,12 @@ let g:ctrlp_show_hidden=1
 let g:ctrlp_max_files = 600
 let g:ctrlp_max_depth = 6
 
-" NERDTree
-
-nmap <leader>n :NERDTreeToggle<cr>
-let NERDTreeShowHidden=1
-
-" Snippets
-
-" UltiSnips completion function that tries to expand a snippet. If there's no
-" snippet for expanding, it checks for completion window and if it's
-" shown, selects first element. If there's no completion window it tries to
-" jump to next placeholder. If there's no placeholder it just returns TAB key
-
-function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
-
-au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+" Expand snippets
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
+
+
+" NerdTree:
+
+autocmd vimenter * NERDTree

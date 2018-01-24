@@ -1,6 +1,7 @@
-*~
-._*
-.DS_Store
 .idea
+.vscode
+.sublime
+
+build
+vendor
 node_modules
-bower_components
