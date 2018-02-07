@@ -143,28 +143,45 @@ select yn in "Yes" "No"; do
 done
 
 
-tput setaf 1; echo "Do you want to install Elixir exenv"; tput sgr0
+# tput setaf 1; echo "Do you want to install Elixir exenv"; tput sgr0
+# select yn in "Yes" "No"; do
+#     case $yn in
+#         Yes )
+#             git clone https://github.com/exenv/exenv.git ~/.exenv
+#             cd ~/.exenv && src/configure && make -C src
+
+#             export PATH="$HOME/.exenv/bin:$PATH"
+#             eval "$(exenv init -)"
+
+
+#             elixir_versions=(1.5 1.6)
+#             for version in "${elixir_versions[@]}"
+#             do
+#                 echo "Installing Elixir version" "$version"
+#                 exenv install "$version"
+#                 exenv global "$version"
+#             done
+#             break;;
+#         No ) break;;
+#     esac
+# done
+
+
+
+
+
+tput setaf 1; echo "Do you want to install ocaml"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            git clone https://github.com/exenv/exenv.git ~/.exenv
-            cd ~/.exenv && src/configure && make -C src
-
-            export PATH="$HOME/.exenv/bin:$PATH"
-            eval "$(exenv init -)"
-
-
-            elixir_versions=(1.5 1.6)
-            for version in "${elixir_versions[@]}"
-            do
-                echo "Installing Elixir version" "$version"
-                exenv install "$version"
-                exenv global "$version"
-            done
+          sudo apt-get install -y ocaml-nox
+          sudo apt-get install -Y ocaml
             break;;
         No ) break;;
     esac
 done
+
+
 
 
 tput setaf 1; echo "Do you want to install VirtualBox"; tput sgr0
