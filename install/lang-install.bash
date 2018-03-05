@@ -83,19 +83,12 @@ select yn in "Yes" "No"; do
             sudo apt-get install -y systemtap
             sudo apt-get install -y systemtap-sdt-dev
 
-            # For wx deps
-            sudo apt-get install -y libwxbase3.0-dev
-            sudo apt-get install -y libwxgtk3.0-dev
-            sudo apt-get install -y libgtk3.0
-            sudo apt-get install -y libqt4-opengl-dev
-
             # Kerl options (.kerl)
             export KERL_BUILD_DOCS=yes
             export KERL_USE_AUTOCONF=yes
             export KERL_CONFIGURE_OPTIONS="\
                 --disable-native-libs \
                 --with-dynamic-trace=systemtap \
-                --with-wx-config=/usr/bin/wx-config  \
                 --with-ssl=/usr/local \
                 --with-javac \
                 --enable-vm-probes \
@@ -116,7 +109,7 @@ select yn in "Yes" "No"; do
             done
 
             echo "Activate 20.2"
-            . ~/.kerl/versions/20.2/activate
+            source ~/.kerl/versions/20.2/activate
             break;;
         No ) break;;
     esac

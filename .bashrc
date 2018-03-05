@@ -1,18 +1,9 @@
-# If not running interactively, don't do anything
+
 [ -z "$PS1" ] && return
 
-# Shell
-if [ -n "$ZSH_VERSION" ]; then
-   SHELL_ZSH=true
-   SHELL_BASH=false
-elif [ -n "$BASH_VERSION" ]; then
-   SHELL_BASH=true
-   SHELL_ZSH=false
-fi
 
-
-# Resolve DOTFILES_DIR (assuming ~/.dotfiles on distros without readlink and/or $BASH_SOURCE/$0)
 READLINK=$(which greadlink || which readlink)
+
 if $SHELL_BASH; then
     CURRENT_SCRIPT=${BASH_SOURCE}
 else
@@ -27,28 +18,16 @@ else
     return # `exit 1` would quit the shell itself
 fi
 
-
-# Finally we can source the dotfiles (order matters)
 for DOTFILE in "$DOTFILES_DIR"/system/.{env,completion,function,path,alias,pager,completion,grep,liquid}; do
     [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 
-# Source bash dotfiles
-if $SHELL_BASH; then
-    for DOTFILE in "$DOTFILES_DIR"/bash/.*; do
-        [ -f "$DOTFILE" ] && source "$DOTFILE"
-    done
-fi
+for DOTFILE in "$DOTFILES_DIR"/bash/.*; do
+    [ -f "$DOTFILE" ] && source "$DOTFILE"
+done
 
-# Source zhs dotfiles
-if $SHELL_ZSH; then
-    for DOTFILE in "$DOTFILES_DIR"/system/.*.zsh; do
-        [ -f "$DOTFILE" ] && source "$DOTFILE"
-    done
-fi
 
-# Source development dotfiles
-for DOTFILE in "$DOTFILES_DIR"/dev/.*; do
+for DOTFILE in "$DOTFILES_DIR"/lang/.*; do
     [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 
@@ -57,6 +36,6 @@ done
 unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
 
 # Export
-export SHELL_BASH SHELL_ZSH OS DOTFILES_DIR
+export SHELL_BASH DOTFILES_DIR
 
 ulimit -n 10000

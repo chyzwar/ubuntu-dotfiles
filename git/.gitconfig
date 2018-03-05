@@ -92,12 +92,6 @@
 	# List files ignored by .gitignore and friends
 	show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
 
-[color]
-
-    # Use colors in Git commands that are capable of colored output when
-    # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
-    ui = auto
-
 [color "branch"]
 
     current = yellow reverse
