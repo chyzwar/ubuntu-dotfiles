@@ -20,4 +20,4 @@ export KERL_CONFIGURE_OPTIONS="\
     --enable-smp-support"
 
 
-. ~/.kerl/versions/20.2/activate
+# . ~/.kerl/versions/20.2/activate
