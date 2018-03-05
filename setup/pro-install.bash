@@ -156,6 +156,9 @@ select yn in "Yes" "No"; do
           sudo apt-get install -y ocaml
           sudo apt-get install -y opam
 
+          opam init
+          opam install merlin
+          opam user-setup install
             break;;
         No ) break;;
     esac
