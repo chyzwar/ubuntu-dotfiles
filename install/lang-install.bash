@@ -54,6 +54,9 @@ nix-env --install julia-0.6.2
 tput setaf 2; echo "Installing GHC"; tput sgr0
 nix-env --install ghc-8.2.2
 
+tput setaf 2; echo "Installing Cabal"; tput sgr0
+nix-env --install cabal-install-2.0.0.1
+
 tput setaf 2; echo "Installing stack"; tput sgr0
 nix-env --install stack-1.6.5
 

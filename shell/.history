@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
 
+# don't put duplicate lines or lines starting with space in the history.
+export HISTCONTROL=ignoreboth
+
+# set maximum nuber of lines in current bash session memmory
 export HISTSIZE=1000000
+
+# maximum nuber of lines in history fil during startup
 export HISTFILESIZE=1000000000
