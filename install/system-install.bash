@@ -209,3 +209,118 @@ select yn in "Yes" "No"; do
     esac
 done
 
+tput setaf 1; echo "Do you want to install VirtualBox"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+            wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+
+            sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian artful contrib" >> /etc/apt/sources.list.d/virtualbox.org.list'
+            sudo apt-get update -qq
+            sudo apt-get install -y virtualbox
+            break;;
+        No ) break;;
+    esac
+done
+
+
+
+
+tput setaf 1; echo "Do you want to install rust and rustup.rs"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path
+            rustup completions bash > /etc/bash_completion.d/rustup
+
+            rustup install nightly
+            rustup default nightly
+
+            cargo install clippy
+            cargo install racer
+            break;;
+        No ) break;;
+    esac
+done
+
+
+
+
+
+
+
+
+
+
+tput setaf 1; echo "Do you want to install Apache"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            sudo apt-get install -y apache2 libapache2-mod-php5
+            sudo apt-get install -y mcrypt php5-mcrypt
+            sudo php5enmod mcrypt
+            break;;
+        No ) break;;
+    esac
+done
+
+
+
+
+
+
+tput setaf 1; echo "Do you want install MariaDB"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            sudo apt-get install -y mariadb-server
+            sudo apt-get install -y mariadb-client
+            break;;
+        No ) break;;
+    esac
+done
+
+
+
+
+
+
+
+
+
+
+tput setaf 1; echo "Do you want install Scala and sbt"; tput sgr0
+tput setaf 1; echo "Assume that Java is installed"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            sudo apt-get -y install scala
+            echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
+            sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
+            sudo apt-get update -qq
+            sudo apt-get install -y sbt
+            break;;
+        No ) break;;
+    esac
+done
+
+
+
+
+
+tput setaf 1; echo "Do you want to install docker"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            sudo addgroup --system docker
+            sudo adduser "$USER" docker
+            newgrp docker
+
+            sudo snap install docker
+            sudo docker run hello-world
+            break;;
+        No ) break;;
+    esac
+done
+
