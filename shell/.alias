@@ -1,41 +1,10 @@
 #!/usr/bin/env bash
 
-#basics aliases
-alias _="sudo"
-alias g="git"
-alias v="vim"
-
-#enable colors
+# Enable colors for ls
 alias ls='ls --color'
-alias grep='grep --color'
 
-#show permisions
+# Show permision for files
 alias perms="stat -c '%A %a %n' *"
-
-# greps
-if $(is-supported "alias -g"); then
-    alias -g G="| grep -i"
-    alias -g H="| head"
-    alias -g T="| tail"
-    alias -g L="| less"
-fi
 
 # List declared aliases
 alias aliases="alias | sed 's/=.*//'"
-
-# show non _prefixed functions
-alias listfunctions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
-
-# cd aliases
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias -- -="cd -"
-
-# Request using GET, POST, etc. method
-for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-    alias "$method"="lwp-request -m '$method'"
-done
-
-# Speed Test
-alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"

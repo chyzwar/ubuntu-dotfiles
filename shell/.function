@@ -1,21 +1,6 @@
 #!/usr/bin/env bash
 
-# Executable
-is-executable() {
-    local BIN=`command -v "$1" 2>/dev/null`
-    [[ ! $BIN == "" && -x $BIN ]] && true || false
-}
 
-# Supported
-is-supported() {
-    if [ $# -eq 1 ]; then
-        eval $1 > /dev/null 2>&1 && true || false
-    else
-        eval $1 > /dev/null 2>&1 && echo -n "$2" || echo -n "$3"
-    fi
-}
-
-# Extract many types of compress files
 extract() {
     if [ -f "$1" ]; then
         case "$1" in
@@ -39,67 +24,8 @@ extract() {
     fi
 }
 
-# Show dupplicates
-duplines() {
-    sort $1 | uniq -d
-}
 
-# Show unique lines
-uniqlines() {
-    sort $1 | uniq -u
-}
-
-# Pretty print JSON
-json() {
-    local url=$1
-    if [[ "http" == $url[0,4] ]] ; then
-        curl --silent $url | python -mjson.tool | pygmentize -O style=monokai -f console256 -g
-    else
-        cat $url | python -mjson.tool | pygmentize -O style=monokai -f console256 -g
-    fi
-}
-
-
-# Fuzzy find file/dir
 ff() {  find . -type f -name "${1}";}
 fff() { find . -type f -name "*${1}*";}
 fd() {  find . -type d -name "${1}";}
 fdf() { find . -type d -name "*${1}*";}
-
-
-# Create a new directory and enter it
-mk() {
-    mkdir -p "$@" && cd "$@"
-}
-
-
-# Recursively traverse directory tree for git repositories, run git command
-# e.g.
-#   gittree status
-#   gittree diff
-gittree() {
-  if [ $# -lt 1 ]; then
-    echo "Usage: gittree <command>"
-    return 1
-  fi
-
-  for gitdir in $(find . -type d -name .git); do
-    # Display repository name in blue
-    repo=$(dirname $gitdir)
-    echo -e "\033[34m$repo\033[0m"
-
-    # Run git command in the repositories directory
-    cd $repo && git $@
-    ret=$?
-
-    # Return to calling directory (ignore output)
-    cd - > /dev/null
-
-    # Abort if cd or git command fails
-    if [ $ret -ne 0 ]; then
-      return 1
-    fi
-
-    echo
-  done
-}

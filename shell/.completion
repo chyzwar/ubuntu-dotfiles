@@ -10,6 +10,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-export HISTSIZE=1000000
-export HISTFILESIZE=1000000000
