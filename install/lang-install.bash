@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 tput setaf 2; echo "Installing nix"; tput sgr0
 curl https://nixos.org/nix/install | sh
