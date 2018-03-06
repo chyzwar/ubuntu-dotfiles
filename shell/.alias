@@ -1,6 +1,4 @@
-# switch between zhs and bash
-alias zsher="chsh -s $(which zsh) && source ~/.bashrc && reset"
-alias basher="chsh -s $(which bash) && source ~/.zhsrc && reset"
+#!/usr/bin/env bash
 
 #basics aliases
 alias _="sudo"

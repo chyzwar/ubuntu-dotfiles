@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 # Executable
 is-executable() {

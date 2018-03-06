@@ -1,3 +1,0 @@
-
-export PATH="$HOME/.crenv/bin:$PATH"
-eval "$(crenv init -)"

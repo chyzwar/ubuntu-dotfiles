@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 # Tell grep to highlight matches
 if is-supported "grep --color a <<< a"; then
