@@ -77,5 +77,3 @@ nix-env --install crystal-0.24.1
 
 tput setaf 2; echo "Installing rustup"; tput sgr0
 nix-env --install rustup-1.11.0
-
-

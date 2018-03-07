@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
+# List declared aliases
+alias aliases="alias | sed 's/=.*//'"
+
 # Enable colors for ls
 alias ls='ls --color'
 
 # Show permision for files
 alias perms="stat -c '%A %a %n' *"
-
-# List declared aliases
-alias aliases="alias | sed 's/=.*//'"
