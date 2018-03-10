@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC1090
 
-source nix-install.bash
+
+DIR="$(dirname "$(readlink -f "$0")")"
+
+source "$DIR/nix-install.bash"
 
 tput setaf 2; echo "Installing Python2 "; tput sgr0
 nix-env --install python-2.7.14
@@ -36,7 +40,7 @@ tput setaf 2; echo "Installing Java 8 "; tput sgr0
 nix-env --install openjdk-8u172b02
 
 tput setaf 2; echo "Installing Maven "; tput sgr0
-nix-env --install apache-maven-3.5.0
+nix-env --install apache-maven-3.5.2
 
 tput setaf 2; echo "Installing Ant "; tput sgr0
 nix-env --install ant-1.9.6

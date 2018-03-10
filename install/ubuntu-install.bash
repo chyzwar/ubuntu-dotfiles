@@ -13,11 +13,8 @@ sudo apt-get install -y tree
 sudo apt-get install -y ppa-purge
 sudo apt-get install -y git-flow
 sudo apt-get install -y alacarte
-sudo apt-get install -y mercurial
 sudo apt-get install -y openssh-client
 sudo apt-get install -y openssh-server
-sudo apt-get install -y dirnenv
-sudo apt-get install -y shellcheck
 sudo apt-get install -y gnome-tweak-tool
 sudo apt-get install -y gnome-shell-extensions
 sudo apt-get install -y snapd
@@ -122,8 +119,6 @@ done
 
 
 
-
-
 tput setaf 1; echo "Do you want to install Plank"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
@@ -159,8 +154,6 @@ select yn in "Yes" "No"; do
         No ) break;;
     esac
 done
-
-
 
 
 

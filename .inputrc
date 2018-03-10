@@ -32,6 +32,8 @@ set convert-meta off
 # Flip through autocompletion matches with Shift-Tab.
 "\e[Z": menu-complete
 
-# Filtered history search
+# Up/down arrow searches through history
 "\e[A": history-search-backward
 "\e[B": history-search-forward
+"\eOA": history-search-backward
+"\eOB": history-search-forward
