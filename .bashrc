@@ -2,7 +2,6 @@
 
 [ -z "$PS1" ] && return
 
-
 source "$HOME/.liquidprompt/liquidprompt"
 
 
