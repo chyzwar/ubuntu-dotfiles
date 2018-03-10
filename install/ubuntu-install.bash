@@ -107,6 +107,7 @@ select yn in "Yes" "No"; do
 done
 
 
+
 tput setaf 1; echo "Do you want to install PPA Manager"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
@@ -206,6 +207,7 @@ select yn in "Yes" "No"; do
     esac
 done
 
+
 tput setaf 1; echo "Do you want to install VirtualBox"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
@@ -220,33 +222,6 @@ select yn in "Yes" "No"; do
         No ) break;;
     esac
 done
-
-
-
-
-tput setaf 1; echo "Do you want to install rust and rustup.rs"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path
-            rustup completions bash > /etc/bash_completion.d/rustup
-
-            rustup install nightly
-            rustup default nightly
-
-            cargo install clippy
-            cargo install racer
-            break;;
-        No ) break;;
-    esac
-done
-
-
-
-
-
-
-
 
 
 
@@ -265,8 +240,6 @@ done
 
 
 
-
-
 tput setaf 1; echo "Do you want install MariaDB"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
@@ -277,10 +250,6 @@ select yn in "Yes" "No"; do
         No ) break;;
     esac
 done
-
-
-
-
 
 
 

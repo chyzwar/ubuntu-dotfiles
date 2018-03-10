@@ -1,19 +1,16 @@
 [user]
-    name = chyzwar
-    email = schizek.marcin@gmail.com
+  name = chyzwar
+  email = schizek.marcin@gmail.com
 
 [github]
-    user = chyzwar
+  user = chyzwar
 
 [core]
+  excludesfile = ~/.gitignore
+  attributesfile = ~/.gitattributes
 
-    # Use custom `.gitignore` and `.gitattributes`
-    excludesfile = ~/.gitignore_global
-    attributesfile = ~/.gitattributes
-
-    editor = subl
-    filemode = false
-    trustctime = false
+  editor = subl
+  filemode = false
 
 [alias]
     # View abbreviated SHA, description, and history graph of the latest 20 commits
@@ -80,73 +77,17 @@
     # a.k.a. ‘delete merged’
     dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
-    # List contributors with number of commits
-    contributors = shortlog --summary --numbered
-
-    #in parralle execute git in dirs
-    all = "!f() { ls | xargs -I{} git -C {} $1; };f"
-
-    #unstage
-    unstage = reset --hard HEAD
-
-	# List files ignored by .gitignore and friends
-	show-ignored = "! git clean -ndX | perl -pe 's/Would remove/Ignored:/'"
-
-[color "branch"]
-
-    current = yellow reverse
-    local = yellow
-    remote = green
-
-[color "diff"]
-
-    meta = yellow bold
-    frag = magenta bold # line info
-    old = red # deletions
-    new = green # additions
-
-[color "status"]
-
-    added = yellow
-    changed = green
-    untracked = cyan
+  # List contributors with number of commits
+  contributors = shortlog --summary --numbered
 
 [grep]
-    lineNumber = true
+  lineNumber = true
 
 [help]
-    autocorrect = 1
-
-[difftool]
-    prompt = true
-
-[mergetool]
-    prompt = true
+  autocorrect = 1
 
 [push]
-    default = simple
+  default = simple
 
 [fetch]
   prune = true
-
-
-[merge]
-  #use sublime merge as merge tool
-  tool = sublimerge
-
-  # Include summaries of merged commits in newly created merge commit messages
-  log = true
-
-[mergetool "sublimerge"]
-  cmd = sublim -n --wait \"$REMOTE\" \"$BASE\" \"$LOCAL\" \"$MERGED\" --command \"sublimerge_diff_views\"trustExitCode = false
-
-
-[diff]
-  tool = sublimerge
-
-[difftool "sublimerge"]
-  cmd = subl -n --wait \"$REMOTE\" \"$LOCAL\" --command \"sublimerge_diff_views {\\\"left_read_only\\\": true, \\\"right_read_only\\\": true}\"
-[credential]
-	helper = cache --timeout=36000
-[url "https://"]
-	insteadOf = git://

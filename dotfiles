@@ -22,7 +22,7 @@ sub_help () {
 }
 
 sub_reload () {
-    source ~/.bash_profile && echo "Bash reloaded."
+    source ~/.bashrc && echo "Bash reloaded."
 }
 
 sub_system () {
