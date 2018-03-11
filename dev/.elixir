@@ -1,5 +1,0 @@
-
-source "$HOME/.kiex/scripts/kiex"
-
-# export PATH="$HOME/.exenv/bin:$PATH"
-# eval "$(exenv init -)"

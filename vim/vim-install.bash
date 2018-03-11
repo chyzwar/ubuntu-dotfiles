@@ -2,7 +2,7 @@
 
 DIR="$( cd "$( dirname "$0" )" && pwd )"
 
-echo "Install vim and neovim"
+echo "Install vim"
 sudo apt-get install -y vim
 
 echo "Install vim-plug"

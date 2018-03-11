@@ -1,4 +1,4 @@
+#!/usr/bin/env bash
 
-#Add Cabal bin to Path
 export PATH="$PATH:$HOME/.cabal/bin"
 

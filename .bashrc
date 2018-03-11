@@ -27,28 +27,7 @@ else
     return # `exit 1` would quit the shell itself
 fi
 
-
-# Finally we can source the dotfiles (order matters)
-for DOTFILE in "$DOTFILES_DIR"/system/.{env,completion,function,path,alias,pager,completion,grep,liquid}; do
-    [ -f "$DOTFILE" ] && source "$DOTFILE"
-done
-
-# Source bash dotfiles
-if $SHELL_BASH; then
-    for DOTFILE in "$DOTFILES_DIR"/bash/.*; do
-        [ -f "$DOTFILE" ] && source "$DOTFILE"
-    done
-fi
-
-# Source zhs dotfiles
-if $SHELL_ZSH; then
-    for DOTFILE in "$DOTFILES_DIR"/system/.*.zsh; do
-        [ -f "$DOTFILE" ] && source "$DOTFILE"
-    done
-fi
-
-# Source development dotfiles
-for DOTFILE in "$DOTFILES_DIR"/dev/.*; do
+for DOTFILE in "$DOTFILES_DIR"/shell/.*; do
     [ -f "$DOTFILE" ] && source "$DOTFILE"
 done
 
