@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# shellcheck disable=SC1090
 
 tput setaf 2; echo "Do you want to install Python Tools"; tput sgr0
 select yn in "Yes" "No"; do
@@ -116,7 +116,7 @@ select yn in "Yes" "No"; do
             done
 
             echo "Activate 20.2"
-            . ~/.kerl/versions/20.2/activate
+            source ~/.kerl/versions/20.2/activate
             break;;
         No ) break;;
     esac
