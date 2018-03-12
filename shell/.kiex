@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+source "$HOME/.kiex/scripts/kiex"
+

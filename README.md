@@ -64,7 +64,7 @@ This options will install programming languages and tooling
 * nix
 
 ### ./dotfiles shell
-Install zhs and ohmyzhs, for bash it will install liquidpromt. It also create symbolic links from this repo to you home.
+Bash it will install liquidpromt. It also create symbolic links from this repo to you home.
 
 ### ./dotfiles vim
 This command will install Vim and Vunndle package manager. Vimrc nad vundle.vim files will be symlinked to you home directory and overwrite existing one.

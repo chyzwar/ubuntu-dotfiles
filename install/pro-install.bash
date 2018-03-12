@@ -1,7 +1,7 @@
 #!/bin/bash
+# shellcheck disable=SC1090
 
-
-tput setaf 1; echo "Do you want to install Python Tools"; tput sgr0
+tput setaf 2; echo "Do you want to install Python Tools"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -28,7 +28,7 @@ done
 
 
 
-tput setaf 1; echo "Do you want to install node.js annd tools"; tput sgr0
+tput setaf 2; echo "Do you want to install node.js annd tools"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -63,7 +63,7 @@ select yn in "Yes" "No"; do
     esac
 done
 
-tput setaf 1; echo "Do you want to kerl and erlang"; tput sgr0
+tput setaf 2; echo "Do you want to kerl and erlang"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -116,13 +116,13 @@ select yn in "Yes" "No"; do
             done
 
             echo "Activate 20.2"
-            . ~/.kerl/versions/20.2/activate
+            source ~/.kerl/versions/20.2/activate
             break;;
         No ) break;;
     esac
 done
 
-tput setaf 1; echo "Do you want to install Elixir"; tput sgr0
+tput setaf 2; echo "Do you want to install Elixir"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -148,7 +148,7 @@ done
 
 
 
-tput setaf 1; echo "Do you want to install ocaml"; tput sgr0
+tput setaf 2; echo "Do you want to install ocaml"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -167,7 +167,7 @@ done
 
 
 
-tput setaf 1; echo "Do you want to install VirtualBox"; tput sgr0
+tput setaf 2; echo "Do you want to install VirtualBox"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -185,7 +185,7 @@ done
 
 
 
-tput setaf 1; echo "Do you want to install rust and rustup.rs"; tput sgr0
+tput setaf 2; echo "Do you want to install rust and rustup.rs"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -206,7 +206,7 @@ done
 
 
 
-tput setaf 1; echo "Do you want to install PHP and composer"; tput sgr0
+tput setaf 2; echo "Do you want to install PHP and composer"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -227,7 +227,7 @@ done
 
 
 
-tput setaf 1; echo "Do you want to install Apache"; tput sgr0
+tput setaf 2; echo "Do you want to install Apache"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -244,7 +244,7 @@ done
 
 
 
-tput setaf 1; echo "Do you want install MariaDB"; tput sgr0
+tput setaf 2; echo "Do you want install MariaDB"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -261,7 +261,7 @@ done
 
 
 
-tput setaf 1; echo "Do you want install Java 8,9 and tools"; tput sgr0
+tput setaf 2; echo "Do you want install Java 8,9 and tools"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -282,8 +282,8 @@ done
 
 
 
-tput setaf 1; echo "Do you want install Scala and sbt"; tput sgr0
-tput setaf 1; echo "Assume that Java is installed"; tput sgr0
+tput setaf 2; echo "Do you want install Scala and sbt"; tput sgr0
+tput setaf 2; echo "Assume that Java is installed"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -301,7 +301,7 @@ done
 
 
 
-tput setaf 1; echo "Do you want install Clojuire and lein"; tput sgr0
+tput setaf 2; echo "Do you want install Clojuire and lein"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -317,7 +317,7 @@ done
 
 
 
-tput setaf 1; echo "Do you want install Julia?"; tput sgr0
+tput setaf 2; echo "Do you want install Julia?"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -336,7 +336,7 @@ done
 
 
 
-tput setaf 1; echo "Do you want to install Haskell Platform"; tput sgr0
+tput setaf 2; echo "Do you want to install Haskell Platform"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -358,7 +358,7 @@ done
 
 
 
-tput setaf 1; echo "Do you want install go-lang??"; tput sgr0
+tput setaf 2; echo "Do you want install go-lang??"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -373,7 +373,7 @@ done
 
 
 
-tput setaf 1; echo "Do you want install Ruby and rbenv"; tput sgr0
+tput setaf 2; echo "Do you want install Ruby and rbenv"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -391,7 +391,7 @@ select yn in "Yes" "No"; do
     esac
 done
 
-tput setaf 1; echo "Do you want install Crystal and crenv"; tput sgr0
+tput setaf 2; echo "Do you want install Crystal and crenv"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -411,7 +411,7 @@ select yn in "Yes" "No"; do
 done
 
 
-tput setaf 1; echo "Do you want to install nix"; tput sgr0
+tput setaf 2; echo "Do you want to install nix"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -422,7 +422,7 @@ select yn in "Yes" "No"; do
 done
 
 
-tput setaf 1; echo "Do you want to install docker"; tput sgr0
+tput setaf 2; echo "Do you want to install docker"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )

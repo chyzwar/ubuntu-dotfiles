@@ -133,6 +133,8 @@
 		"SublimeLinter-contrib-scss-lint",
 		"SublimeLinter-contrib-sqlint",
 		"SublimeLinter-contrib-sublime-syntax",
+		"SublimeLinter-contrib-tslint",
+		"SublimeLinter-contrib-yamllint",
 		"SublimeLinter-cppcheck",
 		"SublimeLinter-cpplint",
 		"SublimeLinter-csslint",
