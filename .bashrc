@@ -3,6 +3,7 @@
 
 [ -z "$PS1" ] && return
 
+# Explicitly load dotfiles
 source "$HOME/MyProjects/dotfiles-ubuntu/shell/.alias"
 source "$HOME/MyProjects/dotfiles-ubuntu/shell/.cabal"
 source "$HOME/MyProjects/dotfiles-ubuntu/shell/.cargo"
@@ -22,3 +23,6 @@ source "$HOME/MyProjects/dotfiles-ubuntu/shell/.pager"
 source "$HOME/MyProjects/dotfiles-ubuntu/shell/.pyenv"
 source "$HOME/MyProjects/dotfiles-ubuntu/shell/.rbenv"
 source "$HOME/MyProjects/dotfiles-ubuntu/shell/.scala"
+
+# Maximum number of open FD
+ulimit -n 1000000

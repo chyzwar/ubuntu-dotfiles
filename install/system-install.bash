@@ -26,6 +26,7 @@ sudo apt-get install -y gnome-shell-extensions
 sudo apt-get install -y snapd
 sudo apt-get install -y snapcraft
 sudo apt-get install -y libssl-dev
+sudo apt-get install -y fonts-firacode
 
 tput setaf 2; echo "Install chrome, vlc"; tput sgr0
 sudo snap install chromium

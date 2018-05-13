@@ -17,8 +17,10 @@ select yn in "Yes" "No"; do
             pyenv global 3.6.3
 
             sudo apt-get install -y python-pip
-            sudo pip install virtualenvwrapper
-            sudo pip install jedi
+
+            pip install virtualenvwrapper
+            pip install jedi
+            pip install pipenv
             break;;
         No ) break;;
     esac
@@ -50,8 +52,10 @@ select yn in "Yes" "No"; do
                 nodenv global "$version"
 
                 npm install -g --depth 0 npm
+                npm install -g --depth 0 yarn
                 npm install -g --depth 0 eslint
                 npm install -g --depth 0 eslint-plugin-react
+                npm install -g --depth 0 eslint-plugin-import
                 npm install -g --depth 0 npm-check
                 npm install -g --depth 0 htmlhint
                 npm install -g --depth 0 csslint

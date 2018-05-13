@@ -27,17 +27,17 @@ sub_reload () {
 
 sub_system () {
     sudo chmod +x setup/system-install.bash
-    bash setup/system-install.bash
+    bash install/system-install.bash
 }
 
 sub_pro () {
     sudo chmod +x setup/pro-install.bash
-    bash setup/pro-install.bash
+    bash install/pro-install.bash
 }
 
 sub_shell () {
     sudo chmod +x setup/shell-install.bash
-    bash setup/shell-install.bash
+    bash install/shell-install.bash
 }
 
 sub_sublime () {
@@ -47,7 +47,7 @@ sub_sublime () {
 
 sub_atom () {
     sudo chmod +x setup/atom-install.bash
-    bash setup/atom-install.bash
+    bash install/atom-install.bash
 }
 
 sub_vim () {
@@ -56,12 +56,12 @@ sub_vim () {
 }
 sub_emacs () {
     sudo chmod +x setup/emacs-install.bash
-    bash setup/emacs-install.bash
+    bash install/emacs-install.bash
 }
 
 sub_vscode () {
     sudo chmod +x setup/vscode-install.bash
-    bash setup/vscode-install.bash
+    bash install/vscode-install.bash
 }
 
 sub_vimpager () {
