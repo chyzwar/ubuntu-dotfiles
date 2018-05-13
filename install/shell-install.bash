@@ -3,7 +3,7 @@
 DIR="$(dirname "$(readlink -f "$0")")"
 
 echo "Install guake, ultimate terminal"
-pip install --user guake
+pip3 install --user guake
 
 
 echo "Install liquidprompt"

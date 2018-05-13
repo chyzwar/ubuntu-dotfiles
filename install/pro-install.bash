@@ -15,12 +15,14 @@ select yn in "Yes" "No"; do
 
             pyenv install 3.6.3
             pyenv global 3.6.3
-
+	
             sudo apt-get install -y python-pip
+	    sudo apt-get install -y python3-pip
 
-            pip install virtualenvwrapper
-            pip install jedi
-            pip install pipenv
+            pip3 install virtualenvwrapper
+	    pip3 install virtualenv
+            pip3 install jedi
+            pip3 install pipenv
             break;;
         No ) break;;
     esac
@@ -67,6 +69,23 @@ select yn in "Yes" "No"; do
     esac
 done
 
+tput setaf 2; echo "Do you want install Java 8,9 and tools"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            sudo apt-get install -y openjdk-8-jdk
+            sudo apt-get install -y openjdk-9-jdk
+
+            sudo update-java-alternatives -s java-1.8.0-openjdk-amd64
+
+            sudo apt-get install -y maven
+            sudo apt-get install -y gradle
+            sudo apt-get install -y ant
+            break;;
+        No ) break;;
+    esac
+done
+
 tput setaf 2; echo "Do you want to kerl and erlang"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
@@ -86,6 +105,7 @@ select yn in "Yes" "No"; do
             sudo apt-get install -y unixodbc-dev
             sudo apt-get install -y systemtap
             sudo apt-get install -y systemtap-sdt-dev
+	    sudo apt-get install -y openjdk-8-jdk
 
             # For wx deps
             sudo apt-get install -y libwxbase3.0-dev
