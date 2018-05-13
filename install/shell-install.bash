@@ -3,10 +3,7 @@
 DIR="$(dirname "$(readlink -f "$0")")"
 
 echo "Install guake, ultimate terminal"
-sudo add-apt-repository -y ppa:webupd8team/unstable
-sudo apt-get update -qq
-sudo apt-get -y build-dep guake git
-sudo apt-get install -y guake
+pip install --user guake
 
 
 echo "Install liquidprompt"
