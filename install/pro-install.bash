@@ -5,6 +5,10 @@ tput setaf 2; echo "Do you want to install Python Tools"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
+            sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev
+            sudo apt-get install -y libreadline-dev libsqlite3-dev wget curl llvm
+            sudo apt-get install -y libncurses5-dev libncursesw5-dev xz-utils tk-dev
+
             git clone https://github.com/pyenv/pyenv.git ~/.pyenv
             git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
             git clone https://github.com/pyenv/pyenv-update.git ~/.pyenv/plugins/pyenv-update
@@ -15,12 +19,12 @@ select yn in "Yes" "No"; do
 
             pyenv install 3.6.3
             pyenv global 3.6.3
-	
+
             sudo apt-get install -y python-pip
-	    sudo apt-get install -y python3-pip
+	          sudo apt-get install -y python3-pip
 
             pip3 install virtualenvwrapper
-	    pip3 install virtualenv
+	          pip3 install virtualenv
             pip3 install jedi
             pip3 install pipenv
             break;;
@@ -69,22 +73,6 @@ select yn in "Yes" "No"; do
     esac
 done
 
-tput setaf 2; echo "Do you want install Java 8,9 and tools"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo apt-get install -y openjdk-8-jdk
-            sudo apt-get install -y openjdk-9-jdk
-
-            sudo update-java-alternatives -s java-1.8.0-openjdk-amd64
-
-            sudo apt-get install -y maven
-            sudo apt-get install -y gradle
-            sudo apt-get install -y ant
-            break;;
-        No ) break;;
-    esac
-done
 
 tput setaf 2; echo "Do you want to kerl and erlang"; tput sgr0
 select yn in "Yes" "No"; do
@@ -105,7 +93,7 @@ select yn in "Yes" "No"; do
             sudo apt-get install -y unixodbc-dev
             sudo apt-get install -y systemtap
             sudo apt-get install -y systemtap-sdt-dev
-	    sudo apt-get install -y openjdk-8-jdk
+	          sudo apt-get install -y openjdk-8-jdk
 
             # For wx deps
             sudo apt-get install -y libwxbase3.0-dev
@@ -198,7 +186,7 @@ select yn in "Yes" "No"; do
             wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
             wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 
-            sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian artful contrib" >> /etc/apt/sources.list.d/virtualbox.org.list'
+            sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian bionic contrib" >> /etc/apt/sources.list.d/virtualbox.org.list'
             sudo apt-get update -qq
             sudo apt-get install -y virtualbox
             break;;
