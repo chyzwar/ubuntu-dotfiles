@@ -209,6 +209,9 @@ select yn in "Yes" "No"; do
 
             cargo install clippy
             cargo install racer
+            cargo install exa
+            cargo install fd-find
+            cargo install skim
             break;;
         No ) break;;
     esac
