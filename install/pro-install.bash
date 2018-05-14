@@ -27,6 +27,8 @@ select yn in "Yes" "No"; do
 	          pip3 install virtualenv
             pip3 install jedi
             pip3 install pipenv
+            pip3 install yamllint
+
             break;;
         No ) break;;
     esac
@@ -50,7 +52,7 @@ select yn in "Yes" "No"; do
             eval "$(nodenv init -)"
 
 
-            node_versions=(8.9.3 9.4.0)
+            node_versions=(8.11.1 10.1.0)
             for version in "${node_versions[@]}"
             do
                 echo "Installing node version" "$version"
@@ -221,13 +223,13 @@ done
 
 
 
-tput setaf 2; echo "Do you want to install PHP and composer"; tput sgr0
+tput setaf 2; echo "Do you want to install PHP7 and composer"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo add-apt-repository -y ppa:ondrej/php5
-            sudo apt-get update -qq
-            sudo apt-get install -y php5 php5-mcrypt php5-gd
+            sudo apt-get install -y php7.0
+            sudo apt-get install -y php7.0-fpm
+            sudo apt-get install -y php7.0-mysql
 
             curl -sS https://getcomposer.org/installer | php
             sudo mv composer.phar /usr/local/bin/composer
