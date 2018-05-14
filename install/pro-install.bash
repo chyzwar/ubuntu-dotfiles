@@ -17,11 +17,13 @@ select yn in "Yes" "No"; do
             export PATH="$HOME/.pyenv/bin:$PATH"
             eval "$(pyenv init -)"
 
-            pyenv install 3.6.3
-            pyenv global 3.6.3
-
+            pyenv install 2.7.14
+            pyenv install 2.7.14
             sudo apt-get install -y python-pip
-	          sudo apt-get install -y python3-pip
+
+            pyenv install 3.6.5
+            pyenv global 3.6.5
+            sudo apt-get install -y python3-pip
 
             pip3 install virtualenvwrapper
 	          pip3 install virtualenv
@@ -68,6 +70,8 @@ select yn in "Yes" "No"; do
                 npm install -g --depth 0 htmlhint
                 npm install -g --depth 0 csslint
                 npm install -g --depth 0 elm
+                npm install -g --depth 0 typescript
+                npm install -g --depth 0 tslint
                 npm install -g --depth 0 verdaccio
             done
             break;;
