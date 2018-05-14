@@ -5,7 +5,6 @@ DIR="$(dirname "$(readlink -f "$0")")"
 echo "Install guake, ultimate terminal"
 pip3 install --user guake
 
-
 echo "Install liquidprompt"
 git clone https://github.com/nojhan/liquidprompt.git ~/.liquidprompt
 

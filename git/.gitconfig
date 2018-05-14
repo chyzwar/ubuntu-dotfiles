@@ -17,7 +17,7 @@
   s = !"git status -s; git submodule foreach git status -s"
 
   # Show the diff between the latest commit and the current state
-  d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+  p = pull --recurse-submodules
 
   # List ignored files
   ignored = ls-files --others -i --exclude-standard
