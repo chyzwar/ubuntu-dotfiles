@@ -110,7 +110,7 @@ select yn in "Yes" "No"; do
                 --disable-native-libs \
                 --with-dynamic-trace=systemtap \
                 --with-wx-config=/usr/bin/wx-config  \
-                --with-ssl=/usr/local \
+                --with-ssl=/usr/bin/openssl \
                 --with-javac \
                 --enable-vm-probes \
                 --enable-hipe \
