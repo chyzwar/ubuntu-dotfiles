@@ -141,6 +141,7 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
+	    source "$HOME/.kiex/scripts/kiex"
 
             elixir_versions=(1.5 1.6)
             for version in "${elixir_versions[@]}"
