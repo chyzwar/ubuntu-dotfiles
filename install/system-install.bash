@@ -12,6 +12,7 @@ tput setaf 2; echo "Install git, curl, zips ..."; tput sgr0
 sudo apt-get install -y curl
 sudo apt-get install -y wget
 sudo apt-get install -y tree
+sudo apt-get install -y build-essential
 sudo apt-get install -y ppa-purge
 sudo apt-get install -y git
 sudo apt-get install -y git-flow
@@ -26,6 +27,7 @@ sudo apt-get install -y gnome-shell-extensions
 sudo apt-get install -y snapd
 sudo apt-get install -y snapcraft
 sudo apt-get install -y libssl-dev
+sudo apt-get install -y fonts-firacode
 
 tput setaf 2; echo "Install chrome, vlc"; tput sgr0
 sudo snap install chromium

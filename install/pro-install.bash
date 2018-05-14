@@ -15,10 +15,14 @@ select yn in "Yes" "No"; do
 
             pyenv install 3.6.3
             pyenv global 3.6.3
-
+	
             sudo apt-get install -y python-pip
-            sudo pip install virtualenvwrapper
-            sudo pip install jedi
+	    sudo apt-get install -y python3-pip
+
+            pip3 install virtualenvwrapper
+	    pip3 install virtualenv
+            pip3 install jedi
+            pip3 install pipenv
             break;;
         No ) break;;
     esac
@@ -50,14 +54,33 @@ select yn in "Yes" "No"; do
                 nodenv global "$version"
 
                 npm install -g --depth 0 npm
+                npm install -g --depth 0 yarn
                 npm install -g --depth 0 eslint
                 npm install -g --depth 0 eslint-plugin-react
+                npm install -g --depth 0 eslint-plugin-import
                 npm install -g --depth 0 npm-check
                 npm install -g --depth 0 htmlhint
                 npm install -g --depth 0 csslint
                 npm install -g --depth 0 elm
                 npm install -g --depth 0 verdaccio
             done
+            break;;
+        No ) break;;
+    esac
+done
+
+tput setaf 2; echo "Do you want install Java 8,9 and tools"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            sudo apt-get install -y openjdk-8-jdk
+            sudo apt-get install -y openjdk-9-jdk
+
+            sudo update-java-alternatives -s java-1.8.0-openjdk-amd64
+
+            sudo apt-get install -y maven
+            sudo apt-get install -y gradle
+            sudo apt-get install -y ant
             break;;
         No ) break;;
     esac
@@ -82,6 +105,7 @@ select yn in "Yes" "No"; do
             sudo apt-get install -y unixodbc-dev
             sudo apt-get install -y systemtap
             sudo apt-get install -y systemtap-sdt-dev
+	    sudo apt-get install -y openjdk-8-jdk
 
             # For wx deps
             sudo apt-get install -y libwxbase3.0-dev
