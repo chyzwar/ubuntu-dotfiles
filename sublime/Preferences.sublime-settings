@@ -35,6 +35,8 @@
 	"ignored_packages":
 	[
 		"Makefile",
+		"SublimeLinter-contrib-yamllint",
+		"SublimeLinter-tslint",
 		"Vintage"
 	],
 	"ignored_words":

@@ -59,6 +59,8 @@
 	],
 	"in_process_packages":
 	[
+		"SublimeLinter-contrib-yamllint",
+		"SublimeLinter-tslint"
 	],
 	"install_missing": true,
 	"install_prereleases":
