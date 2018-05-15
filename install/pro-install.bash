@@ -114,7 +114,7 @@ select yn in "Yes" "No"; do
                 --disable-native-libs \
                 --with-dynamic-trace=systemtap \
                 --with-wx-config=/usr/bin/wx-config  \
-                --with-ssl=/usr/local \
+                --with-ssl=/usr/bin/openssl \
                 --with-javac \
                 --enable-vm-probes \
                 --enable-hipe \
@@ -145,6 +145,7 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
+	    source "$HOME/.kiex/scripts/kiex"
 
             elixir_versions=(1.5 1.6)
             for version in "${elixir_versions[@]}"
@@ -215,6 +216,9 @@ select yn in "Yes" "No"; do
 
             cargo install clippy
             cargo install racer
+            cargo install exa
+            cargo install fd-find
+            cargo install skim
             break;;
         No ) break;;
     esac
