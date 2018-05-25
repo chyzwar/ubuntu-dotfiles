@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 DIR="$(dirname "$(readlink -f "$0")")"
 
@@ -8,9 +8,8 @@ sudo apt-get install -y guake
 tput setaf 2; echo "Install liquidprompt"; tput sgr0
 sudo apt-get install -y liquidprompt
 
-
-echo "Symlinks for git/bashrc"
-ln -sfv "$DIR/../.bashrc" ~
-ln -sfv "$DIR/../.inputrc" ~
-ln -sfv "$DIR/../etc/git/.gitconfig" ~
-ln -sfv "$DIR/../etc/git/.gitignore_global" ~
+tput setaf 2; echo "Create symlinks"; tput sgr0
+ln -sfv "$(pwd)/etc/bash/.bashrc" ~
+ln -sfv "$(pwd)/etc/readline/.inputrc" ~
+ln -sfv "$(pwd)/etc/git/.gitconfig" ~
+ln -sfv "$(pwd)/etc/git/.gitignore_global" ~

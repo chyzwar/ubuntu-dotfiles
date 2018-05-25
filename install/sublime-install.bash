@@ -5,7 +5,6 @@ DIR="$(dirname "$(readlink -f "$0")")"
 tput setaf 2; echo "Install Sublime Text"; tput sgr0
 sudo snap install --edge --classic sublime-text
 
-
 echo "Install Package Manager"
 PACKAGE_MANAGER_URL="https://packagecontrol.io/Package%20Control.sublime-package"
 PACKAGE_MANAGER_DIR="/home/$USER/.config/sublime-text-3/Installed\ Packages/"
