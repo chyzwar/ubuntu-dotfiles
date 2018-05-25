@@ -28,7 +28,6 @@ select yn in "Yes" "No"; do
             pip3 install jedi
             pip3 install pipenv
             pip3 install yamllint
-
             break;;
         No ) break;;
     esac
@@ -134,12 +133,13 @@ select yn in "Yes" "No"; do
     esac
 done
 
+
 tput setaf 2; echo "Do you want to install Elixir"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
             curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
-	    source "$HOME/.kiex/scripts/kiex"
+	        source "$HOME/.kiex/scripts/kiex"
 
             elixir_versions=(1.5 1.6)
             for version in "${elixir_versions[@]}"
@@ -229,18 +229,11 @@ select yn in "Yes" "No"; do
             sudo apt-get install -y php7.0
             sudo apt-get install -y php7.0-fpm
             sudo apt-get install -y php7.0-mysql
-
-            curl -sS https://getcomposer.org/installer | php
-            sudo mv composer.phar /usr/local/bin/composer
-            sudo chmod +x /usr/local/bin/composer
+            sudo apt-get install -y composer
             break;;
         No ) break;;
     esac
 done
-
-
-
-
 
 
 tput setaf 2; echo "Do you want to install nginx"; tput sgr0
@@ -254,10 +247,6 @@ select yn in "Yes" "No"; do
 done
 
 
-
-
-
-
 tput setaf 2; echo "Do you want install MariaDB"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
@@ -268,11 +257,6 @@ select yn in "Yes" "No"; do
         No ) break;;
     esac
 done
-
-
-
-
-
 
 
 tput setaf 2; echo "Do you want install Java 8,9 and tools"; tput sgr0
@@ -292,12 +276,8 @@ select yn in "Yes" "No"; do
 done
 
 
-
-
-
-
 tput setaf 2; echo "Do you want install Scala and sbt"; tput sgr0
-tput setaf 2; echo "Assume that Java is installed"; tput sgr0
+tput setaf 3; echo "Assume that Java is installed"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -312,23 +292,16 @@ select yn in "Yes" "No"; do
 done
 
 
-
-
-
 tput setaf 2; echo "Do you want install Clojuire and lein"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
-            sudo mv lein /usr/local/bin
-            chmod a+x /usr/local/bin/lein
+            sudo apt-get install -y leiningen
+            sudo apt-get install -y clojure
             break;;
         No ) break;;
     esac
 done
-
-
-
 
 
 tput setaf 2; echo "Do you want install Julia?"; tput sgr0
@@ -345,11 +318,6 @@ select yn in "Yes" "No"; do
 done
 
 
-
-
-
-
-
 tput setaf 2; echo "Do you want to install Haskell Platform"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
@@ -364,10 +332,6 @@ select yn in "Yes" "No"; do
 done
 
 
-
-
-
-
 tput setaf 2; echo "Do you want install go-lang??"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
@@ -377,10 +341,6 @@ select yn in "Yes" "No"; do
         No ) break;;
     esac
 done
-
-
-
-
 
 
 tput setaf 2; echo "Do you want install Ruby and rbenv"; tput sgr0
