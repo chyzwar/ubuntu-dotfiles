@@ -42,7 +42,7 @@ sub_shell () {
 
 sub_sublime () {
     sudo chmod +x sublime/sublime-install.bash
-    bash sublime/sublime-install.bash
+    bash install/sublime-install.bash
 }
 
 sub_atom () {
@@ -52,7 +52,7 @@ sub_atom () {
 
 sub_vim () {
     sudo chmod +x vim/vim-install.bash
-    bash vim/vim-install.bash
+    bash install/vim-install.bash
 }
 sub_emacs () {
     sudo chmod +x install/emacs-install.bash
@@ -66,7 +66,7 @@ sub_vscode () {
 
 sub_vimpager () {
     sudo chmod +x vim/vimpager-install.bash
-    bash vim/vimpager-install.bash
+    bash install/vimpager-install.bash
 }
 
 sub_all () {

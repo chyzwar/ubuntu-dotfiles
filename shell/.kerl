@@ -10,8 +10,7 @@ export KERL_BUILD_BACKEND=tarbal
 export KERL_CONFIGURE_OPTIONS="\
     --disable-native-libs \
     --with-dynamic-trace=systemtap \
-    --with-wx-config=/usr/bin/wx-config  \
-    --with-ssl=/usr/bin/openssl \
+    --with-ssl=/usr/local \
     --with-javac \
     --enable-vm-probes \
     --enable-hipe \
@@ -21,4 +20,4 @@ export KERL_CONFIGURE_OPTIONS="\
     --enable-smp-support"
 
 
-source ~/.kerl/versions/20.2/activate
+source ~/.kerl/versions/20.3.5/activate

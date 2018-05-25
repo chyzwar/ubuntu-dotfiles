@@ -1,13 +1,9 @@
 #!/bin/bash
 
-
-#Update Ubuntu to newest version
 tput setaf 2; echo "Upgrade Ubuntu"; tput sgr0
 sudo apt-get update -qq
 sudo apt-get upgrade dist
 
-
-#install basic utilities
 tput setaf 2; echo "Install git, curl, zips ..."; tput sgr0
 sudo apt-get install -y curl
 sudo apt-get install -y wget
@@ -16,12 +12,13 @@ sudo apt-get install -y build-essential
 sudo apt-get install -y ppa-purge
 sudo apt-get install -y git
 sudo apt-get install -y git-flow
-sudo apt-get install -y alacarte
 sudo apt-get install -y mercurial
+sudo apt-get install -y fossil
+sudo apt-get install -y subversion
 sudo apt-get install -y openssh-client
 sudo apt-get install -y openssh-server
-sudo apt-get install -y dirnenv
 sudo apt-get install -y shellcheck
+sudo apt-get install -y alacarte
 sudo apt-get install -y gnome-tweak-tool
 sudo apt-get install -y gnome-shell-extensions
 sudo apt-get install -y snapd
@@ -45,13 +42,12 @@ select yn in "Yes" "No"; do
     esac
 done
 
+
 tput setaf 1; echo "Do you want to install Zeal - Documentation"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo add-apt-repository -y ppa:zeal-developers/ppa
-            sudo apt-get update -qq
-            sudo apt-get install -y zeal
+            sudo apt-get install zeal
             break;;
         No ) break;;
     esac
@@ -70,17 +66,6 @@ select yn in "Yes" "No"; do
     esac
 done
 
-tput setaf 1; echo "Do you want to install Arc theme"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo apt-get install -y arc-theme
-            break;;
-        No ) break;;
-    esac
-done
-
-
 
 tput setaf 1; echo "Do you want to install Gimp edge"; tput sgr0
 select yn in "Yes" "No"; do
@@ -88,7 +73,6 @@ select yn in "Yes" "No"; do
         Yes )
             sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp
             sudo apt-get update -qq
-            sudo apt-get upgrade -qq
             sudo apt-get install -q gimp
             break;;
         No ) break;;
@@ -96,21 +80,7 @@ select yn in "Yes" "No"; do
 done
 
 
-
-tput setaf 1; echo "Do you want to install Docky"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo add-apt-repository -y ppa:docky-core/stable
-            sudo apt-get update -qq
-            sudo apt-get install -y docky
-            break;;
-        No ) break;;
-    esac
-done
-
-
-tput setaf 1; echo "Do you want to install PPA Manager"; tput sgr0
+tput setaf 2; echo "Do you want to install PPA Manager"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -121,23 +91,6 @@ select yn in "Yes" "No"; do
         No ) break;;
     esac
 done
-
-
-
-
-
-tput setaf 1; echo "Do you want to install Plank"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo add-apt-repository ppa:ricotz/docky
-            sudo apt-get update -qq
-            sudo apt-get install -y plank
-            break;;
-        No ) break;;
-    esac
-done
-
 
 
 tput setaf 1; echo "Do you want to install Dropbox"; tput sgr0
@@ -151,7 +104,6 @@ select yn in "Yes" "No"; do
 done
 
 
-
 tput setaf 1; echo "Do you want to install Steam"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
@@ -163,9 +115,6 @@ select yn in "Yes" "No"; do
 done
 
 
-
-
-
 tput setaf 1; echo "Do you want to install Chrome Beta"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
@@ -173,28 +122,40 @@ select yn in "Yes" "No"; do
             wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
             sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
             sudo apt-get update -qq
-            sudo apt-get install google-chrome-beta
+            sudo apt-get install -y google-chrome-beta
             break;;
         No ) break;;
     esac
 done
-
-
-
 
 
 tput setaf 1; echo "Do you want to install Spotify"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
-            echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-            sudo apt-get update -qq
-            sudo apt-get install -y spotify-client
+            snap install spotify
             break;;
         No ) break;;
     esac
 done
+
+
+tput setaf 1; echo "Do you want to install Discord"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            sudo snap install discord
+            sudo snap connect discord:camera core:camera
+            sudo snap connect discord:mount-observe core:mount-observe
+            sudo snap connect discord:network-observe core:network-observe
+            sudo snap connect discord:process-control core:process-control
+            sudo snap connect discord:system-observe core:system-observe
+            break;;
+        No ) break;;
+    esac
+done
+
+
 
 
 tput setaf 1; echo "Do you want to install Picard"; tput sgr0

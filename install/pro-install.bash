@@ -18,15 +18,13 @@ select yn in "Yes" "No"; do
             eval "$(pyenv init -)"
 
             pyenv install 2.7.14
-            pyenv install 2.7.14
             sudo apt-get install -y python-pip
 
             pyenv install 3.6.5
-            pyenv global 3.6.5
             sudo apt-get install -y python3-pip
 
             pip3 install virtualenvwrapper
-	          pip3 install virtualenv
+	        pip3 install virtualenv
             pip3 install jedi
             pip3 install pipenv
             pip3 install yamllint
@@ -40,7 +38,7 @@ done
 
 
 
-tput setaf 2; echo "Do you want to install node.js annd tools"; tput sgr0
+tput setaf 2; echo "Do you want to install node.js and tools"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -99,22 +97,18 @@ select yn in "Yes" "No"; do
             sudo apt-get install -y unixodbc-dev
             sudo apt-get install -y systemtap
             sudo apt-get install -y systemtap-sdt-dev
-	          sudo apt-get install -y openjdk-8-jdk
-
-            # For wx deps
-            sudo apt-get install -y libwxbase3.0-dev
-            sudo apt-get install -y libwxgtk3.0-dev
-            sudo apt-get install -y libgtk3.0
-            sudo apt-get install -y libqt4-opengl-dev
+	        sudo apt-get install -y openjdk-8-jdk
 
             # Kerl options (.kerl)
             export KERL_BUILD_DOCS=yes
             export KERL_USE_AUTOCONF=yes
+            export KERL_INSTALL_MANPAGES=yes
+            export KERL_BUILD_BACKEND=tarbal
+
             export KERL_CONFIGURE_OPTIONS="\
                 --disable-native-libs \
                 --with-dynamic-trace=systemtap \
-                --with-wx-config=/usr/bin/wx-config  \
-                --with-ssl=/usr/bin/openssl \
+                --with-ssl=/usr/local \
                 --with-javac \
                 --enable-vm-probes \
                 --enable-hipe \
@@ -123,7 +117,7 @@ select yn in "Yes" "No"; do
                 --enable-sctp \
                 --enable-smp-support"
 
-            erlang_versions=(19.3 20.2)
+            erlang_versions=(20.3.5)
             for version in "${erlang_versions[@]}"
             do
                 echo "Building Erlang version" "$version"
@@ -133,8 +127,8 @@ select yn in "Yes" "No"; do
                 kerl install "$version" ~/.kerl/versions/"$version"
             done
 
-            echo "Activate 20.2"
-            source ~/.kerl/versions/20.2/activate
+            echo "Activate 20.3.5"
+            source ~/.kerl/versions/20.3.5/activate
             break;;
         No ) break;;
     esac
@@ -249,13 +243,11 @@ done
 
 
 
-tput setaf 2; echo "Do you want to install Apache"; tput sgr0
+tput setaf 2; echo "Do you want to install nginx"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo apt-get install -y apache2 libapache2-mod-php5
-            sudo apt-get install -y mcrypt php5-mcrypt
-            sudo php5enmod mcrypt
+            sudo apt-get install -y nginx
             break;;
         No ) break;;
     esac
@@ -362,14 +354,10 @@ tput setaf 2; echo "Do you want to install Haskell Platform"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
+            sudo apt-get install -y haskell-stack
             sudo apt-get install -y haskell-platform
             sudo apt-get install -y haskell-platform-doc
             sudo apt-get install -y haskell-platform-prof
-
-            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 575159689BEFB442
-            echo 'deb http://download.fpcomplete.com/ubuntu wily main'| sudo tee /etc/apt/sources.list.d/fpco.list
-            sudo apt-get update -qq
-            sudo apt-get install -y stack
             break;;
         No ) break;;
     esac
@@ -406,8 +394,8 @@ select yn in "Yes" "No"; do
             export PATH="$HOME/.rbenv/bin:$PATH"
             eval "$(rbenv init -)"
 
-            rbenv install 2.3.0
-            rbenv global 2.3.0
+            rbenv install 2.5.1
+            rbenv global 2.5.1
             break;;
         No ) break;;
     esac
@@ -424,8 +412,8 @@ select yn in "Yes" "No"; do
             export PATH="$HOME/.crenv/bin:$PATH"
             eval "$(crenv init -)"
 
-            crenv install 0.20.3
-            crenv global 0.20.3
+            crenv install 0.24.2
+            crenv global 0.24.2
             crenv rehash
             break;;
         No ) break;;

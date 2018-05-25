@@ -2,7 +2,7 @@
 
 DIR="$( cd "$( dirname "$0" )" && pwd )"
 
-echo "Install vim"
+tput setaf 2; echo "Install Vim"; tput sgr0
 sudo apt-get install -y vim
 
 echo "Install vim-plug"
