@@ -3,26 +3,27 @@
 
 [ -z "$PS1" ] && return
 
-# Explicitly load dotfiles
-source "$HOME/MyProjects/dotfiles-ubuntu/etc/shell/.alias"
-source "$HOME/MyProjects/dotfiles-ubuntu/etc/shell/.cabal"
-source "$HOME/MyProjects/dotfiles-ubuntu/etc/shell/.cargo"
-source "$HOME/MyProjects/dotfiles-ubuntu/etc/shell/.completion"
-source "$HOME/MyProjects/dotfiles-ubuntu/etc/shell/.crenv"
-source "$HOME/MyProjects/dotfiles-ubuntu/etc/shell/.function"
-source "$HOME/MyProjects/dotfiles-ubuntu/etc/shell/.go"
-source "$HOME/MyProjects/dotfiles-ubuntu/etc/shell/.grep"
-source "$HOME/MyProjects/dotfiles-ubuntu/etc/shell/.history"
-source "$HOME/MyProjects/dotfiles-ubuntu/etc/shell/.java"
-source "$HOME/MyProjects/dotfiles-ubuntu/etc/shell/.kerl"
-source "$HOME/MyProjects/dotfiles-ubuntu/etc/shell/.kiex"
-source "$HOME/MyProjects/dotfiles-ubuntu/etc/shell/.liquid"
-source "$HOME/MyProjects/dotfiles-ubuntu/etc/shell/.nodenv"
-source "$HOME/MyProjects/dotfiles-ubuntu/etc/shell/.opam"
-source "$HOME/MyProjects/dotfiles-ubuntu/etc/shell/.pager"
-source "$HOME/MyProjects/dotfiles-ubuntu/etc/shell/.pyenv"
-source "$HOME/MyProjects/dotfiles-ubuntu/etc/shell/.rbenv"
-source "$HOME/MyProjects/dotfiles-ubuntu/etc/shell/.scala"
+DIR="$(dirname $(readlink -f "$BASH_SOURCE"))"
+
+source "$DIR/../dotfiles/.alias"
+source "$DIR/../dotfiles/.cabal"
+source "$DIR/../dotfiles/.cargo"
+source "$DIR/../dotfiles/.completion"
+source "$DIR/../dotfiles/.crenv"
+source "$DIR/../dotfiles/.function"
+source "$DIR/../dotfiles/.go"
+source "$DIR/../dotfiles/.grep"
+source "$DIR/../dotfiles/.history"
+source "$DIR/../dotfiles/.java"
+source "$DIR/../dotfiles/.kerl"
+source "$DIR/../dotfiles/.kiex"
+source "$DIR/../dotfiles/.liquid"
+source "$DIR/../dotfiles/.nodenv"
+source "$DIR/../dotfiles/.opam"
+source "$DIR/../dotfiles/.pager"
+source "$DIR/../dotfiles/.pyenv"
+source "$DIR/../dotfiles/.rbenv"
+source "$DIR/../dotfiles/.scala"
 
 # Maximum number of open FD
 ulimit -n 1000000

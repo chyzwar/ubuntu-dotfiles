@@ -36,7 +36,7 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             sudo apt-get install -y gnome-session
-	    sudo update-alternatives --config gdm3.css
+	        sudo update-alternatives --config gdm3.css
             break;;
         No ) break;;
     esac
@@ -165,6 +165,17 @@ select yn in "Yes" "No"; do
             sudo add-apt-repository ppa:musicbrainz-developers/daily
             sudo apt-get update -qq
             sudo apt-get install -y picard
+            break;;
+        No ) break;;
+    esac
+done
+
+
+tput setaf 1; echo "Do you want to install Skype"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            sudo snap install skype --classic
             break;;
         No ) break;;
     esac
