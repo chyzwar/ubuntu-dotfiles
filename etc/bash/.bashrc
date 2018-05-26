@@ -27,3 +27,6 @@ source "$DIR/../dotfiles/.scala"
 
 # Maximum number of open FD
 ulimit -n 1000000
+
+# Set default editor
+export EDITOR=subl
