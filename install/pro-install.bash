@@ -65,7 +65,7 @@ select yn in "Yes" "No"; do
                 npm install -g --depth 0 eslint-plugin-import
                 npm install -g --depth 0 npm-check
                 npm install -g --depth 0 htmlhint
-                npm install -g --depth 0 csslint
+                npm install -g --depth 0 csslint≥«≥
                 npm install -g --depth 0 elm
                 npm install -g --depth 0 typescript
                 npm install -g --depth 0 tslint
@@ -96,7 +96,7 @@ select yn in "Yes" "No"; do
             sudo apt-get install -y unixodbc-dev
             sudo apt-get install -y systemtap
             sudo apt-get install -y systemtap-sdt-dev
-	        sudo apt-get install -y openjdk-8-jdk
+	          sudo apt-get install -y openjdk-8-jdk
 
             # Kerl options (.kerl)
             export KERL_BUILD_DOCS=yes
@@ -109,6 +109,7 @@ select yn in "Yes" "No"; do
                 --with-dynamic-trace=systemtap \
                 --with-ssl=/usr/local \
                 --with-javac \
+                --without-wx \
                 --enable-vm-probes \
                 --enable-hipe \
                 --enable-kernel-poll \
@@ -396,11 +397,13 @@ tput setaf 2; echo "Do you want to install docker"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
+            sudo snap install docker
+            sudo snap connect docker:home
+
             sudo addgroup --system docker
             sudo adduser "$USER" docker
             newgrp docker
 
-            sudo snap install docker
             sudo docker run hello-world
             break;;
         No ) break;;

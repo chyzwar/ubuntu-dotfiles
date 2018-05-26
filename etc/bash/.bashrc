@@ -3,7 +3,7 @@
 
 [ -z "$PS1" ] && return
 
-DIR="$(dirname $(readlink -f "$BASH_SOURCE"))"
+DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 
 source "$DIR/../dotfiles/.alias"
 source "$DIR/../dotfiles/.cabal"
