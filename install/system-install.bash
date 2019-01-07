@@ -14,29 +14,39 @@ sudo apt-get install -y git
 sudo apt-get install -y git-flow
 sudo apt-get install -y mercurial
 sudo apt-get install -y fossil
-sudo apt-get install -y subversion
+sudo apt-get install -y subversionq
 sudo apt-get install -y openssh-client
 sudo apt-get install -y openssh-server
 sudo apt-get install -y shellcheck
 sudo apt-get install -y alacarte
 sudo apt-get install -y gnome-tweak-tool
 sudo apt-get install -y gnome-shell-extensions
+sudo apt-get install -y chrome-gnome-shell
 sudo apt-get install -y snapd
 sudo apt-get install -y snapcraft
 sudo apt-get install -y libssl-dev
 sudo apt-get install -y fonts-firacode
+sudo apt-get install -y nnn
 
 tput setaf 2; echo "Install chrome, vlc"; tput sgr0
 sudo snap install chromium
 sudo snap install vlc
 
+# Change swappiness, default 60
+sudo sysctl vm.swappiness=10
+
+# Change nuber of inotify max watcher, default 8192
+sudo sysctl fs.inotify.max_user_watches=524288
 
 tput setaf 1; echo "Do you want to install vanilla Gnome"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
             sudo apt-get install -y gnome-session
-	        sudo update-alternatives --config gdm3.css
+	          sudo update-alternatives --config gdm3.css
+
+            gsettings set org.gnome.shell enable-hot-corners false
+            gsettings set org.gnome.shell.overrides workspaces-only-on-primary false
             break;;
         No ) break;;
     esac

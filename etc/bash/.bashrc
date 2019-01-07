@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC1090
 
-[ -z "$PS1" ] && return
-
 DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 
+# Non interactive shell dotiles
+source "$DIR/../dotfiles/.nodenv"
+source "$DIR/../dotfiles/.cargo"
+
+[ -z "$PS1" ] && return
+
+# Interactive shell dotfiles
 source "$DIR/../dotfiles/.alias"
 source "$DIR/../dotfiles/.cabal"
 source "$DIR/../dotfiles/.cargo"
@@ -25,8 +30,10 @@ source "$DIR/../dotfiles/.pyenv"
 source "$DIR/../dotfiles/.rbenv"
 source "$DIR/../dotfiles/.scala"
 
+unset DIR
+
 # Maximum number of open FD
 ulimit -n 1000000
 
 # Set default editor
-export EDITOR=subl
+export EDITOR=code
