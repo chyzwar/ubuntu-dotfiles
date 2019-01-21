@@ -14,7 +14,7 @@ sudo apt-get install -y git
 sudo apt-get install -y git-flow
 sudo apt-get install -y mercurial
 sudo apt-get install -y fossil
-sudo apt-get install -y subversionq
+sudo apt-get install -y subversion
 sudo apt-get install -y openssh-client
 sudo apt-get install -y openssh-server
 sudo apt-get install -y shellcheck
@@ -33,10 +33,10 @@ sudo snap install chromium
 sudo snap install vlc
 
 # Change swappiness, default 60
-sudo sysctl vm.swappiness=10
+sudo sysctl -w vm.swappiness=10
 
 # Change nuber of inotify max watcher, default 8192
-sudo sysctl fs.inotify.max_user_watches=524288
+sudo sysctl -w fs.inotify.max_user_watches=524288
 
 tput setaf 1; echo "Do you want to install vanilla Gnome"; tput sgr0
 select yn in "Yes" "No"; do
