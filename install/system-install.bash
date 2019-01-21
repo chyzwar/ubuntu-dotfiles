@@ -47,6 +47,8 @@ select yn in "Yes" "No"; do
 
             gsettings set org.gnome.shell enable-hot-corners false
             gsettings set org.gnome.shell.overrides workspaces-only-on-primary false
+            gsettings set org.gnome.desktop.lockdown disable-lock-screen true
+            gsettings set org.gnome.desktop.screensaver lock-enabled false
             break;;
         No ) break;;
     esac
