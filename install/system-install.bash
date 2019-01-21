@@ -32,8 +32,8 @@ tput setaf 2; echo "Install chrome, vlc"; tput sgr0
 sudo snap install chromium
 sudo snap install vlc
 
-# Change swappiness, default 60
-sudo sysctl -w vm.swappiness=10
+# Change swappiness, default 60, 0 disable
+sudo sysctl -w vm.swappiness=0
 
 # Change nuber of inotify max watcher, default 8192
 sudo sysctl -w fs.inotify.max_user_watches=524288
