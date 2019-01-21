@@ -42,6 +42,7 @@ tput setaf 1; echo "Do you want to install vanilla Gnome"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
+            sudo apt-get remove -y gnome-shell-extension-ubuntu-dock
             sudo apt-get install -y gnome-session
 	          sudo update-alternatives --config gdm3.css
 

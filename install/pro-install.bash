@@ -8,6 +8,7 @@ select yn in "Yes" "No"; do
             sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev
             sudo apt-get install -y libreadline-dev libsqlite3-dev wget curl llvm
             sudo apt-get install -y libncurses5-dev libncursesw5-dev xz-utils tk-dev
+            sudo apt-get install -y libffi-dev liblzma-dev python-openssl
 
             git clone https://github.com/pyenv/pyenv.git ~/.pyenv
             git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
@@ -24,7 +25,7 @@ select yn in "Yes" "No"; do
             sudo apt-get install -y python3-pip
 
             pip3 install virtualenvwrapper
-	        pip3 install virtualenv
+	          pip3 install virtualenv
             pip3 install jedi
             pip3 install pipenv
             pip3 install yamllint
@@ -51,7 +52,7 @@ select yn in "Yes" "No"; do
             eval "$(nodenv init -)"
 
 
-            node_versions=(8.11.1 10.1.0)
+            node_versions=(8.15.0 10.13.0)
             for version in "${node_versions[@]}"
             do
                 echo "Installing node version" "$version"
@@ -65,7 +66,7 @@ select yn in "Yes" "No"; do
                 npm install -g --depth 0 eslint-plugin-import
                 npm install -g --depth 0 npm-check
                 npm install -g --depth 0 htmlhint
-                npm install -g --depth 0 csslint≥«≥
+                npm install -g --depth 0 csslint
                 npm install -g --depth 0 elm
                 npm install -g --depth 0 typescript
                 npm install -g --depth 0 tslint
@@ -142,15 +143,15 @@ select yn in "Yes" "No"; do
             curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
 	        source "$HOME/.kiex/scripts/kiex"
 
-            elixir_versions=(1.5 1.6)
+            elixir_versions=(1.7 1.8)
             for version in "${elixir_versions[@]}"
             do
                 echo "Installing Elixir version" "$version"
                 kiex install "$version"
             done
 
-            echo "Set 1.6 as default version"
-            kiex default 1.6
+            echo "Set 1.8 as default version"
+            kiex default 1.8
             break;;
         No ) break;;
     esac
@@ -173,7 +174,7 @@ select yn in "Yes" "No"; do
           opam init
           opam install merlin
           opam user-setup install
-            break;;
+          break;;
         No ) break;;
     esac
 done
@@ -204,7 +205,7 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path
-            rustup completions bash > /etc/bash_completion.d/rustup
+            rustup completions bash > /etc/bash_completion.d/rustup.bash-completion
 
             rustup install nightly
             rustup default nightly
@@ -293,7 +294,7 @@ select yn in "Yes" "No"; do
 done
 
 
-tput setaf 2; echo "Do you want install Clojuire and lein"; tput sgr0
+tput setaf 2; echo "Do you want install Clojure and lein"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -305,18 +306,6 @@ select yn in "Yes" "No"; do
 done
 
 
-tput setaf 2; echo "Do you want install Julia?"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo apt-add-repository -y ppa:staticfloat/julianightlies
-            sudo apt-add-repository -y ppa:staticfloat/julia-deps
-            sudo apt-get update -qq
-            sudo apt-get install -y julia
-            break;;
-        No ) break;;
-    esac
-done
 
 
 tput setaf 2; echo "Do you want to install Haskell Platform"; tput sgr0
