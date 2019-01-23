@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-DIR="$(dirname "$(readlink -f "$0")")"
-
 tput setaf 2; echo "Install guake Terminal"; tput sgr0
 sudo apt-get install -y guake
 
