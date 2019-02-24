@@ -29,6 +29,7 @@ source "$DIR/../dotfiles/.pager"
 source "$DIR/../dotfiles/.pyenv"
 source "$DIR/../dotfiles/.rbenv"
 source "$DIR/../dotfiles/.scala"
+source "$DIR/../dotfiles/.tfenv"
 
 unset DIR
 

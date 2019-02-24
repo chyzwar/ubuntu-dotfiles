@@ -351,6 +351,22 @@ select yn in "Yes" "No"; do
     esac
 done
 
+
+
+tput setaf 2; echo "Do you want install Terraform and tfenv"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            git clone https://github.com/tfutils/tfenv.git ~/.tfenv
+
+            export PATH="$HOME/.tfenv/bin:$PATH"
+
+            tfenv install latest
+            break;;
+        No ) break;;
+    esac
+done
+
 tput setaf 2; echo "Do you want install Crystal and crenv"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in

@@ -33,10 +33,15 @@ sudo snap install chromium
 sudo snap install vlc
 
 # Change swappiness, default 60, 0 disable
-sudo sysctl -w vm.swappiness=0
+echo vm.swappiness=0 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 
 # Change nuber of inotify max watcher, default 8192
-sudo sysctl -w fs.inotify.max_user_watches=524288
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+# Change nuber of inotify max queued events, default 16384
+echo fs.inotify.max_queued_events=32768 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+# Change nuber of inotify max user instances, default 128
+echo fs.inotify.max_user_instances=256 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+
 
 tput setaf 1; echo "Do you want to install vanilla Gnome"; tput sgr0
 select yn in "Yes" "No"; do
