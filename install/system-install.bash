@@ -27,10 +27,17 @@ sudo apt-get install -y snapcraft
 sudo apt-get install -y libssl-dev
 sudo apt-get install -y fonts-firacode
 sudo apt-get install -y nnn
+sudo apt-get install -y direnv
 
 tput setaf 2; echo "Install chrome, vlc"; tput sgr0
 sudo snap install chromium
 sudo snap install vlc
+sudo snap install krita
+
+sudo snap install intellij-idea-community
+sudo snap install pycharm-community
+sudo snap install clion
+sudo snap install datagrip
 
 # Change swappiness, default 60, 0 disable
 echo vm.swappiness=0 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
