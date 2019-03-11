@@ -30,6 +30,7 @@ source "$DIR/../dotfiles/.pyenv"
 source "$DIR/../dotfiles/.rbenv"
 source "$DIR/../dotfiles/.scala"
 source "$DIR/../dotfiles/.tfenv"
+source "$DIR/../dotfiles/.direnv"
 
 unset DIR
 

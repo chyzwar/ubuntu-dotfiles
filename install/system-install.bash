@@ -29,11 +29,12 @@ sudo apt-get install -y fonts-firacode
 sudo apt-get install -y nnn
 sudo apt-get install -y direnv
 
-tput setaf 2; echo "Install chrome, vlc"; tput sgr0
+tput setaf 2; echo "Install chrome, vlc, krita"; tput sgr0
 sudo snap install chromium
 sudo snap install vlc
 sudo snap install krita
 
+tput setaf 2; echo "Install JetBrains tools"; tput sgr0
 sudo snap install intellij-idea-community
 sudo snap install pycharm-community
 sudo snap install clion

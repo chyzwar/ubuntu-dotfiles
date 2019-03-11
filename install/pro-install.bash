@@ -267,6 +267,7 @@ select yn in "Yes" "No"; do
         Yes )
             sudo apt-get install openjdk-8-jdk
             sudo apt-get install openjdk-9-jdk
+            sudo apt-get install openjdk-11-jdk
             sudo update-java-alternatives -s java-1.8.0-openjdk-amd64
 
             sudo apt-get install -y maven
