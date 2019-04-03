@@ -24,59 +24,18 @@ set foldmethod=indent   "fold based on indent
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
 
+" Packages
 
-" Plugins vim
+git clone https://github.com/rust-lang/rust.vim ~/.vim/pack/plugins/start/rust.vim
+git clone https://github.com/elixir-lang/vim-elixir.git ~/.vim/pack/plugins/start/vim-elixir.vim
+git clone https://github.com/pangloss/vim-javascript ~/.vim/pack/plugins/start/vim-javascript.vim
+git clone https://github.com/crusoexia/vim-monokai ~/.vim/pack/plugins/start/vim-monokai.vim
+git clone https://github.com/scrooloose/syntastic ~/.vim/pack/plugins/start/syntastic.vim
+git clone https://github.com/scrooloose/nerdtree ~/.vim/pack/plugins/start/nerdtree.vim
+git clone https://github.com/airblade/vim-gitgutter ~/.vim/pack/plugins/start/vim-gitgutter.vim
+git clone https://github.com/itchyny/lightline.vim ~/.vim/pack/plugins/start/lightline.vim
+git clone https://github.com/editorconfig/editorconfig-vim ~/.vim/pack/plugins/start/editorconfig.vim
 
-call plug#begin('~/.nvim/plugged')
-
-" Generic
-
-Plug 'scrooloose/nerdtree'
-Plug 'kien/ctrlp.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'rking/ag.vim'
-
-" Git
-
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-
-" Syntax hightlighting & colors
-
-Plug 'scrooloose/syntastic'
-Plug 'sickill/vim-monokai'
-
-" Completion & snippets
-
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
-" JavaScript
-
-Plug 'pangloss/vim-javascript'
-Plug 'marijnh/tern_for_vim'
-
-" Other
-
-Plug 'tpope/vim-markdown'
-Plug 'mattn/emmet-vim'
-
-"  Rust, Elixit, Erlang
-
-Plug 'rust-lang/rust.vim'
-Plug 'elixir-editors/vim-elixir'
-Plug 'vim-erlang/vim-erlang-runtime'
-
-call plug#end()
-
-
-" Swap file and backups
-
-set noswapfile
-set nobackup
-set nowb
-au FocusLost * :wa
 
 " Indentation
 
@@ -116,11 +75,12 @@ set showmatch
 set smartcase
 
 
-" Monokai Theme
+" Monokai Theme and lightline
 
 syntax on
 set cursorline
 set background=dark
+set laststatus=2
 colorscheme monokai
 
 highlight clear SignColumn
@@ -133,7 +93,7 @@ set sidescroll=1
 
 " Completion
 
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildmenu
 set wildmode=list:longest
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg,*.svg
 set wildignore+=*.swp,*.pyc,*.bak,*.class,*.orig
@@ -144,45 +104,3 @@ set wildignore+=.git,.hg,.bzr,.svn
 let g:ctrlp_show_hidden=1
 let g:ctrlp_max_files = 600
 let g:ctrlp_max_depth = 6
-
-" Expand snippets
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-
-
-" NerdTree:
-
-autocmd vimenter * NERDTree
-" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
-let s:opam_share_dir = system("opam config var share")
-let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
-
-let s:opam_configuration = {}
-
-function! OpamConfOcpIndent()
-  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
-endfunction
-let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
-
-function! OpamConfOcpIndex()
-  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
-endfunction
-let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
-
-function! OpamConfMerlin()
-  let l:dir = s:opam_share_dir . "/merlin/vim"
-  execute "set rtp+=" . l:dir
-endfunction
-let s:opam_configuration['merlin'] = function('OpamConfMerlin')
-
-let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
-let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
-let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
-for tool in s:opam_packages
-  " Respect package order (merlin should be after ocp-index)
-  if count(s:opam_available_tools, tool) > 0
-    call s:opam_configuration[tool]()
-  endif
-endfor
-" ## end of OPAM user-setup addition for vim / base ## keep this line

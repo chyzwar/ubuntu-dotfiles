@@ -9,7 +9,7 @@
   excludesfile = ~/.gitignore
   attributesfile = ~/.gitattributes
 
-  editor = subl
+  editor = vim
   filemode = false
 
 [alias]
