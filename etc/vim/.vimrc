@@ -1,5 +1,35 @@
 " General
 
+
+if empty(glob('~/.vim/pack/plugins/start'))
+  silent !git clone https://github.com/rust-lang/rust.vim
+    \ ~/.vim/pack/plugins/start/rust.vim
+
+  silent !git clone https://github.com/elixir-lang/vim-elixir.git
+    \ ~/.vim/pack/plugins/start/vim-elixir.vim
+
+  silent !git clone https://github.com/pangloss/vim-javascript
+    \ ~/.vim/pack/plugins/start/vim-javascript.vim
+
+  silent !git clone https://github.com/crusoexia/vim-monokai
+    \ ~/.vim/pack/plugins/start/vim-monokai.vim
+
+  silent !git clone https://github.com/scrooloose/syntastic
+    \ ~/.vim/pack/plugins/start/syntastic.vim
+
+  silent !git clone https://github.com/scrooloose/nerdtree
+    \ ~/.vim/pack/plugins/start/nerdtree.vim
+
+  silent !git clone https://github.com/airblade/vim-gitgutter
+    \ ~/.vim/pack/plugins/start/vim-gitgutter.vim
+
+  silent !git clone https://github.com/itchyny/lightline.vim
+    \ ~/.vim/pack/plugins/start/lightline.vim
+
+  silent !git clone https://github.com/editorconfig/editorconfig-vim
+    \ ~/.vim/pack/plugins/start/editorconfig.vim
+endif
+
 set nocompatible
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
@@ -23,19 +53,6 @@ set linebreak    "Wrap lines at convenient points
 set foldmethod=indent   "fold based on indent
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
-
-" Packages
-
-git clone https://github.com/rust-lang/rust.vim ~/.vim/pack/plugins/start/rust.vim
-git clone https://github.com/elixir-lang/vim-elixir.git ~/.vim/pack/plugins/start/vim-elixir.vim
-git clone https://github.com/pangloss/vim-javascript ~/.vim/pack/plugins/start/vim-javascript.vim
-git clone https://github.com/crusoexia/vim-monokai ~/.vim/pack/plugins/start/vim-monokai.vim
-git clone https://github.com/scrooloose/syntastic ~/.vim/pack/plugins/start/syntastic.vim
-git clone https://github.com/scrooloose/nerdtree ~/.vim/pack/plugins/start/nerdtree.vim
-git clone https://github.com/airblade/vim-gitgutter ~/.vim/pack/plugins/start/vim-gitgutter.vim
-git clone https://github.com/itchyny/lightline.vim ~/.vim/pack/plugins/start/lightline.vim
-git clone https://github.com/editorconfig/editorconfig-vim ~/.vim/pack/plugins/start/editorconfig.vim
-
 
 " Indentation
 

@@ -61,6 +61,7 @@ select yn in "Yes" "No"; do
 
                 npm install -g --depth 0 npm
                 npm install -g --depth 0 yarn
+                npm install -g --depth 0 lerna
                 npm install -g --depth 0 eslint
                 npm install -g --depth 0 eslint-plugin-react
                 npm install -g --depth 0 eslint-plugin-import
@@ -268,7 +269,7 @@ select yn in "Yes" "No"; do
             sudo apt-get install openjdk-8-jdk
             sudo apt-get install openjdk-9-jdk
             sudo apt-get install openjdk-11-jdk
-            sudo update-java-alternatives -s java-1.8.0-openjdk-amd64
+            sudo update-java-alternatives -s java-1.11.0-openjdk-amd64
 
             sudo apt-get install -y maven
             sudo apt-get install -y gradle

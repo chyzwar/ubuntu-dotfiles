@@ -37,8 +37,6 @@ sudo snap install krita
 tput setaf 2; echo "Install JetBrains tools"; tput sgr0
 sudo snap install intellij-idea-community
 sudo snap install pycharm-community
-sudo snap install clion
-sudo snap install datagrip
 
 # Change swappiness, default 60, 0 disable
 echo vm.swappiness=0 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
@@ -87,19 +85,6 @@ select yn in "Yes" "No"; do
             sudo add-apt-repository -y ppa:ubuntu-mozilla-daily/ppa
             sudo apt-get update -qq
             sudo apt-get install -y firefox-trunk
-            break;;
-        No ) break;;
-    esac
-done
-
-
-tput setaf 1; echo "Do you want to install Gimp edge"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp
-            sudo apt-get update -qq
-            sudo apt-get install -q gimp
             break;;
         No ) break;;
     esac
@@ -159,7 +144,7 @@ tput setaf 1; echo "Do you want to install Spotify"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            snap install spotify
+            sudo snap install spotify
             break;;
         No ) break;;
     esac
@@ -188,9 +173,7 @@ tput setaf 1; echo "Do you want to install Picard"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo add-apt-repository ppa:musicbrainz-developers/daily
-            sudo apt-get update -qq
-            sudo apt-get install -y picard
+            sudo snap install picard
             break;;
         No ) break;;
     esac
