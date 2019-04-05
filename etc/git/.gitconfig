@@ -13,20 +13,11 @@
   filemode = false
 
 [alias]
-  # View the current working tree status using the short format
-  s = !"git status -s; git submodule foreach git status -s"
-
-  # Show the diff between the latest commit and the current state
-  p = pull --recurse-submodules
-
   # List ignored files
-  ignored = ls-files --others -i --exclude-standard
+  ignored = ls-files --others --ignored --exclude-standard
 
-  # Amend the currently staged files to the latest commit
-  amend = commit --amend --reuse-message=HEAD
-
-  # List contributors with number of commits
-  contributors = shortlog --summary --numbered
+  # List contributors
+  contributors = shortlog --summary --email --numbered
 
 [grep]
   lineNumber = true
