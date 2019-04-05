@@ -2,7 +2,7 @@
 
 tput setaf 2; echo "Upgrade Ubuntu"; tput sgr0
 sudo apt-get update -qq
-sudo apt-get upgrade dist
+sudo apt-get upgrade dist -y
 
 tput setaf 2; echo "Install git, curl, zips ..."; tput sgr0
 sudo apt-get install -y curl
@@ -29,10 +29,11 @@ sudo apt-get install -y fonts-firacode
 sudo apt-get install -y nnn
 sudo apt-get install -y direnv
 
-tput setaf 2; echo "Install chrome, vlc, krita"; tput sgr0
+tput setaf 2; echo "Install chrome, vlc, krita, gimp"; tput sgr0
 sudo snap install chromium
 sudo snap install vlc
 sudo snap install krita
+sudo snap install gimp
 
 tput setaf 2; echo "Install JetBrains tools"; tput sgr0
 sudo snap install intellij-idea-community
@@ -49,7 +50,7 @@ echo fs.inotify.max_queued_events=32768 | sudo tee -a /etc/sysctl.conf && sudo s
 echo fs.inotify.max_user_instances=256 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 
 
-tput setaf 1; echo "Do you want to install vanilla Gnome"; tput sgr0
+tput setaf 2; echo "Do you want to install vanilla Gnome"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -67,18 +68,18 @@ select yn in "Yes" "No"; do
 done
 
 
-tput setaf 1; echo "Do you want to install Zeal - Documentation"; tput sgr0
+tput setaf 2; echo "Do you want to install Zeal - Documentation"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo apt-get install zeal
+            sudo apt-get install -y zeal
             break;;
         No ) break;;
     esac
 done
 
 
-tput setaf 1; echo "Do you want to install Firefox Nightly"; tput sgr0
+tput setaf 2; echo "Do you want to install Firefox Nightly"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -104,7 +105,7 @@ select yn in "Yes" "No"; do
 done
 
 
-tput setaf 1; echo "Do you want to install Dropbox"; tput sgr0
+tput setaf 2; echo "Do you want to install Dropbox"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -115,7 +116,7 @@ select yn in "Yes" "No"; do
 done
 
 
-tput setaf 1; echo "Do you want to install Steam"; tput sgr0
+tput setaf 2; echo "Do you want to install Steam"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -126,7 +127,7 @@ select yn in "Yes" "No"; do
 done
 
 
-tput setaf 1; echo "Do you want to install Chrome Beta"; tput sgr0
+tput setaf 2; echo "Do you want to install Chrome Beta"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -140,7 +141,7 @@ select yn in "Yes" "No"; do
 done
 
 
-tput setaf 1; echo "Do you want to install Spotify"; tput sgr0
+tput setaf 2; echo "Do you want to install Spotify"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -151,7 +152,7 @@ select yn in "Yes" "No"; do
 done
 
 
-tput setaf 1; echo "Do you want to install Discord"; tput sgr0
+tput setaf 2; echo "Do you want to install Discord"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
@@ -169,18 +170,18 @@ done
 
 
 
-tput setaf 1; echo "Do you want to install Picard"; tput sgr0
+tput setaf 2; echo "Do you want to install Picard"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo snap install picard
+            sudo snap install picard --classic
             break;;
         No ) break;;
     esac
 done
 
 
-tput setaf 1; echo "Do you want to install Skype"; tput sgr0
+tput setaf 2; echo "Do you want to install Skype"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )

@@ -1,6 +1,6 @@
-# My .files use on your own resposibility
+# My dotfiles use on your own resposibility
 
-These dotfiles inspired by https://dotfiles.github.io/ initialy forked from [webpro/dotfiles](https://github.com/webpro/dotfiles) and customised for Ubuntu.
+These dotfiles inspired by https://dotfiles.github.io/
 
 These dotfiles project aim to provide a way to make instant setup for Ubuntu system. This project include:
 Use branch for corresponding Ubuntu version.
@@ -13,11 +13,13 @@ Use branch for corresponding Ubuntu version.
 
 ## Instalation
 On fresh Ubuntu instalation:
+
 ```sh
  git clone https://github.com/Chyzwar/dotfiles-ubuntu.git
  sudo chmod +x dotfiles
  ./dotfiles
 ```
+
 This will show list of options. Use branch coresponding to Ubuntu version.
 
 

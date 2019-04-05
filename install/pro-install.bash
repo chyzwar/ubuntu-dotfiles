@@ -21,7 +21,7 @@ select yn in "Yes" "No"; do
             pyenv install 2.7.14
             sudo apt-get install -y python-pip
 
-            pyenv install 3.6.5
+            pyenv install 3.7.2
             sudo apt-get install -y python3-pip
 
             pip3 install virtualenvwrapper
@@ -52,7 +52,7 @@ select yn in "Yes" "No"; do
             eval "$(nodenv init -)"
 
 
-            node_versions=(8.15.0 10.13.0)
+            node_versions=(10.15.3 11.13.0)
             for version in "${node_versions[@]}"
             do
                 echo "Installing node version" "$version"
@@ -68,6 +68,7 @@ select yn in "Yes" "No"; do
                 npm install -g --depth 0 npm-check
                 npm install -g --depth 0 htmlhint
                 npm install -g --depth 0 csslint
+                npm install -g --depth 0 stylelint
                 npm install -g --depth 0 elm
                 npm install -g --depth 0 typescript
                 npm install -g --depth 0 tslint
@@ -119,7 +120,7 @@ select yn in "Yes" "No"; do
                 --enable-sctp \
                 --enable-smp-support"
 
-            erlang_versions=(20.3.5)
+            erlang_versions=(21.3)
             for version in "${erlang_versions[@]}"
             do
                 echo "Building Erlang version" "$version"
@@ -129,8 +130,8 @@ select yn in "Yes" "No"; do
                 kerl install "$version" ~/.kerl/versions/"$version"
             done
 
-            echo "Activate 20.3.5"
-            source ~/.kerl/versions/20.3.5/activate
+            echo "Activate 21.2"
+            source ~/.kerl/versions/21.3/activate
             break;;
         No ) break;;
     esac
@@ -205,8 +206,8 @@ tput setaf 2; echo "Do you want to install rust and rustup.rs"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path
-            rustup completions bash > /etc/bash_completion.d/rustup.bash-completion
+            curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
+            sudo rustup completions bash > /etc/bash_completion.d/rustup.bash-completion
 
             rustup install nightly
             rustup default nightly
