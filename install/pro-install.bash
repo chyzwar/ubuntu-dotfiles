@@ -207,6 +207,7 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
+            export PATH="$HOME/.cargo/bin:$PATH"
             sudo rustup completions bash > /etc/bash_completion.d/rustup.bash-completion
 
             rustup install nightly
