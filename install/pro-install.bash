@@ -43,7 +43,7 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             git clone https://github.com/nodenv/nodenv.git ~/.nodenv
-            cd ~/.nodenv && src/configure && make -C src
+            cd ~/.nodenv && src/configure && make -C src && cd -
             git clone https://github.com/nodenv/node-build.git ~/.nodenv/plugins/node-build
             git clone https://github.com/nodenv/node-build-update-defs.git ~/.nodenv/plugins/node-build-update-defs
             git clone https://github.com/nodenv/nodenv-default-packages.git ~/.nodenv/plugins/nodenv-default-packages
@@ -112,7 +112,6 @@ select yn in "Yes" "No"; do
                 --with-dynamic-trace=systemtap \
                 --with-ssl=/usr/local \
                 --with-javac \
-                --without-wx \
                 --enable-vm-probes \
                 --enable-hipe \
                 --enable-kernel-poll \
@@ -130,7 +129,7 @@ select yn in "Yes" "No"; do
                 kerl install "$version" ~/.kerl/versions/"$version"
             done
 
-            echo "Activate 21.2"
+            echo "Activate 21.3"
             source ~/.kerl/versions/21.3/activate
             break;;
         No ) break;;
@@ -213,7 +212,6 @@ select yn in "Yes" "No"; do
             rustup install nightly
             rustup default nightly
 
-            cargo install clippy
             cargo install racer
             cargo install exa
             cargo install fd-find
@@ -268,9 +266,9 @@ tput setaf 2; echo "Do you want install Java 8,9 and tools"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo apt-get install openjdk-8-jdk
-            sudo apt-get install openjdk-9-jdk
-            sudo apt-get install openjdk-11-jdk
+            sudo apt-get install -y openjdk-8-jdk
+            sudo apt-get install -y openjdk-9-jdk
+            sudo apt-get install -y openjdk-11-jdk
             sudo update-java-alternatives -s java-1.11.0-openjdk-amd64
 
             sudo apt-get install -y maven
@@ -287,7 +285,7 @@ tput setaf 3; echo "Assume that Java is installed"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo apt-get -y install scala
+            sudo apt-get install -y scala
             echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
             sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
             sudo apt-get update -qq
@@ -342,7 +340,7 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-            cd ~/.rbenv && src/configure && make -C src
+            cd ~/.rbenv && src/configure && make -C src && cd -
             git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
             export PATH="$HOME/.rbenv/bin:$PATH"
@@ -382,8 +380,8 @@ select yn in "Yes" "No"; do
             export PATH="$HOME/.crenv/bin:$PATH"
             eval "$(crenv init -)"
 
-            crenv install 0.24.2
-            crenv global 0.24.2
+            crenv install 0.27.1
+            crenv global 0.27.1
             crenv rehash
             break;;
         No ) break;;
