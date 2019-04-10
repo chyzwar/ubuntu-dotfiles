@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BIN_NAME=$(basename $0)
+BIN_NAME="$(basename "$0")"
 COMMAND_NAME=$1
 
 
@@ -21,7 +21,7 @@ sub_help () {
 }
 
 sub_reload () {
-    source ~/.bash_profile && echo "Bash reloaded."
+    source "/home/$USER/.bash_profile" && echo "Bash reloaded."
 }
 
 sub_system () {
@@ -81,7 +81,7 @@ case $COMMAND_NAME in
         ;;
     *)
         shift
-        sub_${COMMAND_NAME} $@
+        "sub_${COMMAND_NAME}" "$@"
         if [ $? = 127 ]; then
             echo "'$COMMAND_NAME' is not a known command or has errors." >&2
             sub_help

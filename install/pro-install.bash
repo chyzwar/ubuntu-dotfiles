@@ -43,7 +43,7 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             git clone https://github.com/nodenv/nodenv.git ~/.nodenv
-            cd ~/.nodenv && src/configure && make -C src && cd -
+            cd ~/.nodenv && src/configure && make -C src && cd - || return
             git clone https://github.com/nodenv/node-build.git ~/.nodenv/plugins/node-build
             git clone https://github.com/nodenv/node-build-update-defs.git ~/.nodenv/plugins/node-build-update-defs
             git clone https://github.com/nodenv/nodenv-default-packages.git ~/.nodenv/plugins/nodenv-default-packages
@@ -207,7 +207,7 @@ select yn in "Yes" "No"; do
         Yes )
             curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
             export PATH="$HOME/.cargo/bin:$PATH"
-            sudo rustup completions bash > /etc/bash_completion.d/rustup.bash-completion
+            sudo rustup completions bash | sudo tee -a /etc/bash_completion.d/rustup.bash-completion
 
             rustup install nightly
             rustup default nightly
@@ -340,7 +340,7 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-            cd ~/.rbenv && src/configure && make -C src && cd -
+            cd ~/.rbenv && src/configure && make -C src && cd - || return
             git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
             export PATH="$HOME/.rbenv/bin:$PATH"
