@@ -4,7 +4,7 @@
 alias aliases="alias | sed 's/=.*//'"
 
 # Enable colors for ls
-alias ls='ls --color'
+alias ls='ls --color --group-directories-first'
 
 # Show permision for files
 alias perms="stat -c '%A %a %n' *"

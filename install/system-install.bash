@@ -39,6 +39,10 @@ tput setaf 2; echo "Install JetBrains tools"; tput sgr0
 sudo snap install intellij-idea-community
 sudo snap install pycharm-community
 
+tput setaf 2; echo "Install Kube tools"; tput sgr0
+sudo snap install kubectl --classic
+sudo snap install microk8s --classic
+
 # Change swappiness, default 60, 0 disable
 echo vm.swappiness=0 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 
