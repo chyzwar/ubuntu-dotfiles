@@ -46,7 +46,6 @@ select yn in "Yes" "No"; do
             cd ~/.nodenv && src/configure && make -C src && cd - || return
             git clone https://github.com/nodenv/node-build.git ~/.nodenv/plugins/node-build
             git clone https://github.com/nodenv/node-build-update-defs.git ~/.nodenv/plugins/node-build-update-defs
-            git clone https://github.com/nodenv/nodenv-default-packages.git ~/.nodenv/plugins/nodenv-default-packages
 
             export PATH="$HOME/.nodenv/bin:$PATH"
             eval "$(nodenv init -)"
