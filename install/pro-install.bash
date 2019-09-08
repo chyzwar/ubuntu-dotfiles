@@ -52,7 +52,7 @@ select yn in "Yes" "No"; do
             eval "$(nodenv init -)"
 
 
-            node_versions=(10.15.3 11.13.0)
+            node_versions=(10.16.3 12.10.0)
             for version in "${node_versions[@]}"
             do
                 echo "Installing node version" "$version"
