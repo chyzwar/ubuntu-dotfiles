@@ -28,6 +28,7 @@ sudo apt-get install -y libssl-dev
 sudo apt-get install -y fonts-firacode
 sudo apt-get install -y nnn
 sudo apt-get install -y direnv
+sudo apt-get install -y bash-completion
 
 tput setaf 2; echo "Install chrome, vlc, krita, gimp"; tput sgr0
 sudo snap install chromium
