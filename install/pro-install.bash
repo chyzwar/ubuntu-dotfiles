@@ -416,3 +416,20 @@ select yn in "Yes" "No"; do
     esac
 done
 
+tput setaf 2; echo "Do you want to Android Studio"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            sudo apt-get install -y qemu-kvm
+            sudo apt-get install -y libvirt-bin
+            sudo apt-get install -y ubuntu-vm-builder
+            sudo apt-get install -y bridge-utils
+
+            sudo adduser $USER kvm
+
+            sudo snap install android-studio --classic
+            break;;
+        No ) break;;
+    esac
+done
+

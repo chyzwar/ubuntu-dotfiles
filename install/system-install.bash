@@ -11,6 +11,7 @@ sudo apt-get install -y tree
 sudo apt-get install -y build-essential
 sudo apt-get install -y ppa-purge
 sudo apt-get install -y git
+sudo apt-get install -y git-lfs
 sudo apt-get install -y git-flow
 sudo apt-get install -y mercurial
 sudo apt-get install -y fossil
