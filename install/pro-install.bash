@@ -18,10 +18,10 @@ select yn in "Yes" "No"; do
             export PATH="$HOME/.pyenv/bin:$PATH"
             eval "$(pyenv init -)"
 
-            pyenv install 2.7.14
+            pyenv install 2.7.17
             sudo apt-get install -y python-pip
 
-            pyenv install 3.7.2
+            pyenv install 3.8.1
             sudo apt-get install -y python3-pip
 
             pip3 install virtualenvwrapper
@@ -51,7 +51,7 @@ select yn in "Yes" "No"; do
             eval "$(nodenv init -)"
 
 
-            node_versions=(10.16.3 12.10.0)
+            node_versions=(12.10.0 13.5.0)
             for version in "${node_versions[@]}"
             do
                 echo "Installing node version" "$version"
@@ -118,7 +118,7 @@ select yn in "Yes" "No"; do
                 --enable-sctp \
                 --enable-smp-support"
 
-            erlang_versions=(21.3)
+            erlang_versions=(22.2)
             for version in "${erlang_versions[@]}"
             do
                 echo "Building Erlang version" "$version"
@@ -128,8 +128,8 @@ select yn in "Yes" "No"; do
                 kerl install "$version" ~/.kerl/versions/"$version"
             done
 
-            echo "Activate 21.3"
-            source ~/.kerl/versions/21.3/activate
+            echo "Activate 22.2"
+            source ~/.kerl/versions/22.2/activate
             break;;
         No ) break;;
     esac
@@ -143,15 +143,15 @@ select yn in "Yes" "No"; do
             curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
 	        source "$HOME/.kiex/scripts/kiex"
 
-            elixir_versions=(1.7 1.8)
+            elixir_versions=(1.9)
             for version in "${elixir_versions[@]}"
             do
                 echo "Installing Elixir version" "$version"
                 kiex install "$version"
             done
 
-            echo "Set 1.8 as default version"
-            kiex default 1.8
+            echo "Set 1.9 as default version"
+            kiex default 1.9
             break;;
         No ) break;;
     esac
@@ -345,8 +345,8 @@ select yn in "Yes" "No"; do
             export PATH="$HOME/.rbenv/bin:$PATH"
             eval "$(rbenv init -)"
 
-            rbenv install 2.5.1
-            rbenv global 2.5.1
+            rbenv install 2.7.0
+            rbenv global 2.7.0
             break;;
         No ) break;;
     esac
