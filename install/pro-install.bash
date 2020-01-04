@@ -379,8 +379,8 @@ select yn in "Yes" "No"; do
             export PATH="$HOME/.crenv/bin:$PATH"
             eval "$(crenv init -)"
 
-            crenv install 0.27.1
-            crenv global 0.27.1
+            crenv install 0.32.1
+            crenv global 0.32.1
             crenv rehash
             break;;
         No ) break;;
@@ -422,7 +422,7 @@ select yn in "Yes" "No"; do
             sudo apt-get install -y ubuntu-vm-builder
             sudo apt-get install -y bridge-utils
 
-            sudo adduser $USER kvm
+            sudo adduser "$USER" kvm
 
             sudo snap install android-studio --classic
             break;;

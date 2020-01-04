@@ -6,6 +6,7 @@ These dotfiles project aim to provide a way to make instant setup for Ubuntu sys
 Use branch for corresponding Ubuntu version.
 
 - Vim and plugins
+- VSCode and Atom
 - Sublime Text 3 and plugins
 - Programming languages and tools
 - Shell configuration and plugins
@@ -73,9 +74,12 @@ Bash it will install liquidpromt. It also create symbolic links from this repo t
 
 ### ./dotfiles vim
 
-This command will install Vim and Vunndle package manager. Vimrc nad vundle.vim files will be symlinked to you home directory and overwrite existing one.
+This command will install Vim  ./etc/.vimrc file will be symlinked to you home directory and overwrite existing one.
+It use native vim package manager to install basic plugins.
 
-vim/vimrc include config for vim
+### ./dotfiles vscode
+
+This command will install VSCode and VSCode Insiders using snap. code-settings-sync is also pre installed
 
 ### ./dotfiles sublime
 
