@@ -30,6 +30,7 @@ sudo apt-get install -y fonts-firacode
 sudo apt-get install -y nnn
 sudo apt-get install -y direnv
 sudo apt-get install -y bash-completion
+sudo apt-get install -y fonts-powerline
 
 tput setaf 2; echo "Install chrome, vlc, krita, gimp"; tput sgr0
 sudo snap install chromium
@@ -40,10 +41,6 @@ sudo snap install gimp
 tput setaf 2; echo "Install JetBrains tools"; tput sgr0
 sudo snap install intellij-idea-community
 sudo snap install pycharm-community
-
-tput setaf 2; echo "Install Kube tools"; tput sgr0
-sudo snap install kubectl --classic
-sudo snap install microk8s --classic
 
 # Change swappiness, default 60, 0 disable
 echo vm.swappiness=0 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
@@ -186,6 +183,18 @@ select yn in "Yes" "No"; do
     esac
 done
 
+tput setaf 2; echo "Install Kube tools kubectl and microk8s"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            sudo snap install kubectl --classic
+            sudo snap install microk8s --classic
+
+            break;;
+        No ) break;;
+    esac
+done
+
 
 tput setaf 2; echo "Do you want to install Skype"; tput sgr0
 select yn in "Yes" "No"; do
@@ -196,4 +205,3 @@ select yn in "Yes" "No"; do
         No ) break;;
     esac
 done
-

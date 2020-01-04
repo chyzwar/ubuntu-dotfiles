@@ -403,14 +403,11 @@ tput setaf 2; echo "Do you want to install docker"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo snap install docker
-            sudo snap connect docker:home
+            sudo curl -fsSL https://get.docker.com  | bash
 
-            sudo addgroup --system docker
-            sudo adduser "$USER" docker
-            newgrp docker
-
-            sudo docker run hello-world
+            sudo groupadd docker
+            sudo usermod -aG docker "$USER"
+            sudo newgrp docker
             break;;
         No ) break;;
     esac
