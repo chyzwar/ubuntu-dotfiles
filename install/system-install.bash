@@ -1,6 +1,10 @@
 #!/bin/bash
 
 tput setaf 2; echo "Upgrade Ubuntu"; tput sgr0
+sudo add-apt-repository universe
+sudo add-apt-repository multiverse
+sudo add-apt-repository restricted
+
 sudo apt-get update -qq
 sudo apt-get upgrade dist -y
 

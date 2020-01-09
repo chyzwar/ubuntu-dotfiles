@@ -25,7 +25,7 @@ select yn in "Yes" "No"; do
             sudo apt-get install -y python3-pip
 
             pip3 install virtualenvwrapper
-	          pip3 install virtualenv
+	        pip3 install virtualenv
             pip3 install jedi
             pip3 install pipenv
             pip3 install yamllint
@@ -189,7 +189,7 @@ select yn in "Yes" "No"; do
             wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
             wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 
-            sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian bionic contrib" >> /etc/apt/sources.list.d/virtualbox.org.list'
+            sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian disco contrib" >> /etc/apt/sources.list.d/virtualbox.org.list'
             sudo apt-get update -qq
             sudo apt-get install -y virtualbox
             break;;
@@ -403,7 +403,10 @@ tput setaf 2; echo "Do you want to install docker"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo curl -fsSL https://get.docker.com  | bash
+            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+            sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu disco stable"
+            sudo apt-get update -qq
+            sudo apt-get install docker-ce docker-ce-cli containerd.io
 
             sudo groupadd docker
             sudo usermod -aG docker "$USER"
