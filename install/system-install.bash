@@ -35,6 +35,7 @@ sudo apt-get install -y nnn
 sudo apt-get install -y direnv
 sudo apt-get install -y bash-completion
 sudo apt-get install -y fonts-powerline
+sudo apt-get install -y vim
 
 tput setaf 2; echo "Install chrome, vlc, krita, gimp, postman"; tput sgr0
 sudo snap install chromium
@@ -89,6 +90,21 @@ select yn in "Yes" "No"; do
         No ) break;;
     esac
 done
+
+tput setaf 2; echo "Do you want to disable mitigatiions"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            echo "add mitigations=off"
+            sudo vim /etc/default/grub
+            sudo update-grub
+            sudo grub-install /dev/sda1
+            break;;
+        No ) break;;
+    esac
+done
+
+
 
 
 tput setaf 2; echo "Do you want to install Firefox Nightly"; tput sgr0
