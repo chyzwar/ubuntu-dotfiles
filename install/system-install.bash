@@ -36,15 +36,19 @@ sudo apt-get install -y direnv
 sudo apt-get install -y bash-completion
 sudo apt-get install -y fonts-powerline
 
-tput setaf 2; echo "Install chrome, vlc, krita, gimp"; tput sgr0
+tput setaf 2; echo "Install chrome, vlc, krita, gimp, postman"; tput sgr0
 sudo snap install chromium
 sudo snap install vlc
 sudo snap install krita
 sudo snap install gimp
+sudo snap install postman
 
 tput setaf 2; echo "Install JetBrains tools"; tput sgr0
-sudo snap install intellij-idea-community
-sudo snap install pycharm-community
+sudo snap install intellij-idea-community --classic
+sudo snap install pycharm-community --classic
+
+tput setaf 2; echo "Install Slack"; tput sgr0
+sudo snap install slack --classic
 
 # Change swappiness, default 60, 0 disable
 echo vm.swappiness=0 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
@@ -62,7 +66,8 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             sudo apt-get remove -y gnome-shell-extension-ubuntu-dock
-            sudo apt-get install -y gnome-session
+            sudo apt-get install -y gnome-session gdm3 tasksel
+            sudo tasksel install ubuntu-desktop
 	          sudo update-alternatives --config gdm3.css
 
             gsettings set org.gnome.shell enable-hot-corners false

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 tput setaf 2; echo "Install guake Terminal"; tput sgr0
-sudo snap install guake --edge --devmode
+sudo apt-get install -y guake
 
 tput setaf 2; echo "Install liquidprompt"; tput sgr0
 sudo apt-get install -y liquidprompt

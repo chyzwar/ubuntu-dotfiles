@@ -25,7 +25,7 @@ select yn in "Yes" "No"; do
             sudo apt-get install -y python3-pip
 
             pip3 install virtualenvwrapper
-	        pip3 install virtualenv
+	          pip3 install virtualenv
             pip3 install jedi
             pip3 install pipenv
             pip3 install yamllint
@@ -51,7 +51,7 @@ select yn in "Yes" "No"; do
             eval "$(nodenv init -)"
 
 
-            node_versions=(12.10.0 13.5.0)
+            node_versions=(12.16.2 14.0.0)
             for version in "${node_versions[@]}"
             do
                 echo "Installing node version" "$version"
@@ -60,18 +60,7 @@ select yn in "Yes" "No"; do
 
                 npm install -g --depth 0 npm
                 npm install -g --depth 0 yarn
-                npm install -g --depth 0 lerna
-                npm install -g --depth 0 eslint
-                npm install -g --depth 0 eslint-plugin-react
-                npm install -g --depth 0 eslint-plugin-import
-                npm install -g --depth 0 npm-check
-                npm install -g --depth 0 htmlhint
-                npm install -g --depth 0 csslint
-                npm install -g --depth 0 stylelint
-                npm install -g --depth 0 elm
-                npm install -g --depth 0 typescript
-                npm install -g --depth 0 tslint
-                npm install -g --depth 0 verdaccio
+                npm install -g --depth 0 pnpm
             done
             break;;
         No ) break;;
@@ -141,7 +130,7 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
-	        source "$HOME/.kiex/scripts/kiex"
+	          source "$HOME/.kiex/scripts/kiex"
 
             elixir_versions=(1.9)
             for version in "${elixir_versions[@]}"
@@ -189,7 +178,7 @@ select yn in "Yes" "No"; do
             wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
             wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 
-            sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian disco contrib" >> /etc/apt/sources.list.d/virtualbox.org.list'
+            sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian focal contrib" >> /etc/apt/sources.list.d/virtualbox.org.list'
             sudo apt-get update -qq
             sudo apt-get install -y virtualbox
             break;;
@@ -379,8 +368,8 @@ select yn in "Yes" "No"; do
             export PATH="$HOME/.crenv/bin:$PATH"
             eval "$(crenv init -)"
 
-            crenv install 0.32.1
-            crenv global 0.32.1
+            crenv install 0.34.0
+            crenv global 0.34.0
             crenv rehash
             break;;
         No ) break;;
