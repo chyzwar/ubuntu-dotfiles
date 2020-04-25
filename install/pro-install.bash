@@ -180,7 +180,7 @@ select yn in "Yes" "No"; do
 
             sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian focal contrib" >> /etc/apt/sources.list.d/virtualbox.org.list'
             sudo apt-get update -qq
-            sudo apt-get install -y virtualbox
+            sudo apt-get install -y virtualbox-6.1
             break;;
         No ) break;;
     esac

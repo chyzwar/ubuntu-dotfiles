@@ -8,3 +8,6 @@ alias ls='ls --color --group-directories-first'
 
 # Show permision for files
 alias perms="stat -c '%A %a %n' *"
+
+# Nuke node modules requsivly
+alias nuke-modules="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
