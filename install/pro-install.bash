@@ -8,7 +8,7 @@ select yn in "Yes" "No"; do
             sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev
             sudo apt-get install -y libreadline-dev libsqlite3-dev wget curl llvm
             sudo apt-get install -y libncurses5-dev libncursesw5-dev xz-utils tk-dev
-            sudo apt-get install -y libffi-dev liblzma-dev python-openssl
+            sudo apt-get install -y libffi-dev liblzma-dev python-openssl python-dev software-properties-common
 
             git clone https://github.com/pyenv/pyenv.git ~/.pyenv
             git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
@@ -19,9 +19,8 @@ select yn in "Yes" "No"; do
             eval "$(pyenv init -)"
 
             pyenv install 2.7.17
-            sudo apt-get install -y python-pip
-
             pyenv install 3.8.1
+
             sudo apt-get install -y python3-pip
 
             pip3 install virtualenvwrapper
@@ -93,7 +92,8 @@ select yn in "Yes" "No"; do
             export KERL_BUILD_DOCS=yes
             export KERL_USE_AUTOCONF=yes
             export KERL_INSTALL_MANPAGES=yes
-            export KERL_BUILD_BACKEND=tarbal
+            export KERL_BUILD_BACKEND=tarball
+
 
             export KERL_CONFIGURE_OPTIONS="\
                 --disable-native-libs \
@@ -178,7 +178,7 @@ select yn in "Yes" "No"; do
             wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
             wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 
-            sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian focal contrib" >> /etc/apt/sources.list.d/virtualbox.org.list'
+            sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian disco contrib" >> /etc/apt/sources.list.d/virtualbox.org.list'
             sudo apt-get update -qq
             sudo apt-get install -y virtualbox-6.1
             break;;
