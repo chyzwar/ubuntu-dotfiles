@@ -91,11 +91,12 @@ select yn in "Yes" "No"; do
     esac
 done
 
-tput setaf 2; echo "Do you want to disable mitigatiions"; tput sgr0
+
+tput setaf 2; echo "Do you want to disable mitigations"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            echo "add mitigations=off"
+            echo "add mitigations=off to GRUB_CMDLINE_LINUX_DEFAULT"
             sudo vim /etc/default/grub
             sudo update-grub
             sudo grub-install /dev/sda1
@@ -103,8 +104,6 @@ select yn in "Yes" "No"; do
         No ) break;;
     esac
 done
-
-
 
 
 tput setaf 2; echo "Do you want to install Firefox Nightly"; tput sgr0

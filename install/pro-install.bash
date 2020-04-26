@@ -405,6 +405,23 @@ select yn in "Yes" "No"; do
     esac
 done
 
+
+tput setaf 2; echo "Do you want to install docker-compose"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            sudo curl \
+              -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-Linux-x86_64" \
+              -o /usr/local/bin/docker-compose
+
+            sudo chmod +x /usr/local/bin/docker-compose
+            break;;
+        No ) break;;
+    esac
+done
+
+
+
 tput setaf 2; echo "Do you want to Android Studio"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
