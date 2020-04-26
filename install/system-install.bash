@@ -159,9 +159,23 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-            sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+            sudo add-apt-repository 'deb http://dl.google.com/linux/chrome/deb/ stable main'
             sudo apt-get update -qq
             sudo apt-get install -y google-chrome-beta
+            break;;
+        No ) break;;
+    esac
+done
+
+
+tput setaf 2; echo "Do you want to install Vivaldi"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | sudo apt-key add -
+            sudo add-apt-repository 'deb https://repo.vivaldi.com/archive/deb/ stable main'
+            sudo apt-get update -qq
+            sudo apt-get install -y vivaldi-stable
             break;;
         No ) break;;
     esac
