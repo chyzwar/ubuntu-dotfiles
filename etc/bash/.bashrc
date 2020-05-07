@@ -30,6 +30,7 @@ source "$DIR/../dotfiles/.rbenv"
 source "$DIR/../dotfiles/.scalarc"
 source "$DIR/../dotfiles/.tfenv"
 source "$DIR/../dotfiles/.direnv"
+source "$DIR/../dotfiles/.androidrc"
 
 unset DIR
 

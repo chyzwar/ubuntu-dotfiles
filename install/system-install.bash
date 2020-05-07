@@ -197,12 +197,10 @@ tput setaf 2; echo "Do you want to install Discord"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo snap install discord
-            sudo snap connect discord:camera core:camera
-            sudo snap connect discord:mount-observe core:mount-observe
-            sudo snap connect discord:network-observe core:network-observe
-            sudo snap connect discord:process-control core:process-control
-            sudo snap connect discord:system-observe core:system-observe
+            sudo apt-get install -y gdebi-core wget
+            wget -O ~/discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
+
+            sudo gdebi ~/discord.deb
             break;;
         No ) break;;
     esac

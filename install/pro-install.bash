@@ -393,13 +393,12 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-            sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu disco stable"
+            sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
             sudo apt-get update -qq
-            sudo apt-get install docker-ce docker-ce-cli containerd.io
+            sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
             sudo groupadd docker
             sudo usermod -aG docker "$USER"
-            sudo newgrp docker
             break;;
         No ) break;;
     esac
@@ -427,7 +426,7 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             sudo apt-get install -y qemu-kvm
-            sudo apt-get install -y libvirt-bin
+            sudo apt-get install -y libvirt-daemon-system libvirt-clients
             sudo apt-get install -y ubuntu-vm-builder
             sudo apt-get install -y bridge-utils
 

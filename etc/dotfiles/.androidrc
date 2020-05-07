@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+export ANDROID_SDK=~/Android/Sdk
+export PATH=$ANDROID_SDK/platform-tools:$PATH
