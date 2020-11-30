@@ -39,3 +39,5 @@ ulimit -n 1000000
 
 # Set default editor
 export EDITOR=code
+
+alias kubectl="microk8s kubectl"

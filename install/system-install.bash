@@ -37,6 +37,10 @@ sudo apt-get install -y bash-completion
 sudo apt-get install -y fonts-powerline
 sudo apt-get install -y vim
 
+sudo apt-get install -y flatpak
+sudo apt-get install -y gnome-software-plugin-flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
 tput setaf 2; echo "Install chrome, vlc, krita, gimp, postman"; tput sgr0
 sudo snap install chromium
 sudo snap install vlc
@@ -69,7 +73,7 @@ select yn in "Yes" "No"; do
             sudo apt-get remove -y gnome-shell-extension-ubuntu-dock
             sudo apt-get install -y gnome-session gdm3 tasksel
             sudo tasksel install ubuntu-desktop
-	          sudo update-alternatives --config gdm3.css
+	        sudo update-alternatives --config gdm3.css
 
             gsettings set org.gnome.shell enable-hot-corners false
             gsettings set org.gnome.shell.overrides workspaces-only-on-primary false
