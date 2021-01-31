@@ -1,8 +1,8 @@
 [Unit]
-Description=something
+Description=Fix for my motherboard
 
 [Service]
-ExecStart=/bin/bash -c "echo EHC1 >> /proc/acpi/wakeup; echo XHC >> /proc/acpi/wakeup"
+ExecStart=/bin/bash -c "echo PWRB >> /proc/acpi/wakeup"
 
 [Install]
 WantedBy=multi-user.target
