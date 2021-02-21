@@ -178,7 +178,7 @@ select yn in "Yes" "No"; do
             wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
             wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 
-            sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian disco contrib" >> /etc/apt/sources.list.d/virtualbox.org.list'
+            sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian focal contrib" >> /etc/apt/sources.list.d/virtualbox.org.list'
             sudo apt-get update -qq
             sudo apt-get install -y virtualbox-6.1
             break;;
@@ -438,3 +438,12 @@ select yn in "Yes" "No"; do
     esac
 done
 
+tput setaf 2; echo "Do you want to instal zig"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            sudo snap install zig --classic --beta
+            break;;
+        No ) break;;
+    esac
+done
