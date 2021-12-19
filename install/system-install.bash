@@ -18,7 +18,6 @@ sudo apt-get install -y git
 sudo apt-get install -y git-lfs
 sudo apt-get install -y git-flow
 sudo apt-get install -y mercurial
-sudo apt-get install -y fossil
 sudo apt-get install -y subversion
 sudo apt-get install -y openssh-client
 sudo apt-get install -y openssh-server

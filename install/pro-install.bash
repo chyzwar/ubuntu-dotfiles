@@ -10,6 +10,8 @@ select yn in "Yes" "No"; do
             sudo apt-get install -y libncurses5-dev libncursesw5-dev xz-utils tk-dev
             sudo apt-get install -y libffi-dev liblzma-dev python-openssl python-dev software-properties-common
 
+            curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+
             git clone https://github.com/pyenv/pyenv.git ~/.pyenv
             git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
             git clone https://github.com/pyenv/pyenv-update.git ~/.pyenv/plugins/pyenv-update
