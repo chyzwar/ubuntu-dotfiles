@@ -26,7 +26,7 @@ select yn in "Yes" "No"; do
             sudo apt-get install -y python3-pip
 
             pip3 install virtualenvwrapper
-	          pip3 install virtualenv
+	        pip3 install virtualenv
             pip3 install jedi
             pip3 install pipenv
             pip3 install yamllint
@@ -88,7 +88,7 @@ select yn in "Yes" "No"; do
             sudo apt-get install -y unixodbc-dev
             sudo apt-get install -y systemtap
             sudo apt-get install -y systemtap-sdt-dev
-	          sudo apt-get install -y openjdk-8-jdk
+	        sudo apt-get install -y openjdk-8-jdk
             sudo apt-get install -y libsctp-dev
 
             # Kerl options (.kerl)
@@ -110,7 +110,7 @@ select yn in "Yes" "No"; do
                 --enable-sctp \
                 --enable-smp-support"
 
-            erlang_versions=(24.1)
+            erlang_versions=(23.3)
             for version in "${erlang_versions[@]}"
             do
                 echo "Building Erlang version" "$version"
@@ -120,8 +120,8 @@ select yn in "Yes" "No"; do
                 kerl install "$version" ~/.kerl/versions/"$version"
             done
 
-            echo "Activate 24.1"
-            source ~/.kerl/versions/24.1/activate
+            echo "Activate 23.3"
+            source ~/.kerl/versions/23.3/activate
             break;;
         No ) break;;
     esac
@@ -203,7 +203,6 @@ select yn in "Yes" "No"; do
             rustup install nightly
             rustup default nightly
 
-            cargo install racer
             cargo install exa
             cargo install fd-find
             cargo install skim

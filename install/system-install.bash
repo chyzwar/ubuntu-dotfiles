@@ -40,6 +40,10 @@ sudo apt-get install -y flatpak
 sudo apt-get install -y gnome-software-plugin-flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
+# Install music player
+flatpak install flathub org.gnome.Lollypop
+
+
 tput setaf 2; echo "Install chrome, vlc, krita, gimp, postman"; tput sgr0
 sudo snap install chromium
 sudo snap install vlc
@@ -72,9 +76,7 @@ select yn in "Yes" "No"; do
             sudo apt-get remove -y gnome-shell-extension-ubuntu-dock
             sudo apt-get install -y gnome-session gdm3 tasksel
             sudo tasksel install ubuntu-desktop
-	        sudo update-alternatives --config gdm3.css
 
-            gsettings set org.gnome.shell enable-hot-corners false
             gsettings set org.gnome.shell.overrides workspaces-only-on-primary false
             gsettings set org.gnome.desktop.lockdown disable-lock-screen true
             gsettings set org.gnome.desktop.screensaver lock-enabled false
@@ -102,7 +104,6 @@ select yn in "Yes" "No"; do
             echo "add mitigations=off to GRUB_CMDLINE_LINUX_DEFAULT"
             sudo vim /etc/default/grub
             sudo update-grub
-            sudo grub-install /dev/sda1
             break;;
         No ) break;;
     esac

@@ -14,11 +14,10 @@ export KERL_CONFIGURE_OPTIONS="\
     --with-javac \
     --without-wx \
     --enable-vm-probes \
-    --enable-hipe \
     --enable-kernel-poll \
     --enable-threads \
     --enable-sctp \
     --enable-smp-support"
 
 
-source ~/.kerl/versions/24.2/activate
+source ~/.kerl/versions/23.3/activate
