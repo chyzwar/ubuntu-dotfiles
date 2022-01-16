@@ -89,10 +89,11 @@ select yn in "Yes" "No"; do
             sudo apt-get install -y systemtap
             sudo apt-get install -y systemtap-sdt-dev
 	          sudo apt-get install -y openjdk-8-jdk
+            sudo apt-get install -y libsctp-dev
 
             # Kerl options (.kerl)
             export KERL_BUILD_DOCS=yes
-            export KERL_USE_AUTOCONF=yes
+            export KERL_USE_AUTOCONF=no
             export KERL_INSTALL_MANPAGES=yes
             export KERL_BUILD_BACKEND=tarball
 
@@ -102,14 +103,14 @@ select yn in "Yes" "No"; do
                 --with-dynamic-trace=systemtap \
                 --with-ssl=/usr/local \
                 --with-javac \
+                --without-wx \
                 --enable-vm-probes \
-                --enable-hipe \
                 --enable-kernel-poll \
                 --enable-threads \
                 --enable-sctp \
                 --enable-smp-support"
 
-            erlang_versions=(22.2)
+            erlang_versions=(24.1)
             for version in "${erlang_versions[@]}"
             do
                 echo "Building Erlang version" "$version"
@@ -119,8 +120,8 @@ select yn in "Yes" "No"; do
                 kerl install "$version" ~/.kerl/versions/"$version"
             done
 
-            echo "Activate 22.2"
-            source ~/.kerl/versions/22.2/activate
+            echo "Activate 24.1"
+            source ~/.kerl/versions/24.1/activate
             break;;
         No ) break;;
     esac
@@ -134,15 +135,15 @@ select yn in "Yes" "No"; do
             curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
 	          source "$HOME/.kiex/scripts/kiex"
 
-            elixir_versions=(1.9)
+            elixir_versions=(1.13.1)
             for version in "${elixir_versions[@]}"
             do
                 echo "Installing Elixir version" "$version"
                 kiex install "$version"
             done
 
-            echo "Set 1.9 as default version"
-            kiex default 1.9
+            echo "Set 1.13.1 as default version"
+            kiex default 1.13.1
             break;;
         No ) break;;
     esac
@@ -257,7 +258,6 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             sudo apt-get install -y openjdk-8-jdk
-            sudo apt-get install -y openjdk-9-jdk
             sudo apt-get install -y openjdk-11-jdk
             sudo update-java-alternatives -s java-1.11.0-openjdk-amd64
 
@@ -276,8 +276,11 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             sudo apt-get install -y scala
-            echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
-            sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
+            sudo apt-get install apt-transport-https curl gnupg -yqq
+            echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" | sudo tee /etc/apt/sources.list.d/sbt.list
+            curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | sudo -H gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/scalasbt-release.gpg --import
+            sudo chmod 644 /etc/apt/trusted.gpg.d/scalasbt-release.gpg
+
             sudo apt-get update -qq
             sudo apt-get install -y sbt
             break;;
@@ -336,8 +339,8 @@ select yn in "Yes" "No"; do
             export PATH="$HOME/.rbenv/bin:$PATH"
             eval "$(rbenv init -)"
 
-            rbenv install 2.7.0
-            rbenv global 2.7.0
+            rbenv install 3.1.0
+            rbenv global 3.1.0
             break;;
         No ) break;;
     esac
