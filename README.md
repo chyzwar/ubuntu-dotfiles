@@ -38,7 +38,6 @@ This option will install system tools and related software.
 - libreoffice
 - openssh-client
 - openssh-server
-- dropbox
 - chrome
 - chromium
 - spotify
@@ -89,3 +88,19 @@ Again configuration files will be symlinked to Sublime packages folder.
 ### ./dotfile atom
 
 Install Atom editor
+
+### Post install
+
+1. Install DoH proxy
+
+  - https://developers.cloudflare.com/1.1.1.1/encrypted-dns/dns-over-https/dns-over-https-client
+  - https://github.com/DNSCrypt/dnscrypt-proxy/wiki/installation
+  
+2. Change audio sample rate to 24bit
+
+  - https://askubuntu.com/questions/868842/pros-cons-of-running-pulseaudio-at-24-bits-to-match-hardware
+
+3. Install Mullvad
+
+  - https://mullvad.net/en/help/install-mullvad-app-linux/
+  - https://mullvad.net/en/help/port-forwarding-and-mullvad/
