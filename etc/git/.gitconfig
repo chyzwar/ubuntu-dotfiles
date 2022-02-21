@@ -39,3 +39,6 @@
 
 [fetch]
   prune = true
+  
+[init]
+	defaultBranch = master

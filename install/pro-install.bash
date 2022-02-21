@@ -68,89 +68,29 @@ select yn in "Yes" "No"; do
     esac
 done
 
-
-tput setaf 2; echo "Do you want to kerl and erlang"; tput sgr0
+tput setaf 2; echo "Do you want to install elixir and erlanf"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            # Install version manager
-            git clone https://github.com/kerl/kerl ~/.kerl
-            export PATH="$HOME/.kerl:$PATH"
-
-            # For erlang deps
-            sudo apt-get install -y autoconf
-            sudo apt-get install -y automake
-            sudo apt-get install -y libncurses5-dev
-            sudo apt-get install -y xsltproc
-            sudo apt-get install -y libssl-dev
-            sudo apt-get install -y fop
-            sudo apt-get install -y libxml2-utils
-            sudo apt-get install -y unixodbc-dev
-            sudo apt-get install -y systemtap
-            sudo apt-get install -y systemtap-sdt-dev
-	        sudo apt-get install -y openjdk-8-jdk
-            sudo apt-get install -y libsctp-dev
-
-            # Kerl options (.kerl)
-            export KERL_BUILD_DOCS=yes
-            export KERL_USE_AUTOCONF=no
-            export KERL_INSTALL_MANPAGES=yes
-            export KERL_BUILD_BACKEND=tarball
-
+            git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch master
+            source $HOME/.asdf/asdf.sh
+            source $HOME/.asdf/completions/asdf.bash
 
             export KERL_CONFIGURE_OPTIONS="\
-                --disable-native-libs \
-                --with-dynamic-trace=systemtap \
-                --with-ssl=/usr/local \
-                --with-javac \
-                --without-wx \
-                --enable-vm-probes \
-                --enable-kernel-poll \
-                --enable-threads \
-                --enable-sctp \
-                --enable-smp-support"
+                --without-javac \
+                --without-wx"
 
-            erlang_versions=(23.3)
-            for version in "${erlang_versions[@]}"
-            do
-                echo "Building Erlang version" "$version"
-                kerl build "$version" "$version"
+            asdf plugin add erlang
+            asdf plugin add elixir
+            asdf plugin add nodejs
+           
+            asdf install erlang latest
+            asdf global erlang latest
 
-                echo "Installing Erlang version" "$version"
-                kerl install "$version" ~/.kerl/versions/"$version"
-            done
-
-            echo "Activate 23.3"
-            source ~/.kerl/versions/23.3/activate
-            break;;
-        No ) break;;
+            asdf install elixir latest
+            asdf global elixir latest
     esac
 done
-
-
-tput setaf 2; echo "Do you want to install Elixir"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
-	          source "$HOME/.kiex/scripts/kiex"
-
-            elixir_versions=(1.13.1)
-            for version in "${elixir_versions[@]}"
-            do
-                echo "Installing Elixir version" "$version"
-                kiex install "$version"
-            done
-
-            echo "Set 1.13.1 as default version"
-            kiex default 1.13.1
-            break;;
-        No ) break;;
-    esac
-done
-
-
-
 
 
 

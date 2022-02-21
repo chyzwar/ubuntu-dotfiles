@@ -10,6 +10,7 @@ source "$DIR/../dotfiles/.cargo"
 [ -z "$PS1" ] && return
 
 # Interactive shell dotfiles
+source "$DIR/../dotfiles/.asdf"
 source "$DIR/../dotfiles/.alias"
 source "$DIR/../dotfiles/.cabal"
 source "$DIR/../dotfiles/.cargo"
@@ -20,8 +21,6 @@ source "$DIR/../dotfiles/.go"
 source "$DIR/../dotfiles/.grep"
 source "$DIR/../dotfiles/.history"
 source "$DIR/../dotfiles/.javarc"
-source "$DIR/../dotfiles/.kerl"
-source "$DIR/../dotfiles/.kiex"
 source "$DIR/../dotfiles/.liquid"
 source "$DIR/../dotfiles/.nodenv"
 source "$DIR/../dotfiles/.opam"

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+
+export KERL_CONFIGURE_OPTIONS="\
+    --without-javac \
+    --without-wx"
+
+source $HOME/.asdf/asdf.sh
+source $HOME/.asdf/completions/asdf.bash
