@@ -26,7 +26,7 @@ select yn in "Yes" "No"; do
             sudo apt-get install -y python3-pip
 
             pip3 install virtualenvwrapper
-	        pip3 install virtualenv
+	          pip3 install virtualenv
             pip3 install jedi
             pip3 install pipenv
             pip3 install yamllint
@@ -73,8 +73,8 @@ select yn in "Yes" "No"; do
     case $yn in
         Yes )
             git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch master
-            source $HOME/.asdf/asdf.sh
-            source $HOME/.asdf/completions/asdf.bash
+            source "$HOME"/.asdf/asdf.sh
+            source "$HOME"/.asdf/completions/asdf.bash
 
             export KERL_CONFIGURE_OPTIONS="\
                 --without-javac \
@@ -83,12 +83,15 @@ select yn in "Yes" "No"; do
             asdf plugin add erlang
             asdf plugin add elixir
             asdf plugin add nodejs
-           
+            asdf plugin add terraform
+
             asdf install erlang latest
             asdf global erlang latest
 
             asdf install elixir latest
             asdf global elixir latest
+            break;;
+        No ) break;;
     esac
 done
 
