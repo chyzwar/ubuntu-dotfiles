@@ -5,12 +5,10 @@ tput setaf 2; echo "Do you want to install Python Tools"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev
+            sudo apt-get install -y make build-essential lzma libssl-dev zlib1g-dev libbz2-dev
             sudo apt-get install -y libreadline-dev libsqlite3-dev wget curl llvm
             sudo apt-get install -y libncurses5-dev libncursesw5-dev xz-utils tk-dev
             sudo apt-get install -y libffi-dev liblzma-dev python-openssl python-dev software-properties-common
-
-            curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 
             git clone https://github.com/pyenv/pyenv.git ~/.pyenv
             git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
@@ -21,15 +19,14 @@ select yn in "Yes" "No"; do
             eval "$(pyenv init -)"
 
             pyenv install 2.7.17
-            pyenv install 3.8.1
+            pyenv install 3.11.7
 
-            sudo apt-get install -y python3-pip
+            pyenv global 3.11.7
 
-            pip3 install virtualenvwrapper
-	          pip3 install virtualenv
-            pip3 install jedi
-            pip3 install pipenv
-            pip3 install yamllint
+            pip install --upgrade pip
+            pip install --user pipenv
+
+            curl -sSL https://install.python-poetry.org | python3 -
             break;;
         No ) break;;
     esac
@@ -51,8 +48,7 @@ select yn in "Yes" "No"; do
             export PATH="$HOME/.nodenv/bin:$PATH"
             eval "$(nodenv init -)"
 
-
-            node_versions=(14.17.5 16.9.0)
+            node_versions=(20.16.0 22.5.1)
             for version in "${node_versions[@]}"
             do
                 echo "Installing node version" "$version"
@@ -124,7 +120,7 @@ select yn in "Yes" "No"; do
             wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
             wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 
-            sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian focal contrib" >> /etc/apt/sources.list.d/virtualbox.org.list'
+            sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian noble contrib" >> /etc/apt/sources.list.d/virtualbox.org.list'
             sudo apt-get update -qq
             sudo apt-get install -y virtualbox-6.1
             break;;
@@ -181,6 +177,17 @@ select yn in "Yes" "No"; do
         No ) break;;
     esac
 done
+
+tput setaf 2; echo "Do you want to install deno"; tput sgr0
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes )
+            curl -fsSL https://deno.land/install.sh | sh
+            break;;
+        No ) break;;
+    esac
+done
+
 
 
 tput setaf 2; echo "Do you want install MariaDB"; tput sgr0
@@ -278,11 +285,13 @@ select yn in "Yes" "No"; do
             cd ~/.rbenv && src/configure && make -C src && cd - || return
             git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
+            sudo apt-get install -y libyaml-dev
+
             export PATH="$HOME/.rbenv/bin:$PATH"
             eval "$(rbenv init -)"
 
-            rbenv install 3.1.0
-            rbenv global 3.1.0
+            rbenv install 3.2.5
+            rbenv global 3.2.5
             break;;
         No ) break;;
     esac
@@ -315,8 +324,8 @@ select yn in "Yes" "No"; do
             export PATH="$HOME/.crenv/bin:$PATH"
             eval "$(crenv init -)"
 
-            crenv install 0.34.0
-            crenv global 0.34.0
+            crenv install 1.13.1
+            crenv global 1.13.1
             crenv rehash
             break;;
         No ) break;;
@@ -328,7 +337,7 @@ tput setaf 2; echo "Do you want to install nix"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            curl https://nixos.org/nix/install | sh
+            sh <(curl -L https://nixos.org/nix/install) --daemon
             break;;
         No ) break;;
     esac
@@ -339,11 +348,10 @@ tput setaf 2; echo "Do you want to install docker"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-            sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+            sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+            sudo add-apt-repository "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu noble stable"
             sudo apt-get update -qq
-            sudo apt-get install -y docker-ce docker-ce-cli containerd.io
-
+            sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
             sudo groupadd docker
             sudo usermod -aG docker "$USER"
             break;;

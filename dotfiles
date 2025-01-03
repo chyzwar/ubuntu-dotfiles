@@ -13,7 +13,6 @@ sub_help () {
     echo "   pro                Install diffrent programmuing env"
     echo "   shell              Install, source and link dotfiles to bash and zhs"
     echo "   sublime            Install  Sublime Text 3 and custom plugins"
-    echo "   atom               Install  Atom text editor"
     echo "   emacs              Install  Emacs and spacemac "
     echo "   vim                Install  Vim and custom plugins using Vundle"
     echo "   vscode             Install  VSCode"
@@ -44,11 +43,6 @@ sub_sublime () {
     bash install/sublime-install.bash
 }
 
-sub_atom () {
-    sudo chmod +x install/atom-install.bash
-    bash install/atom-install.bash
-}
-
 sub_vim () {
     sudo chmod +x vim/vim-install.bash
     bash install/vim-install.bash
@@ -67,7 +61,6 @@ sub_all () {
     sub_system
     sub_pro
     sub_sublime
-    sub_atom
     sub_vim
     sub_emacs
     sub_vscode

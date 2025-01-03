@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# https://github.com/ddworken/hishtory
+export PATH="$PATH:~/.hishtory"
+source "$HOME"/.hishtory/config.sh

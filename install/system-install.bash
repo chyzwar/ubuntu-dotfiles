@@ -51,10 +51,6 @@ sudo snap install krita
 sudo snap install gimp
 sudo snap install postman
 
-tput setaf 2; echo "Install JetBrains tools"; tput sgr0
-sudo snap install intellij-idea-community --classic
-sudo snap install pycharm-community --classic
-
 tput setaf 2; echo "Install Slack"; tput sgr0
 sudo snap install slack --classic
 
@@ -73,11 +69,9 @@ tput setaf 2; echo "Do you want to install vanilla Gnome"; tput sgr0
 select yn in "Yes" "No"; do
     case $yn in
         Yes )
-            sudo apt-get remove -y gnome-shell-extension-ubuntu-dock
-            sudo apt-get install -y gnome-session gdm3 tasksel
-            sudo tasksel install ubuntu-desktop
+            sudo apt-get remove -y gnome-session
 
-            gsettings set org.gnome.shell.overrides workspaces-only-on-primary false
+            
             gsettings set org.gnome.desktop.lockdown disable-lock-screen true
             gsettings set org.gnome.desktop.screensaver lock-enabled false
             break;;
@@ -230,17 +224,6 @@ select yn in "Yes" "No"; do
             sudo snap install kubectl --classic
             sudo snap install microk8s --classic
 
-            break;;
-        No ) break;;
-    esac
-done
-
-
-tput setaf 2; echo "Do you want to install Skype"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo snap install skype --classic
             break;;
         No ) break;;
     esac

@@ -6,7 +6,7 @@ These dotfiles project aim to provide a way to make instant setup for Ubuntu sys
 Use branch for corresponding Ubuntu version.
 
 - Vim and plugins
-- VSCode and Atom
+- VSCode
 - Sublime Text 3 and plugins
 - Programming languages and tools
 - Shell configuration and plugins
@@ -84,10 +84,6 @@ This command will install VSCode and VSCode Insiders using snap. code-settings-s
 
 This will add ppa for Sublime Text 3, it will also install Package Manager and plugins listed in sublime/Package\ Control.sublime-settings.
 Again configuration files will be symlinked to Sublime packages folder.
-
-### ./dotfile atom
-
-Install Atom editor
 
 ### Post install
 

@@ -1,8 +1,0 @@
-[Unit]
-Description=Fix for my motherboard
-
-[Service]
-ExecStart=/bin/bash -c "echo PWRB >> /proc/acpi/wakeup"
-
-[Install]
-WantedBy=multi-user.target

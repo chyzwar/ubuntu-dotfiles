@@ -21,6 +21,7 @@ source "$DIR/../dotfiles/.go"
 source "$DIR/../dotfiles/.grep"
 source "$DIR/../dotfiles/.history"
 source "$DIR/../dotfiles/.javarc"
+source "$DIR/../dotfiles/.deno"
 source "$DIR/../dotfiles/.liquid"
 source "$DIR/../dotfiles/.nodenv"
 source "$DIR/../dotfiles/.opam"
@@ -30,6 +31,7 @@ source "$DIR/../dotfiles/.rbenv"
 source "$DIR/../dotfiles/.scalarc"
 source "$DIR/../dotfiles/.direnv"
 source "$DIR/../dotfiles/.androidrc"
+source "$DIR/../dotfiles/.hishstory"
 
 unset DIR
 
@@ -37,6 +39,4 @@ unset DIR
 ulimit -n 1000000
 
 # Set default editor
-export EDITOR=code
-
-alias kubectl="microk8s kubectl"
+export EDITOR="code --wait"
