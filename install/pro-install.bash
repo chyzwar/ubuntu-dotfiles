@@ -181,7 +181,13 @@ fi
 
 
 if confirm "Do you want to install roc (official installer, nightly)"; then
-    # https://www.roc-lang.org/install/unix - answer "no" to the PATH prompt, ~/.local/bin is already on PATH
-    export ROC_INSTALL_DIR="$HOME/.local/bin"
-    curl -fsSL https://roc-lang.org/install_roc.sh | sh
+    # https://www.roc-lang.org/install/unix
+    # The installer downloads and extracts into $PWD, so run it from a temp dir.
+    # ROC_INSTALL_DIR makes it copy the binary out; answer "no" to the PATH prompt,
+    # ~/.local/bin is already on PATH.
+    (
+        cd "$(mktemp -d)" || exit 1
+        export ROC_INSTALL_DIR="$HOME/.local/bin"
+        curl -fsSL https://roc-lang.org/install_roc.sh | sh
+    )
 fi
