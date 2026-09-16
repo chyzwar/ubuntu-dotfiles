@@ -64,6 +64,7 @@ Programming languages and tooling, each optional.
 - docker CE with buildx and compose plugins
 - Android Studio (snap) with KVM
 - zig (snap)
+- roc (official installer, nightly build into `~/.local/bin`)
 
 ### ./dotfiles ai
 

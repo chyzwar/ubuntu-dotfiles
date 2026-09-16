@@ -178,3 +178,9 @@ fi
 if confirm "Do you want to install zig"; then
     snap_install zig --classic --beta
 fi
+
+
+if confirm "Do you want to install roc (official installer, nightly)"; then
+    # https://www.roc-lang.org/install/unix - answer "no" to the PATH prompt, ~/.local/bin is already on PATH
+    curl --proto '=https' --tlsv1.2 -sSf https://roc-lang.org/install_roc.sh | ROC_INSTALL_DIR="$HOME/.local/bin" sh
+fi
