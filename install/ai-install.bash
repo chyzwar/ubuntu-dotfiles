@@ -23,15 +23,12 @@ if confirm "Do you want to install Claude Desktop (Anthropic apt repo, Linux bet
 fi
 
 
-if confirm "Do you want to install Codex CLI (GitHub release, alpha channel)"; then
-    # No deb exists; official binaries are on GitHub releases.
+if confirm "Do you want to install Codex CLI (official installer, alpha release)"; then
+    # newest alpha pre-release tag, e.g. rust-v0.155.0-alpha.11 -> 0.155.0-alpha.11
     codex_tag="$(github_latest_tag openai/codex --prerelease rust-v)"
-    info "Installing codex $codex_tag"
-    tmp="$(mktemp -d)"
-    curl -fsSL "https://github.com/openai/codex/releases/download/${codex_tag}/codex-x86_64-unknown-linux-musl.tar.gz" \
-        | tar xzf - -C "$tmp"
-    install -m 0755 "$tmp"/codex-x86_64-unknown-linux-musl "$HOME/.local/bin/codex"
-    rm -rf "$tmp"
+    codex_release="${codex_tag#rust-v}"
+    curl -fsSL https://chatgpt.com/codex/install.sh \
+        | CODEX_NON_INTERACTIVE=1 sh -s -- --release "${codex_release:-latest}"
 fi
 
 
