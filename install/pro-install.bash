@@ -69,9 +69,9 @@ if confirm "Do you want to install ocaml"; then
 
     # bubblewrap sandbox is blocked by the unprivileged-userns AppArmor
     # restriction on Ubuntu >= 24.04
-    opam init -y --disable-sandboxing
+    opam init --disable-sandboxing
     eval "$(opam env)"
-    opam install -y merlin ocaml-lsp-server user-setup
+    opam install merlin ocaml-lsp-server user-setup
     opam user-setup install
 fi
 
@@ -83,7 +83,7 @@ fi
 
 
 if confirm "Do you want to install rust and rustup.rs"; then
-    curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
+    curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path
     export PATH="$HOME/.cargo/bin:$PATH"
 
     mkdir -p "$HOME/.local/share/bash-completion/completions"
@@ -110,7 +110,7 @@ fi
 
 
 if confirm "Do you want to install deno"; then
-    curl -fsSL https://deno.land/install.sh | sh -s -- --yes
+    curl -fsSL https://deno.land/install.sh | sh
 fi
 
 
@@ -144,11 +144,8 @@ fi
 if confirm "Do you want to install Haskell (ghcup: ghc, cabal, stack, hls)"; then
     apt_install build-essential curl libffi-dev libffi8 libgmp-dev libgmp10 \
         libncurses-dev pkg-config
-    BOOTSTRAP_HASKELL_NONINTERACTIVE=1 \
-    BOOTSTRAP_HASKELL_INSTALL_STACK=1 \
-    BOOTSTRAP_HASKELL_INSTALL_HLS=1 \
-    BOOTSTRAP_HASKELL_ADJUST_BASHRC=0 \
-        sh -c 'curl --proto "=https" --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh'
+    # answer "no" when it offers to edit .bashrc; .cabal fragment sources ~/.ghcup/env
+    curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 fi
 
 
