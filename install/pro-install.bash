@@ -182,5 +182,6 @@ fi
 
 if confirm "Do you want to install roc (official installer, nightly)"; then
     # https://www.roc-lang.org/install/unix - answer "no" to the PATH prompt, ~/.local/bin is already on PATH
-    curl -fsSL https://roc-lang.org/install_roc.sh | ROC_INSTALL_DIR="$HOME/.local/bin" sh
+    export ROC_INSTALL_DIR="$HOME/.local/bin"
+    curl -fsSL https://roc-lang.org/install_roc.sh | sh
 fi
