@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-[ -d "$HOME/.tfenv/bin" ] || return 0
-export PATH="$HOME/.tfenv/bin:$PATH"

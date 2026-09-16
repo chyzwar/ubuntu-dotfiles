@@ -9,7 +9,7 @@ older branches are what they say.
 Includes:
 
 - Shell configuration (bash, readline, liquidprompt, hishtory) and git configuration
-- Programming languages and version managers (mise, nodenv, uv, tfenv)
+- Programming languages and version managers (mise, nodenv, uv)
 - AI coding tools and desktop apps
 - Editors: Vim, VSCode, Zed, Sublime Text, Emacs
 
@@ -58,7 +58,7 @@ Programming languages and tooling, each optional.
 - haskell via ghcup (ghc, cabal, stack, hls)
 - go
 - ruby via mise (3.4)
-- terraform via tfenv
+- terraform via mise
 - crystal from the official apt repo (crystal-lang.org install.sh)
 - nix (multi-user daemon)
 - docker CE with buildx and compose plugins

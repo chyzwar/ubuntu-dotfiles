@@ -141,14 +141,6 @@ if confirm "Do you want to install Clojure and lein"; then
 fi
 
 
-if confirm "Do you want to install Haskell (ghcup: ghc, cabal, stack, hls)"; then
-    apt_install build-essential curl libffi-dev libffi8 libgmp-dev libgmp10 \
-        libncurses-dev pkg-config
-    # answer "no" when it offers to edit .bashrc; .cabal fragment sources ~/.ghcup/env
-    curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
-fi
-
-
 if confirm "Do you want to install go-lang"; then
     apt_install golang
 fi
@@ -163,22 +155,14 @@ if confirm "Do you want to install Ruby (mise)"; then
 fi
 
 
-if confirm "Do you want to install Terraform and tfenv"; then
-    git_clone_or_pull https://github.com/tfutils/tfenv.git ~/.tfenv
-    export PATH="$HOME/.tfenv/bin:$PATH"
-    tfenv install latest
-    tfenv use latest
+if confirm "Do you want to install Terraform (mise)"; then
+    install_mise
+    mise use -g terraform@latest
 fi
 
 
 if confirm "Do you want to install Crystal (official apt repo)"; then
-    # sets up the crystal-lang OBS apt repo for this Ubuntu release
     curl -fsSL https://crystal-lang.org/install.sh | sudo bash
-fi
-
-
-if confirm "Do you want to install nix"; then
-    sh <(curl -L https://nixos.org/nix/install) --daemon
 fi
 
 

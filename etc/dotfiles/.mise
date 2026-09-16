@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# https://mise.jdx.dev - erlang, elixir, ruby, scala, sbt, scala-cli
+# https://mise.jdx.dev - erlang, elixir, ruby, scala, sbt, scala-cli, terraform
 export KERL_CONFIGURE_OPTIONS="\
     --without-javac \
     --without-wx"
