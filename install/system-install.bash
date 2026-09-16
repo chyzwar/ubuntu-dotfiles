@@ -94,15 +94,6 @@ if confirm "Do you want to install Brave"; then
     apt_install brave-browser
 fi
 
-
-if confirm "Do you want to install Vivaldi"; then
-    apt_keyring vivaldi https://repo.vivaldi.com/archive/linux_signing_key.pub
-    apt_source vivaldi https://repo.vivaldi.com/archive/deb/ stable main
-    apt_update
-    apt_install vivaldi-stable
-fi
-
-
 if confirm "Do you want to install Spotify"; then
     snap_install spotify
 fi
