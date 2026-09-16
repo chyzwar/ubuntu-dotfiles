@@ -38,7 +38,7 @@ Base packages and desktop software.
 - flatpak + Discover flatpak backend, Flathub, Lollypop
 - snaps: snapcraft, vlc, krita, gimp, postman, slack
 - sysctl tweaks (swappiness, inotify limits) in `/etc/sysctl.d/99-dotfiles.conf`
-- optional: Zeal, `mitigations=off`, Firefox Nightly (Mozilla apt repo), Dropbox (official apt repo), Steam, Google Chrome (deb), Brave (apt repo), Vivaldi (apt repo), Spotify, Discord (deb), Picard, kubectl + microk8s
+- optional: Zeal, `mitigations=off`, Firefox Nightly (Mozilla apt repo), Dropbox (official apt repo), Steam, Google Chrome (deb), Brave (apt repo), Spotify, Discord (deb), Picard, kubectl + microk8s
 
 ### ./dotfiles pro
 
@@ -55,12 +55,10 @@ Programming languages and tooling, each optional.
 - Java 8, 21, 25 (default 21), maven, gradle, ant
 - scala, sbt and scala-cli via mise
 - clojure and leiningen
-- haskell via ghcup (ghc, cabal, stack, hls)
 - go
 - ruby via mise (3.4)
 - terraform via mise
 - crystal from the official apt repo (crystal-lang.org install.sh)
-- nix (multi-user daemon)
 - docker CE with buildx and compose plugins
 - Android Studio (snap) with KVM
 - zig (snap)
