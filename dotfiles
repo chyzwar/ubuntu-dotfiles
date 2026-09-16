@@ -1,82 +1,65 @@
 #!/bin/bash
 
+cd "$(dirname "$(readlink -f "$0")")" || exit 1
+
 BIN_NAME="$(basename "$0")"
 COMMAND_NAME=$1
 
-
 sub_help () {
-    echo "Usage: $BIN_NAME <command>\n"
+    echo "Usage: $BIN_NAME <command>"
+    echo
     echo "Commands:"
     echo "   help               This help message"
-    echo "   reload             Reload dotfiles"
-    echo "   system             Install basic setup for Ubuntu"
-    echo "   pro                Install diffrent programmuing env"
-    echo "   shell              Install, source and link dotfiles to bash and zhs"
-    echo "   sublime            Install  Sublime Text 3 and custom plugins"
-    echo "   emacs              Install  Emacs and spacemac "
-    echo "   vim                Install  Vim and custom plugins using Vundle"
-    echo "   vscode             Install  VSCode"
-    echo "   all                Install  using all options"
+    echo "   reload             Reload ~/.bashrc"
+    echo "   system             Install basic setup for Kubuntu"
+    echo "   pro                Install programming environments"
+    echo "   ai                 Install AI coding tools (Claude Code, Codex, OpenCode) and desktop apps"
+    echo "   shell              Install shell tools and link dotfiles into \$HOME"
+    echo "   sublime            Install Sublime Text (official apt repo, dev channel)"
+    echo "   emacs              Install Emacs and Spacemacs"
+    echo "   vim                Install Vim and link .vimrc"
+    echo "   vscode             Install VSCode and VSCode Insiders (Microsoft apt repo)"
+    echo "   zed                Install Zed editor"
+    echo "   all                Run every install step"
 }
 
 sub_reload () {
-    source "/home/$USER/.bash_profile" && echo "Bash reloaded."
+    # shellcheck disable=SC1091
+    source "$HOME/.bashrc" && echo "Bash reloaded."
 }
 
-sub_system () {
-    sudo chmod +x install/system-install.bash
-    bash install/system-install.bash
-}
-
-sub_pro () {
-    sudo chmod +x install/pro-install.bash
-    bash install/pro-install.bash
-}
-
-sub_shell () {
-    sudo chmod +x install/shell-install.bash
-    bash install/shell-install.bash
-}
-
-sub_sublime () {
-    sudo chmod +x sublime/sublime-install.bash
-    bash install/sublime-install.bash
-}
-
-sub_vim () {
-    sudo chmod +x vim/vim-install.bash
-    bash install/vim-install.bash
-}
-sub_emacs () {
-    sudo chmod +x install/emacs-install.bash
-    bash install/emacs-install.bash
-}
-
-sub_vscode () {
-    sudo chmod +x install/vscode-install.bash
-    bash install/vscode-install.bash
-}
+sub_system ()  { bash install/system-install.bash; }
+sub_pro ()     { bash install/pro-install.bash; }
+sub_ai ()      { bash install/ai-install.bash; }
+sub_shell ()   { bash install/shell-install.bash; }
+sub_sublime () { bash install/sublime-install.bash; }
+sub_vim ()     { bash install/vim-install.bash; }
+sub_emacs ()   { bash install/emacs-install.bash; }
+sub_vscode ()  { bash install/vscode-install.bash; }
+sub_zed ()     { bash install/zed-install.bash; }
 
 sub_all () {
     sub_system
     sub_pro
+    sub_ai
     sub_sublime
     sub_vim
     sub_emacs
     sub_vscode
+    sub_zed
     sub_shell
 }
 
-
 case $COMMAND_NAME in
-    "" | "-h" | "--help")
+    "" | "-h" | "--help" | "help")
         sub_help
         ;;
     *)
         shift
-        "sub_${COMMAND_NAME}" "$@"
-        if [ $? = 127 ]; then
-            echo "'$COMMAND_NAME' is not a known command or has errors." >&2
+        if declare -F "sub_$COMMAND_NAME" >/dev/null; then
+            "sub_$COMMAND_NAME" "$@"
+        else
+            echo "'$COMMAND_NAME' is not a known command." >&2
             sub_help
             exit 1
         fi
