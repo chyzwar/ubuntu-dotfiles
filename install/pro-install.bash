@@ -1,404 +1,224 @@
-#!/bin/bash
-# shellcheck disable=SC1090
-
-tput setaf 2; echo "Do you want to install Python Tools"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo apt-get install -y make build-essential lzma libssl-dev zlib1g-dev libbz2-dev
-            sudo apt-get install -y libreadline-dev libsqlite3-dev wget curl llvm
-            sudo apt-get install -y libncurses5-dev libncursesw5-dev xz-utils tk-dev
-            sudo apt-get install -y libffi-dev liblzma-dev python-openssl python-dev software-properties-common
-
-            git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-            git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
-            git clone https://github.com/pyenv/pyenv-update.git ~/.pyenv/plugins/pyenv-update
-            git clone https://github.com/pyenv/pyenv-pip-rehash.git ~/.pyenv/plugins/pyenv-pip-rehash
+#!/usr/bin/env bash
+# shellcheck disable=SC1090,SC1091
+# shellcheck source=install/lib.bash
+source "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/lib.bash"
 
-            export PATH="$HOME/.pyenv/bin:$PATH"
-            eval "$(pyenv init -)"
-
-            pyenv install 2.7.17
-            pyenv install 3.11.7
-
-            pyenv global 3.11.7
-
-            pip install --upgrade pip
-            pip install --user pipenv
-
-            curl -sSL https://install.python-poetry.org | python3 -
-            break;;
-        No ) break;;
-    esac
-done
+mkdir -p "$HOME/.local/bin"
+export PATH="$HOME/.local/bin:$PATH"
 
 
+if confirm "Do you want to install Python tools (uv, pipenv, poetry)"; then
+    curl -LsSf https://astral.sh/uv/install.sh | env UV_NO_MODIFY_PATH=1 sh
 
+    # managed interpreter; --default also links python/python3 into ~/.local/bin
+    uv python install 3.13 --default
 
-
-tput setaf 2; echo "Do you want to install node.js and tools"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            git clone https://github.com/nodenv/nodenv.git ~/.nodenv
-            cd ~/.nodenv && src/configure && make -C src && cd - || return
-            git clone https://github.com/nodenv/node-build.git ~/.nodenv/plugins/node-build
-            git clone https://github.com/nodenv/node-build-update-defs.git ~/.nodenv/plugins/node-build-update-defs
-
-            export PATH="$HOME/.nodenv/bin:$PATH"
-            eval "$(nodenv init -)"
-
-            node_versions=(20.16.0 22.5.1)
-            for version in "${node_versions[@]}"
-            do
-                echo "Installing node version" "$version"
-                nodenv install "$version"
-                nodenv global "$version"
+    uv tool install pipenv
+    uv tool install poetry
+fi
 
-                npm install -g --depth 0 npm
-                npm install -g --depth 0 yarn
-                npm install -g --depth 0 pnpm
-            done
-            break;;
-        No ) break;;
-    esac
-done
-
-tput setaf 2; echo "Do you want to install elixir and erlanf"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch master
-            source "$HOME"/.asdf/asdf.sh
-            source "$HOME"/.asdf/completions/asdf.bash
-
-            export KERL_CONFIGURE_OPTIONS="\
-                --without-javac \
-                --without-wx"
-
-            asdf plugin add erlang
-            asdf plugin add elixir
-            asdf plugin add nodejs
-            asdf plugin add terraform
-
-            asdf install erlang latest
-            asdf global erlang latest
-
-            asdf install elixir latest
-            asdf global elixir latest
-            break;;
-        No ) break;;
-    esac
-done
-
-
-
-
-tput setaf 2; echo "Do you want to install ocaml"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-          sudo apt-get install -y ocaml-nox
-          sudo apt-get install -y ocaml
-          sudo apt-get install -y opam
-
-          opam init
-          opam install merlin
-          opam user-setup install
-          break;;
-        No ) break;;
-    esac
-done
-
-
-
-
-tput setaf 2; echo "Do you want to install VirtualBox"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-            wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-
-            sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian noble contrib" >> /etc/apt/sources.list.d/virtualbox.org.list'
-            sudo apt-get update -qq
-            sudo apt-get install -y virtualbox-6.1
-            break;;
-        No ) break;;
-    esac
-done
-
-
-
-
-tput setaf 2; echo "Do you want to install rust and rustup.rs"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
-            export PATH="$HOME/.cargo/bin:$PATH"
-            sudo rustup completions bash | sudo tee -a /etc/bash_completion.d/rustup.bash-completion
-
-            rustup install nightly
-            rustup default nightly
-
-            cargo install exa
-            cargo install fd-find
-            cargo install skim
-            break;;
-        No ) break;;
-    esac
-done
-
-
-
-
-
-tput setaf 2; echo "Do you want to install PHP7 and composer"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo apt-get install -y php7.0
-            sudo apt-get install -y php7.0-fpm
-            sudo apt-get install -y php7.0-mysql
-            sudo apt-get install -y composer
-            break;;
-        No ) break;;
-    esac
-done
-
-
-tput setaf 2; echo "Do you want to install nginx"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo apt-get install -y nginx
-            break;;
-        No ) break;;
-    esac
-done
-
-tput setaf 2; echo "Do you want to install deno"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            curl -fsSL https://deno.land/install.sh | sh
-            break;;
-        No ) break;;
-    esac
-done
-
-
-
-tput setaf 2; echo "Do you want install MariaDB"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo apt-get install -y mariadb-server
-            sudo apt-get install -y mariadb-client
-            break;;
-        No ) break;;
-    esac
-done
-
-
-tput setaf 2; echo "Do you want install Java 8,9 and tools"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo apt-get install -y openjdk-8-jdk
-            sudo apt-get install -y openjdk-11-jdk
-            sudo update-java-alternatives -s java-1.11.0-openjdk-amd64
-
-            sudo apt-get install -y maven
-            sudo apt-get install -y gradle
-            sudo apt-get install -y ant
-            break;;
-        No ) break;;
-    esac
-done
-
-
-tput setaf 2; echo "Do you want install Scala and sbt"; tput sgr0
-tput setaf 3; echo "Assume that Java is installed"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo apt-get install -y scala
-            sudo apt-get install apt-transport-https curl gnupg -yqq
-            echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" | sudo tee /etc/apt/sources.list.d/sbt.list
-            curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | sudo -H gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/scalasbt-release.gpg --import
-            sudo chmod 644 /etc/apt/trusted.gpg.d/scalasbt-release.gpg
-
-            sudo apt-get update -qq
-            sudo apt-get install -y sbt
-            break;;
-        No ) break;;
-    esac
-done
-
-
-tput setaf 2; echo "Do you want install Clojure and lein"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo apt-get install -y leiningen
-            sudo apt-get install -y clojure
-            break;;
-        No ) break;;
-    esac
-done
-
-
-
-
-tput setaf 2; echo "Do you want to install Haskell Platform"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo apt-get install -y haskell-stack
-            sudo apt-get install -y haskell-platform
-            sudo apt-get install -y haskell-platform-doc
-            sudo apt-get install -y haskell-platform-prof
-            break;;
-        No ) break;;
-    esac
-done
-
-
-tput setaf 2; echo "Do you want install go-lang??"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo apt-get install -y golang
-            break;;
-        No ) break;;
-    esac
-done
-
-
-tput setaf 2; echo "Do you want install Ruby and rbenv"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-            cd ~/.rbenv && src/configure && make -C src && cd - || return
-            git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-
-            sudo apt-get install -y libyaml-dev
-
-            export PATH="$HOME/.rbenv/bin:$PATH"
-            eval "$(rbenv init -)"
-
-            rbenv install 3.2.5
-            rbenv global 3.2.5
-            break;;
-        No ) break;;
-    esac
-done
-
-
-
-tput setaf 2; echo "Do you want install Terraform and tfenv"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            git clone https://github.com/tfutils/tfenv.git ~/.tfenv
-
-            export PATH="$HOME/.tfenv/bin:$PATH"
-
-            tfenv install latest
-            break;;
-        No ) break;;
-    esac
-done
-
-tput setaf 2; echo "Do you want install Crystal and crenv"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            git clone https://github.com/pine/crenv.git ~/.crenv
-            git clone https://github.com/pine/crystal-build.git ~/.crenv/plugins/crystal-build
-            git clone https://github.com/pine/crenv-update.git ~/.crenv/plugins/crenv-update
-
-            export PATH="$HOME/.crenv/bin:$PATH"
-            eval "$(crenv init -)"
-
-            crenv install 1.13.1
-            crenv global 1.13.1
-            crenv rehash
-            break;;
-        No ) break;;
-    esac
-done
-
-
-tput setaf 2; echo "Do you want to install nix"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sh <(curl -L https://nixos.org/nix/install) --daemon
-            break;;
-        No ) break;;
-    esac
-done
-
-
-tput setaf 2; echo "Do you want to install docker"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-            sudo add-apt-repository "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu noble stable"
-            sudo apt-get update -qq
-            sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-            sudo groupadd docker
-            sudo usermod -aG docker "$USER"
-            break;;
-        No ) break;;
-    esac
-done
-
-
-tput setaf 2; echo "Do you want to install docker-compose"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo curl \
-              -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-Linux-x86_64" \
-              -o /usr/local/bin/docker-compose
-
-            sudo chmod +x /usr/local/bin/docker-compose
-            break;;
-        No ) break;;
-    esac
-done
-
-
-
-tput setaf 2; echo "Do you want to Android Studio"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo apt-get install -y qemu-kvm
-            sudo apt-get install -y libvirt-daemon-system libvirt-clients
-            sudo apt-get install -y ubuntu-vm-builder
-            sudo apt-get install -y bridge-utils
-
-            sudo adduser "$USER" kvm
-
-            sudo snap install android-studio --classic
-            break;;
-        No ) break;;
-    esac
-done
-
-tput setaf 2; echo "Do you want to instal zig"; tput sgr0
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes )
-            sudo snap install zig --classic --beta
-            break;;
-        No ) break;;
-    esac
-done
+
+if confirm "Do you want to install node.js and tools (nodenv, npm, yarn, pnpm)"; then
+    git_clone_or_pull https://github.com/nodenv/nodenv.git ~/.nodenv
+    (cd ~/.nodenv && src/configure && make -C src) || warn "nodenv bash extension build failed (optional)"
+    git_clone_or_pull https://github.com/nodenv/node-build.git ~/.nodenv/plugins/node-build
+    git_clone_or_pull https://github.com/nodenv/node-build-update-defs.git ~/.nodenv/plugins/node-build-update-defs
+
+    export PATH="$HOME/.nodenv/bin:$PATH"
+    eval "$(nodenv init -)"
+    nodenv update-version-defs >/dev/null 2>&1 || true
+
+    # newest release of a major line, e.g. nodenv_latest 22 -> 22.x.y
+    nodenv_latest () { nodenv install -l | grep -E "^$1\." | sort -V | tail -1; }
+
+    for major in 22 24; do
+        version="$(nodenv_latest "$major")"
+        echo "Installing node version $version"
+        nodenv install --skip-existing "$version"
+        nodenv global "$version"
+        npm install -g npm yarn pnpm
+    done
+fi
+
+
+if confirm "Do you want to install elixir and erlang (asdf)"; then
+    apt_install build-essential autoconf m4 libncurses-dev libssl-dev \
+        unixodbc-dev libssh-dev xsltproc fop libxml2-utils
+
+    # asdf >= 0.16 is a single Go binary
+    asdf_tag="$(github_latest_tag asdf-vm/asdf)"
+    curl -fsSL "https://github.com/asdf-vm/asdf/releases/download/${asdf_tag}/asdf-${asdf_tag}-linux-amd64.tar.gz" \
+        | tar xzf - -C "$HOME/.local/bin" asdf
+    export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+    export KERL_CONFIGURE_OPTIONS="\
+        --without-javac \
+        --without-wx"
+
+    asdf plugin add erlang
+    asdf plugin add elixir
+    asdf plugin add nodejs
+    asdf plugin add terraform
+
+    asdf install erlang latest
+    asdf set -u erlang "$(asdf latest erlang)"
+
+    asdf install elixir latest
+    asdf set -u elixir "$(asdf latest elixir)"
+fi
+
+
+if confirm "Do you want to install ocaml"; then
+    apt_install ocaml opam
+
+    # bubblewrap sandbox is blocked by the unprivileged-userns AppArmor
+    # restriction on Ubuntu >= 24.04
+    opam init -y --disable-sandboxing
+    eval "$(opam env)"
+    opam install -y merlin ocaml-lsp-server user-setup
+    opam user-setup install
+fi
+
+
+if confirm "Do you want to install VirtualBox"; then
+    apt_install virtualbox virtualbox-guest-additions-iso
+    sudo usermod -aG vboxusers "$USER"
+fi
+
+
+if confirm "Do you want to install rust and rustup.rs"; then
+    curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
+    export PATH="$HOME/.cargo/bin:$PATH"
+
+    mkdir -p "$HOME/.local/share/bash-completion/completions"
+    rustup completions bash > "$HOME/.local/share/bash-completion/completions/rustup"
+    rustup completions bash cargo > "$HOME/.local/share/bash-completion/completions/cargo"
+
+    rustup install nightly
+    rustup default nightly
+
+    cargo install eza
+    cargo install fd-find
+    cargo install skim
+fi
+
+
+if confirm "Do you want to install PHP and composer"; then
+    apt_install php php-fpm php-mysql composer
+fi
+
+
+if confirm "Do you want to install nginx"; then
+    apt_install nginx
+fi
+
+
+if confirm "Do you want to install deno"; then
+    curl -fsSL https://deno.land/install.sh | sh -s -- --yes
+fi
+
+
+if confirm "Do you want to install bun"; then
+    curl -fsSL https://bun.sh/install | bash
+fi
+
+
+if confirm "Do you want to install MariaDB"; then
+    apt_install mariadb-server mariadb-client
+fi
+
+
+if confirm "Do you want to install Java (8, 21, 25) and tools"; then
+    apt_install openjdk-8-jdk openjdk-21-jdk openjdk-25-jdk maven gradle ant
+    sudo update-java-alternatives -s java-1.21.0-openjdk-amd64
+fi
+
+
+if confirm "Do you want to install Scala and sbt (coursier; uses installed Java or fetches a JVM)"; then
+    # scala-lang.org recommended installer: scala, scalac, scala-cli, sbt, sbtn, scalafmt, ...
+    tmp="$(mktemp -d)"
+    curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz \
+        | gzip -d > "$tmp/cs"
+    chmod +x "$tmp/cs"
+    # --env: print exports instead of editing shell profiles
+    eval "$("$tmp/cs" setup --yes --env --install-dir "$HOME/.local/bin")"
+    rm -rf "$tmp"
+fi
+
+
+if confirm "Do you want to install Clojure and lein"; then
+    apt_install leiningen clojure
+fi
+
+
+if confirm "Do you want to install Haskell (ghcup: ghc, cabal, stack, hls)"; then
+    apt_install build-essential curl libffi-dev libffi8 libgmp-dev libgmp10 \
+        libncurses-dev pkg-config
+    BOOTSTRAP_HASKELL_NONINTERACTIVE=1 \
+    BOOTSTRAP_HASKELL_INSTALL_STACK=1 \
+    BOOTSTRAP_HASKELL_INSTALL_HLS=1 \
+    BOOTSTRAP_HASKELL_ADJUST_BASHRC=0 \
+        sh -c 'curl --proto "=https" --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh'
+fi
+
+
+if confirm "Do you want to install go-lang"; then
+    apt_install golang
+fi
+
+
+if confirm "Do you want to install Ruby and rbenv"; then
+    apt_install libyaml-dev libssl-dev libreadline-dev zlib1g-dev libgmp-dev libffi-dev
+
+    git_clone_or_pull https://github.com/rbenv/rbenv.git ~/.rbenv
+    (cd ~/.rbenv && src/configure && make -C src) || warn "rbenv bash extension build failed (optional)"
+    git_clone_or_pull https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+
+    # prefix resolves to the newest 3.4.x
+    rbenv install --skip-existing 3.4
+    rbenv global "$(rbenv versions --bare | sort -V | tail -1)"
+fi
+
+
+if confirm "Do you want to install Terraform and tfenv"; then
+    git_clone_or_pull https://github.com/tfutils/tfenv.git ~/.tfenv
+    export PATH="$HOME/.tfenv/bin:$PATH"
+    tfenv install latest
+    tfenv use latest
+fi
+
+
+if confirm "Do you want to install Crystal (official apt repo)"; then
+    # sets up the crystal-lang OBS apt repo for this Ubuntu release
+    curl -fsSL https://crystal-lang.org/install.sh | sudo bash
+fi
+
+
+if confirm "Do you want to install nix"; then
+    sh <(curl -L https://nixos.org/nix/install) --daemon
+fi
+
+
+if confirm "Do you want to install docker (with buildx and compose plugins)"; then
+    apt_keyring docker https://download.docker.com/linux/ubuntu/gpg
+    apt_source docker https://download.docker.com/linux/ubuntu "$(ubuntu_codename)" stable
+    apt_update
+    apt_install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo groupadd -f docker
+    sudo usermod -aG docker "$USER"
+fi
+
+
+if confirm "Do you want to install Android Studio"; then
+    apt_install qemu-system-x86 libvirt-daemon-system libvirt-clients bridge-utils
+    sudo usermod -aG kvm,libvirt "$USER"
+    snap_install android-studio --classic
+fi
+
+
+if confirm "Do you want to install zig"; then
+    snap_install zig --classic --beta
+fi
