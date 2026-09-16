@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-[ -d "$HOME/.rbenv/bin" ] || return 0
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"

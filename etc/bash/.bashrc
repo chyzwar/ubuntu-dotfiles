@@ -8,11 +8,11 @@ source "$DIR/../dotfiles/.local"
 source "$DIR/../dotfiles/.nodenv"
 source "$DIR/../dotfiles/.cargo"
 source "$DIR/../dotfiles/.bun"
+source "$DIR/../dotfiles/.mise"
 
 [ -z "$PS1" ] && return
 
 # Interactive shell dotfiles
-source "$DIR/../dotfiles/.asdf"
 source "$DIR/../dotfiles/.alias"
 source "$DIR/../dotfiles/.cabal"
 source "$DIR/../dotfiles/.completion"
@@ -26,7 +26,6 @@ source "$DIR/../dotfiles/.liquid"
 source "$DIR/../dotfiles/.opam"
 source "$DIR/../dotfiles/.uv"
 source "$DIR/../dotfiles/.poetry"
-source "$DIR/../dotfiles/.rbenv"
 source "$DIR/../dotfiles/.scalarc"
 source "$DIR/../dotfiles/.tfenv"
 source "$DIR/../dotfiles/.direnv"

@@ -9,7 +9,7 @@ older branches are what they say.
 Includes:
 
 - Shell configuration (bash, readline, liquidprompt, hishtory) and git configuration
-- Programming languages and version managers
+- Programming languages and version managers (mise, nodenv, uv, tfenv)
 - AI coding tools and desktop apps
 - Editors: Vim, VSCode, Zed, Sublime Text, Emacs
 
@@ -46,7 +46,7 @@ Programming languages and tooling, each optional.
 
 - python via uv (3.13 managed interpreter), pipenv, poetry
 - node via nodenv (22 and 24), npm, yarn, pnpm
-- erlang and elixir via asdf (Go binary, `asdf set -u`)
+- erlang and elixir via mise
 - ocaml and opam (sandboxing disabled, see script)
 - VirtualBox from multiverse
 - rust via rustup (nightly), eza, fd-find, skim
@@ -57,7 +57,7 @@ Programming languages and tooling, each optional.
 - clojure and leiningen
 - haskell via ghcup (ghc, cabal, stack, hls)
 - go
-- ruby via rbenv (3.4)
+- ruby via mise (3.4)
 - terraform via tfenv
 - crystal from the official apt repo (crystal-lang.org install.sh)
 - nix (multi-user daemon)
@@ -83,7 +83,7 @@ Installs yakuake, foot, liquidprompt, hishtory and symlinks `.bashrc`, `.inputrc
 
 `.bashrc` sources the fragments in `etc/dotfiles/`. Every fragment checks that its
 tool exists before touching PATH or running `init`, so a shell without uv,
-nodenv, rbenv, asdf, opam, ... starts clean.
+nodenv, mise, opam, ... starts clean.
 
 ### ./dotfiles vim
 

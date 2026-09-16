@@ -6,6 +6,14 @@ source "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/lib.bash"
 mkdir -p "$HOME/.local/bin"
 export PATH="$HOME/.local/bin:$PATH"
 
+# https://mise.jdx.dev - installs ~/.local/bin/mise, idempotent
+install_mise () {
+    command -v mise >/dev/null 2>&1 && return 0
+    curl -fsSL https://mise.run | sh
+    mkdir -p "$HOME/.local/share/bash-completion/completions"
+    mise completion bash > "$HOME/.local/share/bash-completion/completions/mise"
+}
+
 
 if confirm "Do you want to install Python tools (uv, pipenv, poetry)"; then
     curl -LsSf https://astral.sh/uv/install.sh | env UV_NO_MODIFY_PATH=1 sh
@@ -41,30 +49,18 @@ if confirm "Do you want to install node.js and tools (nodenv, npm, yarn, pnpm)";
 fi
 
 
-if confirm "Do you want to install elixir and erlang (asdf)"; then
+if confirm "Do you want to install elixir and erlang (mise)"; then
+    # kerl build deps (no wx / javac, see KERL_CONFIGURE_OPTIONS)
     apt_install build-essential autoconf m4 libncurses-dev libssl-dev \
         unixodbc-dev libssh-dev xsltproc fop libxml2-utils
 
-    # asdf >= 0.16 is a single Go binary
-    asdf_tag="$(github_latest_tag asdf-vm/asdf)"
-    curl -fsSL "https://github.com/asdf-vm/asdf/releases/download/${asdf_tag}/asdf-${asdf_tag}-linux-amd64.tar.gz" \
-        | tar xzf - -C "$HOME/.local/bin" asdf
-    export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+    install_mise
 
     export KERL_CONFIGURE_OPTIONS="\
         --without-javac \
         --without-wx"
 
-    asdf plugin add erlang
-    asdf plugin add elixir
-    asdf plugin add nodejs
-    asdf plugin add terraform
-
-    asdf install erlang latest
-    asdf set -u erlang "$(asdf latest erlang)"
-
-    asdf install elixir latest
-    asdf set -u elixir "$(asdf latest elixir)"
+    mise use -g erlang@latest elixir@latest
 fi
 
 
@@ -167,19 +163,12 @@ if confirm "Do you want to install go-lang"; then
 fi
 
 
-if confirm "Do you want to install Ruby and rbenv"; then
+if confirm "Do you want to install Ruby (mise)"; then
+    # only needed when no precompiled binary exists and mise falls back to ruby-build
     apt_install libyaml-dev libssl-dev libreadline-dev zlib1g-dev libgmp-dev libffi-dev
 
-    git_clone_or_pull https://github.com/rbenv/rbenv.git ~/.rbenv
-    (cd ~/.rbenv && src/configure && make -C src) || warn "rbenv bash extension build failed (optional)"
-    git_clone_or_pull https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
-
-    # prefix resolves to the newest 3.4.x
-    rbenv install --skip-existing 3.4
-    rbenv global "$(rbenv versions --bare | sort -V | tail -1)"
+    install_mise
+    mise use -g ruby@3.4
 fi
 
 

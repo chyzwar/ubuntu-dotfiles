@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# https://mise.jdx.dev - erlang, elixir, ruby
+export KERL_CONFIGURE_OPTIONS="\
+    --without-javac \
+    --without-wx"
+
+command -v mise >/dev/null 2>&1 || return 0
+if [ -n "$PS1" ]; then
+    eval "$(mise activate bash)"
+else
+    export PATH="$HOME/.local/share/mise/shims:$PATH"
+fi
