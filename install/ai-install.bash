@@ -23,11 +23,8 @@ if confirm "Do you want to install Claude Desktop (Anthropic apt repo, Linux bet
 fi
 
 
-if confirm "Do you want to install Codex CLI (official installer, alpha release)"; then
-    # newest alpha pre-release tag, e.g. rust-v0.155.0-alpha.11 -> 0.155.0-alpha.11
-    codex_tag="$(github_latest_tag openai/codex --prerelease rust-v)"
-    codex_release="${codex_tag#rust-v}"
-    curl -fsSL https://chatgpt.com/codex/install.sh | sh -s -- --release "${codex_release:-latest}"
+if confirm "Do you want to install Codex CLI (official installer)"; then
+    curl -fsSL https://chatgpt.com/codex/install.sh | sh
 fi
 
 

@@ -70,7 +70,7 @@ Official sources, deb/apt where it exists, beta channels where they exist.
 
 - Claude Code CLI, Anthropic apt repo, `latest` channel
 - Claude Desktop, Anthropic apt repo (Linux beta; Cowork needs the `kvm` group)
-- Codex CLI, official installer into `~/.local/bin`, pinned to the newest alpha pre-release
+- Codex CLI, official installer into `~/.local/bin`
 - OpenCode CLI, official installer into `~/.opencode/bin`
 - OpenCode Desktop, beta deb
 - ChatGPT Desktop (includes Codex app), preview deb
