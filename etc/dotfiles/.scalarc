@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-# coursier (cs setup) installs into ~/.local/bin here; this is its default dir
-[ -d "$HOME/.local/share/coursier/bin" ] || return 0
-export PATH="$HOME/.local/share/coursier/bin:$PATH"

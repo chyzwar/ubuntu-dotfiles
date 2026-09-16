@@ -130,15 +130,9 @@ if confirm "Do you want to install Java (8, 21, 25) and tools"; then
 fi
 
 
-if confirm "Do you want to install Scala and sbt (coursier; uses installed Java or fetches a JVM)"; then
-    # scala-lang.org recommended installer: scala, scalac, scala-cli, sbt, sbtn, scalafmt, ...
-    tmp="$(mktemp -d)"
-    curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz \
-        | gzip -d > "$tmp/cs"
-    chmod +x "$tmp/cs"
-    # --env: print exports instead of editing shell profiles
-    eval "$("$tmp/cs" setup --yes --env --install-dir "$HOME/.local/bin")"
-    rm -rf "$tmp"
+if confirm "Do you want to install Scala, sbt and scala-cli (mise; assumes Java is installed)"; then
+    install_mise
+    mise use -g scala@latest sbt@latest scala-cli@latest
 fi
 
 

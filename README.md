@@ -53,7 +53,7 @@ Programming languages and tooling, each optional.
 - PHP 8.5 and composer, nginx, MariaDB
 - deno, bun
 - Java 8, 21, 25 (default 21), maven, gradle, ant
-- scala, scala-cli and sbt via coursier (`cs setup`)
+- scala, sbt and scala-cli via mise
 - clojure and leiningen
 - haskell via ghcup (ghc, cabal, stack, hls)
 - go
