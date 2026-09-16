@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
+[ -d "$HOME/.nodenv/bin" ] || return 0
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"

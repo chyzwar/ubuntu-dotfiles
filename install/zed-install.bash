@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# shellcheck source=install/lib.bash
+source "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/lib.bash"
 
-tput setaf 2; echo "Install Zed Editor"; tput sgr0
+info "Install Zed Editor"
 curl -f https://zed.dev/install.sh | sh

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# pipx, poetry, asdf, codex, dropbox CLI, claude native installer ...
+export PATH="$HOME/.local/bin:$PATH"

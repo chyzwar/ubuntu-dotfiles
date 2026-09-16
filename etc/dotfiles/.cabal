@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC1090,SC1091
+
+# ghcup (ghc, cabal, stack, hls)
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
 
 export PATH="$PATH:$HOME/.cabal/bin"
-

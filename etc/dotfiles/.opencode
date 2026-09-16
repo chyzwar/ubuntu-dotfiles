@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+[ -d "$HOME/.opencode/bin" ] || return 0
+export PATH="$HOME/.opencode/bin:$PATH"

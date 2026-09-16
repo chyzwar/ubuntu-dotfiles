@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC1090,SC1091
 
+[ -f "$HOME/.opam/opam-init/init.sh" ] || return 0
 source "$HOME/.opam/opam-init/init.sh" > /dev/null

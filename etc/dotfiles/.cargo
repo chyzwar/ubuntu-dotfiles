@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
+[ -d "$HOME/.cargo/bin" ] || return 0
 export PATH="$HOME/.cargo/bin:$PATH"

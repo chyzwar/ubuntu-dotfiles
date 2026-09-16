@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC1090,SC1091
 
 # https://github.com/ddworken/hishtory
-export PATH="$PATH:~/.hishtory"
-source "$HOME"/.hishtory/config.sh
+[ -f "$HOME/.hishtory/config.sh" ] || return 0
+export PATH="$PATH:$HOME/.hishtory"
+source "$HOME/.hishtory/config.sh"

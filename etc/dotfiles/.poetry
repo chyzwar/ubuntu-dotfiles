@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 
-export PATH="$HOME/.poetry/bin:$PATH"
-
+# poetry installs to ~/.local/bin, which .local already puts on PATH

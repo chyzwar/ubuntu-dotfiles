@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+export BUN_INSTALL="$HOME/.bun"
+[ -d "$BUN_INSTALL/bin" ] || return 0
+export PATH="$BUN_INSTALL/bin:$PATH"

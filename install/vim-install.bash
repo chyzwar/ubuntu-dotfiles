@@ -1,7 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# shellcheck source=install/lib.bash
+source "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/lib.bash"
 
-tput setaf 2; echo "Install vim"; tput sgr0
-sudo apt-get install -y vim
+info "Install vim"
+apt_install vim
 
-tput setaf 2; echo "Install .vimrc"; tput sgr0
-ln -sfv "$(pwd)/etc/vim/.vimrc" "/home/$USER/.vimrc"
+info "Link .vimrc"
+link "$DOTFILES_DIR/etc/vim/.vimrc" "$HOME/.vimrc"

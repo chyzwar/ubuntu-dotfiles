@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# uv lives in ~/.local/bin (see .local); managed pythons are linked there too
+command -v uv >/dev/null 2>&1 || return 0
+eval "$(uv generate-shell-completion bash)"

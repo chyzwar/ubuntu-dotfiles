@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
-export PATH=$JAVA_HOME/bin:$PATH
+command -v javac >/dev/null 2>&1 || return 0
+JAVA_HOME="$(dirname "$(dirname "$(readlink -f "$(command -v javac)")")")"
+export JAVA_HOME

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
 export DENO_INSTALL="$HOME/.deno"
+[ -d "$DENO_INSTALL/bin" ] || return 0
 export PATH="$DENO_INSTALL/bin:$PATH"
