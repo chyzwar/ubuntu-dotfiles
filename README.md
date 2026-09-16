@@ -47,7 +47,7 @@ Programming languages and tooling, each optional.
 - python via uv (3.13 managed interpreter), pipenv, poetry
 - node via nodenv (22 and 24), npm, yarn, pnpm
 - erlang and elixir via mise
-- ocaml and opam (sandboxing disabled, see script)
+- ocaml via opam (opam itself via mise; sandboxing disabled, see script)
 - VirtualBox from multiverse
 - rust via rustup (nightly), eza, fd-find, skim
 - PHP 8.5 and composer, nginx, MariaDB

@@ -64,9 +64,11 @@ if confirm "Do you want to install elixir and erlang (mise)"; then
 fi
 
 
-if confirm "Do you want to install ocaml"; then
-    apt_install ocaml opam
+if confirm "Do you want to install ocaml (opam via mise)"; then
+    install_mise
+    mise use -g opam@latest
 
+    # opam init compiles the latest OCaml into the default switch.
     # bubblewrap sandbox is blocked by the unprivileged-userns AppArmor
     # restriction on Ubuntu >= 24.04
     opam init --disable-sandboxing
@@ -96,16 +98,6 @@ if confirm "Do you want to install rust and rustup.rs"; then
     cargo install eza
     cargo install fd-find
     cargo install skim
-fi
-
-
-if confirm "Do you want to install PHP and composer"; then
-    apt_install php php-fpm php-mysql composer
-fi
-
-
-if confirm "Do you want to install nginx"; then
-    apt_install nginx
 fi
 
 
