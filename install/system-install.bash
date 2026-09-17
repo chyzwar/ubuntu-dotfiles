@@ -47,29 +47,12 @@ sysctl_set fs.inotify.max_queued_events 32768
 sysctl_set fs.inotify.max_user_instances 256
 
 
-if confirm "Do you want to install Zeal - offline documentation"; then
-    apt_install zeal
-fi
-
-
-if confirm "Do you want to disable CPU mitigations (mitigations=off)"; then
-    if grep -q 'mitigations=off' /etc/default/grub; then
-        info "mitigations=off already present"
-    else
-        sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"/GRUB_CMDLINE_LINUX_DEFAULT="\1 mitigations=off"/' /etc/default/grub
-        sudo update-grub
-    fi
-fi
-
-
-
 if confirm "Do you want to install Dropbox (official apt repo)"; then
     apt_keyring dropbox https://linux.dropbox.com/fedora/rpm-public-key.asc
     apt_source dropbox https://linux.dropbox.com/ubuntu "$(ubuntu_codename)" main
     apt_update
     apt_install dropbox
-    # downloads the proprietary daemon into ~/.dropbox-dist
-    dropbox start -i
+    # the deb only ships the CLI; first launch from the menu downloads the daemon
 fi
 
 
@@ -100,7 +83,6 @@ fi
 
 
 if confirm "Do you want to install Discord (flatpak, auto-updates)"; then
-    # no apt repo or PPA exists; the Flathub build wraps the official tarball
     flatpak install flathub com.discordapp.Discord
 fi
 
