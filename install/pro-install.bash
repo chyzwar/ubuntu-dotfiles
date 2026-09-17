@@ -68,10 +68,14 @@ if confirm "Do you want to install ocaml (opam via mise)"; then
     install_mise
     mise use -g opam@latest
 
-    # opam init compiles the latest OCaml into the default switch.
-    # bubblewrap sandbox is blocked by the unprivileged-userns AppArmor
-    # restriction on Ubuntu >= 24.04
-    opam init --disable-sandboxing
+    # opam sandboxes builds with bwrap; the static opam binary from mise does not pull it in.
+    # Ubuntu >= 25.04 ships /etc/apparmor.d/bwrap-userns-restrict in the apparmor package,
+    # so the sandbox works despite kernel.apparmor_restrict_unprivileged_userns=1
+    # (ocaml/opam#5968). If init still reports "Sandboxing is not working",
+    # rerun with: opam init --disable-sandboxing
+    apt_install bubblewrap
+    # compiles the latest OCaml into the default switch
+    opam init
     eval "$(opam env)"
     opam install merlin ocaml-lsp-server user-setup
     opam user-setup install
@@ -147,6 +151,10 @@ if confirm "Do you want to install Terraform (mise)"; then
     mise use -g terraform@latest
 fi
 
+if confirm "Do you want to install zig (mise: nightly master + latest stable)"; then
+    install_mise
+    mise use -g zig@master zig@latest
+fi
 
 if confirm "Do you want to install Crystal (official apt repo)"; then
     curl -fsSL https://crystal-lang.org/install.sh | sudo bash
@@ -170,12 +178,7 @@ if confirm "Do you want to install Android Studio"; then
 fi
 
 
-if confirm "Do you want to install zig (mise: nightly master + latest stable)"; then
-    install_mise
-    # both installed; the first one is the default on PATH.
-    # per project: `mise use zig@latest` or `mise use zig@master`
-    mise use -g zig@master zig@latest
-fi
+
 
 
 if confirm "Do you want to install roc (official installer, nightly)"; then
