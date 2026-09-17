@@ -156,8 +156,14 @@ if confirm "Do you want to install zig (mise: nightly master + latest stable)"; 
     mise use -g zig@master zig@latest
 fi
 
-if confirm "Do you want to install Crystal (official apt repo)"; then
-    curl -fsSL https://crystal-lang.org/install.sh | sudo bash
+if confirm "Do you want to install Crystal (mise)"; then
+    # link-time deps of the official binaries, as declared by the crystal deb
+    # (Depends + Recommends: openssl, zlib, xml, gmp, yaml stdlib bindings)
+    apt_install gcc pkg-config libpcre2-dev libevent-dev \
+        libssl-dev zlib1g-dev libxml2-dev libgmp-dev libyaml-dev
+
+    install_mise
+    mise use -g crystal@latest
 fi
 
 

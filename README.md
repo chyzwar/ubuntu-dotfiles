@@ -58,7 +58,7 @@ Programming languages and tooling, each optional.
 - go
 - ruby via mise (3.4)
 - terraform via mise
-- crystal from the official apt repo (crystal-lang.org install.sh)
+- crystal via mise (official release tarballs)
 - docker CE with buildx and compose plugins
 - Android Studio (snap) with KVM
 - zig via mise, both nightly `master` (default) and latest stable
