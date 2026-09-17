@@ -61,7 +61,7 @@ Programming languages and tooling, each optional.
 - crystal from the official apt repo (crystal-lang.org install.sh)
 - docker CE with buildx and compose plugins
 - Android Studio (snap) with KVM
-- zig via mise (nightly `master` channel)
+- zig via mise, both nightly `master` (default) and latest stable
 - roc (official installer, nightly build into `~/.local/bin`)
 
 ### ./dotfiles ai

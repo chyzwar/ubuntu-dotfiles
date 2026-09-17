@@ -170,10 +170,11 @@ if confirm "Do you want to install Android Studio"; then
 fi
 
 
-if confirm "Do you want to install zig (mise, nightly)"; then
+if confirm "Do you want to install zig (mise: nightly master + latest stable)"; then
     install_mise
-    # master tracks the nightly channel; use zig@latest for the stable release
-    mise use -g zig@master
+    # both installed; the first one is the default on PATH.
+    # per project: `mise use zig@latest` or `mise use zig@master`
+    mise use -g zig@master zig@latest
 fi
 
 
