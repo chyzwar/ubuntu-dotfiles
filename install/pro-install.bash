@@ -111,11 +111,6 @@ if confirm "Do you want to install bun"; then
 fi
 
 
-if confirm "Do you want to install MariaDB"; then
-    apt_install mariadb-server mariadb-client
-fi
-
-
 if confirm "Do you want to install Java (8, 21, 25) and tools"; then
     apt_install openjdk-8-jdk openjdk-21-jdk openjdk-25-jdk maven gradle ant
     sudo update-java-alternatives -s java-1.21.0-openjdk-amd64
@@ -175,8 +170,10 @@ if confirm "Do you want to install Android Studio"; then
 fi
 
 
-if confirm "Do you want to install zig"; then
-    snap_install zig --classic --beta
+if confirm "Do you want to install zig (mise, nightly)"; then
+    install_mise
+    # master tracks the nightly channel; use zig@latest for the stable release
+    mise use -g zig@master
 fi
 
 
