@@ -38,7 +38,7 @@ Base packages and desktop software.
 - flatpak + Discover flatpak backend, Flathub, Lollypop
 - snaps: snapcraft, vlc, krita, gimp, postman, slack
 - sysctl tweaks (swappiness, inotify limits) in `/etc/sysctl.d/99-dotfiles.conf`
-- optional: Zeal, `mitigations=off`, Firefox Nightly (Mozilla apt repo), Dropbox (official apt repo), Steam, Google Chrome (deb), Brave (apt repo), Spotify, Discord (deb), Picard, kubectl + microk8s
+- optional: Zeal, `mitigations=off`, Firefox Nightly (Mozilla apt repo), Dropbox (official apt repo), Steam, Google Chrome (deb), Brave (apt repo), Spotify, Discord (flatpak), Picard, kubectl + microk8s
 
 ### ./dotfiles pro
 

@@ -99,8 +99,9 @@ if confirm "Do you want to install Spotify"; then
 fi
 
 
-if confirm "Do you want to install Discord"; then
-    deb_install "https://discord.com/api/download?platform=linux&format=deb" discord
+if confirm "Do you want to install Discord (flatpak, auto-updates)"; then
+    # no apt repo or PPA exists; the Flathub build wraps the official tarball
+    flatpak install flathub com.discordapp.Discord
 fi
 
 
