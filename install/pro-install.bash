@@ -69,7 +69,6 @@ if confirm "Do you want to install ocaml (opam via mise)"; then
     install_mise
     mise use -g opam@latest
 
-    # answer "no" when it offers to edit ~/.bashrc, the .opam fragment sources opam's init.sh
     opam init
     opam install merlin ocaml-lsp-server user-setup
     opam user-setup install

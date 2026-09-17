@@ -39,6 +39,5 @@ fi
 
 
 if confirm "Do you want to install ChatGPT Desktop (includes Codex app, preview deb)"; then
-    # The deb registers OpenAI's apt repo for updates.
     deb_install https://persistent.oaistatic.com/codex-app-prod/linux/deb/latest/chatgpt_amd64.deb chatgpt
 fi
