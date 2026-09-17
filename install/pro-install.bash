@@ -65,18 +65,12 @@ fi
 
 
 if confirm "Do you want to install ocaml (opam via mise)"; then
+    apt_install bubblewrap
     install_mise
     mise use -g opam@latest
 
-    # opam sandboxes builds with bwrap; the static opam binary from mise does not pull it in.
-    # Ubuntu >= 25.04 ships /etc/apparmor.d/bwrap-userns-restrict in the apparmor package,
-    # so the sandbox works despite kernel.apparmor_restrict_unprivileged_userns=1
-    # (ocaml/opam#5968). If init still reports "Sandboxing is not working",
-    # rerun with: opam init --disable-sandboxing
-    apt_install bubblewrap
-    # compiles the latest OCaml into the default switch
+    # answer "no" when it offers to edit ~/.bashrc, the .opam fragment sources opam's init.sh
     opam init
-    eval "$(opam env)"
     opam install merlin ocaml-lsp-server user-setup
     opam user-setup install
 fi
@@ -138,11 +132,18 @@ fi
 
 
 if confirm "Do you want to install Ruby (mise)"; then
-    # only needed when no precompiled binary exists and mise falls back to ruby-build
     apt_install libyaml-dev libssl-dev libreadline-dev zlib1g-dev libgmp-dev libffi-dev
 
     install_mise
     mise use -g ruby@3.4
+fi
+
+if confirm "Do you want to install Crystal (mise)"; then
+    apt_install gcc pkg-config libpcre2-dev libevent-dev \
+        libssl-dev zlib1g-dev libxml2-dev libgmp-dev libyaml-dev
+
+    install_mise
+    mise use -g crystal@latest
 fi
 
 
@@ -156,17 +157,6 @@ if confirm "Do you want to install zig (mise: nightly master + latest stable)"; 
     mise use -g zig@master zig@latest
 fi
 
-if confirm "Do you want to install Crystal (mise)"; then
-    # link-time deps of the official binaries, as declared by the crystal deb
-    # (Depends + Recommends: openssl, zlib, xml, gmp, yaml stdlib bindings)
-    apt_install gcc pkg-config libpcre2-dev libevent-dev \
-        libssl-dev zlib1g-dev libxml2-dev libgmp-dev libyaml-dev
-
-    install_mise
-    mise use -g crystal@latest
-fi
-
-
 if confirm "Do you want to install docker (with buildx and compose plugins)"; then
     apt_keyring docker https://download.docker.com/linux/ubuntu/gpg
     apt_source docker https://download.docker.com/linux/ubuntu "$(ubuntu_codename)" stable
@@ -179,22 +169,8 @@ fi
 
 if confirm "Do you want to install Android Studio"; then
     apt_install qemu-system-x86 libvirt-daemon-system libvirt-clients bridge-utils
+    apt_update
     sudo usermod -aG kvm,libvirt "$USER"
     snap_install android-studio --classic
 fi
 
-
-
-
-
-if confirm "Do you want to install roc (official installer, nightly)"; then
-    # https://www.roc-lang.org/install/unix
-    # The installer downloads and extracts into $PWD, so run it from a temp dir.
-    # ROC_INSTALL_DIR makes it copy the binary out; answer "no" to the PATH prompt,
-    # ~/.local/bin is already on PATH.
-    (
-        cd "$(mktemp -d)" || exit 1
-        export ROC_INSTALL_DIR="$HOME/.local/bin"
-        curl -fsSL https://roc-lang.org/install_roc.sh | sh
-    )
-fi
