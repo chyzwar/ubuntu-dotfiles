@@ -48,8 +48,8 @@ sysctl_set fs.inotify.max_user_instances 256
 
 
 if confirm "Do you want to install Dropbox (official apt repo)"; then
-    apt_keyring dropbox https://linux.dropbox.com/fedora/rpm-public-key.asc
-    apt_source dropbox https://linux.dropbox.com/ubuntu "$(ubuntu_codename)" main
+    apt_repo dropbox https://linux.dropbox.com/fedora/rpm-public-key.asc \
+        https://linux.dropbox.com/ubuntu "$(ubuntu_codename)" main
     apt_update
     apt_install dropbox
     # the deb only ships the CLI; first launch from the menu downloads the daemon
@@ -69,10 +69,11 @@ fi
 
 
 if confirm "Do you want to install Brave"; then
-    sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg \
-        https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-    sudo curl -fsSLo /etc/apt/sources.list.d/brave-browser-release.sources \
-        https://brave-browser-apt-release.s3.brave.com/brave-browser.sources
+    # same file name as Brave's own .sources, so it replaces rather than duplicates it
+    apt_repo brave-browser-release \
+        https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg \
+        https://brave-browser-apt-release.s3.brave.com stable main "amd64 arm64"
+    sudo rm -f /usr/share/keyrings/brave-browser-archive-keyring.gpg
     apt_update
     apt_install brave-browser
 fi

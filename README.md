@@ -25,8 +25,9 @@ cd ubuntu-dotfiles
 ```
 
 This prints the list of commands. Every optional item asks Yes/No. Steps are
-idempotent, re-running a command is safe. All third-party apt repositories use
-deb822 `.sources` files with `Signed-By` keyrings (no `apt-key`).
+idempotent, re-running a command is safe. Every third-party apt repository is
+one deb822 `.sources` file with its signing key embedded in `Signed-By`, written
+by `apt_repo` in `install/lib.bash`: no separate keyring files, no `apt-key`.
 
 Helpers shared by every install script live in `install/lib.bash`.
 

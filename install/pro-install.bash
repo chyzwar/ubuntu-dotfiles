@@ -157,8 +157,8 @@ if confirm "Do you want to install zig (mise: nightly master + latest stable)"; 
 fi
 
 if confirm "Do you want to install docker (with buildx and compose plugins)"; then
-    apt_keyring docker https://download.docker.com/linux/ubuntu/gpg
-    apt_source docker https://download.docker.com/linux/ubuntu "$(ubuntu_codename)" stable
+    apt_repo docker https://download.docker.com/linux/ubuntu/gpg \
+        https://download.docker.com/linux/ubuntu "$(ubuntu_codename)" stable
     apt_update
     apt_install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
     sudo groupadd -f docker

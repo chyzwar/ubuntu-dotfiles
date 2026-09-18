@@ -6,16 +6,16 @@ mkdir -p "$HOME/.local/bin"
 
 
 if confirm "Do you want to install Claude Code CLI (Anthropic apt repo, latest channel)"; then
-    apt_keyring claude-code https://downloads.claude.ai/keys/claude-code.asc
-    apt_source claude-code https://downloads.claude.ai/claude-code/apt/latest latest main
+    apt_repo claude-code https://downloads.claude.ai/keys/claude-code.asc \
+        https://downloads.claude.ai/claude-code/apt/latest latest main
     apt_update
     apt_install claude-code
 fi
 
 
 if confirm "Do you want to install Claude Desktop (Anthropic apt repo, Linux beta)"; then
-    apt_keyring claude-desktop https://downloads.claude.ai/claude-desktop/key.asc
-    apt_source claude-desktop https://downloads.claude.ai/claude-desktop/apt/stable stable main "amd64 arm64"
+    apt_repo claude-desktop https://downloads.claude.ai/claude-desktop/key.asc \
+        https://downloads.claude.ai/claude-desktop/apt/stable stable main "amd64 arm64"
     apt_update
     apt_install claude-desktop
     # Cowork runs in a QEMU/KVM VM and needs /dev/kvm and /dev/vhost-vsock

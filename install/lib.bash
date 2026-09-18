@@ -41,26 +41,49 @@ snap_install () {
     sudo snap install "$@"
 }
 
-# apt_keyring NAME URL -> /etc/apt/keyrings/NAME.asc (ASCII-armored keys)
-apt_keyring () {
-    local name=$1 url=$2
-    sudo install -d -m 0755 /etc/apt/keyrings
-    sudo curl -fsSL "$url" -o "/etc/apt/keyrings/$name.asc"
-}
+# apt_repo NAME KEY_URL URI SUITES [COMPONENTS] [ARCHITECTURES]
+# Writes /etc/apt/sources.list.d/NAME.sources with the signing key embedded in
+# Signed-By, as apt-secure(8) recommends, so there is no separate keyring file.
+# Embedding needs an armored key, so a binary one is armored first. An empty
+# COMPONENTS makes a flat repository. Keep NAME stable: a second file for the
+# same repository with a different key makes apt refuse to read any sources.
+apt_repo () {
+    local name=$1 key_url=$2 uri=$3 suites=$4 components=$5
+    local arch=${6:-$(dpkg --print-architecture)}
+    local tmp key
+    tmp="$(mktemp -d)"
+    if ! curl -fsSL "$key_url" -o "$tmp/key"; then
+        warn "Could not fetch the signing key for $name"
+        rm -rf "$tmp"
+        return 1
+    fi
+    if grep -q -- '-----BEGIN PGP PUBLIC KEY BLOCK-----' "$tmp/key"; then
+        key="$(cat "$tmp/key")"
+    else
+        # a throwaway keyring, so nothing lands in the user's own
+        GNUPGHOME="$tmp" gpg --quiet --import "$tmp/key" 2>/dev/null
+        key="$(GNUPGHOME="$tmp" gpg --export-options export-minimal --armor --export)"
+        gpgconf --homedir "$tmp" --kill all 2>/dev/null
+    fi
+    rm -rf "$tmp"
+    if [ -z "$key" ]; then
+        warn "Could not read the signing key for $name"
+        return 1
+    fi
 
-# apt_source NAME URI SUITES COMPONENTS [ARCHITECTURES]
-# Writes a deb822 source signed by /etc/apt/keyrings/NAME.asc
-apt_source () {
-    local name=$1 uri=$2 suites=$3 components=$4
-    local arch=${5:-$(dpkg --print-architecture)}
-    sudo tee "/etc/apt/sources.list.d/$name.sources" >/dev/null <<SRC
-Types: deb
-URIs: $uri
-Suites: $suites
-Components: $components
-Architectures: $arch
-Signed-By: /etc/apt/keyrings/$name.asc
-SRC
+    {
+        echo "Types: deb"
+        echo "URIs: $uri"
+        echo "Suites: $suites"
+        [ -n "$components" ] && echo "Components: $components"
+        echo "Architectures: $arch"
+        echo "Signed-By:"
+        # deb822 continuation lines: indent, and a lone dot for a blank line
+        printf '%s\n' "$key" | sed -e 's/^$/./' -e 's/^/ /'
+    } | sudo tee "/etc/apt/sources.list.d/$name.sources" >/dev/null
+
+    # the keyring the old two-step setup left behind, now unused
+    sudo rm -f "/etc/apt/keyrings/$name.asc" "/etc/apt/keyrings/$name.gpg"
 }
 
 ubuntu_codename () {
