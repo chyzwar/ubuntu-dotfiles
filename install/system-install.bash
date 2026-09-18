@@ -22,8 +22,7 @@ apt_install \
     flatpak plasma-discover-backend-flatpak
 
 info "Install GitHub CLI (official apt repo)"
-apt_repo github-cli https://cli.github.com/packages/githubcli-archive-keyring.gpg \
-    https://cli.github.com/packages stable main
+apt_repo github-cli https://cli.github.com/packages/githubcli-archive-keyring.gpg https://cli.github.com/packages stable main
 apt_update
 apt_install gh
 
@@ -75,7 +74,6 @@ fi
 
 
 if confirm "Do you want to install Brave"; then
-    # same file name as Brave's own .sources, so it replaces rather than duplicates it
     apt_repo brave-browser-release \
         https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg \
         https://brave-browser-apt-release.s3.brave.com stable main "amd64 arm64"
