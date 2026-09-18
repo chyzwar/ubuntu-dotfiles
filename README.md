@@ -12,6 +12,7 @@ Includes:
 - Programming languages and version managers (mise, nodenv, uv)
 - AI coding tools and desktop apps
 - Editors: Vim, VSCode, Zed, Sublime Text, Emacs
+- A GNOME-style Plasma desktop: top bar, 4 workspaces, Meta overview
 
 ## Installation
 
@@ -95,9 +96,63 @@ VSCode and VSCode Insiders from Microsoft's apt repository.
 
 Zed via the official installer, Sublime Text from the official apt repo (dev channel), Emacs via snap plus Spacemacs.
 
+### ./dotfiles kde
+
+Reshapes Plasma into the GNOME desktop: one top bar and GNOME's way of moving
+between workspaces. Destructive, it removes every existing panel.
+
+- slim top bar, menu at the left, clock centred, system tray at the right
+- no dock, the way vanilla GNOME has none outside the overview; windows and
+  applications are reached through the Overview
+- 4 virtual desktops in one row, non-wrapping like GNOME's workspace strip
+- Meta alone opens the Overview, `Meta+A` the top bar menu, and `Meta+1..9` are
+  cleared since there is no task manager left to activate
+- two-finger scroll over the desktop or the top bar switches workspace
+- `Meta+PgUp`/`Meta+PgDown` and `Ctrl+Alt+Left`/`Ctrl+Alt+Right` switch
+  workspace, add Shift to take the window along
+- optional: Overview on the top-left hot corner
+
+The panel layout is `etc/plasma/gnome-layout.js`, applied through
+`org.kde.PlasmaShell.evaluateScript`. It builds the new panel before removing the
+old ones, so re-running replaces the layout instead of stacking onto it.
+
+There is no dock on purpose. A Plasma panel cannot be tied to the Overview the
+way GNOME's dash is, and every mode that keeps a panel out of the way brings it
+back on edge proximity, so there is no setting that means "only when I ask".
+
+A two-finger *swipe* is not possible and no setting will make it so: libinput
+reports two fingers as a scroll and only starts calling a movement a swipe at
+three, and KWin's finger counts are compiled into the effects. So workspace
+switching is bound to the wheel instead, through Plasma's `org.kde.switchdesktop`
+containment action, which is what two fingers actually produce. KWin's own
+four-finger swipe still works and is not touched here.
+
+It all applies immediately, no logout. Note that a bare Meta tap is bound as an
+ordinary global shortcut on KWin's `Overview` action, the way Plasma ships the
+launcher on it; `kwinrc [ModifierOnlyShortcuts]` is not honoured on Plasma 6.6
+and leaves the key dead with no error.
+
+Run it from inside a Plasma session, not a TTY or over SSH; it skips with a
+warning otherwise, which is also why it is not part of `./dotfiles all`.
+Shortcuts are set through KGlobalAccel rather than by writing
+`kglobalshortcutsrc`, so they apply immediately: on Wayland `kwin_wayland` hosts
+the shortcut registry itself and rewrites that file from memory at logout, over
+anything edited by hand.
+
+`~/.config/kwinrc`, `kglobalshortcutsrc`, `plasmashellrc` and
+`plasma-org.kde.plasma.desktop-appletsrc` are copied to
+`~/.local/state/dotfiles/kde-backup-<timestamp>/` first. To undo, copy them back
+and `systemctl --user restart plasma-plasmashell.service`. The
+`plasma-layout.js` saved alongside them replays through `evaluateScript` for a
+quick panel-only restore, but it does not carry the system tray's contents.
+
+Do not apply a Global Theme afterwards, `plasma-apply-lookandfeel` resets the
+panel layout.
+
 ### ./dotfiles all
 
-Runs everything above.
+Runs everything above except `kde`, which needs a running Plasma session and
+replaces the panels, so it stays an explicit choice.
 
 ## Post install
 
