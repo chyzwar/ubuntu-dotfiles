@@ -37,6 +37,7 @@ Base packages and desktop software.
 
 - Enables universe/multiverse/restricted, dist-upgrade
 - curl, wget, tree, build-essential, git (+lfs, flow), mercurial, subversion, openssh, shellcheck, vim, nnn, direnv, fonts (Fira Code, Powerline)
+- GitHub CLI (official apt repo)
 - flatpak + Discover flatpak backend, Flathub, Lollypop
 - snaps: snapcraft, vlc, krita, gimp, postman, slack
 - sysctl tweaks (swappiness, inotify limits) in `/etc/sysctl.d/99-dotfiles.conf`

@@ -21,6 +21,12 @@ apt_install \
     nnn direnv bash-completion vim \
     flatpak plasma-discover-backend-flatpak
 
+info "Install GitHub CLI (official apt repo)"
+apt_repo github-cli https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+    https://cli.github.com/packages stable main
+apt_update
+apt_install gh
+
 info "Install snapcraft"
 snap_install snapcraft --classic
 
