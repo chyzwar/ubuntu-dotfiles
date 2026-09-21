@@ -37,5 +37,5 @@ export CLAUDE_SYSTEM_PROMPT
 
 alias cc='claude \
   --dangerously-skip-permissions \
-  --effort max \
+  --effort high \
   --append-system-prompt "$CLAUDE_SYSTEM_PROMPT"'
