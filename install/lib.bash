@@ -126,6 +126,9 @@ deb_install () {
     local tmp
     tmp="$(mktemp -d)"
     curl -fL "$url" -o "$tmp/$name.deb"
+    # mktemp -d is 0700, so apt drops its download sandbox unless _apt can read the deb
+    chmod 755 "$tmp"
+    chmod 644 "$tmp/$name.deb"
     sudo apt-get install -y "$tmp/$name.deb"
     rm -rf "$tmp"
 }
