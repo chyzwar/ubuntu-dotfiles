@@ -44,8 +44,10 @@ if confirm "Do you want to install node.js and tools (nodenv, npm, yarn, pnpm)";
         echo "Installing node version $version"
         nodenv install --skip-existing "$version"
         nodenv global "$version"
-        npm install -g npm yarn pnpm
+        npm install -g --allow-scripts=pnpm,yarn npm yarn pnpm
     done
+
+    nodenv rehash
 fi
 
 
