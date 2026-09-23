@@ -12,7 +12,8 @@ Includes:
 - Programming languages and version managers (mise, nodenv, uv)
 - AI coding tools and desktop apps
 - Editors: Vim, VSCode, Zed, Sublime Text, Emacs
-- A GNOME-style Plasma desktop: top bar, 4 workspaces, Meta overview
+- A GNOME-style Plasma desktop: top bar, 4 workspaces, Meta overview, one
+  wallpaper behind the login and lock screens
 
 ## Installation
 
@@ -113,6 +114,10 @@ between workspaces. Destructive, it removes every existing panel.
 - `Meta+PgUp`/`Meta+PgDown` and `Ctrl+Alt+Left`/`Ctrl+Alt+Right` switch
   workspace, add Shift to take the window along
 - optional: Overview on the top-left hot corner
+- optional: the same wallpaper behind the login and lock screens
+
+The knobs are three constants at the top of `install/kde-install.bash`:
+`DESKTOPS`, `WALLPAPER` and `SDDM_THEME`. Edit them by hand; there is no menu.
 
 The panel layout is `etc/plasma/gnome-layout.js`, applied through
 `org.kde.PlasmaShell.evaluateScript`. It builds the new panel before removing the
@@ -127,12 +132,19 @@ reports two fingers as a scroll and only starts calling a movement a swipe at
 three, and KWin's finger counts are compiled into the effects. So workspace
 switching is bound to the wheel instead, through Plasma's `org.kde.switchdesktop`
 containment action, which is what two fingers actually produce. KWin's own
-four-finger swipe still works and is not touched here.
+four-finger swipe still works and is not touched here. Containment actions are
+read when plasmashell starts, so the script restarts
+`plasma-plasmashell.service`. It does not use `refreshCurrentShell`: on Plasma
+6.6 that spawns a detached `plasmashell --replace` outside the systemd unit,
+the unit's own process exits 0 so `Restart=on-failure` never fires, and the
+replacement aborted on this machine, leaving no shell at all.
 
-It all applies immediately, no logout. Note that a bare Meta tap is bound as an
-ordinary global shortcut on KWin's `Overview` action, the way Plasma ships the
-launcher on it; `kwinrc [ModifierOnlyShortcuts]` is not honoured on Plasma 6.6
-and leaves the key dead with no error.
+Shortcuts, the no-wrap setting, the panel and the wallpaper apply at once. The
+desktop count and rows land at the next login: KWin reads `[Desktops]` once at
+start and `reconfigure` does not reload it. Note that a bare Meta tap is bound
+as an ordinary global shortcut on KWin's `Overview` action, the way Plasma ships
+the launcher on it; `kwinrc [ModifierOnlyShortcuts]` is not honoured on Plasma
+6.6 and leaves the key dead with no error.
 
 Run it from inside a Plasma session, not a TTY or over SSH; it skips with a
 warning otherwise, which is also why it is not part of `./dotfiles all`.
@@ -140,6 +152,16 @@ Shortcuts are set through KGlobalAccel rather than by writing
 `kglobalshortcutsrc`, so they apply immediately: on Wayland `kwin_wayland` hosts
 the shortcut registry itself and rewrites that file from memory at logout, over
 anything edited by hand.
+
+The wallpaper step takes no third-party theme. The login screen gets
+`$WALLPAPER` through `$SDDM_THEME/theme.conf.user`, which sddm reads over the
+packaged `theme.conf` and takes every non-empty key from; delete the `.user`
+file to undo. The lock screen gets it as the `Image` key of `kscreenlockerrc`,
+under `[Greeter][Wallpaper][org.kde.image][General]`; fill mode, clock and media
+controls are left at their defaults. A custom `LockScreenUi.qml` is possible
+but not done here: the greeter version-gates that file and falls back to Breeze
+with nothing but a log line when a Plasma release moves the API. The login
+screen shows at the next log out; autologin is not touched.
 
 `~/.config/kwinrc`, `kglobalshortcutsrc`, `plasmashellrc` and
 `plasma-org.kde.plasma.desktop-appletsrc` are copied to
