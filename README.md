@@ -171,56 +171,12 @@ but not done here: the greeter version-gates that file and falls back to Breeze
 with nothing but a log line when a Plasma release moves the API. The login
 screen shows at the next log out; autologin is not touched.
 
-`~/.config/kwinrc`, `kglobalshortcutsrc`, `plasmashellrc`,
-`plasma-org.kde.plasma.desktop-appletsrc`, `kxkbrc` and `kscreenlockerrc` are
-copied to `~/.local/state/dotfiles/kde-backup-<timestamp>/` first, with
-`/etc/default/keyboard`, the `localectl status` output and any existing
-`theme.conf.user`. The `plasma-layout.js` saved alongside them replays through
-`evaluateScript` for a quick panel-only restore, but it does not carry the
-system tray's contents.
-
-### ./dotfiles kde-undo [BACKUP]
-
-Puts everything `./dotfiles kde` changed back from a backup, the oldest one
-unless a `kde-backup-<timestamp>` name or path is given, so by default the
-desktop as it was before the first run. It works when Plasma no longer starts:
-from the login screen, `Ctrl+Alt+F3`, log in, and run it there.
-
-It refuses to run inside a Plasma session. It restores files, and `kwin_wayland`
-and `plasmashell` write theirs back from memory when they exit, so it first ends
-any Plasma session still up behind the login screen (it asks). Then it copies
-back the Plasma files, the keymap options of `localectl` and
-`/etc/default/keyboard`, and the SDDM `theme.conf.user`; a file the backup does
-not have is removed. Backups made before `kde-undo` existed lack the keymap and
-lock screen files, so for those it drops only the keys `./dotfiles kde` wrote
-and empties the keymap options. Log in again afterwards.
-
-### ./dotfiles kde-debug on|off|report
-
-For a login that fails when a second user on the same machine logs in fine.
-SDDM starts the session through `bash --login -c`, so `~/.profile` and the
-non-interactive part of `.bashrc` run before `startplasma-wayland`, and every
-variable they export reaches the whole desktop.
-
-- `on` puts a trace block at the top and bottom of the file bash reads at
-  login (`~/.bash_profile`, `~/.bash_login` or `~/.profile`, the first that
-  exists). Only a non-interactive login shell is traced, which is the SDDM
-  one; a console or ssh login sets `PS1` and is left alone. Each login writes
-  `login-trace-<timestamp>.log`, every line with its file and line number, and
-  `login-env-<timestamp>.log`, the environment the session starts with, to
-  `~/.local/state/dotfiles/kde-debug/`. A trace that stops before its last
-  `set +x` shows the line where the shell died.
-- `report` collects the latest trace and environment (credential-like
-  variables redacted), the SDDM session log, the journal of `plasmashell` and
-  `kwin_wayland` for this boot, the last output of each crashed `plasmashell`
-  (a Qt `qFatal` reaches the journal as plain stderr, so it is found by PID,
-  not by priority), and a backtrace of the last `plasmashell` core with
-  symbols from debuginfod, into one `report-<timestamp>.txt`. It offers to
-  upload the file as a secret gist when `gh` is logged in.
-- `off` removes both blocks; the file is otherwise left as it was.
-
-Run it from a console (`Ctrl+Alt+F3`): `on`, log in from the login screen,
-back to the console, `report`, then `off`.
+`~/.config/kwinrc`, `kglobalshortcutsrc`, `plasmashellrc` and
+`plasma-org.kde.plasma.desktop-appletsrc` are copied to
+`~/.local/state/dotfiles/kde-backup-<timestamp>/` first. To undo, copy them back
+and `systemctl --user restart plasma-plasmashell.service`. The
+`plasma-layout.js` saved alongside them replays through `evaluateScript` for a
+quick panel-only restore, but it does not carry the system tray's contents.
 
 Do not apply a Global Theme afterwards, `plasma-apply-lookandfeel` resets the
 panel layout.

@@ -61,14 +61,9 @@ fi
 info "Back up the current desktop configuration"
 backup_dir="$HOME/.local/state/dotfiles/kde-backup-$(date +%Y%m%d-%H%M%S)"
 mkdir -p "$backup_dir"
-for name in plasma-org.kde.plasma.desktop-appletsrc plasmashellrc kwinrc kglobalshortcutsrc kxkbrc kscreenlockerrc; do
+for name in plasma-org.kde.plasma.desktop-appletsrc plasmashellrc kwinrc kglobalshortcutsrc kxkbrc; do
     [ -f "$HOME/.config/$name" ] && cp "$HOME/.config/$name" "$backup_dir/$name"
 done
-# the system side, for ./dotfiles kde-undo; localectl-status also marks a
-# backup that holds all of this
-localectl status > "$backup_dir/localectl-status"
-cp /etc/default/keyboard "$backup_dir/keyboard"
-[ -f "$SDDM_THEME/theme.conf.user" ] && cp "$SDDM_THEME/theme.conf.user" "$backup_dir/theme.conf.user"
 # a convenience only, the dump loses the system tray's contents
 qdbus6 org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.dumpCurrentLayoutJS \
     > "$backup_dir/plasma-layout.js"
