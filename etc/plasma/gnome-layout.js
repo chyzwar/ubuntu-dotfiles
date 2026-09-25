@@ -9,6 +9,15 @@
 // recommended at the top of any layout script, it pins the scripting API
 const plasma_obj = getApiVersion( 1 );
 
+// pinned next to the menu; Quick Launch shows no windows, so this stays a
+// row of launchers and not a dock
+const launcher_list = [
+  'org.kde.dolphin.desktop',
+  'org.kde.konsole.desktop',
+  'google-chrome.desktop',
+  'code.desktop'
+];
+
 // An expanding spacer is the only way to centre one widget in a Plasma panel
 // and push another out to the far end
 function addSpacerFn ( arg_panel_obj ) {
@@ -22,7 +31,7 @@ function addSpacerFn ( arg_panel_obj ) {
 // teardown-first script would leave the desktop with no panel at all.
 const old_id_list = Array.prototype.slice.call( panelIds );
 
-// menu at the left, clock centred, status area at the right
+// menu and launchers at the left, clock centred, status area at the right
 const bar_obj = new Panel;
 bar_obj.location = 'top';
 bar_obj.floating = 0;
@@ -32,6 +41,13 @@ const kickoff_obj = bar_obj.addWidget( 'org.kde.plasma.kickoff' );
 kickoff_obj.currentConfigGroup = [ 'General' ];
 kickoff_obj.writeConfig( 'icon', 'start-here-kubuntu' );
 kickoff_obj.writeConfig( 'showAppsByName', true );
+
+// Quick Launch keeps each launcher as a file URL to its desktop file
+const launch_obj = bar_obj.addWidget( 'org.kde.plasma.quicklaunch' );
+launch_obj.currentConfigGroup = [ 'General' ];
+launch_obj.writeConfig( 'launcherUrls', launcher_list.map( function ( arg_id ) {
+  return 'file:///usr/share/applications/' + arg_id;
+} ) );
 
 addSpacerFn( bar_obj );
 

@@ -104,7 +104,8 @@ Zed via the official installer, Sublime Text from the official apt repo (dev cha
 Reshapes Plasma into the GNOME desktop: one top bar and GNOME's way of moving
 between workspaces. Destructive, it removes every existing panel.
 
-- slim top bar, menu at the left, clock centred, system tray at the right
+- slim top bar, menu and launchers at the left, clock centred, system tray at
+  the right
 - no dock, the way vanilla GNOME has none outside the overview; windows and
   applications are reached through the Overview
 - 4 virtual desktops in one row, non-wrapping like GNOME's workspace strip
@@ -118,6 +119,10 @@ between workspaces. Destructive, it removes every existing panel.
 
 The knobs are three constants at the top of `install/kde-install.bash`:
 `DESKTOPS`, `WALLPAPER` and `SDDM_THEME`. Edit them by hand; there is no menu.
+The launchers are the `launcher_list` array at the top of
+`etc/plasma/gnome-layout.js`, desktop file ids under `/usr/share/applications`.
+They sit in a Quick Launch applet, which shows no windows, so the bar is still
+not a dock. `Meta+E` opens Dolphin from the keyboard, as Plasma ships it.
 
 The panel layout is `etc/plasma/gnome-layout.js`, applied through
 `org.kde.PlasmaShell.evaluateScript`. It builds the new panel before removing the
