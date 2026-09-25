@@ -74,7 +74,8 @@ Programming languages and tooling, each optional.
 Official sources, deb/apt where it exists, beta channels where they exist.
 
 - Claude Code CLI, Anthropic apt repo, `latest` channel
-- Claude Desktop, Anthropic apt repo (Linux beta; Cowork needs the `kvm` group)
+- Claude Desktop, Anthropic apt repo (Linux beta; Cowork needs the `kvm` group);
+  the package's own repo entry is switched off in `/etc/default/claude-desktop`
 - Codex CLI, official installer into `~/.local/bin`
 - OpenCode CLI, official installer into `~/.opencode/bin`
 - OpenCode Desktop, beta deb

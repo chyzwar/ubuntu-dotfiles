@@ -14,10 +14,14 @@ fi
 
 
 if confirm "Do you want to install Claude Desktop (Anthropic apt repo, Linux beta)"; then
+    # opt out of the postinst's own claude-desktop.list; a second entry breaks apt
+    echo 'CLAUDE_DESKTOP_ADD_REPO="false"' | sudo tee /etc/default/claude-desktop >/dev/null
+    sudo rm -f /etc/apt/sources.list.d/claude-desktop.list
     apt_repo claude-desktop https://downloads.claude.ai/claude-desktop/key.asc \
         https://downloads.claude.ai/claude-desktop/apt/stable stable main "amd64 arm64"
     apt_update
     apt_install claude-desktop
+
     # Cowork runs in a QEMU/KVM VM and needs /dev/kvm and /dev/vhost-vsock
     sudo usermod -aG kvm "$USER"
 fi
