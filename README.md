@@ -29,6 +29,8 @@ This prints the list of commands. Every optional item asks Yes/No. Steps are
 idempotent, re-running a command is safe. Every third-party apt repository is
 one deb822 `.sources` file with its signing key embedded in `Signed-By`, written
 by `apt_repo` in `install/lib.bash`: no separate keyring files, no `apt-key`.
+The exception is Slack: its deb writes its own `slack.list` and keys in
+`/etc/apt/trusted.gpg.d`, which apt trusts for every repository.
 
 Helpers shared by every install script live in `install/lib.bash`.
 
@@ -38,9 +40,9 @@ Base packages and desktop software.
 
 - Enables universe/multiverse/restricted, dist-upgrade
 - curl, wget, tree, build-essential, git (+lfs, flow), mercurial, subversion, openssh, shellcheck, vim, nnn, direnv, fonts (Fira Code, Powerline)
-- GitHub CLI (official apt repo)
+- GitHub CLI (official apt repo), Slack (official deb, which adds its own apt repo)
 - flatpak + Discover flatpak backend, Flathub, Lollypop
-- snaps: snapcraft, vlc, krita, gimp, postman, slack
+- snaps: snapcraft, vlc, krita, gimp, postman
 - sysctl tweaks (swappiness, inotify limits) in `/etc/sysctl.d/99-dotfiles.conf`
 - optional: Firefox Nightly (Mozilla apt repo), Dropbox (official apt repo), Steam, Google Chrome (deb), Brave (apt repo), Spotify, Discord (flatpak), Picard, kubectl + microk8s
 

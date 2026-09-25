@@ -41,8 +41,18 @@ snap_install krita
 snap_install gimp
 snap_install postman
 
-info "Install Slack"
-snap_install slack --classic
+info "Install Slack (official deb)"
+# there is no stable latest link, the download page carries the versioned one
+slack_url="$(curl -fsSL 'https://slack.com/downloads/instructions/linux?ddl=1&build=deb' \
+    | grep -oE 'https://downloads\.slack-edge\.com/desktop-releases/linux/x64/[^"]+\.deb' \
+    | head -1)"
+if [ -n "$slack_url" ]; then
+    deb_install "$slack_url" slack-desktop
+    # the deb adds its own apt repo and keys from cron.daily; now, not tomorrow
+    sudo /etc/cron.daily/slack
+else
+    warn "Could not find the Slack deb on slack.com"
+fi
 
 info "Kernel tweaks (sysctl)"
 
