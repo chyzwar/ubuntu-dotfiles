@@ -61,7 +61,7 @@ fi
 info "Back up the current desktop configuration"
 backup_dir="$HOME/.local/state/dotfiles/kde-backup-$(date +%Y%m%d-%H%M%S)"
 mkdir -p "$backup_dir"
-for name in plasma-org.kde.plasma.desktop-appletsrc plasmashellrc kwinrc kglobalshortcutsrc; do
+for name in plasma-org.kde.plasma.desktop-appletsrc plasmashellrc kwinrc kglobalshortcutsrc kxkbrc; do
     [ -f "$HOME/.config/$name" ] && cp "$HOME/.config/$name" "$backup_dir/$name"
 done
 # a convenience only, the dump loses the system tray's contents
@@ -106,6 +106,23 @@ if confirm "Do you want the Overview on the top-left hot corner (GNOME Activitie
     # 7 is ElectricTopLeft
     kwriteconfig6 --file kwinrc --group Effect-overview --key BorderActivate 7
 fi
+
+info "Disable Caps Lock"
+# KWin ignores Options unless ResetOldOptions is set, and it watches kxkbrc,
+# so --notify applies the keymap at once
+kwriteconfig6 --file kxkbrc --group Layout --key ResetOldOptions true
+kwriteconfig6 --file kxkbrc --group Layout --key Options caps:none --notify
+# SDDM and startplasma-wayland read the keymap from locale1, which Ubuntu
+# keeps in /etc/vconsole.conf; localed replaces the whole keymap, so pass the
+# current layout, model and variant back
+x11_keymap () { localectl status | sed -n "s/^ *X11 $1: //p"; }
+sudo localectl set-x11-keymap "$(x11_keymap Layout)" "$(x11_keymap Model)" \
+    "$(x11_keymap Variant)" caps:none \
+    || warn "Could not set the system keymap options"
+# localed does not write /etc/default/keyboard, and console-setup reads only it
+{ sudo sed -i '/^XKBOPTIONS=/d' /etc/default/keyboard \
+    && echo 'XKBOPTIONS="caps:none"' | sudo tee -a /etc/default/keyboard >/dev/null; } \
+    || warn "Could not set XKBOPTIONS for the consoles"
 
 info "Reload the KWin configuration"
 qdbus6 org.kde.KWin /KWin reconfigure
