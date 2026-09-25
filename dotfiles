@@ -21,6 +21,7 @@ sub_help () {
     echo "   vscode             Install VSCode and VSCode Insiders (Microsoft apt repo)"
     echo "   zed                Install Zed editor"
     echo "   kde                Give Plasma a GNOME-style top bar and workspaces"
+    echo "   kde-undo [BACKUP]  Restore Plasma from a kde backup, run from a console"
     echo "   all                Run every install step"
 }
 
@@ -39,6 +40,7 @@ sub_emacs ()   { bash install/emacs-install.bash; }
 sub_vscode ()  { bash install/vscode-install.bash; }
 sub_zed ()     { bash install/zed-install.bash; }
 sub_kde ()     { bash install/kde-install.bash; }
+sub_kde-undo () { bash install/kde-undo.bash "$@"; }
 
 sub_all () {
     sub_system

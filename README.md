@@ -171,12 +171,29 @@ but not done here: the greeter version-gates that file and falls back to Breeze
 with nothing but a log line when a Plasma release moves the API. The login
 screen shows at the next log out; autologin is not touched.
 
-`~/.config/kwinrc`, `kglobalshortcutsrc`, `plasmashellrc` and
-`plasma-org.kde.plasma.desktop-appletsrc` are copied to
-`~/.local/state/dotfiles/kde-backup-<timestamp>/` first. To undo, copy them back
-and `systemctl --user restart plasma-plasmashell.service`. The
-`plasma-layout.js` saved alongside them replays through `evaluateScript` for a
-quick panel-only restore, but it does not carry the system tray's contents.
+`~/.config/kwinrc`, `kglobalshortcutsrc`, `plasmashellrc`,
+`plasma-org.kde.plasma.desktop-appletsrc`, `kxkbrc` and `kscreenlockerrc` are
+copied to `~/.local/state/dotfiles/kde-backup-<timestamp>/` first, with
+`/etc/default/keyboard`, the `localectl status` output and any existing
+`theme.conf.user`. The `plasma-layout.js` saved alongside them replays through
+`evaluateScript` for a quick panel-only restore, but it does not carry the
+system tray's contents.
+
+### ./dotfiles kde-undo [BACKUP]
+
+Puts everything `./dotfiles kde` changed back from a backup, the oldest one
+unless a `kde-backup-<timestamp>` name or path is given, so by default the
+desktop as it was before the first run. It works when Plasma no longer starts:
+from the login screen, `Ctrl+Alt+F3`, log in, and run it there.
+
+It refuses to run inside a Plasma session. It restores files, and `kwin_wayland`
+and `plasmashell` write theirs back from memory when they exit, so it first ends
+any Plasma session still up behind the login screen (it asks). Then it copies
+back the Plasma files, the keymap options of `localectl` and
+`/etc/default/keyboard`, and the SDDM `theme.conf.user`; a file the backup does
+not have is removed. Backups made before `kde-undo` existed lack the keymap and
+lock screen files, so for those it drops only the keys `./dotfiles kde` wrote
+and empties the keymap options. Log in again afterwards.
 
 Do not apply a Global Theme afterwards, `plasma-apply-lookandfeel` resets the
 panel layout.
