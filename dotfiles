@@ -22,6 +22,7 @@ sub_help () {
     echo "   zed                Install Zed editor"
     echo "   kde                Give Plasma a GNOME-style top bar and workspaces"
     echo "   kde-undo [BACKUP]  Restore Plasma from a kde backup, run from a console"
+    echo "   kde-debug on|off|report  Trace the desktop login and collect crash data"
     echo "   all                Run every install step"
 }
 
@@ -41,6 +42,7 @@ sub_vscode ()  { bash install/vscode-install.bash; }
 sub_zed ()     { bash install/zed-install.bash; }
 sub_kde ()     { bash install/kde-install.bash; }
 sub_kde-undo () { bash install/kde-undo.bash "$@"; }
+sub_kde-debug () { bash install/kde-debug.bash "$@"; }
 
 sub_all () {
     sub_system

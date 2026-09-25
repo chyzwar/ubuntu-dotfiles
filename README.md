@@ -195,6 +195,33 @@ not have is removed. Backups made before `kde-undo` existed lack the keymap and
 lock screen files, so for those it drops only the keys `./dotfiles kde` wrote
 and empties the keymap options. Log in again afterwards.
 
+### ./dotfiles kde-debug on|off|report
+
+For a login that fails when a second user on the same machine logs in fine.
+SDDM starts the session through `bash --login -c`, so `~/.profile` and the
+non-interactive part of `.bashrc` run before `startplasma-wayland`, and every
+variable they export reaches the whole desktop.
+
+- `on` puts a trace block at the top and bottom of the file bash reads at
+  login (`~/.bash_profile`, `~/.bash_login` or `~/.profile`, the first that
+  exists). Only a non-interactive login shell is traced, which is the SDDM
+  one; a console or ssh login sets `PS1` and is left alone. Each login writes
+  `login-trace-<timestamp>.log`, every line with its file and line number, and
+  `login-env-<timestamp>.log`, the environment the session starts with, to
+  `~/.local/state/dotfiles/kde-debug/`. A trace that stops before its last
+  `set +x` shows the line where the shell died.
+- `report` collects the latest trace and environment (credential-like
+  variables redacted), the SDDM session log, the journal of `plasmashell` and
+  `kwin_wayland` for this boot, the last output of each crashed `plasmashell`
+  (a Qt `qFatal` reaches the journal as plain stderr, so it is found by PID,
+  not by priority), and a backtrace of the last `plasmashell` core with
+  symbols from debuginfod, into one `report-<timestamp>.txt`. It offers to
+  upload the file as a secret gist when `gh` is logged in.
+- `off` removes both blocks; the file is otherwise left as it was.
+
+Run it from a console (`Ctrl+Alt+F3`): `on`, log in from the login screen,
+back to the console, `report`, then `off`.
+
 Do not apply a Global Theme afterwards, `plasma-apply-lookandfeel` resets the
 panel layout.
 
