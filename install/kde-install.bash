@@ -114,11 +114,22 @@ kwriteconfig6 --file kxkbrc --group Layout --key ResetOldOptions true
 kwriteconfig6 --file kxkbrc --group Layout --key Options caps:none --notify
 # SDDM and startplasma-wayland read the keymap from locale1, which Ubuntu
 # keeps in /etc/vconsole.conf; localed replaces the whole keymap, so pass the
-# current layout, model and variant back
-x11_keymap () { localectl status | sed -n "s/^ *X11 $1: //p"; }
-sudo localectl set-x11-keymap "$(x11_keymap Layout)" "$(x11_keymap Model)" \
-    "$(x11_keymap Variant)" caps:none \
-    || warn "Could not set the system keymap options"
+# current layout, model and variant back, from /etc/default/keyboard if
+# locale1 has none
+x11_keymap () { localectl status | sed -n "s/^ *X11 $1: //p" | grep -vx '(unset)'; }
+# shellcheck source=/dev/null
+debian_keymap () { ( set -a; . /etc/default/keyboard; printenv "$1" ); }
+if [ -n "$(x11_keymap Layout)" ]; then
+    keymap=("$(x11_keymap Layout)" "$(x11_keymap Model)" "$(x11_keymap Variant)")
+else
+    keymap=("$(debian_keymap XKBLAYOUT)" "$(debian_keymap XKBMODEL)" "$(debian_keymap XKBVARIANT)")
+fi
+if [ -n "${keymap[0]}" ]; then
+    sudo localectl set-x11-keymap "${keymap[@]}" caps:none \
+        || warn "Could not set the system keymap options"
+else
+    warn "No keyboard layout in locale1 or /etc/default/keyboard, system keymap left alone"
+fi
 # localed does not write /etc/default/keyboard, and console-setup reads only it
 { sudo sed -i '/^XKBOPTIONS=/d' /etc/default/keyboard \
     && echo 'XKBOPTIONS="caps:none"' | sudo tee -a /etc/default/keyboard >/dev/null; } \
