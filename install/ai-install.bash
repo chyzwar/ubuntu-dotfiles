@@ -13,6 +13,19 @@ if confirm "Do you want to install Claude Code CLI (Anthropic apt repo, latest c
 fi
 
 
+if confirm "Do you want to install ccstatusline (Claude Code status line)"; then
+    command -v jq >/dev/null || apt_install jq
+    mkdir -p "$HOME/.config/ccstatusline" "$HOME/.claude"
+    link "$DOTFILES_DIR/etc/ccstatusline/settings.json" "$HOME/.config/ccstatusline/settings.json"
+    link "$DOTFILES_DIR/etc/claude/package.json" "$HOME/.claude/package.json"
+    npm install --prefix "$HOME/.claude" --no-audit --no-fund || exit 1
+    settings="$HOME/.claude/settings.json"
+    [ -s "$settings" ] || echo '{}' > "$settings"
+    jq '.statusLine = {type: "command", command: "~/.claude/node_modules/.bin/ccstatusline", padding: 0, refreshInterval: 10}' \
+        "$settings" > "$settings.tmp" && mv "$settings.tmp" "$settings"
+fi
+
+
 if confirm "Do you want to install Claude Desktop (Anthropic apt repo, Linux beta)"; then
     # opt out of the postinst's own claude-desktop.list; a second entry breaks apt
     echo 'CLAUDE_DESKTOP_ADD_REPO="false"' | sudo tee /etc/default/claude-desktop >/dev/null

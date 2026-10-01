@@ -74,6 +74,9 @@ Programming languages and tooling, each optional.
 Official sources, deb/apt where it exists, beta channels where they exist.
 
 - Claude Code CLI, Anthropic apt repo, `latest` channel
+- ccstatusline, pinned in `etc/claude/package.json` and installed into
+  `~/.claude/node_modules`; `etc/ccstatusline/settings.json` holds the widgets,
+  and only `statusLine` goes into `~/.claude/settings.json`
 - Claude Desktop, Anthropic apt repo (Linux beta; Cowork needs the `kvm` group);
   the package's own repo entry is switched off in `/etc/default/claude-desktop`
 - Codex CLI, official installer into `~/.local/bin`
