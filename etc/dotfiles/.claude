@@ -35,7 +35,14 @@ Tokens are not a concern. Thoroughness and correctness over brevity.
 PROMPT
 export CLAUDE_SYSTEM_PROMPT
 
-alias cc='claude \
+# ck = kpler (work) account, cc = personal account.
+# Each has its own CLAUDE_CONFIG_DIR so credentials/history/settings don't mix.
+alias ck='CLAUDE_CONFIG_DIR="$HOME/.claude" claude \
+  --dangerously-skip-permissions \
+  --effort high \
+  --append-system-prompt "$CLAUDE_SYSTEM_PROMPT"'
+
+alias cc='CLAUDE_CONFIG_DIR="$HOME/.claude-personal" claude \
   --dangerously-skip-permissions \
   --effort high \
   --append-system-prompt "$CLAUDE_SYSTEM_PROMPT"'
