@@ -45,13 +45,17 @@ if confirm "Do you want to install Codex CLI (official installer)"; then
 fi
 
 
-if confirm "Do you want to install OpenCode CLI (official installer)"; then
-    curl -fsSL https://opencode.ai/install | bash -s -- --no-modify-path
+if confirm "Do you want to install OpenCode 2 CLI (official v2 installer)"; then
+    # OpenCode 1 and 2 both install `opencode` into ~/.opencode/bin and cannot coexist;
+    # the v2 installer replaces whatever is there. https://opencode.ai/v2/docs
+    curl -fsSL https://opencode.ai/v2/install | bash -s -- --no-modify-path
 fi
 
 
-if confirm "Do you want to install OpenCode Desktop (beta channel deb)"; then
-    deb_install https://opencode.ai/download/beta/linux-x64-deb opencode-desktop
+if confirm "Do you want to install OpenCode 2 Desktop (latest channel deb)"; then
+    # the v1-era beta desktop is a different package (opencode-beta); drop it first
+    sudo apt-get remove -y opencode-beta 2>/dev/null || true
+    deb_install https://opencode.ai/update/api/latest/desktop/opencode/opencode-desktop-linux-amd64.deb opencode-desktop
 fi
 
 

@@ -80,8 +80,9 @@ Official sources, deb/apt where it exists, beta channels where they exist.
 - Claude Desktop, Anthropic apt repo (Linux beta; Cowork needs the `kvm` group);
   the package's own repo entry is switched off in `/etc/default/claude-desktop`
 - Codex CLI, official installer into `~/.local/bin`
-- OpenCode CLI, official installer into `~/.opencode/bin`
-- OpenCode Desktop, beta deb
+- OpenCode 2 CLI, official v2 installer into `~/.opencode/bin` (replaces OpenCode 1,
+  the two cannot coexist)
+- OpenCode 2 Desktop, latest-channel deb (removes the v1-era `opencode-beta` deb first)
 - ChatGPT Desktop (includes Codex app), preview deb
 
 ### ./dotfiles shell
