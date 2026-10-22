@@ -82,7 +82,7 @@ Official sources, deb/apt where it exists, beta channels where they exist.
 - Codex CLI, official installer into `~/.local/bin`
 - OpenCode 2 CLI, official v2 installer into `~/.opencode/bin` (replaces OpenCode 1,
   the two cannot coexist)
-- OpenCode 2 Desktop, latest-channel deb (removes the v1-era `opencode-beta` deb first)
+- OpenCode 2 Desktop, latest-channel deb
 - ChatGPT Desktop (includes Codex app), preview deb
 
 ### ./dotfiles shell
