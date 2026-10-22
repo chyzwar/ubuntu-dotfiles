@@ -10,12 +10,15 @@
 const plasma_obj = getApiVersion( 1 );
 
 // pinned next to the menu; Quick Launch shows no windows, so this stays a
-// row of launchers and not a dock
+// row of launchers and not a dock. VS Code ships its desktop file under the
+// reverse-DNS id since 1.139; code.desktop is gone. Its Exec with no files
+// opens a new window when one is already up (openWithoutArgumentsInNewWindow
+// defaults on off macOS), and right-click offers New Empty Window
 const launcher_list = [
   'org.kde.dolphin.desktop',
   'org.kde.konsole.desktop',
   'google-chrome.desktop',
-  'code.desktop'
+  'com.microsoft.VSCode.desktop'
 ];
 
 // An expanding spacer is the only way to centre one widget in a Plasma panel
