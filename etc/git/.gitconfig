@@ -53,3 +53,6 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+[url "https://github.com/Kpler/"]
+	insteadOf = ssh://git@github.com/Kpler/
+	insteadOf = git@github.com:Kpler/

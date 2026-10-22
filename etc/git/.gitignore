@@ -6,3 +6,5 @@ dist
 coverage
 build
 node_modules
+
+**/.claude/settings.local.json
