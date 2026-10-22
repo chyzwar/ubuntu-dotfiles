@@ -107,33 +107,23 @@ if confirm "Do you want the Overview on the top-left hot corner (GNOME Activitie
     kwriteconfig6 --file kwinrc --group Effect-overview --key BorderActivate 7
 fi
 
+info "Make the Overview search find applications"
+# with FilterWindows the Overview shows app results only when no window title
+# matches, so an open tab named after the app hides it
+kwriteconfig6 --file kwinrc --group Effect-overview --key FilterWindows false
+
 info "Disable Caps Lock"
 # KWin ignores Options unless ResetOldOptions is set, and it watches kxkbrc,
 # so --notify applies the keymap at once
 kwriteconfig6 --file kxkbrc --group Layout --key ResetOldOptions true
 kwriteconfig6 --file kxkbrc --group Layout --key Options caps:none --notify
-# SDDM and startplasma-wayland read the keymap from locale1, which Ubuntu
-# keeps in /etc/vconsole.conf; localed replaces the whole keymap, so pass the
-# current layout, model and variant back, from /etc/default/keyboard if
-# locale1 has none
-x11_keymap () { localectl status | sed -n "s/^ *X11 $1: //p" | grep -vx '(unset)'; }
-# shellcheck source=/dev/null
-debian_keymap () { ( set -a; . /etc/default/keyboard; printenv "$1" ); }
-if [ -n "$(x11_keymap Layout)" ]; then
-    keymap=("$(x11_keymap Layout)" "$(x11_keymap Model)" "$(x11_keymap Variant)")
-else
-    keymap=("$(debian_keymap XKBLAYOUT)" "$(debian_keymap XKBMODEL)" "$(debian_keymap XKBVARIANT)")
-fi
-if [ -n "${keymap[0]}" ]; then
-    sudo localectl set-x11-keymap "${keymap[@]}" caps:none \
-        || warn "Could not set the system keymap options"
-else
-    warn "No keyboard layout in locale1 or /etc/default/keyboard, system keymap left alone"
-fi
-# localed does not write /etc/default/keyboard, and console-setup reads only it
+# SDDM and startplasma-wayland read the keymap from locale1, the consoles from
+# console-setup. Ubuntu links /etc/vconsole.conf to /etc/default/keyboard, so
+# both read this one file. localectl set-x11-keymap cannot write it: systemd's
+# locale1.read-only.conf D-Bus policy denies SetX11Keyboard even to root
 { sudo sed -i '/^XKBOPTIONS=/d' /etc/default/keyboard \
     && echo 'XKBOPTIONS="caps:none"' | sudo tee -a /etc/default/keyboard >/dev/null; } \
-    || warn "Could not set XKBOPTIONS for the consoles"
+    || warn "Could not set XKBOPTIONS in /etc/default/keyboard"
 
 info "Reload the KWin configuration"
 qdbus6 org.kde.KWin /KWin reconfigure
