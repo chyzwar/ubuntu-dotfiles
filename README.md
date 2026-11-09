@@ -73,7 +73,9 @@ Programming languages and tooling, each optional.
 
 Official sources, deb/apt where it exists, beta channels where they exist.
 
-- Claude Code CLI, Anthropic apt repo, `latest` channel
+- Claude Code CLI, Anthropic apt repo, `latest` channel, with `wl-clipboard`
+  and `xclip`: Claude Code reads a pasted image through `wl-paste` on Wayland
+  and `xclip` on X11, and without them Ctrl+V pastes text only
 - ccstatusline, pinned in `etc/claude/package.json` and installed into
   `~/.claude/node_modules`; `etc/ccstatusline/settings.json` holds the widgets,
   and only `statusLine` goes into `~/.claude/settings.json`

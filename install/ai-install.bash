@@ -9,7 +9,8 @@ if confirm "Do you want to install Claude Code CLI (Anthropic apt repo, latest c
     apt_repo claude-code https://downloads.claude.ai/keys/claude-code.asc \
         https://downloads.claude.ai/claude-code/apt/latest latest main
     apt_update
-    apt_install claude-code
+    # Ctrl+V pastes a screenshot only through wl-paste on Wayland, xclip on X11
+    apt_install claude-code wl-clipboard xclip
 fi
 
 
